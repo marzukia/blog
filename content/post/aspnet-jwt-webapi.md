@@ -24,7 +24,7 @@ This post will outline my implementation of a lightweight JWT authentication whi
 
 My implementation of JWT consists of the following components:
 
-1. `PasswordHasher`helper to create a salt, and then a hashed password for safe storage.
+1. `PasswordHasher` helper to create a salt, and then a hashed password for safe storage.
 2. `User` model to define what data we'd like to store in regards to our user object.
 3. `UserService` to handle authentication, registration, and any other user action we might want to implement.
 5. `UsersController` to map our endpoints to our service.
