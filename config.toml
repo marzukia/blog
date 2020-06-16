@@ -1,0 +1,47 @@
+baseURL = "https://marzukia.github.io"
+title = "Andryo Marzuki"
+author = "Andryo Marzuki"
+copyright = "© 2020, Andryo Marzuki"
+paginate = 5
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+theme = "origin"
+
+[params]
+  description = "Personal blog of Andryo Marzuki"
+  featured = false
+  cssonly = false
+
+  [params.socials]
+    github = "https://github.com/marzukia"
+    linkedin = "https://www.linkedin.com/in/andryomarzuki/"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[markup]
+  [markup.highlight]
+    style = "github"
+    tabWidth = 4
+
+[markup.goldmark.renderer]
+unsafe = true
+
