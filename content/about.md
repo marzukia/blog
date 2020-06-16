@@ -10,7 +10,7 @@ author = "Andryo Marzuki"
 
 > My name is **Andryo Marzuki**, I live in Auckland, New Zealand.
 >
-> I develop applications which aim at commercialising data or utilising data in innovative ways.
+> I develop applications which aim at commercialising or utilising data in innovative ways.
 
 ## Technical
 
