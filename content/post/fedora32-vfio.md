@@ -49,9 +49,9 @@ For my Windows VM, I used a dedicated SSH as its storage volume, and mounted it 
 
 My key reference while doing this setup was the following [BansheeHero's excellent guide](https://forum.level1techs.com/t/vfio-in-2019-fedora-workstation-general-guide-though-branch-draft/145106). Whilst the post itself is not complete, and good chunks of it are cut paste from a different thread, it outlines the general steps required to accomplish the setup.
 
-With this being said, there were some important steps in this guide that weren't made clear which resulted  in me wasting a fair bit of time. In this post I will try make these key steps a bit clearer.
+However... there were some important steps in this guide that weren't made clear which resulted  in me wasting a material amount of time. In this post I will try make these key steps clearer.
 
-## IOMMU and You
+## IOMMU ...and You
 
 IOMMU stands for 'Input-output memory management unit', it's a feature which allows your VMs to take advantage of your computer's hardware. To accomplish the GPU pass-through this will need to be enabled.
 
@@ -63,7 +63,7 @@ In my case, my setting was set to 'Automatic'.
 
 ### Checking your IOMMU Groups
 
-The next step is to run the follow bash script to ensure that your IOMMU groups have been setup correctly.
+The next step is to run the following bash script to ensure that your IOMMU groups have been setup correctly.
 
 Your GPU and its audio controller need to be isolated in its own IOMMU group. This also applies to any other PCIe devices you'd like to pass-through to the VM including USB ports and soundcards.
 
@@ -83,7 +83,7 @@ IOMMU Group 29 41:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP10
 IOMMU Group 29 41:00.1 Audio device [0403]: NVIDIA Corporation GP104 High Definition Audio Controller [10de:10f0] (rev a1)
 {{< /highlight >}}
 
-In this case, my PCIe devices have the ids `41:00.0` and `41:00.1`.
+In this case, my PCIe devices have the ids `41:00.0` and `41:00.1`. They are grouped together and isolated in Group 29.
 
 ## Installing the Virtualisation Package
 
