@@ -314,7 +314,9 @@ Once you're happy with your Barrier set up, it's time to remove Spice.
 
 Shutdown your VM and remove all the Spice components.
 
-### Cable Time```bash
+### Cable Time
+
+```bash
 EDITOR=vim virsh edit win10
 ```
 
