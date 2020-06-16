@@ -261,7 +261,7 @@ EDITOR=vim virsh edit win10
 
 You need to edit your VM configuration to include the following elements:
 
-{{< highlight xml >}}
+```xml
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
     ...
         <features>
@@ -344,7 +344,7 @@ EDITOR=vim virsh edit win10
 
 Edit your settings to explicitly declare which CPU sets should be used, in my case this is my configuration:
 
-{{< highlight xml >}}
+```xml
   <vcpu placement='static'>8</vcpu>
   <iothreads>2</iothreads>
   <cputune>
@@ -371,7 +371,7 @@ You want to ensure that the topology of your vCPUs are sensible, in my scenario 
 
 If you're using virsh, you want to amend your settings as follows:
 
-{{< highlight xml >}}
+```xml
 <cpu mode="host-model" check="partial">
 	<topology sockets="1" dies="1" cores="4" threads="2"/>
 </cpu>
