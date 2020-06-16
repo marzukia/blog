@@ -1,7 +1,7 @@
 +++
 author = "Andryo Marzuki"
 title = "ASP.NET Core Web API JWT Implementation"
-date = "2020-06-17"
+date = "2020-06-16"
 description = "Tutorial for minimal JWT implementation on ASP.Net Core WebApi instead of using Identity"
 tags = [
     "aspnet", "jwt",

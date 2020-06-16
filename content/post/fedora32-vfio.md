@@ -1,7 +1,7 @@
 +++
 author = "Andryo Marzuki"
 title = "Fedora 32 and GPU Passthrough (VFIO)"
-date = "2020-06-16"
+date = "2020-06-15"
 description = "Guide to setting up VFIO on Fedora 32 to game on a Windows 10 virtual machine"
 tags = [
     "vfio", "fedora",
