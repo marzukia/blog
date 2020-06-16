@@ -8,6 +8,7 @@ DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 theme = "origin"
+publishDir = "marzukia.github.io"
 
 [params]
   description = "Personal blog of Andryo Marzuki"
