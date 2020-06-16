@@ -202,9 +202,7 @@ namespace JwtAuthExample.Services
             );
 
             if (user == null)
-            {
                 return null;
-            }
 
             var hashedPassword = hasher.HashPassword(password, user.Salt);
 
@@ -241,9 +239,7 @@ namespace JwtAuthExample.Services
             );
 
             if (validUser != null)
-            {
                 return null;
-            }
 
             var hasher = new PasswordHasher();
             var salt = hasher.GenerateSalt();
