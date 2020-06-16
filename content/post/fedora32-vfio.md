@@ -299,7 +299,7 @@ You can now install NVIDIA drivers, if all went well above you will not see a 'E
 
 ### Installing Barrier
 
-Once you disable Spice you won't be able to use your keyboard without passing through a USB po"1" cores="4" threads="2"/>rt or doing a RDP.
+Once you disable Spice you won't be able to use your keyboard without passing through a USB port or doing a RDP.
 
 At this point you should install Barrier or something similar. You can find the GitHub repo [here](https://github.com/debauchee/barrier). Barrier is a fork of Synergy - it's awesome. Syngery has terrible support for Fedora.
 
@@ -318,7 +318,7 @@ Shutdown your VM and remove all the Spice components.
 EDITOR=vim virsh edit win10
 {{</ highlight >}}
 
-Plug your monitor into your VM's allocat"1" cores="4" threads="2"/>ed GPU and start up your VM. You should now see everything work bueno.
+Plug your monitor into your VM's allocated GPU and start up your VM. You should now see everything work bueno.
 
 At this point, you will now have a functioning VM with GPU pass-through. However... there's one more things you need to do before your VM will be ready to play games...
 
@@ -331,7 +331,7 @@ In my case, doing this configuration doubled the benchmarks of my virtual machin
 ### Understanding your Cores
 
 I use `lstopo`in this section. If you have something else you prefer to use, you can use that too.
-"1" cores="4" threads="2"/>
+
 In my setup, you can see that cores 6/18 to 11/23 are closer to my GPU `PCI 41:00.0`. Now that I know which cores to use, I can explicitly allocate them in my virtual machine's configuration.
 
 ### Modifying your Settings
@@ -356,7 +356,7 @@ Edit your settings to explicitly declare which CPU sets should be used, in my ca
     <vcpupin vcpu='5' cpuset='20'/>
     <vcpupin vcpu='6' cpuset='9'/>
     <vcpupin vcpu='7' cpuset='21'/>
-    <emulatorpin cpuset='0-1'/>"1" cores="4" threads="2"/>
+    <emulatorpin cpuset='0-1'/>
     <iothreadpin iothread='1' cpuset='0-1'/>
     <iothreadpin iothread='2' cpuset='2-3'/>
   </cputune>
