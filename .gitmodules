@@ -1,3 +1,7 @@
 [submodule "themes/origin"]
 	path = themes/origin
 	url = https://gitlab.com/asleeppiano/origin-hugo-theme.git
+
+[submodule "marzukia.github.io"]
+	path = marzukia.github.io
+	url = https://github.com/marzukia/marzukia.github.io.git
