@@ -187,11 +187,9 @@ namespace JwtAuthExample.Services
     public class UserService: IUserService
     {
         private readonly JwtAuthExampleContext _context;
-        private readonly AppSettings _appSettings;
 
-        public UserService(IOptions<AppSettings> appSettings, JwtAuthExampleContext context)
+        public UserService(JwtAuthExampleContext context)
         {
-            _appSettings = appSettings.Value;
             _context = context;
         }
 
@@ -212,7 +210,7 @@ namespace JwtAuthExample.Services
             if (user.Password == hashedPassword)
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var key = Encoding.ASCII.GetBytes("SECRETCODESTRING");
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
@@ -291,7 +289,7 @@ using JwtAuthExample.Helpers;
 namespace JwtAuthExample.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -377,7 +375,7 @@ We need to tell our application to use `JwtBearer` as it's authentication mechan
 Adjust your `ConfigureServices(IServiceCollection services)` to include the following:
 
 ```cs
-var key = Encoding.ASCII.GetBytes('SECRETCODESTRING');
+var key = Encoding.ASCII.GetBytes("SECRETCODESTRING");
 services.AddAuthentication(x =>
 {
 	x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
