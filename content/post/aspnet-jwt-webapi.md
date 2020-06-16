@@ -8,7 +8,7 @@ tags = [
 ]
 +++
 
-# Sir, may I some identification?
+# Sir, may I see some identification?
 
 I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C# for things like Unity, and later realizing how much enjoyable it was to use ASP.NET Core over Django.
 
