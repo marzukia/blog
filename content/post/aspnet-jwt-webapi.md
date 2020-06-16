@@ -44,7 +44,8 @@ This tutorial will cover implementing the above which will provide you the follo
 3. `GET /api/user/info/` to retrieve a user's detail from their `Bearer` token.
 
 # Component Explanation
-## `PasswordHasher` Helper
+
+## PasswordHasher
 
 The password which we'll be storing will be encrypted using a salt we will generate. It should go without saying, but do not store passwords in plaintext.
 
@@ -95,7 +96,7 @@ namespace JwtAuthExample.Helpers
 
 In the example above we take advantage of ASP.NET Core's cryptographic library and use their `Pbkdf2` key derivation function and the `HMACSHA1` algorithm to hash our password using the salt we generate with our `GenerateSalt()` function.
 
-## `User` Model
+## User
 
 I consider this definition my 'base' `User` model. I will normally extend this model as needed by creating another model such as `ApplicationUser` which inherits from `User`.
 
@@ -144,7 +145,7 @@ In the above example we've explicitly declared `Password` to be ignored during s
 
 We'll create a Data Transfer Object (DTO) as our temporary model when doing things such as authenticating or registering the user. You'll see how this works in the `UsersController` section.
 
-## `UserService` Service
+## UserService
 
 Our `UserService` will handle all the operations related to our `User` actions.
 
@@ -265,7 +266,7 @@ namespace JwtAuthExample.Services
 }
 ```
 
-## `UsersController` Controller
+## UsersController
 
 The majority of this code example in this section should hopefully be self explanatory.
 
@@ -347,7 +348,7 @@ namespace JwtAuthExample.Controllers
 
 # Implementing our Components
 
-## Adding `User` to your `DbContext`
+## Adjusting your DbContext
 
 In your `DbContext` you'll need to add the following:
 
@@ -362,7 +363,7 @@ dotnet ef migrations add  AddUserModel -v
 dotnet ef database update -v
 ```
 
-## Adding `JwtBearer`
+## Adding JwtBearer
 
 You'll need to install the `JwtBearer` package by running the following command:
 
@@ -395,7 +396,7 @@ services.AddAuthentication(x =>
 });
 ```
 
-## Adding `UserService`
+## Adding UserService
 
 We need to inject our `UserService` and it's interface `IUserService` into `Startup`.
 
