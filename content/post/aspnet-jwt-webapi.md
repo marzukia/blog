@@ -10,7 +10,7 @@ tags = [
 
 # Can I See Some Identification?
 
-I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C# for things like Unity, and later realizing how much better it was to use ASP.NET Core over Django.
+I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C# for things like Unity, and later realizing how much better ASP.NET Core is than Django.
 
 As I mostly use ReactJS for my application frontends, I did not need the 'Razor' pages integrated in ASP.NET. As a result, my preference was to bootstrap my projects as `webapi` rather than `webapp` or even `mvc`.
 
