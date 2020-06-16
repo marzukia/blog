@@ -43,7 +43,7 @@ Your set up will be different, so your mileage may vary. Some instructions will 
     - 2TB HD
 {{< /highlight >}}
 
-For my Windows VM, I used a dedicated SSH as its storage volume, and mounted it raw rather than using a virtual disk. This is to improve the performance of the VM.
+For my Windows VM, I used a dedicated SSD as its storage volume, and mounted it raw rather than using a virtual disk. This is to improve the performance of the VM.
 
 # But... How?
 
@@ -251,7 +251,7 @@ Once the above are set, we're ready to start. Hit apply and let Windows 10 insta
 
 ### Hiding the Hypervisor
 
-There's a fair few tweaks we need to do in order to get the VM to work with our NVIDIA card. For whatever reason, NVIDIA does not allow their drivers to be used inside emulations. Lucky for us, we can the fact that our VM is a emulation by modifying it's hypervisor.
+There's a fair few tweaks we need to do in order to get the VM to work with our NVIDIA card. For whatever reason, NVIDIA does not allow their drivers to be used inside emulations. Luckily for us, we can hide the fact that our VM is a emulation by modifying our virtual machine's settings.
 
 Open up your VM with the following command, make sure you change the VM to the appropriate name:
 
