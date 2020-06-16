@@ -138,7 +138,7 @@ echo "options vfio-pci ids=10de:1b80,10de:10f0" > /etc/modprobe.d/vfio.conf
 
 ### Rebuilding initramfs
 
-Execute the following commands to instruct dracut to load the vfio drivers:https://github.com/debauchee/barrier
+Execute the following commands to instruct dracut to load the vfio drivers:
 
 {{< highlight bash >}}
 dracut --add-drivers "vfio vfio-pci vfio_iommu_type1" --force
@@ -165,7 +165,7 @@ You should see the following:
 drwxr-xr-x   3 root     root            0 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio
 drwxr-xr-x   2 root     root            0 Mar 17 04:13 usr/lib/modulesKernel driver in use: vfio-pci/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/pci
 -rw-r--r--   1 root     root        25068 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/pci/vfio-pci.ko.xz
--rw-r--r--   1 root     root        13368 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio_iommu_type1.khttps://github.com/debauchee/barriero.xz
+-rw-r--r--   1 root     root        13368 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio_iommu_type1.ko.xz
 -rw-r--r--   1 root     root        12320 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio.ko.xz
 -rw-r--r--   1 root     root         3212 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio_virqfd.ko.xz
 {{</ highlight >}}
@@ -183,7 +183,7 @@ lspci -nnv
 We see that our NVIDIA GTX 1080 shows the following:
 
 {{< highlight text >}}
-41:00.0 VGA compatible controllhttps://github.com/debauchee/barrierer [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])https://github.com/debauchee/barrier
+41:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
 	Subsystem: eVga.com. Corp. Device [3842:6183]
 	Flags: bus master, fast devsel, latency 0, IRQ 101, NUMA node 1
 	Memory at be000000 (32-bit, non-prefetchable) [size=16M]
@@ -208,7 +208,7 @@ We see that our NVIDIA GTX 1080 shows the following:
 	Memory at bf080000 (32-bit, non-prefetchable) [size=16K]
 	Capabilities: [60] Power Management version 3
 	Capabilities: [68] MSI: Enable- Count=1/1 Maskable- 64bit+
-	Capabilities: [78] Express Ehttps://github.com/debauchee/barrierndpoint, MSI 00
+	Capabilities: [78] Express Endpoint, MSI 00
 	Capabilities: [100] Advanced Error Reporting
 	Kernel driver in use: vfio-pci
 	Kernel modules: snd_hda_intel
