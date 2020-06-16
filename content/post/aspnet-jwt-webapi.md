@@ -1,12 +1,14 @@
 +++
 author = "Andryo Marzuki"
-title = "Minimal JWT Authentication Implementation in ASP.NET Core Web API"
-date = "2020-06-17"
-description = "Indepth guide and explanation to implementing JWT Authentication in an ASP.NET Core Web API rather than MVC or WebApp."
+title = "ASP.NET Core Web API JWT Implementation"
+date = "2020-06-16"
+description = "Tutorial for minimal JWT implementation on ASP.Net Core WebApi instead of using Identity"
 tags = [
-    "asp.net", "web api", "jwt"
+    "aspnet", "jwt",
 ]
 +++
+
+# Sir, can I see your ID?
 
 I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C# for things like Unity, and later realizing how much enjoyable it was to use ASP.NET Core over Django.
 
@@ -42,7 +44,6 @@ This tutorial will cover implementing the above which will provide you the follo
 3. `GET /api/user/info/` to retrieve a user's detail from their `Bearer` token.
 
 # Component Explanation
-
 ## `PasswordHasher` Helper
 
 The password which we'll be storing will be encrypted using a salt we will generate. It should go without saying, but do not store passwords in plaintext.
@@ -52,7 +53,7 @@ In order for us to achieve this, we'll need to create a helper function which wi
 1. Generate a `byte[]` salt
 2. And then hash the password using this salt, providing us a hashed password.
 
-{{< highlight cs >}}
+```cs
 using System;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -90,7 +91,7 @@ namespace JwtAuthExample.Helpers
         }
     }
 }
-{{< \highlight >}}
+```
 
 In the example above we take advantage of ASP.NET Core's cryptographic library and use their `Pbkdf2` key derivation function and the `HMACSHA1` algorithm to hash our password using the salt we generate with our `GenerateSalt()` function.
 
@@ -107,7 +108,7 @@ The data we want to capture is as follows:
 
 Our model definition is as follows:
 
-{{< highlight cs>}}
+```cs
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -137,7 +138,7 @@ namespace JwtAuthExample.Models
         public string Password { get; set; }
     }
 }
-{{< \highlight >}}
+```
 
 In the above example we've explicitly declared `Password` to be ignored during serialization. This is good practice to ensure that this data is never unintentionally accessible.
 
@@ -161,7 +162,7 @@ The `Register(username, password)` function is summarized as follows:
 
 This is defined as follows:
 
-{{< highlight cs >}}
+```cs
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -264,7 +265,7 @@ namespace JwtAuthExample.Services
         }
     }
 }
-{{< \highlight >}}
+```
 
 ## `UsersController` Controller
 
@@ -272,7 +273,7 @@ The majority of this code example in this section should hopefully be self expla
 
 My `[HttpGet("info")]` route demonstrates how to get the `User` in the controller by using the `JWT` claim.
 
-{{< highlight cs >}}
+```cs
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -344,7 +345,7 @@ namespace JwtAuthExample.Controllers
         }
     }
 }
-{{< \highlight >}}
+```
 
 # Implementing our Components
 
@@ -352,30 +353,30 @@ namespace JwtAuthExample.Controllers
 
 In your `DbContext` you'll need to add the following:
 
-{{< highlight cs >}}
+```cs
 public virtual DbSet<ApplicationUser> Users { get; set; }
-{{< \highlight >}}
+```
 
 Once you've done this, make sure you migrate and affect your changes by doing the following:
 
-{{< highlight bash >}}
+```bash
 dotnet ef migrations add  AddUserModel -v
 dotnet ef database update -v
-{{< \highlight >}}
+```
 
 ## Adding `JwtBearer`
 
 You'll need to install the `JwtBearer` package by running the following command:
 
-{{< highlight bash >}}
+```bash
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-{{< \highlight >}}
+```
 
 We need to tell our application to use `JwtBearer` as it's authentication mechanism.
 
 Adjust your `ConfigureServices(IServiceCollection services)` to include the following:
 
-{{< highlight cs >}}
+```cs
 var key = Encoding.ASCII.GetBytes('SECRETCODESTRING');
 services.AddAuthentication(x =>
 {
@@ -394,7 +395,7 @@ services.AddAuthentication(x =>
 		ValidateAudience = false
 	};
 });
-{{< \highlight >}}
+```
 
 ## Adding `UserService`
 
@@ -402,18 +403,18 @@ We need to inject our `UserService` and it's interface `IUserService` into `Star
 
 Adjust your `ConfigureServices(IServiceCollection services)` to include the following:
 
-{{< highlight cs >}}
+```cs
 services.AddScoped<IUserService, UserService>();
-{{< \highlight >}}
+```
 
 ## Final Touches
 
 Adjust your `Configure(IApplicationBuilder app, IWebHostEnvironment env)` with the following additions:
 
-{{< highlight cs >}}
+```cs
 app.UseAuthentication();
 app.UseAuthorization();
-{{< \highlight >}}
+```
 
 ## Requiring Authorization for your Controllers
 

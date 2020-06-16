@@ -30,7 +30,7 @@ In some other threads I read that having identical GPUs causes issues with the V
 
 Your set up will be different, so your mileage may vary. Some instructions will have to be adjusted, however my set up is as follows:
 
-{{< highlight text >}}
+```text
 - Fedora 32 (Kernel 5.6.10-300.fc32.x86_64)
 - ASROCK X399M Taichi
 - AMD Ryzen Threadripper 2920X
@@ -41,7 +41,7 @@ Your set up will be different, so your mileage may vary. Some instructions will 
     - 512GB SSD
     - 256GB SSD
     - 2TB HD
-{{< /highlight >}}
+```
 
 For my Windows VM, I used a dedicated SSD as its storage volume, and mounted it raw rather than using a virtual disk. This is to improve the performance of the VM.
 
@@ -67,21 +67,21 @@ The next step is to run the following bash script to ensure that your IOMMU grou
 
 Your GPU and its audio controller need to be isolated in its own IOMMU group. This also applies to any other PCIe devices you'd like to pass-through to the VM including USB ports and soundcards.
 
-{{< highlight bash >}}
+```bash
 #!/bin/bash
 for d in /sys/kernel/iommu_groups/*/devices/*; do
   n=${d#*/iommu_groups/*}; n=${n%%/*}
   printf 'IOMMU Group %s ' "$n"
   lspci -nns "${d##*/}"
 done
-{{< /highlight >}}
+```
 
 On running this command, you'll want to look for your GPU and ensure it's there. In my case I see the following:
 
-{{< highlight text >}}
+```text
 IOMMU Group 29 41:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1)
 IOMMU Group 29 41:00.1 Audio device [0403]: NVIDIA Corporation GP104 High Definition Audio Controller [10de:10f0] (rev a1)
-{{< /highlight >}}
+```
 
 In this case, my PCIe devices have the ids `41:00.0` and `41:00.1`. They are grouped together and isolated in Group 29.
 
@@ -89,9 +89,9 @@ In this case, my PCIe devices have the ids `41:00.0` and `41:00.1`. They are gro
 
 You'll need the packages from the following command:
 
-{{< highlight bash >}}
+```bash
 dnf install @virtualization
-{{< /highlight >}}
+```
 
 My user is in wheel so not much further group configuration was necessary. If you don't have your user in there you'll need to do further configuration.
 
@@ -99,9 +99,9 @@ My user is in wheel so not much further group configuration was necessary. If yo
 
 You'll need to add some paramaters to your GRUB configuration. You can access the file doing the following command:
 
-{{< highlight bash >}}
+```bash
 vim /etc/sysconfig/grub
-{{< /highlight >}}
+```
 
 Add `amd_iommu=on rd.driver.pre=vfio-pci` to `GRUB_CMDLINE_LINUX`, if you have an Intel chip you'll need to use `intel_iommu=on`.
 
@@ -115,16 +115,16 @@ In order to allow VFIO to happen, we need to adjust the boot process to ensure t
 
 In my case, I wanted to specifically pass-through my NVIDIA GTX1080. I can find the specific devices by running the following command:
 
-{{< highlight bash >}}
+```bash
 lspci -vnn | grep NVIDIA
-{{</ highlight >}}
+```
 
 This provides me the following output:
 
-{{< highlight text >}}
+```text
 41:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
 41:00.1 Audio device [0403]: NVIDIA Corporation GP104 High Definition Audio Controller [10de:10f0] (rev a1)
-{{</ highlight >}}
+```
 
 For each device I am interested in it's device ID (`10de:10f0`, `10de:1b80`). We need this information as this is how we'll inform our bootloader which devices need to be reserved.
 
@@ -132,35 +132,35 @@ For each device I am interested in it's device ID (`10de:10f0`, `10de:1b80`). We
 
 We need to tell Modprobe which devices we want to reserve for VFIO. In order to do this, we run the following command:
 
-{{< highlight bash >}}
+```bash
 echo "options vfio-pci ids=10de:1b80,10de:10f0" > /etc/modprobe.d/vfio.conf
-{{</ highlight >}}
+```
 
 ### Rebuilding initramfs
 
 Execute the following commands to instruct dracut to load the vfio drivers:
 
-{{< highlight bash >}}
+```bash
 dracut --add-drivers "vfio vfio-pci vfio_iommu_type1" --force
-{{</ highlight >}}
+```
 
 Once this has been completed, we can force a rebuild of initramfs image by executing the following command:
 
-{{< highlight bash >}}
+```bash
 dracut -fv
-{{</ highlight >}}
+```
 
 ### Pre-reboot Check-in
 
 Before we reboot, we want to make sure all the things we did above has been affected. When you run the following command:
 
-{{< highlight bash >}}
+```bash
 lsinitrd | grep vfio
-{{</ highlight >}}
+```
 
 You should see the following:
 
-{{< highlight text >}}
+```text
 -rw-r--r--   1 root     root           41 Mar 17 04:13 etc/modprobe.d/vfio.conf
 drwxr-xr-x   3 root     root            0 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio
 drwxr-xr-x   2 root     root            0 Mar 17 04:13 usr/lib/modulesKernel driver in use: vfio-pci/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/pci
@@ -168,7 +168,7 @@ drwxr-xr-x   2 root     root            0 Mar 17 04:13 usr/lib/modulesKernel dri
 -rw-r--r--   1 root     root        13368 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio_iommu_type1.ko.xz
 -rw-r--r--   1 root     root        12320 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio.ko.xz
 -rw-r--r--   1 root     root         3212 Mar 17 04:13 usr/lib/modules/5.6.10-300.fc32.x86_64/kernel/drivers/vfio/vfio_virqfd.ko.xz
-{{</ highlight >}}
+```
 
 If everything is good at this point, you now need to reboot.
 
@@ -176,13 +176,13 @@ If everything is good at this point, you now need to reboot.
 
 We now need to ensure that the PCIe devices we specified for VFIO have been correctly reserved. If we run:
 
-{{< highlight bash >}}
+```bash
 lspci -nnv
-{{</ highlight >}}
+```
 
 We see that our NVIDIA GTX 1080 shows the following:
 
-{{< highlight text >}}
+```text
 41:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
 	Subsystem: eVga.com. Corp. Device [3842:6183]
 	Flags: bus master, fast devsel, latency 0, IRQ 101, NUMA node 1
@@ -212,7 +212,7 @@ We see that our NVIDIA GTX 1080 shows the following:
 	Capabilities: [100] Advanced Error Reporting
 	Kernel driver in use: vfio-pci
 	Kernel modules: snd_hda_intel
-{{</ highlight >}}
+```
 
 The thing we're looking for is `Kernel driver in use: vfio-pci`. If you see this, you've successfully reserved the PCIe deviced for use by the VM.
 
@@ -222,9 +222,9 @@ The thing we're looking for is `Kernel driver in use: vfio-pci`. If you see this
 
 The first thing you should check is your QEMU version. You can do this by doing the following:
 
-{{< highlight bash >}}
+```bash
 qemu-kvm --version
-{{</ highlight >}}
+```
 
 This guide assumes you have a QEMU version of 4.2 or greater. There are implications of using earlier versions of QEMU which I will not be covering or addressing in this post.
 
@@ -255,9 +255,9 @@ There's a fair few tweaks we need to do in order to get the VM to work with our 
 
 Open up your VM with the following command, make sure you change the VM to the appropriate name:
 
-{{< highlight bash >}}
+```bash
 EDITOR=vim virsh edit win10
-{{</ highlight >}}
+```
 
 You need to edit your VM configuration to include the following elements:
 
@@ -282,7 +282,7 @@ You need to edit your VM configuration to include the following elements:
             <qemu:arg value='host,hv_time,kvm=off,hv_vendor_id=null'/>
         </qemu:commandline>
 </domain>
-{{</ highlight >}}
+```
 
 By changing the above we've accomplished the following things:
 
@@ -314,9 +314,9 @@ Once you're happy with your Barrier set up, it's time to remove Spice.
 
 Shutdown your VM and remove all the Spice components.
 
-### Cable Time{{< highlight bash >}}
+### Cable Time```bash
 EDITOR=vim virsh edit win10
-{{</ highlight >}}
+```
 
 Plug your monitor into your VM's allocated GPU and start up your VM. You should now see everything work bueno.
 
@@ -338,9 +338,9 @@ In my setup, you can see that cores 6/18 to 11/23 are closer to my GPU `PCI 41:0
 
 Using the following command again:
 
-{{< highlight bash >}}
+```bash
 EDITOR=vim virsh edit win10
-{{</ highlight >}}
+```
 
 Edit your settings to explicitly declare which CPU sets should be used, in my case this is my configuration:
 
@@ -360,7 +360,7 @@ Edit your settings to explicitly declare which CPU sets should be used, in my ca
     <iothreadpin iothread='1' cpuset='0-1'/>
     <iothreadpin iothread='2' cpuset='2-3'/>
   </cputune>
-{{</ highlight >}}
+```
 
 
 ### Modifying your Topology
@@ -375,7 +375,7 @@ If you're using virsh, you want to amend your settings as follows:
 <cpu mode="host-model" check="partial">
 	<topology sockets="1" dies="1" cores="4" threads="2"/>
 </cpu>
-{{</ highlight >}}
+```
 
 # Closing Thoughts
 
