@@ -29,10 +29,10 @@ My implementation of JWT consists of the following components:
 3. `UserService` to handle authentication, registration, and any other user action we might want to implement.
 5. `UsersController` to map our endpoints to our service.
 
-In addition to the above, we need to adjust our:
+In addition to the above, we need to:
 
-1. `DbContext` to include the `User` model.
-2. Configure our `Startup`to use `JwtBearer` as an authentication mechanism.
+1. Adjust our `DbContext` to include the `User` model.
+2. Configure our `Startup` to use `JwtBearer` as an authentication mechanism.
 3. Configure our `Startup` to use `UseAuthentication()` and `UseAuthentication()`.
 4. Inject our scoped `UserService` into `Startup.`
 5. Adjust any other controllers which require authorization to include `[Authorize]` in its definition.
