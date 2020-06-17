@@ -40,7 +40,7 @@ publishDir = "marzukia.github.io"
 
 [markup]
   [markup.highlight]
-    style = "github"
+    style = "vs"
     tabWidth = 4
 
 [markup.goldmark.renderer]
