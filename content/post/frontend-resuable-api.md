@@ -10,27 +10,27 @@ tags = [
 
 # Go Fetch!
 
-For my last few projects I made the switch from using [Axios](https://www.google.com/search?client=firefox-b-d&q=axios) to plain ol' [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). My rationale for making this switch was:
+For my last few projects I've made the switch from [Axios](https://www.google.com/search?client=firefox-b-d&q=axios) to plain ol' [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). My rationale for making this switch was:
 
-1. Axios is a third party library, where possible I would like to reduce usage of third party libraries; and
+1. Axios is a third party library. Where possible I would like to reduce usage of third party libraries; and
 2. Fetch is a perfectly capable library for the purposes of building my resuable API class with.
 
-My approach in using Fetch or Axios is to create a class which contains all my API logic. I prefer to clearly define my `GET`, `POST`, `DELETE`, `PUT` methods and then build specific functions on top of those.
+My approach in using Fetch or Axios is to create a class which contains all my API logic. The idea is to clearly define my `GET`, `POST`, `DELETE`, `PUT` methods and then build understandable and elegant functions on top of these.
 
 # The Code
 
 ## CRSF Considerations
 
-One little bug bear to tackle is the fact that Axios handles the CSRF for you. In fact, it's as simple as defining your header names as follows:
+One little issue you'll need to address is handling CSRF. In Axios, CSRF is handled for you, you would simply do something like:
 
 ```ts
 axiosDefaults.xsrfCookieName = "csrftoken"
 axiosDefaults.xsrfHeaderName = "X-CSRFToken"
 ```
 
-While using Fetch, we need to manually configure this ourselves. We'll need to manually set our `x-csrftoken` header in our Fetch parameters.
+In Fetch, we'll need to configure this ourselves. The simpest way I've achieved this is by manually setting the `x-csrftoken` header in our Fetch parameters.
 
-I accomplish this by defining parameters I want to pass through in every request as static properties of the class.
+To do this, I've used `js-cookie` to grab the token value and pass it through in the headers. The following snippet is my approach:
 
 ```ts
 import Cookies from 'js-cookie';
@@ -56,9 +56,9 @@ class API {
 };
 ```
 
-In the above code snippet, I've used `js-cookie` to grab the token value and pass it through in the headers.
-
 ## Reusable Methods
+
+This next section I'll break down my 'main' methods which form the basis of my API class' functions.
 
 ### GET
 
@@ -93,7 +93,7 @@ async post(endpoint: string, params: Params) {
 
 ### PUT / DELETE
 
-My `PUT` and `DELETE` methods are more or less the same as how I construct my `POST` method
+My `PUT` and `DELETE` methods are more or less the same as how I construct my `POST` method.
 
 ```ts
 async put(endpoint: string, params: Params) {
@@ -126,7 +126,7 @@ async authenticate(username: string, password: string): Promise<User> {
 
 ## Full Working Example
 
-And lastly, here is the full working example of my boilerplate Fetch API class.
+Here is the full working example of my boilerplate Fetch API class.
 
 ```ts
 import Cookies from 'js-cookie';
@@ -197,8 +197,10 @@ export const api = new API('https://localhost:5001/api/')
 
 # Closing Thoughts
 
-If you're already invested in using Axios for your development stacks there's probably no reason to change.
+If you're already invested in using Axios in your developments/projects, there's probably no reason to change.
 
 I personally quite like how succint the code is using Fetch, and bonus points to the fact that I am no longer reliant on a third party library.
 
-With this article posted, I can now delete the code scraps I have saved on GitHub!
+Lastly, with this article posted, I can now delete the code scraps I have saved on GitHub!
+
+Hope you've found the article useful.
