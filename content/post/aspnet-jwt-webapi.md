@@ -27,15 +27,16 @@ My implementation of JWT consists of the following components:
 1. `PasswordHasher` helper to create a salt, and then a hashed password for safe storage.
 2. `User` model to define what data we'd like to store in regards to our user object.
 3. `UserService` to handle authentication, registration, and any other user action we might want to implement.
-5. `UsersController` to map our endpoints to our service.
+5. `UsersController` to map our endpoints to our service, we'll also instruct our `/api/user/login/` endpoint to set a `HttpOnly` cookie containing our JWT.
 
 In addition to the above, we need to:
 
 1. Adjust our `DbContext` to include the `User` model.
 2. Configure our `Startup` to use `JwtBearer` as an authentication mechanism.
-3. Configure our `Startup` to use `UseAuthentication()` and `UseAuthentication()`.
-4. Inject our scoped `UserService` into `Startup.`
-5. Adjust any other controllers which require authorization to include `[Authorize]` in its definition.
+3. Configure out `Startup` to set an `Authorization` header using our HttpOnly cookie set by our `/api/user/login/` endpoint.
+4. Configure our `Startup` to use `UseAuthentication()` and `UseAuthentication()`.
+5. Inject our scoped `UserService` into `Startup.`
+6. Adjust any other controllers which require authorization to include `[Authorize]` in its definition.
 
 This tutorial will cover implementing the above which will provide you the following endpoints:
 
@@ -266,7 +267,9 @@ namespace JwtAuthExample.Services
 
 The majority of this code example in this section should hopefully be self explanatory.
 
-My `[HttpGet("info")]` route demonstrates how to get the `User` in the controller by using the `JWT` claim.
+The `[HttpGet("info")]` route demonstrates how to get the `User` in the controller by using the `JWT` claim.
+
+The `[HttpPost("authenticate")]` has a working example on how to set the JWT cookie as a `HttpOnly` cookie.
 
 ```cs
 using Microsoft.AspNetCore.Mvc;
@@ -322,7 +325,21 @@ namespace JwtAuthExample.Controllers
             var user = await _userService.Authenticate(model.Username, model.Password);
 
             if (user == null)
-                return BadRequest(new {message = "Username or password is incorrect"});
+            {
+                var errorMessage = new {message = "Username or password is incorrect"};
+                return BadRequest(errorMessage);
+            }
+
+            var cookieOptions = new CookieOptions
+            {
+                Path = "/",
+                Expires = DateTimeOffset.UtcNow.AddDays(7),
+                IsEssential = true,
+                HttpOnly = true,
+                Secure = true
+            };
+
+            Response.Cookies.Append("JWT", user.Token, cookieOptions);
 
             return Ok(user);
         }
@@ -400,6 +417,22 @@ Adjust your `ConfigureServices(IServiceCollection services)` to include the foll
 
 ```cs
 services.AddScoped<IUserService, UserService>();
+```
+
+## Adding our Middleware to use JWT HttpOnly Cookie
+
+It's really bad form to store our JWT in local storage. Where possible, we want to make use of `HttpOnly` cookies which are more secure. To make our controllers use the `HttpOnly` cookie we need to place a middleware in our `Startup`:
+
+```cs
+app.Use(async (context, next) =>
+{
+    var token = context.Request.Cookies["JWT"];
+
+    if (!string.IsNullOrEmpty(token))
+        context.Request.Headers.Add("Authorization", "Bearer " + token);
+
+    await next();
+});
 ```
 
 ## Final Touches
