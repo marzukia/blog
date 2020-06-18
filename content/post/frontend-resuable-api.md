@@ -17,32 +17,15 @@ For my last few projects I've made the switch from [Axios](https://www.google.co
 
 My approach in using Fetch or Axios is to create a class which contains all my API logic. The idea is to clearly define my `GET`, `POST`, `DELETE`, `PUT` methods and then build understandable and elegant functions on top of these.
 
-# CRSF Considerations
-
-One little issue you'll need to address is handling CSRF. In Axios, CSRF is handled for you, you would simply do something like:
-
 ```ts
-axiosDefaults.xsrfCookieName = "csrftoken"
-axiosDefaults.xsrfHeaderName = "X-CSRFToken"
-```
-
-In Fetch, we'll need to configure this ourselves. The simpest way I've achieved this is by manually setting the `x-csrftoken` header in our Fetch parameters.
-
-To do this, I've used `js-cookie` to grab the token value and pass it through in the headers. The following snippet is my approach:
-
-```ts
-import Cookies from 'js-cookie';
-
 interface Params { [key: string]: any };
 
 class API {
     baseUrl: string;
-    csrfToken: string | undefined = Cookies.get('csrftoken');
     params: Params = {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'x-csrftoken': this.csrfToken ? this.csrfToken : '',
         },
         credentials: 'include',
         mode: 'cors'
@@ -127,18 +110,14 @@ async authenticate(username: string, password: string): Promise<User> {
 Here is the full working example of my boilerplate Fetch API class.
 
 ```ts
-import Cookies from 'js-cookie';
-
 interface Params { [key: string]: any };
 
 class API {
     baseUrl: string;
-    csrfToken: string | undefined = Cookies.get('csrftoken');
     params: Params = {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'x-csrftoken': this.csrfToken ? this.csrfToken : '',
         },
         credentials: 'include',
         mode: 'cors'
