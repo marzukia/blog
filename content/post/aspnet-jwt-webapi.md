@@ -153,7 +153,7 @@ Our `UserService` will handle all the operations related to our `User` actions.
 The `Authenticate(username, password)` functions is summarized as follows:
 
 1. `DbContext` searches the `Users` context for a match in function input `username` . If none is found at this point, `null` user is returned.
-2. The function input `password` is hashed using the `Salt` saved in the database, if the saved hashed `Password` matches this output, a  new claim is created and a`JWT` token is created; this token is subsequently saved onto the User model. If this validation fails, `null` user is returned.
+2. The function input `password` is hashed using the `Salt` saved in the database, if the saved hashed `Password` matches this output, a  new claim is created and a JWT token is created; this token is subsequently saved onto the User model. If this validation fails, `null` user is returned.
 3. The successfully authenticated `User` is returned.
 
 The `Register(username, password)` function is summarized as follows:
@@ -267,7 +267,7 @@ namespace JwtAuthExample.Services
 
 The majority of this code example in this section should hopefully be self explanatory.
 
-The `[HttpGet("info")]` route demonstrates how to get the `User` in the controller by using the `JWT` claim.
+The `[HttpGet("info")]` route demonstrates how to get the `User` in the controller by using the JWT claim.
 
 The `[HttpPost("authenticate")]` has a working example on how to set the JWT cookie as a HttpOnly cookie.
 
@@ -446,7 +446,7 @@ app.UseAuthorization();
 
 ## Requiring Authorization for your Controllers
 
-You can now specify `[Authorize]` at the top of your controller definitions to require a `JWT` token. If you want to allow anonymous access to a route, you can specify the `[AllowAnonymous]` decorator for the specific route.
+You can now specify `[Authorize]` at the top of your controller definitions to require a JWT token. If you want to allow anonymous access to a route, you can specify the `[AllowAnonymous]` decorator for the specific route.
 
 # Closing Thoughts
 
@@ -457,6 +457,6 @@ While I was predominately using Django, I found myself using third party librari
 By doing the above implementation, I was able to:
 
 1. Understand the process very clearly
-2. Ensure that the `JWT` implementation did not contain additional bloat.
+2. Ensure that the JWT implementation did not contain additional bloat.
 
-Lastly, I hope this post was helpful, if you have any comments or critiques to my approach for implementing `JWT` above I'd love to hear it.
+Lastly, I hope this post was helpful, if you have any comments or critiques to my approach for implementing JWT above I'd love to hear it.
