@@ -14,7 +14,7 @@ My starting point was this [MSDN article](https://docs.microsoft.com/en-us/dotne
 
 Mocking is the process of creating an instance of your context which you can populate with fake data, as the name suggests you are making a 'mock' of it. By mocking your `DbContext` you are able to isolate behaviour related to your Services which call upon your database.
 
-**Note**: This is a follow up to my [previous article](https://marzukia.github.io/post/aspnet-jwt-webapi/), where I outlined how I implemented JWT authentication in my Web API.
+**Note**: This is a follow up to my [previous article](https://marzukia.github.io/asp.net-core-web-api-jwt-implementation/), where I outlined how I implemented JWT authentication in my Web API.
 
 # The Setup
 
