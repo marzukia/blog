@@ -8,3 +8,6 @@
 [submodule "themes/hugo-kiera"]
 	path = themes/hugo-kiera
 	url = https://github.com/funkydan2/hugo-kiera.git
+[submodule "themes/etch"]
+	path = themes/etch
+	url = git@github.com:LukasJoswiak/etch.git

@@ -1,43 +1,36 @@
-baseURL = "https://marzukia.github.io"
-title = "Andryo Marzuki"
-copyright = "© 2020, Andryo Marzuki"
 canonifyurls = true
-theme = "hugo-kiera"
-paginate = 4
 summaryLength = 30
 enableEmoji = true
 
 publishDir = "marzukia.github.io"
 
-pygmentsCodeFences = true
-
 googleAnalytics = "UA-170171726-1"
 
-[author]
-    name = "Andryo Marzuki"
-    github = "marzukia"
-    linkedin = "andryomarzuki"
+baseURL = "https://marzukia.github.io"
+title = "Andryo Marzuki"
+theme = "etch"
+languageCode = "en-US"
+enableInlineShortcodes = true
+pygmentsCodeFences = true
 
 [params]
-    description = "Personal blog of Andryo Marzuki"
-    #images = [""] #This is used for opengraph/twitter cards.
-    customCSS = [""]  #Optional Customised CSS
-    #favicon = ""
-    #utterancesRepo = "username/repository"
-    #utterancesIssueTerm = "pathname"
-    #homepageLength = 10
-    #commentAutoload = true  #This mean reader don't need click, disqus comment autoload
+  description = "Personal dev blog of Andryo Marzuki"
+  copyright = "© 2020, Andryo Marzuki"
+  dark = "auto"
+  highlight = true
 
-[[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    url = "/tags"
-    weight = 1
+[permalinks]
+  posts = "/:title/"
+
 
 [markup]
   [markup.highlight]
-    style = "solarized-dark256"
+    style = "monokai"
     tabWidth = 4
 
 [markup.goldmark.renderer]
-unsafe = true
+  # Allow HTML in Markdown
+  unsafe = true
+
+  [markup.tableOfContents]
+    ordered = true
