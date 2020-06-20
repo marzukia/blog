@@ -11,7 +11,6 @@ publishDir = "marzukia.github.io"
 
 pygmentsCodeFences = true
 
-disqusShortname = "marzukia"
 googleAnalytics = "UA-170171726-1"
 
 [author]
