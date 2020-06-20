@@ -1,39 +1,33 @@
 +++
-title = "About"
 description = "A little about me"
-date = "2019-02-28"
-aliases = ["about-us","about-hugo","contact"]
+date = "2020-06-12"
+aliases = ["about-us", "contact"]
 author = "Andryo Marzuki"
+title = "About"
+menu = "main"
+meta = "false"
 +++
 
-# Andryo Marzuki
+Based in **Auckland**, New Zealand.
 
-> My name is **Andryo Marzuki**, I live in Auckland, New Zealand.
->
-> I develop applications which aim to commercialise or utilise data in innovative ways.
+# Technical
 
-## Technical
+* C#, Python, TypeScript
+* ASP.NET, Django, ReactJS
+* PostgreSQL, Teradata, SQLite
+* Tensorflow, scikit-learn
+* ArcGIS, QGIS, PostGIS, GDAL
+* Tableau, Power BI
 
-> C#, ASP.NET, Python, Django, TypeScript, ReactJS,
-> Tensorflow, scikit-learn,
-> PostgreSQL, Teradata, SQLite,
-> ArcGIS, QGIS, PostGIS, GDAL,
-> Tableau, Power BI
+# Experience
 
-## Experience
+* **Insights Manager**, ANZ Bank New Zealand Limited (2018 - Present)
+* **Director**, Rentgo New Zealand Limited (2018 - 2020)
+* **Associate**, ANZ Bank New Zealand Limited (2016 - 2018)
+* **Assistant Manager**, ANZ Bank New Zealand Limited (2015 - 2016)
+* **Personal Banker**, ANZ Bank New Zealand Limited (2014 - 2015)
+* **Intern**, International Finance Corporation (2013)
 
-> **Insights Manager**, ANZ Bank New Zealand Limited (2018 - Present)
->
-> **Director**, Rentgo New Zealand Limited (2018 - 2020)
->
-> **Associate**, ANZ Bank New Zealand Limited (2016 - 2018)
->
-> **Assistant Manager**, ANZ Bank New Zealand Limited (2015 - 2016)
->
-> **Personal Banker**, ANZ Bank New Zealand Limited (2014 - 2015)
->
-> **Intern**, International Finance Corporation (2013)
+# Education
 
-## Education
-
-> **BCom**, Accounting & Commercial Law (2011 - 2014)
+**BCom**, Accounting & Commercial Law (2011 - 2014)

@@ -8,8 +8,6 @@ tags = [
 ]
 +++
 
-# Go Fetch!
-
 For my last few projects I've made the switch from [Axios](https://www.google.com/search?client=firefox-b-d&q=axios) to plain ol' [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). My rationale for making this switch was:
 
 1. Axios is a third party library. Where possible I would like to reduce usage of third party libraries; and

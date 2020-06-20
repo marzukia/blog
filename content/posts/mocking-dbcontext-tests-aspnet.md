@@ -8,8 +8,6 @@ tags = [
 ]
 +++
 
-# Are you Mocking me?
-
 Having unit tests in your application is important to ensure that your application functions how you intend for it to function. This is especially important as the scope and complexity of your application increases in size.
 
 My starting point was this [MSDN article](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test) discussing how to use xUnit with ASP.NET Core. The example itself is quite bare in my opinion, it doesn't actually provide any real useful examples on how to implement xUnit with your application's `DbContext`.
@@ -35,7 +33,9 @@ var users = new List<ApplicationUser>() {
     new ApplicationUser() {
         Username = "test",
         Password = "gw9L3AOoUxiEuKahonc17Twg47Sam64b4rm/ui/zTjU=",
-        Salt = Encoding.ASCII.GetBytes("\xea2858b16c8357ecb9ba6ababaa05594")
+        Salt = Encoding
+            .ASCII
+            .GetBytes("\xea2858b16c8357ecb9ba6ababaa05594")
     }
 };
 ```
@@ -73,9 +73,11 @@ _userService = new UserService(MockContext.Object);
 [Fact]
 public virtual async Task AuthenticateUser_IsValidUser_ReturnUser()
 {
-    var user = await _userService.Authenticate("test", "testerday123");
+    var user = await _userService
+        .Authenticate("test", "testerday123");
 
-    Assert.True(user.GetType() == typeof(User), "Valid user did not return a User object");
+    Assert.True(user.GetType() == typeof(User),
+        "Valid user did not return a User object");
 }
 ```
 
@@ -112,7 +114,8 @@ namespace UnitTestExample.Tests.Services
                 new ApplicationUser() {
                     Username = "test",
                     Password = "gw9L3AOoUxiEuKahonc17Twg47Sam64b4rm/ui/zTjU=",
-                    Salt = Encoding.ASCII.GetBytes("\xea2858b16c8357ecb9ba6ababaa05594")
+                    Salt = Encoding.ASCII
+                        .GetBytes("\xea2858b16c8357ecb9ba6ababaa05594")
                 }
             };
 
@@ -123,7 +126,9 @@ namespace UnitTestExample.Tests.Services
                 .Options;
 
             MockContext = new Mock<UnitTestExampleContext>(options);
-            MockContext.Setup(c => c.Users).Returns(mock.Object);
+            MockContext
+                .Setup(c => c.Users)
+                .Returns(mock.Object);
 
             _userService = new UserService(MockContext.Object);
         }
@@ -131,9 +136,11 @@ namespace UnitTestExample.Tests.Services
         [Fact]
         public virtual async Task AuthenticateUser_IsValidUser_ReturnUser()
         {
-            var user = await _userService.Authenticate("test", "testerday123");
+            var user = await _userService
+                .Authenticate("test", "testerday123");
 
-            Assert.True(user.GetType() == typeof(User), "Valid user did not return a User object");
+            Assert.True(user.GetType() == typeof(User),
+                "Valid user did not return a User object");
         }
     }
 }

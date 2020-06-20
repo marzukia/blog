@@ -1,48 +1,42 @@
 baseURL = "https://marzukia.github.io"
 title = "Andryo Marzuki"
-author = "Andryo Marzuki"
 copyright = "© 2020, Andryo Marzuki"
+canonifyurls = true
+theme = "hugo-kiera"
 paginate = 4
-languageCode = "en"
-DefaultContentLanguage = "en"
-enableInlineShortcodes = true
-footnoteReturnLinkContents = "^"
-theme = "origin"
+summaryLength = 30
+enableEmoji = true
+pygmentsCodeFences = true
 publishDir = "marzukia.github.io"
 
+disqusShortname = "marzukia"
+googleAnalytics = "UA-170171726-1"
+
+[author]
+    name = "Andryo Marzuki"
+    github = "marzukia"
+    linkedin = "andryomarzuki"
+
 [params]
-  description = "Personal blog of Andryo Marzuki"
-  featured = true
-  cssonly = false
+    description = "Personal blog of Andryo Marzuki"
+    #images = [""] #This is used for opengraph/twitter cards.
+    customCSS = [""]  #Optional Customised CSS
+    #favicon = ""
+    #utterancesRepo = "username/repository"
+    #utterancesIssueTerm = "pathname"
+    #homepageLength = 10
+    #commentAutoload = true  #This mean reader don't need click, disqus comment autoload
 
-  [params.socials]
-    github = "https://github.com/marzukia"
-    linkedin = "https://www.linkedin.com/in/andryomarzuki/"
-
-[menu]
-
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 10
-
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 10
-
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-  series = "series"
+[[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+    weight = 1
 
 [markup]
   [markup.highlight]
-    style = "vs"
+    style = "solarized-dark256"
     tabWidth = 4
 
 [markup.goldmark.renderer]
 unsafe = true
-

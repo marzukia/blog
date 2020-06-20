@@ -8,8 +8,6 @@ tags = [
 ]
 +++
 
-# ...What?
-
 I've used Fedora 32 as my main OS for about two years. Overall, it has been a very pleasant experience and has made things such as developing much easier than it would've been on Windows.
 
 However... gaming on Linux is frankly a pain in the ass. No matter the state of Vulkan, Proton, Wine, etc, you'll always find Windows games which will flat out not work. More recently, I found that Escape From Tarkov did not work at all on Linux due to Easy Anticheat.
