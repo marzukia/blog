@@ -12,7 +12,7 @@ publishDir = "marzukia.github.io"
 
 [params]
   description = "Personal blog of Andryo Marzuki"
-  featured = false
+  featured = true
   cssonly = false
 
   [params.socials]
