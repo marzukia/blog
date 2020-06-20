@@ -6,8 +6,10 @@ theme = "hugo-kiera"
 paginate = 4
 summaryLength = 30
 enableEmoji = true
-pygmentsCodeFences = true
+
 publishDir = "marzukia.github.io"
+
+pygmentsCodeFences = true
 
 disqusShortname = "marzukia"
 googleAnalytics = "UA-170171726-1"
