@@ -25,7 +25,7 @@ pygmentsCodeFences = true
         linkedin = "https://linkedin.com/in/andryomarzuki"
 
 [permalinks]
-  posts = "/:title/"
+  posts = "post/:title/"
 
 
 [markup]
