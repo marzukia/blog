@@ -4,7 +4,7 @@ title = "Mocking DbContext in ASP.NET Core for xUnit Tests"
 date = "2020-06-18"
 description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
 tags = [
-    "ASP.NET Core", "xUnit", "Unit Testing"
+    "ASP.NET Core", "CSharp", "xUnit"
 ]
 +++
 

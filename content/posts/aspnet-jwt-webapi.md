@@ -4,7 +4,7 @@ title = "ASP.NET Core Web API JWT Implementation"
 date = "2020-06-16"
 description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
 tags = [
-    "ASP.NET Core", "JWT", "Authentication"
+    "ASP.NET Core", "CSharp", "JWT", "Authentication"
 ]
 +++
 
