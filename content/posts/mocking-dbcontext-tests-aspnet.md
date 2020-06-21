@@ -4,7 +4,7 @@ title = "Mocking DbContext in ASP.NET Core for xUnit Tests"
 date = "2020-06-18"
 description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
 tags = [
-    "ASP.NET Core", "xUnit", "C#", "Unit Testing"
+    "ASP.NET Core", "xUnit", "Unit Testing"
 ]
 +++
 
@@ -16,7 +16,7 @@ Mocking is the process of creating an instance of your context which you can pop
 
 **Note**: This is a follow up to my [previous article](https://marzukia.github.io/asp.net-core-web-api-jwt-implementation/), where I outlined how I implemented JWT authentication in my Web API.
 
-# The Setup
+## The Setup
 
 Queue two great testing libraries: [Moq](https://github.com/Moq/moq4/) and [MockQueryable](https://github.com/romantitov/MockQueryable).
 
@@ -81,7 +81,7 @@ public virtual async Task AuthenticateUser_IsValidUser_ReturnUser()
 }
 ```
 
-# Full Working Example
+## Full Working Example
 
 ```cs
 using System.Text;
@@ -146,7 +146,7 @@ namespace UnitTestExample.Tests.Services
 }
 ```
 
-# Closing Thoughts
+## Closing Thoughts
 
 It's not a hard process to set up a mocked `DbContext`, however with the lack of general documentation it can be quite confusing initially.
 

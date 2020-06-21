@@ -35,11 +35,11 @@ class API {
 };
 ```
 
-# Reusable Methods
+## Reusable Methods
 
 This next section I'll break down my 'main' methods which form the basis of my API class' functions.
 
-## GET
+### GET
 
 With my `GET` method, I make params optional given. The params are then converted to search params and added to the url if applicable.
 
@@ -56,7 +56,7 @@ async get(endpoint: string, params?: Params) {
 };
 ```
 
-## POST
+### POST
 
 With my `POST` method, params are compulsory. The params are passed through in the request's body.
 
@@ -70,7 +70,7 @@ async post(endpoint: string, params: Params) {
 };
 ```
 
-## PUT / DELETE
+### PUT / DELETE
 
 My `PUT` and `DELETE` methods are more or less the same as how I construct my `POST` method.
 
@@ -91,7 +91,7 @@ async delete(endpoint: string) {
         .catch((error) => {return error});
 }
 ```
-## Usage
+### Usage
 
 Once we've defined these methods, we can create more specific methods which are highly understandable and structured. The below example shows how I would create a function which authenticates the user:
 
@@ -103,7 +103,7 @@ async authenticate(username: string, password: string): Promise<User> {
 };
 ```
 
-# Full Working Example
+## Full Working Example
 
 Here is the full working example of my boilerplate Fetch API class.
 
@@ -170,7 +170,7 @@ class API {
 export const api = new API('https://localhost:5001/api/')
 ```
 
-# Closing Thoughts
+## Closing Thoughts
 
 If you're already invested in using Axios in your developments/projects, there's probably no reason to change.
 

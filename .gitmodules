@@ -5,9 +5,15 @@
 [submodule "marzukia.github.io"]
 	path = marzukia.github.io
 	url = https://github.com/marzukia/marzukia.github.io.git
+
+[submodule "themes/salt"]
+	path = themes/salt
+	url = https://github.com/marzukia/salt.git
+
 [submodule "themes/hugo-kiera"]
 	path = themes/hugo-kiera
 	url = https://github.com/funkydan2/hugo-kiera.git
+
 [submodule "themes/etch"]
 	path = themes/etch
 	url = git@github.com:LukasJoswiak/etch.git

@@ -4,11 +4,11 @@ title = "ASP.NET Core Web API JWT Implementation"
 date = "2020-06-16"
 description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
 tags = [
-    "ASP.NET Core", "JWT", "C#", "Authentication"
+    "ASP.NET Core", "JWT", "Authentication"
 ]
 +++
 
-I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C# for things like Unity, and later realizing how much better ASP.NET Core is than Django.
+I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C## for things like Unity, and later realizing how much better ASP.NET Core is than Django.
 
 As I mostly use ReactJS for my application frontends, I did not need the 'Razor' pages integrated in ASP.NET. As a result, my preference was to bootstrap my projects as `webapi` rather than `webapp` or even `mvc`.
 
@@ -18,7 +18,7 @@ This post will outline my implementation of a lightweight JWT authentication whi
 
 **Note**: At time of writing, I am using ASP.NET Core version 3.1.5. If you are using an older version of ASP.NET core, some things *may* not work.
 
-# Implementation Summary
+## Implementation Summary
 
 My implementation of JWT consists of the following components:
 
@@ -42,9 +42,9 @@ This tutorial will cover implementing the above which will provide you the follo
 2. `POST /api/user/login/` to allow users to login and authenticate themselves.
 3. `GET /api/user/info/` to retrieve a user's detail from their `Bearer` token.
 
-# Component Explanation
+## Component Explanation
 
-## PasswordHasher
+### PasswordHasher
 
 The password which we'll be storing will be encrypted using a salt we will generate. It should go without saying, but do not store passwords in plaintext.
 
@@ -95,7 +95,7 @@ namespace JwtAuthExample.Helpers
 
 In the example above we take advantage of ASP.NET Core's cryptographic library and use their `Pbkdf2` key derivation function and the `HMACSHA1` algorithm to hash our password using the salt we generate with our `GenerateSalt()` function.
 
-## User
+### User
 
 I consider this definition my 'base' `User` model. I will normally extend this model as needed by creating another model such as `ApplicationUser` which inherits from `User`.
 
@@ -144,7 +144,7 @@ In the above example we've explicitly declared `Password` to be ignored during s
 
 We'll create a Data Transfer Object (DTO) as our temporary model when doing things such as authenticating or registering the user. You'll see how this works in the `UsersController` section.
 
-## UserService
+### UserService
 
 Our `UserService` will handle all the operations related to our `User` actions.
 
@@ -261,7 +261,7 @@ namespace JwtAuthExample.Services
 }
 ```
 
-## UsersController
+### UsersController
 
 The majority of this code example in this section should hopefully be self explanatory.
 
@@ -357,9 +357,9 @@ namespace JwtAuthExample.Controllers
 }
 ```
 
-# Implementing our Components
+## Implementing our Components
 
-## Adjusting your DbContext
+### Adjusting your DbContext
 
 In your `DbContext` you'll need to add the following:
 
@@ -374,7 +374,7 @@ dotnet ef migrations add  AddUserModel -v
 dotnet ef database update -v
 ```
 
-## Adding JwtBearer
+### Adding JwtBearer
 
 You'll need to install the `JwtBearer` package by running the following command:
 
@@ -407,7 +407,7 @@ services.AddAuthentication(x =>
 });
 ```
 
-## Adding UserService
+### Adding UserService
 
 We need to inject our `UserService` and it's interface `IUserService` into `Startup`.
 
@@ -417,7 +417,7 @@ Adjust your `ConfigureServices(IServiceCollection services)` to include the foll
 services.AddScoped<IUserService, UserService>();
 ```
 
-## Adding our Middleware to use JWT HttpOnly Cookie
+### Adding our Middleware to use JWT HttpOnly Cookie
 
 It's really bad form to store our JWT in local storage. Where possible, we want to make use of HttpOnly cookies which are more secure. To make our controllers use the HttpOnly cookie we need to place a middleware in our `Startup`:
 
@@ -433,7 +433,7 @@ app.Use(async (context, next) =>
 });
 ```
 
-## Final Touches
+### Final Touches
 
 Adjust your `Configure(IApplicationBuilder app, IWebHostEnvironment env)` with the following additions:
 
@@ -442,11 +442,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-## Requiring Authorization for your Controllers
+### Requiring Authorization for your Controllers
 
 You can now specify `[Authorize]` at the top of your controller definitions to require a JWT token. If you want to allow anonymous access to a route, you can specify the `[AllowAnonymous]` decorator for the specific route.
 
-# Closing Thoughts
+## Closing Thoughts
 
 Implementing your own alternative to `Identity` is not overly cumbersome - it can be done quite quickly and effectively as above.
 

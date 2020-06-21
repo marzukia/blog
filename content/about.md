@@ -10,24 +10,36 @@ meta = "false"
 
 Based in **Auckland**, New Zealand.
 
-# Technical
+## Technical
 
-* C#, Python, TypeScript
-* ASP.NET, Django, ReactJS
-* PostgreSQL, Teradata, SQLite
-* Tensorflow, scikit-learn
-* ArcGIS, QGIS, PostGIS, GDAL
-* Tableau, Power BI
+> C#, Python, TypeScript
+>
+> ASP.NET, Django, ReactJS
+>
+> PostgreSQL, Teradata, SQLite
+>
+> Tensorflow, scikit-learn
+>
+> ArcGIS, QGIS, PostGIS, GDAL
+>
+> Tableau, Power BI
+>
 
-# Experience
+## Experience
 
-* **Insights Manager**, ANZ Bank New Zealand Limited (2018 - Present)
-* **Director**, Rentgo New Zealand Limited (2018 - 2020)
-* **Associate**, ANZ Bank New Zealand Limited (2016 - 2018)
-* **Assistant Manager**, ANZ Bank New Zealand Limited (2015 - 2016)
-* **Personal Banker**, ANZ Bank New Zealand Limited (2014 - 2015)
-* **Intern**, International Finance Corporation (2013)
+> **Insights Manager**, ANZ Bank New Zealand Limited (2018 - Present)
+>
+> **Director**, Rentgo New Zealand Limited (2018 - 2020)
+>
+> **Associate**, ANZ Bank New Zealand Limited (2016 - 2018)
+>
+> **Assistant Manager**, ANZ Bank New Zealand Limited (2015 - 2016)
+>
+> **Personal Banker**, ANZ Bank New Zealand Limited (2014 - 2015)
+>
+> **Intern**, International Finance Corporation (2013)
+>
 
-# Education
+## Education
 
-**BCom**, Accounting & Commercial Law (2011 - 2014)
+> **BCom**, Accounting & Commercial Law (2011 - 2014)

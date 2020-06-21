@@ -8,7 +8,7 @@ googleAnalytics = "UA-170171726-1"
 
 baseURL = "https://marzukia.github.io"
 title = "Andryo Marzuki"
-theme = "etch"
+theme = "salt"
 languageCode = "en-US"
 enableInlineShortcodes = true
 pygmentsCodeFences = true
@@ -19,13 +19,18 @@ pygmentsCodeFences = true
   dark = "auto"
   highlight = true
 
+    [params.socials]
+        instagram = "https://instagram.com/andryo"
+        github = "https://github.com/marzukia"
+        linkedin = "https://linkedin.com/in/andryomarzuki"
+
 [permalinks]
   posts = "/:title/"
 
 
 [markup]
   [markup.highlight]
-    style = "monokai"
+    style = "monokailight"
     tabWidth = 4
 
 [markup.goldmark.renderer]
