@@ -10,9 +10,11 @@ tags: [
 
 Have you ever heard of a genetic algorithm?
 
-In the context of sexual reproduction, an offspring inherits half of it's mother's genes and half of it's father's genes. The inheritance on which specific genes are received are completely random, the offspring's genes therefore are a random mixture of it's two parents. Random mutations on random genes can occur during reproduction which can cause negative or positive effects to occur.
+In the context of sexual reproduction, an offspring inherits half of it's mother's genes and half of it's father's genes. The inheritance of genes occurs completely randomly, the offspring's genes are a random mixture of it's two parents. 
 
 This amalgamation of genes means that the offspring gains a combination of both negative and positive familiar traits. If you have a tall mother, and a short father with stocky legs you may end up being a tall man with stocky legs. Or you may end up being a short girl with lanky legs.
+
+Random mutations also occur on during reproduction which can cause negative or positive effects to occur. This means that your offspring may by chance, get a mutation which causes them to have one stocky leg and one lanky leg.
 
 Natural selection is the key mechanism of evolution whereby those with favourable genes are more likely to survive than those who do not. For example, imagine an ancient human who had a mutation which provided him greater than average strength in his arms, as a result, he was able to throw spears farther than his peers. In this scenario, this advantage in his ability to hunt has given him an evolutionary advantage over other humans in his environment; this in turn provides him a greater chance of propagating his genes to the next generation.
 
@@ -22,9 +24,9 @@ So why the heck am I talking about evolutionary natural selection? A genetic alg
 
 The complete code for this project can be found [here](https://github.com/marzukia/gacs).
 
-**Note**: I realise using names such as `genes` and `genomes` is a little silly considering this a computer program, but it really is the best way to describe the concept of what it contains.
+**Note**: I realise using names such as `genes` and `genomes` is a little silly considering this a computer program, but it's not really a genetic algorithm without genes.
 
-For the processes of designing our genetic algorithm, we need to outline the process of how it will attempt to mimic natural selection. For this particular project, I've structured it as follows:
+For the processes of designing our genetic algorithm, we need to outline the process of how it will attempt to mimic the process of natural selection. For this particular project, I've structured it as follows:
 
 1. Specify a 'Goal' which the algorithm will score itself against, for this project our goal is a picture we'd like to re-create.
 2. Convert our goal into a gene which can be used to compare against.
@@ -35,7 +37,7 @@ For the processes of designing our genetic algorithm, we need to outline the pro
 
 ## The Setup
 
-For my genetic algorithm I stuck with using a `24x24` jpeg wihout any transparent pixels. This was purely because I wanted to keep it simple and not have to worry about `alpha`. Also, when I tried larger images it took considerably longer and I am very impatient.
+For my genetic algorithm I stuck with using a `24x24` jpeg wihout any transparent pixels. This was purely because I wanted to keep it simple and not have to worry about `alpha`. Also, when I tried larger images it took considerably longer.
 
 I used a `parentPoolSize` of `3` meaning that for every given generation of offsrping, I select `3` parents to seed the next generation. To ensure that enough genetic diversity is created through mutation and reproduction, the overall offspring pool size will be `parentPoolSize ^ 4`. This means that every generation, I have a total population of `81` offspring, of which `3` is selected to seed the next generation.
 
@@ -63,7 +65,7 @@ From there, our `3` parents will be chosen, they will subsequently generate anot
 
 The most important thing in making this algorithm work is our loss model, i.e. how do we instruct the algorithm what is good and what is bad?
 
-In our case
+Our loss function is expressed as `sqrt((r - ry)^2 + (b - by)^2 + (g - gy)^2)`. For every given pixel, we calculate the squared loss for red, green and blue colours. We sum these loss values, then take the square root.
 
 ```ts
 public void CalculateLoss()
@@ -99,3 +101,13 @@ The image above shows, a scaled version of each `24x24` image.
 3. The output at generation `500`
 4. The output at generation `2000`
 5. The output at generation `23000`
+
+Our algorithm has the most drastic changes occuring in our first `1000` generations. As it continues on, the differences between generations become considerably less significant.
+
+## Closing Thoughts
+
+This was a super fun project and I highly recommend you give it a try. I'll probably do this again in the future with larger images. 
+
+If I do any further updates to this algorithm I will post it here.
+
+I hope you've enjoyed my write up and good luck!
