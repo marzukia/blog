@@ -1,6 +1,7 @@
 canonifyurls = true
 summaryLength = 30
 enableEmoji = true
+staticDir = ['static']
 
 publishDir = "marzukia.github.io"
 

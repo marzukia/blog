@@ -336,6 +336,8 @@ I use `lstopo` in this section. If you have something else you prefer to use, yo
 
 In my setup, you can see that cores 6/18 to 11/23 are closer to my GPU `PCI 41:00.0`. Now that I know which cores to use, I can explicitly allocate them in my virtual machine's configuration.
 
+<img src="/images/cpu_topology.png" width="100%" alt="lstopo" />
+
 #### Modifying your Settings
 
 Using the following command again:
