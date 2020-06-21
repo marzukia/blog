@@ -5,8 +5,6 @@ staticDir = ['static']
 
 publishDir = "marzukia.github.io"
 
-googleAnalytics = "UA-170171726-1"
-
 baseURL = "https://marzukia.github.io"
 title = "Andryo Marzuki"
 theme = "salt"
@@ -19,6 +17,7 @@ pygmentsCodeFences = true
   copyright = "© 2020, Andryo Marzuki"
   dark = "auto"
   highlight = true
+  googleAnalytics = "UA-170171726-1"
 
     [params.socials]
         instagram = "https://instagram.com/andryo"
