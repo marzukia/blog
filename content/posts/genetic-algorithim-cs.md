@@ -10,7 +10,7 @@ tags: [
 
 Have you ever heard of a genetic algorithm?
 
-In the context of sexual reproduction, an offspring inherits half of it's mother's genes and half of it's father's genes. The inheritance of genes occurs completely randomly, the offspring's genes are a random mixture of it's two parents. 
+In the context of sexual reproduction, an offspring inherits half of it's mother's genes and half of it's father's genes. The inheritance of genes occurs completely randomly, the offspring's genes are a random mixture of it's two parents.
 
 This amalgamation of genes means that the offspring gains a combination of both negative and positive familiar traits. If you have a tall mother, and a short father with stocky legs you may end up being a tall man with stocky legs. Or you may end up being a short girl with lanky legs.
 
@@ -92,7 +92,7 @@ public void CalculateLoss()
 
 ## It's-a Me, Mario!
 
-<img src="/images/gacs.png" width="100%"/>
+<img src="/images/gacs.png" max-width="100%"/>
 
 The image above shows, a scaled version of each `24x24` image.
 
@@ -106,7 +106,7 @@ Our algorithm has the most drastic changes occuring in our first `1000` generati
 
 ## Closing Thoughts
 
-This was a super fun project and I highly recommend you give it a try. I'll probably do this again in the future with larger images. 
+This was a super fun project and I highly recommend you give it a try. I'll probably do this again in the future with larger images.
 
 If I do any further updates to this algorithm I will post it here.
 
