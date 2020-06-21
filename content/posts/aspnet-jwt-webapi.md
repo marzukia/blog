@@ -1,12 +1,12 @@
-+++
-author = "Andryo Marzuki"
-title = "ASP.NET Core Web API JWT Implementation"
-date = "2020-06-16"
-description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
-tags = [
+---
+author: "Andryo Marzuki"
+title: "ASP.NET Core Web API JWT Implementation"
+date: "2020-06-16"
+description: "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
+tags: [
     "ASP.NET Core", "CSharp", "JWT", "Authentication"
 ]
-+++
+---
 
 I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C## for things like Unity, and later realizing how much better ASP.NET Core is than Django.
 

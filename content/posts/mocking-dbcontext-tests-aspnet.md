@@ -1,12 +1,12 @@
-+++
-author = "Andryo Marzuki"
-title = "Mocking DbContext in ASP.NET Core for xUnit Tests"
-date = "2020-06-18"
-description = "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
-tags = [
+---
+author: "Andryo Marzuki"
+title: "Mocking DbContext in ASP.NET Core for xUnit Tests"
+date: "2020-06-20"
+description: "Using a custom minimal JWT implementation in a ASP.NET Core WebApi rather than using the in-build Identity service."
+tags: [
     "ASP.NET Core", "CSharp", "xUnit"
 ]
-+++
+---
 
 Having unit tests in your application is important to ensure that your application functions how you intend for it to function. This is especially important as the scope and complexity of your application increases in size.
 

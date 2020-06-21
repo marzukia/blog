@@ -1,12 +1,12 @@
-+++
-author = "Andryo Marzuki"
-title = "Fedora 32 and GPU Passthrough (VFIO)"
-date = "2020-06-15"
-description = "Guide to setting up VFIO on Fedora 32 to game on a Windows 10 virtual machine"
-tags = [
+---
+author: "Andryo Marzuki"
+title: "Fedora 32 and GPU Passthrough (VFIO)"
+date: "2020-06-15"
+description: "Guide to setting up VFIO on Fedora 32 to game on a Windows 10 virtual machine"
+tags: [
     "VFIO", "Linux Gaming", "Fedora"
 ]
-+++
+---
 
 I've used Fedora 32 as my main OS for about two years. Overall, it has been a very pleasant experience and has made things such as developing much easier than it would've been on Windows.
 

@@ -1,12 +1,12 @@
-+++
-author = "Andryo Marzuki"
-title = "Using Fetch over Axios in ReactJS Applications"
-date = "2020-06-17"
-description = "Tutorial about designing a reusable API class using Fetch instead of a third-party library such as Axios."
-tags = [
+---
+author: "Andryo Marzuki"
+title: "Using Fetch over Axios in ReactJS Applications"
+date: "2020-06-17"
+description: "Tutorial about designing a reusable API class using Fetch instead of a third-party library such as Axios."
+tags: [
     "ReactJS", "Typescript"
 ]
-+++
+---
 
 For my last few projects I've made the switch from [Axios](https://www.google.com/search?client=firefox-b-d&q=axios) to plain ol' [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch). My rationale for making this switch was:
 
