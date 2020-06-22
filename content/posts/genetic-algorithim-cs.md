@@ -92,7 +92,7 @@ public void CalculateLoss()
 
 ## It's-a Me, Mario!
 
-<img src="/images/gacs.png" max-width="100%"/>
+<img src="/images/gacs.png" width="100%"/>
 
 The image above shows, a scaled version of each `24x24` image.
 
