@@ -1,6 +1,9 @@
 #!/bin/bash
 
+rm -r /marzukia.github.io/*
 hugo
+
+
 cd marzukia.github.io/
 git add .
 git commit -m 'deploy changes'
