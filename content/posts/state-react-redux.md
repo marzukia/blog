@@ -323,7 +323,9 @@ export interface RootState {
 }
 ```
 
-Lastly, we need an `index.ts` which will create our
+Lastly, we need an `index.ts` which will create our store itself. 
+
+The below code sample shows how we can persist our state, aswell as apply our `Thunk` middleware. 
 
 ```typescript
 // store/index.ts
