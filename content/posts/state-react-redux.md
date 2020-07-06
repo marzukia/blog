@@ -12,8 +12,6 @@ tags: [
 
 `ReactJS` comes prepackaged with its own way to manage state locally within a component. When the value within a state needs to be shared with other components, it is passed down through usage of `props`. The stored value can be mutated within lower level components with usage using callback functions. In essence, using `ReactJS` prepackaged state system allows you to asynchronously write and read values from various components at different depths of the application.
 
-As the complexity of your application grows, managing your application's state in this way can end up becoming cumbersome, this is where a library such as `redux-react` comes in. `redux-react` allows you to have a centralized area where your data is stored, this makes accessing your state much 'cleaner'.
-
 I then like to pair `redux-react` with `redux-thunk`, `immer` and `redux-persist`.
 
 * `redux-thunk` is middleware which will greatly expand the capability of the `redux-react` state by allowing the use of asynchronous logic and actions.
