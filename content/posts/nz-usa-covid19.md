@@ -1,10 +1,11 @@
 ---
 author: "Andryo Marzuki"
 title: "How Well Has New Zealand Handled COVID-19?"
-date: "2020-09-07"
-description: "Creating Conway's Game of Life cellular automata in Python after using mainly C# and TypeScript over the last few months."
+date: "2020-09-06"
+description: "How well has New Zealand handled COVID-19 in the context of economic impact aswell as human impact? An analysis using fund performance as a proxy."
 tags: [
-    "Python"
+    "Data Analysis",
+    "COVID-19",
 ]
 ---
 
