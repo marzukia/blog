@@ -1,6 +1,6 @@
 ---
 author: "Andryo Marzuki"
-title: "React State Management with Redux (and More)"
+title: "React State Management With Redux (and More)"
 date: "2020-07-05"
 description: "A comprehensive tutorial on using Redux, Thunk, Immer, Redux Persist with React to have more robust state management."
 tags: [
@@ -114,7 +114,7 @@ export type UserAction = AuthenticateRequestAction | AuthenticateResponseAction 
 export interface UserState {
     data: User;
     loading: boolean;
-    error?: Error;    
+    error?: Error;
 };
 ```
 
@@ -321,9 +321,9 @@ export interface RootState {
 }
 ```
 
-Lastly, we need an `index.ts` which will create our store itself. 
+Lastly, we need an `index.ts` which will create our store itself.
 
-The below code sample shows how we can persist our state, aswell as apply our `Thunk` middleware. 
+The below code sample shows how we can persist our state, aswell as apply our `Thunk` middleware.
 
 ```typescript
 // store/index.ts
@@ -383,4 +383,4 @@ Of course, the code overhead of implementing the above means that you'll need to
 
 If you have a really simple CRUD API and all you need to do is represent that data, you may not need a fully fledged state system.
 
-If you're new to working with `ReactJS` the above may be rather overwhelming, however the logic and purpose of using something like `Redux` becomes intuitive as your application increases in size and complexity. 
+If you're new to working with `ReactJS` the above may be rather overwhelming, however the logic and purpose of using something like `Redux` becomes intuitive as your application increases in size and complexity.
