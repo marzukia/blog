@@ -13,8 +13,3 @@
 [submodule "themes/etch"]
 	path = themes/etch
 	url = git@github.com:LukasJoswiak/etch.git
-
-[submodule "marzukia.github.io"]
-	path = marzukia.github.io
-	url = git@github.com:marzukia/marzukia.github.io.git
-	branch = master
