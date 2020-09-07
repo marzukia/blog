@@ -10,8 +10,8 @@ tags: [
 
 At the beginning of March, I made the unfortunate decision of investing into two exchange-traded funds (ETFs) which were SmartShare's FNZ (NZ Top 50) and USF (Fortune 500). It was unfortunate because the world decided to set itself on fire due to the COVID-19 pandemic.
 
-> **Disclaimer**: This post has comments regarding the personal investments I've made. This is absolutely not financial advice. If you have any questions regarding > your personal circumstances, go talk to a financial advisor.
 
+> **Disclaimer**: This post has comments regarding the personal investments I've made. This is absolutely not financial advice. If you have any questions regarding > your personal circumstances, go talk to a financial advisor.
 I purposefully made the decision that I would not look at my ill-timed investments. I did not want the temptation of 'panic selling' and I wanted to save myself the pain of seeing my hard-earned dollars disappear overnight. I never had any doubts that my funds would return to their starting position, it was more of a question of when it would return to their starting position.
 
 ## Fund Performance as a Proxy

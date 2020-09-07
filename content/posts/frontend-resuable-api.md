@@ -4,7 +4,7 @@ title: "Using Fetch over Axios in ReactJS Applications"
 date: "2020-06-17"
 description: "Tutorial about designing a reusable API class using Fetch instead of a third-party library such as Axios."
 tags: [
-    "ReactJS", "Typescript"
+    "ReactJS", "TypeScript"
 ]
 ---
 

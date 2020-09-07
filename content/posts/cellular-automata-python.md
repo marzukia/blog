@@ -10,9 +10,9 @@ tags: [
 
 When I started learning and using Python 2 years ago, I had no real previous experience of coding under my belt. I had done some small projects in `HTML` and `PHP` a very longtime ago, but that experience was certainly no longer helpful. 
 
-Over the last little while I've solely focused on using `C#` for my side/fun projects which has meant I've become a little rusty when it comes to `python`. I thought a fun coding exercise would be to do [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), a cellular automata.
+Over the last little while I've solely focused on using `C#` for my side/fun projects which has meant I've become a little rusty when it comes to `Python`. I thought a fun coding exercise would be to do [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), a cellular automata.
 
-I have done this project in the past in both `python` and `typescript`. I wanted to see how my thought process has changed while coding in `python` given the fact I now think in ways other then the 'pythonic' way. 
+I have done this project in the past in both `Python` and `TypeScript`. I wanted to see how my thought process has changed while coding in `Python` given the fact I now think in ways other then the 'Pythonic' way. 
 
 The rules of Conway's Game of Life are as follows:
 
@@ -25,11 +25,11 @@ Here's the [completed code](https://github.com/marzukia/cell-automata) in case y
 
 ## Wait... I Can't Do That?
 
-After spending so much time in `C#` and `typescript` I've become very accustomed to my `types` and `interfaces` and I definitely wouldn't want to code without them. At time of writing, `python` presently only supports [type hints](https://docs.python.org/3/library/typing.html) which was introduced in [PEP484](https://www.python.org/dev/peps/pep-0484/) and last updated in [PEP591](https://www.python.org/dev/peps/pep-0591/). I have tried to use these type hints before on my other projects such as [sqlstate](https://github.com/marzukia/sqlstate) but my general opinion of them is that they are woefully inadequate.
+After spending so much time in `C#` and `TypeScript` I've become very accustomed to my `types` and `interfaces` and I definitely wouldn't want to code without them. At time of writing, `Python` presently only supports [type hints](https://docs.python.org/3/library/typing.html) which was introduced in [PEP484](https://www.python.org/dev/peps/pep-0484/) and last updated in [PEP591](https://www.python.org/dev/peps/pep-0591/). I have tried to use these type hints before on my other projects such as [sqlstate](https://github.com/marzukia/sqlstate) but my general opinion of them is that they are woefully inadequate.
 
 At the moment, there is no way to explicitly type something and then enforce it. You can use methods such as `isinstance()` but this approach normally kicks up a fuss as soon as you try to pass it more complex types. For example, I wanted to do something as basic as `isinstance(tuple_var, Tuple[int, int])`... unfortunately `isinstance()` doesn't support "Parametrized Tuples". I may very well be wrong here and there may be a way to do so, but as far as I can see it's not *currently* supported. 
 
-For a language which has an ethos of "Explicit over Implicit" it's ironic that typing is not on the top of their list. There's probably an argument to be made regarding balancing the accessibility of the language versus strict typing but I think `python`, but I can't see myself using `python` as my go-to language without this feature.
+For a language which has an ethos of "Explicit over Implicit" it's ironic that typing is not on the top of their list. There's probably an argument to be made regarding balancing the accessibility of the language versus strict typing but I think `Python`, but I can't see myself using `Python` as my go-to language without this feature.
 
 With that being said, libraries such as `numpy` and `pandas` are still excellent. For data-heavy or data-centric analysis/work, I'd still spin up a `jupyter` notebook and get exploring. 
 
@@ -222,7 +222,7 @@ def update_cells_state(self):
 
 The above code should be fairly explanatory. We get the `Cell.state` and count of `neighbours` which are alive, then pass that through a `calculate_state()` to update the `Cell.state`.
 
-Another little bug bear with `python` was the fact that I had to use a `dict` as there is no inbuilt way to `switch`. 
+Another little bug bear with `Python` was the fact that I had to use a `dict` as there is no inbuilt way to `switch`. 
 
 ## Rendering the Grid
 
@@ -267,6 +267,6 @@ Run the program and watch it run!
 
 ## Closing Thoughts
 
-This was an interesting exercise for me. I hadn't really done much `python` coding in awhile and I'm very surprised to see how poor of an experience I had coding in it. After using strongly typed languages, it plain felt wrong to use it for this type of thing. 
+This was an interesting exercise for me. I hadn't really done much `Python` coding in awhile and I'm very surprised to see how poor of an experience I had coding in it. After using strongly typed languages, it plain felt wrong to use it for this type of thing. 
 
 I will probably try this in `C#` using `Unity` to do something cool with it.
