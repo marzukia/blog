@@ -23,7 +23,7 @@ In my opinion, many news sources and political parties have significantly mis-co
 
 This visualization is something you may have seen frequently on the mainstream news sites. It highlights and shows our drastic fall into a recession. Without context, you'd be correct to be incredibly alarmed. U
 
-Unlike other countries, New Zealand could return to relative normalcy quickly, so why are we still entering a recession?
+Unlike other countries, New Zealand could quickly return to relative normalcy, so why are we still entering a recession?
 
 ## Tourism and GDP
 
@@ -61,4 +61,4 @@ It's disappointing to see so many places do such shallow analysis of New Zealand
 
 This post is not aiming to downplay the significance of our country entering into a recession, but more to provide a level headed and pragmatic view of it considering extenuating circumstances at a macro level.
 
-Lastly, I can't imagine a scenario where New Zealand does not enter into a recession during a global pandemic without seriously sacrificing its performance in managing cases to date.
+Lastly, I can't imagine a scenario where New Zealand does not enter into a recession during a global pandemic without seriously sacrificing its performance in managing cases. I would take the option where New Zealander's don't die en masse over one where we all make slightly more money.
