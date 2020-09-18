@@ -61,4 +61,4 @@ It's disappointing to see so many places do such shallow analysis of New Zealand
 
 This post is not aiming to downplay the significance of our country entering into a recession, but more to provide a level headed and pragmatic view of it considering extenuating circumstances at a macro level.
 
-Lastly, I can't imagine a scenario where New Zealand does not enter into a recession during a global pandemic without seriously sacrificing its performance in managing cases. I would take the option where New Zealander's don't die en masse over one where we all make slightly more money.
+Lastly, I can't imagine a scenario where New Zealand does not enter into a recession during a global pandemic without seriously sacrificing its performance in managing cases. I would take the option where New Zealanders don't die en masse over one where we all make slightly more money.
