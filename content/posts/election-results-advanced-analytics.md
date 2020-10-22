@@ -22,7 +22,7 @@ So in the theme of treating the elections like a sport, our ‘plain jane’ met
 
 Measures which explicitly look at the return on hard-earned dollars are the norm in almost every industry; it’s natural to want to understand what you’re getting out of spending your hard-earned dollar(s). For a political party, the equivalent of money going in would be donations received from the government and their private supporters.
 
-> **Note**: olitical parties have to disclose what they receive in donations each year. Unfortunately, at the time of writing this data was not available for 2020. The figures discussed in this section are the sum of contributions received by each party in 2018 and 2019.
+> **Note**: Political parties have to disclose what they receive in donations each year. Unfortunately, at the time of writing this data was not available for 2020. The figures discussed in this section are the sum of contributions received by each party in 2018 and 2019.
 
 As a banker, I love my acronyms. Therefore I have devised a new one ‘Donation Utilisation Efficiency’, or DUE for short. DUE looks at the ratio of donations received per party, and the overall results achieved by the said party; this metric looks at both seats and votes acquired.
 
@@ -85,16 +85,29 @@ Their perfect storm of missteps and misfortune has predictable results:
 * In an attempt to recover these voters, National shifted further right in their policies around tax breaks, gun control, and border control causing their more centrist supporters to shift inwards towards Labour.
 * This resulted in National seeing a massive decline losing 21 seats between elections, long held seats such as Ilam were lost to Labour.
 * Despite only receiving 26% of votes, National by far has the greatest amount of donations with nearly double the next highest party.
-* Compared to their greatest rival, Labour's DUE was three times less than National indicating it was far easier for them to influence voters to vote for them or rather voters were already inclined to vote for them over National.their mo
+* Compared to their greatest rival, Labour's DUE was three times less than National indicatinglocalhost it was far easier for them to influence voters to vote for them or rather voters were already inclined to vote for them over National.their mo
 
 In summary, National did bad - but I didn't have to tell you that did I?
 
 ### 3. Greens
 I've placed Greens ahead of ACT as I feel that Labour would be much more willing to deal with the Greens due to their closer ideologies.
 
+Greens have had a few missteps of their own, with the recent 'private school' scandal front of mind. With that being said, I think they've achieved quite a few notable things which were impressive:
+
+
 ### 4. ACT
 Wow! ACT came back with a vengence coming in with 9 extra seats than they had the previous elections.
 
-## Assumptions, Limitations & Methodology
+## Methodology & Assumptions
 
-If you're not a data geek, I'd advise you skip this section as your eyes may glaze over.
+All sources are openly available from Stats New Zealand. If you want to do something similar, I highly encourage you to do so.
+
+### Limitations
+* Preliminary votes have been used, this is subject to change as numbers are finalised.
+* I've excluded postal votes, as well as 'special' voting places such as rest homes. This was because no address was provided for me to accurately geolocate it. 
+
+### Methodology
+* Meshblocks geometries were unioned grouped it's 'Statistical Area 2' (SA2) name.
+* Preliminary voting locations were geolocated and then intersected with the prepared geometry above.
+* Total votes were summed using party name, and SA2 area name.
+* The top ten SA2 areas for each major party was chosen as a representative sample for it's voter base. The metric chosen was total percentage of SA2 votes.
