@@ -30,16 +30,9 @@ This metric intends to do the following:
 * Act as my proxy to quantify the overall 'brand power' of each party (votes)
 * Describe how effectively they've translated party donations into actual power (seats)
 
-| Party Name      | Seats | Votes   | Donations (18-19) | DUE ($/Seats)     | DUE ($/Votes) |
-|-----------------|-------|---------|-------------------|------------|--------|
-| National Party  | 35    | 638,393  | $1,963,782.23     | $56,108.06 | $3.08  |
-| Labour Party    | 64    | 1,169,397 | $957,262.70       | $14,957.23 | $0.82  |
-| Green Party     | 10    | 180,224  | $942,746.53       | $94,274.65 | $5.23  |
-| ACT New Zealand | 10    | 190,106  | $477,097.00       | $47,709.70 | $2.51  |
-
 <img src="/images/votes_seats_party.png" width="100%" alt="votes_seats_party" />
 
-The graph and table above is a summary of the main parties, and how well they've translated their donation funds into both votes and seats.
+The graph is a summary of the main parties, and how well they've translated their donation funds into both votes and seats.
 
 ## Voter Age Demographics
 
