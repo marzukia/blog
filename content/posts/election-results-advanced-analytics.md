@@ -11,6 +11,7 @@ tags: [
 I'll be the first to admit that I'm not the greatest fan of politics, in a typical scenario I'd avoid talking about it like the plague. However, as the elections have come and gone, it'd be sacrilege for me to pretend the goldmine of electoral data now available did not exist.
 
 In this case, my love for all things data outweighs my disdain for politics. So I thought, why not make it fun?
+
 In Basketball, there is a litany of metrics which can give a different perspective on how good a player is. There are standard metrics like Points per Game, or Assists per Game which give a pretty obvious indicator of a player's contribution to a game, and more detailed measurements such as 'Offensive Rating' which are far more complex. For example, 'Offensive Rating' attempts to paint an overall picture of how well a player plays offensively by not only his points contribution but things like how well he passes or how well he sets screens for a play.
 
 So in the theme of treating the elections like a sport, our 'plain jane' metrics would be votes received and seats gained. What about our complex or advanced metrics? What can we do to get a better idea of the 'full picture'?
