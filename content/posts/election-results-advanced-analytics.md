@@ -85,7 +85,7 @@ Their perfect storm of missteps and misfortune has predictable results:
 * In an attempt to recover these voters, National shifted further right in their policies around tax breaks, gun control, and border control causing their more centrist supporters to shift inwards towards Labour.
 * This resulted in National seeing a massive decline losing 21 seats between elections, long-held seats such as Ilam were lost to Labour.
 * Despite only receiving 26% of votes, National by far has the most significant amount of donations with nearly double the next highest party.
-* Compared to their greatest rival, Labour's DUE was three times less than National indicating it was far easier for them to influence voters to vote for them or rather voters were already inclined to vote for them over National.
+* Compared to their greatest rival, National's DUE was three times greater than Labour's indicating it was far more challenging for them to influence voters to vote for them or rather voters were already more inclined to vote for Labour over National.ye
 
 In summary, National did bad - but I didn't have to tell you that did I?
 
@@ -107,9 +107,9 @@ Wow! ACT came back with a vengeance coming in with nine extra seats than they ha
 
 Having only one seat in parliament last year, they managed to accomplish something significant - introducing the End of Life Choice Act.
 
-ACT has a similar scenario to the Greens where their dedicated voter base is already entirely defined. You would have voters quite far to the right supporting them. However, unlike the Greens, the majority of their voters are older and own their own homes.
+ACT has a similar scenario to the Greens where their dedicated voter base is already defined. However, unlike the Greens, the majority of their voters are older and own their own homes. Interestingly enough, this wealthier voter base did not translate to an increase in how much donations they received. But they did better than the likes of Greens who had double the amount of donations.
 
-Interestingly enough, this wealthier voter base did not translate to an increase in how much donations they received.
+Maybe it's easier to convince 'gun enthusiasts' to vote for them where there is no other party who are realistically offering gun law repeals.
 
 I'm interested to see how ACT's presence in our political environment will impact National in the long term. Will National continue to shift itself right to try to recapture these lost voters?
 
@@ -118,7 +118,7 @@ I'm interested to see how ACT's presence in our political environment will impac
 All sources are openly available from Stats New Zealand. If you want to do something similar, I highly encourage you to do so.
 
 ### Methodology
-* Meshblocks geometries were unioned grouped it's 'Statistical Area 2' (SA2) name.
+* Meshblocks geometries were geometrically unioned by it's 'Statistical Area 2' (SA2) grouping.
 * Preliminary voting locations were geolocated and then intersected with the prepared geometry above.
 * Total votes were summed using party name, and SA2 area name.
 * The top ten SA2 areas for each major party was chosen as a representative sample for its voter base. The metric chosen was the total amount of party votes as a percentage of total SA2 votes.
