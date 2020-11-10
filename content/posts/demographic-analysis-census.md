@@ -10,11 +10,9 @@ tags: [
 ]
 ---
 
-I was eating KFC one evening, and a thought popped in my head, I wonder if it would be possible to glean a business' target market by solely looking at data. It's an obvious concept; all businesses have a target market, but how obvious is their target market?
+I should disclaim in advance, I came up with the idea for thos post in a KFC. The concept was straight forward, all businesses have a target market, but how obvious is their target market?
 
 My intuition tells me that the placement of KFC restaurants would leave an obvious pattern versus something posher like Farro. But could I prove it? Could I come up with a way to elegantly visualise a target market?
-
-The answer is absolutely, and the results are really neat.
 
 > **Note**: To international readers, Farro is a premium supermarket, selling much more artisan or niche products than a standard supermarket.
 
