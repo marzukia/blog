@@ -10,7 +10,7 @@ tags: [
 ]
 ---
 
-I should disclaim in advance, I came up with the idea of this post while eating at KFC. While eating, I thought to myself, all businesses have a target market, but how obvious is their target market? Would it be difficult to find out?
+I should disclaim in advance; I came up with the idea of this post while eating at KFC. While eating, I thought to myself, all businesses have a target market, but how obvious is their target market? Would it be difficult to find out?
 
 My intuition tells me that the placement of KFC restaurants would leave an obvious pattern versus something posher like Farro. But could I prove it? Could I come up with a way to elegantly visualise a target market?
 
