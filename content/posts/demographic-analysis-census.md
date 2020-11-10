@@ -34,7 +34,7 @@ My eligibility criteria in selecting this representative sample are as follows:
 * One retail store, one supermarket, one hospitality
 * Minimum of five stores
 
-> **Note**: In the graphs below, 'BLW' referes to Below Living Wage. This number in New Zealand is $22.10 per hour which is approximately $44,000 per annum.
+> **Note**: In the graphs below, 'BLW' means 'Below Living Wage'. This number in New Zealand is $22.10 per hour which is approximately $44,000 per annum.
 
 ### Lower Socioeconomic
 
