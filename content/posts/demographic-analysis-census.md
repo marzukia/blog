@@ -94,7 +94,7 @@ Luxury stores which target the upper socioeconomic demographic are usually self 
 
 ## Methodology
 
-<img src="/images/spatialflow.png">
+<img src="/images/spatialflow.png" style="width: 100%">
 
 * A collection of addresses were located fort each store of the representative sample, a geographic buffer of 2KM was then applied.
 * The area of an intersection between a buffered point and a Statistical Area shape is calculated, this value is then applied to the count.
