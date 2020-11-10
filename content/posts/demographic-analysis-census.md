@@ -34,6 +34,8 @@ My eligibility criteria in selecting this representative sample are as follows:
 * One retail store, one supermarket, one hospitality
 * Minimum of five stores
 
+> **Note**: In the graphs below, 'BLW' referes to Below Living Wage. This number in New Zealand is $22.10 per hour which is approximately $44,000 per annum.
+
 ### Lower Socioeconomic
 
 We'll start with our representative sample of businesses which target lower socioeconomic demographics. These stores have goods at a lower price point than others.
