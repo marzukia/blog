@@ -6,6 +6,7 @@ description: "Using a custom minimal JWT implementation in a ASP.NET Core WebApi
 tags: [
     "ASP.NET Core", "CSharp", "JWT", "Authentication"
 ]
+ogImage: "https://mrzk.io/images/wata/wata_top_ten_delta_max.png"
 ---
 
 I've recently made the jump from using Django to ASP.NET Core as my primary choice when developing web applications. This was initially due to me branching into using C## for things like Unity, and later realizing how much better ASP.NET Core is than Django.

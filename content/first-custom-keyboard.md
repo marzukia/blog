@@ -6,6 +6,7 @@ description: "This post details my experience and journey with building my first
 tags: [
     "Mechanical Keyboard", "DIY"
 ]
+ogImage: "https://mrzk.io/images/keyboard/70.png"
 ---
 
 When Auckland went into lock-down in August 2021, I decided to get myself a custom keyboard after being suckered in by various videos by [Glarses](https://www.youtube.com/channel/UCFtOX-21N1earf-K58C7HjQ) and [Hipyo Tech](https://www.youtube.com/channel/UCXlDgfWY2JbsYEam2m68Hyw).
