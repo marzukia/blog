@@ -4,9 +4,7 @@ title: "Making Graphics To Demonstrate Demographics"
 date: "2020-11-10"
 description: "Using census data to highlight and discuss demographics of lower, middle, and upper class businesses"
 tags: [
-
     "Data Analysis", "Geospatial"
-
 ]
 ---
 
