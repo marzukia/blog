@@ -13,8 +13,8 @@ enableInlineShortcodes = true
 pygmentsCodeFences = true
 
 [params]
-  description = "Personal dev blog of Andryo Marzuki"
-  copyright = "© 2021, Andryo Marzuki"
+  description = "Personal dev blog of Andryo Marzuki. I write about technology, data, and other geek hobbies that I happen to have."
+  copyright = "© 2019-2021, Andryo Marzuki"
   dark = "auto"
   highlight = true
   googleAnalytics = "UA-170171726-1"
