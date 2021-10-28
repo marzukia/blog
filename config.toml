@@ -5,7 +5,7 @@ staticDir = ['static']
 
 publishDir = "marzukia.github.io"
 
-baseURL = "https://marzukia.github.io"
+baseURL = "https://mrzk.io"
 title = "Andryo Marzuki"
 theme = "salt"
 languageCode = "en-US"
@@ -38,4 +38,3 @@ pygmentsCodeFences = true
   unsafe = true
 
   [markup.tableOfContents]
-    ordered = true
