@@ -13,3 +13,9 @@
 [submodule "themes/etch"]
 	path = themes/etch
 	url = git@github.com:LukasJoswiak/etch.git
+[submodule "themes/cupper-hugo-theme"]
+	path = themes/cupper-hugo-theme
+	url = https://github.com/zwbetz-gh/cupper-hugo-theme.git
+[submodule "themes/anatole"]
+	path = themes/anatole
+	url = https://github.com/lxndrblz/anatole.git
