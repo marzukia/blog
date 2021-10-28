@@ -1,6 +1,5 @@
 #!/bin/bash
 
-rm -r marzukia.github.io/*
 hugo
 
 
