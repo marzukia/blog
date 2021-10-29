@@ -24,6 +24,7 @@ pygmentsCodeFences = true
         instagram = "https://instagram.com/andryo"
         github = "https://github.com/marzukia"
         linkedin = "https://linkedin.com/in/andryomarzuki"
+        twitter = "https://twitter.com/mrzkio"
 
 [permalinks]
   posts = "post/:title/"
