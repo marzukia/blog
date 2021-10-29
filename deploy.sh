@@ -2,8 +2,8 @@
 
 hugo
 
-
 cd marzukia.github.io/
+find . -type f -not -name 'CNAME' -delete
 git add .
 git commit -m 'deploy changes'
 git push
