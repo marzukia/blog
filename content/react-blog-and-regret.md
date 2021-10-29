@@ -109,6 +109,10 @@ I don't know where I was going with this blog post - but if you've managed to ma
 
 In conclusion, don't bother trying to make React blog, it sucks, and it's painful to do. I'm open to changing my mind here, but for now, this will be my position.
 
+I'll close this section off with a self explanatory picture as to why static page blogs kick ass.
+
+![The bottom line.](/images/react_blog/report.png)
+
 ## Server-Side Rendering Code
 
 If you stumble across this page sometime in the future and you want to know how I set up my SSR, I've placed the code snippet below.
