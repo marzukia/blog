@@ -32,7 +32,7 @@ The application flow works out to be something like this:
 
 If it looks overly complicated, that's because it is. In hindsight, I may have over-engineered this, but I couldn't develop another way to make this reliably work. If someone smarter than me has an easier way to achieve what I was trying to do, please reach out to me and let me know.
 
-When I checked the website on Google to see how it performed, it performed awfully. In general, the pages loaded far too slowly, and this was because there was too backwards and forwards occurring behind the scenes.
+When I checked the website on Google to see how it performed, it performed awfully. Too many things were happening behind the scenes which resulted in sluggish performance. It's just not comparable to a static page where all the content is ready to go.
 
 ### Server-Side Rendering Code
 
