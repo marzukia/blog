@@ -93,11 +93,9 @@ Rather than explain how to lube a switch, I thought I'd share my key learnings f
 * Over-lubing is a lot less of a risk if you have linears (as opposed to tactiles). The conventional wisdom is that you should use lube sparingly the first time you lube switches; I went ham with my lubing, and it turned out alright.
 * If you have the disposable income, I’d seriously recommend you just to buy lubed/filmed switches from Etsy or something. With that being said, it was a cool experience overall (despite how tedious it was).
 
-![Here's how you orient the film and stem.](/images/keyboard/4.jpg)
-
 ## Tuning the Stabilisers
 
-![Stabilisers in disarray on my desk.](/images/keyboard/5.jpg)
+![Stabilisers in disarray on my desk.](/images/keyboard/4.jpg)
 
 Replacing the stabilisers on my GMMK Pro was honestly a bit of a nightmare. If you've done some pre-order reading, you'll see many people recommend replacing the subpar factory GOAT stabilisers with Durock v2 stabilisers or something similar. You may also read that the plate doesn't fit well when you have these stabilisers in.
 
