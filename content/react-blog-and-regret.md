@@ -1,7 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "Making a React Blog (and Why It Sucks)"
-date: "2021-10-31"
+date: "2021-10-29"
 description: "A few months ago, I had decided that it would be a great idea to convert my static-page blog (powered by Hugo) into a CMS made with Django and React. This post is going to talk about why that was a stupid idea and why I was a stupid person for thinking that it would be better than a static-page blog."
 tags: [
     "React", "TypeScript"
