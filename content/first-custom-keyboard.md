@@ -13,11 +13,11 @@ When Auckland went into lock-down in August 2021, I decided to get myself a cust
 
 I spend so much time at my computer for work and personal projects I thought it'd be a worthwhile endeavour to make something I could enjoy 12+ hours a day.
 
-This post primarily will serve two purposes. I'm writing about it just for my record, and the second is to help any other would-be entrant to the hobby to outline my key learnings and share things I would've wanted to know before I started.
+This post will primarily serve two purposes. I'm writing about it just for my record, and the second is to help any other would-be entrant to the hobby to outline my key learnings and share things I would've wanted to know before I started.
 
-# My Keyboard
+## My Keyboard
 
-My keyboard itself is what I'd call \"semi-finished\". I purchased a lot of stuff currently sitting at the office. As I'm not allowed to return to work until the pandemic dies down a bit, I had to reorder some parts to use the keyboard in the short term. The postal service (NZ Post) also managed to make my life a living hell during this lockdown by actually losing my GMMK pro and delaying every package by weeks at a time.
+My keyboard itself is what I'd call "semi-finished". I purchased a lot of stuff currently sitting at the office. As I'm not allowed to return to work until the pandemic dies down a bit, I had to reorder some parts to use the keyboard in the short term. The postal service (NZ Post) also managed to make my life a living hell during this lockdown by actually losing my GMMK pro and delaying every package by weeks at a time.
 
  ![Ahh, there it is.](/images/keyboard/70.png)
 
@@ -31,13 +31,13 @@ At the time of writing, this is my setup:
 
 I’m waiting on some MT3 keycaps and some other neat stuff to bolt on this keyboard, once I eventually receive those, I’ll likely make another post.
 
-# Why Make a Custom Mechanical Keyboard?
+## Why Make a Custom Mechanical Keyboard?
 
-Suppose you ever accidentally get suggested a custom mechanical keyboard video on YouTube. In that case, your immediate reaction will probably be something along the lines of \"What the hell is this person talking about\". The hobby looks at assembling and modifying custom keyboard components to achieve a fantastic aesthetic look and sound.
+Suppose you ever accidentally get suggested a custom mechanical keyboard video on YouTube. In that case, your immediate reaction will probably be something along the lines of "What the hell is this person talking about". The hobby looks at assembling and modifying custom keyboard components to achieve a fantastic aesthetic look and sound.
 
 A custom mechanical keyboard is like any other luxury item; they are ultimately pointless. Just like buying a fancy watch, you get it because the aesthetics and feel of the product feel better despite having the same function as a membrane keyboard. Building a custom mechanical keyboard lets you tailor your keyboard to exactly your taste and preferences, which I think is pretty cool.
 
-# The Summary
+## The Summary
 
 I ran into a few massive hurdles straight away that made entry into the hobby a little more challenging than I expected.
 
@@ -59,7 +59,7 @@ To cut things short, as a newbie to the subject, here are some of the key phrase
 * **Switch** - These are what the keycap sits on top.
 * **Plate** - The plate sits on top of the PCB.
 * **PCB** - This is the actual circuit board of the keyboard.
-* **Lube** - Lubricant. Don't watch custom keyboard videos in front of your spouse, or they'll ask you, \"Why does that person keep talking about lube\".
+* **Lube** - Lubricant. Don't watch custom keyboard videos in front of your spouse, or they'll ask you, "Why does that person keep talking about lube".
 * **Krytox 205G0** - This is the gold standard of switch and stabiliser lubricant. It's a viscous lubricant that you'll be applying liberally on everything.
 * **Krytox GPL 105** - This is what you imagine when you think of lubricant. Very liquid-y, I used this to lubricate my springs.
 * **Stab / Stabiliser** - Stabilisers are attachments that surround your modifiers keys and your space bar. Because these keys are big, these stabilisers provide support for those keys.
@@ -74,7 +74,7 @@ To cut things short, as a newbie to the subject, here are some of the key phrase
 * **Tactile** - Tactile switches have a little bit of a bump in the middle of the end of a keypress. The typical examples you can find on store-bought keyboards would be MX Brown and Blue.
 * **Group Buys** - When you’re looking for key cap sets for your keyboard you may across the term ‘group buys’. These are massive expressions of interest/preorders for things that haven’t been manufactured yet. Expect to wait for a long time if you’re doing one of these.
 
-# Lubricating & Filming Switches
+## Lubricating & Filming Switches
 
 ![Calm before the storm.](/images/keyboard/78.png)
 
@@ -95,13 +95,13 @@ Rather than explain how to lube a switch, I thought I'd share my key learnings f
 
 ![Here's how you orient the film and stem.](/images/keyboard/74.png)
 
-# Tuning the Stabilisers
+## Tuning the Stabilisers
 
 ![Stabilisers in disarray on my desk.](/images/keyboard/76.png)
 
 Replacing the stabilisers on my GMMK Pro was honestly a bit of a nightmare. If you've done some pre-order reading, you'll see many people recommend replacing the subpar factory GOAT stabilisers with Durock v2 stabilisers or something similar. You may also read that the plate doesn't fit well when you have these stabilisers in.
 
-\"Doesn't fit well\" is a vast understatement of how much of a pain in the ass it is to reassemble the GMMK pro with non-factory stabilisers. Frankly, the plate will not fit at all without a gentle amount of \"sweaty forcing the plate onto the PCB\".
+"Doesn't fit well" is a vast understatement of how much of a pain in the ass it is to reassemble the GMMK pro with non-factory stabilisers. Frankly, the plate will not fit at all without a gentle amount of "sweaty forcing the plate onto the PCB".
 
 ![Even looking at the screws in the picture gives me anxiety](/images/keyboard/71.png)
 
@@ -109,13 +109,13 @@ Replacing the stabilisers on my GMMK Pro was honestly a bit of a nightmare. If y
 
 So my advice to those who've purchased a GMMK Pro and decided to replace the factory stabilisers:
 
-* Ignore that part of your brain that's screaming, \"you're breaking it!\" and keep forcing that plate onto the board.
+* Ignore that part of your brain that's screaming, "you're breaking it!" and keep forcing that plate onto the board.
 * Either align the top or bottom tabs, then work your way downwards or upwards. Starting in the middle will not work.
 * Don't panic when you see the number of tiny screws in the GMMK pro.
 
 In regards to lubing and tuning the stabilisers, I'd recommend [this great video](https://www.youtube.com/watch?v=usNx1_d0HbQ).
 
-# Flashing QMK onto GMMK Pro on Linux
+## Flashing QMK onto GMMK Pro on Linux
 
 There isn’t many guides on how to use QMK with Linux so I thought I’d do a quick write up on how to do it.
 
@@ -127,7 +127,7 @@ qmk setup
 Set up will create a folder at `~/qmk_firmware`.  This will download all required dependencies and other things that qmk needs.
 
 ```bash
-sudo cp /home/andryo/qmk_firmware/util/udev/50-qmk.rules /etc/udev/rules.d/ # reboot after this
+sudo cp /home/andryo/qmk_firmware/util/udev/50-qmk.rules /etc/udev/rules.d/ ## reboot after this
 qmk config user.keyboard=gmmk/pro/ansi
 qmk new-keymap
 vim ~/qmk_firmware/keyboards/gmmk/pro/ansi/keymaps/<name>/keymap.c
@@ -143,7 +143,7 @@ Once you’ve modified your keybinds to your preference, load the keyboard into 
 qmk flash
 ```
 
-# Closing Thoughts
+## Closing Thoughts
 
 That’s all the salient thoughts I had jotted down in regards to my first custom keyboard build. Overall, I really enjoyed it and can’t wait to do it again. My wife wants a custom keyboard now so I have the excuse to build another fairly soon.
 

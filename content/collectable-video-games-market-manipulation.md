@@ -20,13 +20,13 @@ As part of this mini-project, [I've made a tool that provides a quasi-population
 
 [This data is now available for anyone to use and collected as of the 5th September 2021](https://github.com/marzukia/wata).
 
-# Background
+## Background
 
 The video game collectables market has recently seen an insane increase in prices, with a copy of Super Mario 64 selling for an absurd US$1.6M. To put things into perspective, this exact copy of Super Mario 64 sold for approximately US$30K a few years ago. To reiterate, a video game that has sold 11 million times just sold for US$1.6M...
 
 A key driving force of this insane price spike is thanks to two companies' efforts, Heritage Auctions and Wata Games. Their behaviour and actions strongly suggest that they are manipulating the market.
 
-## Wata Games & Heritage Auctions
+### Wata Games & Heritage Auctions
 
 Wata Games is a video gaming grading agency, a company that values an item based on its overall condition and whether it's a loose cartridge, completed in the box, sealed, etc. In their own words, Wata Games describes their services as:
 
@@ -36,7 +36,7 @@ Given Wata Game's role in the collectable video game market, it's clear that the
 
 Jim Halperin, coincidentally, has previously been sued by the Fair Trade Commission (and was essentially fined $1.2M) [for purposefully inflating the prices of collectable coins](https://www.latimes.com/archives/la-xpm-1989-08-10-vw-88-story.html).
 
-# Key Findings
+## Key Findings
 
 To date, Wata Games has not released a population report. A population report is a critical piece of information that quantifies games that have been graded/assessed to a specific grade. Not releasing this information means that the overall rarity of any given video game is incredibly opaque and can lead to distortions of perceived value. To make things worse, Heritage Auctions does not release the details of buyers or sellers of listings leading to even more room for shady things to happen.
 
@@ -52,7 +52,7 @@ In conclusion, something fishy is going on here.
 
 As I've stated at the start of the article, the data I've collected is [available for download here](https://github.com/marzukia/wata).
 
-# Game Inflation & Activity
+## Game Inflation & Activity
 
 If the market were genuinely surging, I'd expect that the max sale price of a collectable game would have a uniform deviation from their average price. If we look at the top ten video games with the highest deviation from their average price we find the following: ![](/images/wata/wata_top_ten_delta_max.png)
 
@@ -82,7 +82,7 @@ Whether or not this scarcity truly justifies the crazy price tag, what's certain
 
 These comments would generate the perception/news coverage that the video game collectable market is the next big thing.
 
-# Market Volumes & Trends
+## Market Volumes & Trends
 
 If we were to plot the total value of market activity on a time series and looked over the last two years, we'd see a market with an almost exponential growth curve in terms of value. This is consistent with the narrative you'd be expected to buy in, the video game market is scorching right now, and you should buy games.
 
@@ -96,7 +96,7 @@ If we instead look at average prices of sales, we see the actual story. On avera
 
  ![](/images/wata/wata_average_sales_over_time.png)
 
-## Further Reading
+### Further Reading
 
 If you'd like more information about the key players and accusations, the following are great pieces of media:
 
