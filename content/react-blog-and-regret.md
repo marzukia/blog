@@ -50,6 +50,11 @@ In my case, when I want to make changes to the blog, I execute a simple shell sc
 
 ```bash
 #!/bin/bash
+shopt -s extglob
+cd marzukia.github.io/
+git checkout master
+rm -rv !("CNAME"|".git/")
+cd ..
 hugo
 cd marzukia.github.io/
 git add .

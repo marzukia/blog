@@ -1,17 +1,12 @@
 #!/bin/bash
 
 shopt -s extglob
-
 cd marzukia.github.io/
 git checkout master
 rm -rv !("CNAME"|".git/")
-
 cd ..
-
 hugo
-
 cd marzukia.github.io/
-
 git add .
 git commit -m 'deploy changes'
 git push
