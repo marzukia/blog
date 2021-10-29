@@ -6,6 +6,8 @@ description: "Using census data to highlight and discuss demographics of lower, 
 tags: [
     "Data Analysis", "Geospatial"
 ]
+aliases:
+    - "/post/making-graphics-to-demonstrate-demographics/"
 ---
 
 The idea for this post came to me recently; the question that popped into my head was - all businesses have a target market, but how obvious is their target market?

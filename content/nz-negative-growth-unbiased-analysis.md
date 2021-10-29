@@ -7,6 +7,8 @@ tags: [
     "Data Analysis",
     "COVID-19",
 ]
+aliases:
+    - "/post/diving-deeper-into-new-zealands-official-recession/"
 ---
 
 New Zealand has officially entered into a recession after 11 years following two consecutive periods of negative GDP growth. This last time New Zealand was in a recession was in 2008 due to the global financial crisis. Given the current circumstances, it's no surprise that this has occurred.

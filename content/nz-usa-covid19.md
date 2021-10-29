@@ -7,6 +7,8 @@ tags: [
     "Data Analysis",
     "COVID-19",
 ]
+aliases:
+    - "/post/how-well-has-new-zealand-handled-covid-19/"
 ---
 
 At the beginning of March, I made the unfortunate decision of investing into two exchange-traded funds (ETFs) which were SmartShare's FNZ (NZ Top 50) and USF (Fortune 500). It was unfortunate because the world decided to set itself on fire due to the COVID-19 pandemic.

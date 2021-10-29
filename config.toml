@@ -27,7 +27,7 @@ pygmentsCodeFences = true
         twitter = "https://twitter.com/mrzkio"
 
 [permalinks]
-  posts = "post/:title/"
+  '/' = "/posts/:title/"
 
 
 [markup]

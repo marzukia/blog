@@ -6,6 +6,8 @@ description: "With the New Zealand 2020 general elections now over, I can have a
 tags: [
     "Data Analysis", "Geospatial"
 ]
+aliases:
+    - "/post/breaking-down-the-elections...-like-a-sport/"
 ---
 
 I'll be the first to admit that I'm not the greatest fan of politics, in a typical scenario I'd avoid talking about it like the plague. However, as the elections have come and gone, it'd be sacrilege for me to pretend the goldmine of electoral data now available did not exist.

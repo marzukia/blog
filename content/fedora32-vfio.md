@@ -6,6 +6,8 @@ description: "Guide to setting up VFIO on Fedora 32 to game on a Windows 10 virt
 tags: [
     "VFIO", "Linux Gaming", "Fedora"
 ]
+aliases:
+    - "/post/fedora32-vfio/"
 ---
 
 I've used Fedora 32 as my main OS for about two years. Overall, it has been a very pleasant experience and has made things such as developing much easier than it would've been on Windows.
