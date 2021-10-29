@@ -1,8 +1,9 @@
 #!/bin/bash
 
+shopt -s extglob
+
 cd marzukia.github.io/
-rm -r -- ./*/
-find . -type f -not -name 'CNAME' -delete
+rm -rv !("CNAME")
 
 cd ..
 
