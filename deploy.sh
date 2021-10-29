@@ -3,12 +3,11 @@
 shopt -s extglob
 
 cd marzukia.github.io/
-rm -rv !("CNAME")
+rm -rv !("CNAME"|".git/")
 
 cd ..
 
 hugo
-
 
 git add .
 git commit -m 'deploy changes'
