@@ -14,7 +14,7 @@ pygmentsCodeFences = true
 
 [params]
   defaultOGImage = "https://mrzk.io/images/og-banner.png"
-  description = "Personal dev blog of Andryo Marzuki. I write about technology, data, and other geek hobbies that I happen to have."
+  description = "Personal blog of Andryo Marzuki. I write about technology, data, and other geek hobbies that I happen to have."
   copyright = "© 2019-2021, Andryo Marzuki"
   dark = "auto"
   highlight = true
