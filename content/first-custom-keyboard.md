@@ -6,7 +6,7 @@ description: "This post details my experience and journey with building my first
 tags: [
     "Mechanical Keyboard", "DIY"
 ]
-ogImage: "https://mrzk.io/images/keyboard/70.png"
+ogImage: "https://mrzk.io/images/keyboard/1.jpg"
 ---
 
 When Auckland went into lock-down in August 2021, I decided to get myself a custom keyboard after being suckered in by various videos by [Glarses](https://www.youtube.com/channel/UCFtOX-21N1earf-K58C7HjQ) and [Hipyo Tech](https://www.youtube.com/channel/UCXlDgfWY2JbsYEam2m68Hyw).
@@ -19,7 +19,7 @@ This post will primarily serve two purposes. I'm writing about it just for my re
 
 My keyboard itself is what I'd call "semi-finished". I purchased a lot of stuff currently sitting at the office. As I'm not allowed to return to work until the pandemic dies down a bit, I had to reorder some parts to use the keyboard in the short term. The postal service (NZ Post) also managed to make my life a living hell during this lockdown by actually losing my GMMK pro and delaying every package by weeks at a time.
 
- ![Ahh, there it is.](/images/keyboard/70.png)
+ ![Ahh, there it is.](/images/keyboard/1.jpg)
 
 At the time of writing, this is my setup:
 
@@ -76,13 +76,13 @@ To cut things short, as a newbie to the subject, here are some of the key phrase
 
 ## Lubricating & Filming Switches
 
-![Calm before the storm.](/images/keyboard/78.png)
+![Calm before the storm.](/images/keyboard/2.jpg)
 
 Lubricating and filming a switch improves the smoothness and the sound of the switch. The entire process took me approximately four hours; it was an incredibly tedious process, and honestly, I hated it.
 
 I won't detail how to lubricate a switch as there are already some great online resources that go into these in-depth. [Here is my viewing recommendation](https://www.youtube.com/watch?v=44Wv4OGdmu4).
 
-![Switches successfully lubed.](/images/keyboard/72.png)
+![Switches successfully lubed.](/images/keyboard/3.jpg)
 
 ### The Takeaway
 
@@ -93,17 +93,17 @@ Rather than explain how to lube a switch, I thought I'd share my key learnings f
 * Over-lubing is a lot less of a risk if you have linears (as opposed to tactiles). The conventional wisdom is that you should use lube sparingly the first time you lube switches; I went ham with my lubing, and it turned out alright.
 * If you have the disposable income, I’d seriously recommend you just to buy lubed/filmed switches from Etsy or something. With that being said, it was a cool experience overall (despite how tedious it was).
 
-![Here's how you orient the film and stem.](/images/keyboard/74.png)
+![Here's how you orient the film and stem.](/images/keyboard/4.jpg)
 
 ## Tuning the Stabilisers
 
-![Stabilisers in disarray on my desk.](/images/keyboard/76.png)
+![Stabilisers in disarray on my desk.](/images/keyboard/5.jpg)
 
 Replacing the stabilisers on my GMMK Pro was honestly a bit of a nightmare. If you've done some pre-order reading, you'll see many people recommend replacing the subpar factory GOAT stabilisers with Durock v2 stabilisers or something similar. You may also read that the plate doesn't fit well when you have these stabilisers in.
 
 "Doesn't fit well" is a vast understatement of how much of a pain in the ass it is to reassemble the GMMK pro with non-factory stabilisers. Frankly, the plate will not fit at all without a gentle amount of "sweaty forcing the plate onto the PCB".
 
-![Even looking at the screws in the picture gives me anxiety](/images/keyboard/71.png)
+![Even looking at the screws in the picture gives me anxiety](/images/keyboard/7.jpg)
 
 ### The Takeaway
 
@@ -151,4 +151,4 @@ I hope for those who stumble across this post, I hope the information provided h
 
 Good luck!
 
-![Forbidden candy.](/images/keyboard/77.png)
+![Forbidden candy.](/images/keyboard/6.jpg)
