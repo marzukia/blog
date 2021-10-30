@@ -42,7 +42,7 @@ Getting the population vaccinated helps stop the spread of COVID-19, but vaccina
 
 ### Forcing Me to Vaccinate Infringes on My Freedom
 
-This is most likely the unfortunate consequence/symptom of the American media machine slowly influencing New Zealand in the worst possible way. In a civilised society, the personal freedoms we enjoy comes with strings; these strings are doing the right thing when it comes to the collective good.
+This idea of a "loss of freedom" is most likely the unfortunate consequence/symptom of the American media machine slowly influencing New Zealand in the worst possible way. In a civilised society, the personal freedoms we enjoy come with strings; these strings are doing the right thing for the collective good.
 
 I found this [quote](https://www.reddit.com/r/auckland/comments/qfpdx5/not_getting_the_vaccine_is_the_height_of_arrogance/hi2fboh/) online, and I think it articulates the subject far better than I could.
 
