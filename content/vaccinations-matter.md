@@ -11,7 +11,7 @@ ogImage: "https://mrzk.io/images/vaccinations/og.png"
 
 I'll be honest; I get excessively irritated when I see anti-lockdown protestors, anti-vaxxers, or those who have some distorted notion that vaccines (and having to get one) somehow undermine their freedom. It's one of those things which should be so obviously clear to anyone who has a modicum of common sense of their importance.
 
-Unfortunately, I've noticed a growing trend of blatant misinformation, misunderstanding or maliciousness from people in general and people/acquaintances I know. The purpose of this post is for me to articulate the way I explain to others why vaccines are necessary. If you know somebody in this category,  whether maliciously or not, I hope some of the diagrams or writing in this post helps you.
+The purpose of this post is for me to articulate the way I explain to others why vaccines are necessary. Unfortunately, I've noticed a growing trend of blatant misinformation, misunderstanding or maliciousness from people in general and a small minority of people/acquaintances that I know. Whether maliciously or not, if you know somebody in this category, I hope some of the diagrams or writing in this post helps you.
 
 ## Infection Probabilities vs. Population Vaccinated
 
