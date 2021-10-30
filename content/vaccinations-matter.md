@@ -6,13 +6,12 @@ description: "Refusing to get vaccinated is a dangerous and selfish thing to do.
 tags: [
     "Data Analysis", "COVID-19"
 ]
+ogImage: "https://mrzk.io/images/vaccinations/1.png"
 ---
 
 I'll be honest; I get excessively irritated when I see anti-lockdown protestors, anti-vaxxers, or those who have some distorted notion that vaccines (and having to get one) somehow undermine their freedom. It's one of those things which should be so obviously clear to anyone who has a modicum of common sense of their importance.
 
-Unfortunately, I've noticed a growing trend of blatant misinformation, misunderstanding or maliciousness from people in general and people/acquaintances I know.
-
-The purpose of this post is for me to articulate the way I explain to others why vaccines are necessary. If you have someone in your life who is in the category of someone who doesn't believe in the importance of vaccinations, whether maliciously or not, I hope some of the diagrams or writing in this post helps you.
+Unfortunately, I've noticed a growing trend of blatant misinformation, misunderstanding or maliciousness from people in general and people/acquaintances I know. The purpose of this post is for me to articulate the way I explain to others why vaccines are necessary. If you know somebody in this category,  whether maliciously or not, I hope some of the diagrams or writing in this post helps you.
 
 ## Infection Probabilities vs. Population Vaccinated
 
