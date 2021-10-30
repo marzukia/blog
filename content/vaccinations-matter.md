@@ -1,12 +1,12 @@
 ---
 author: "Andryo Marzuki"
-title: "Vaccinations Matter"
+title: "Vaccinations Matter (aka Why Anti-Vaxxers Should Really Reconsider)"
 date: "2021-10-30"
 description: "Refusing to get vaccinated is a dangerous and selfish thing to do. This post articulates my explanation of why vaccines are necessary."
 tags: [
     "Data Analysis", "COVID-19"
 ]
-ogImage: "https://mrzk.io/images/vaccinations/1.png"
+ogImage: "https://mrzk.io/images/vaccinations/og.png"
 ---
 
 I'll be honest; I get excessively irritated when I see anti-lockdown protestors, anti-vaxxers, or those who have some distorted notion that vaccines (and having to get one) somehow undermine their freedom. It's one of those things which should be so obviously clear to anyone who has a modicum of common sense of their importance.
@@ -57,7 +57,11 @@ I found this [quote](https://www.reddit.com/r/auckland/comments/qfpdx5/not_getti
 
 Many people have valid health issues and concerns which prohibit them from getting the vaccination. The people who cannot get vaccinated will be protected most by a highly vaccinated population. That's why it makes it so much worse that some people erroneously (intentional or not) use this as their excuse for why they will not get vaccinated.
 
-[CDC's reaction and adverse events register](https://www.cdc.gov/vaccines/covid-19/info-by-product/pfizer/reactogenicity.html) has catalogued the number of severe adverse reactions caused by the Pfizer vaccine. There were only 33 adverse reactions out of 7,851 doses given (all age groups); this equates to a 0.42% chance you may get a severe reaction. You are more [likely to get into a car crash](https://www.stuff.co.nz/national/300278929/more-than-20-drivers-aged-100-are-still-on-kiwi-roads-as-ageing-population-prompts-plea-for-caution) than getting a severe reaction to the vaccine.
+[CDC's reaction and adverse events register](https://www.cdc.gov/vaccines/covid-19/info-by-product/pfizer/reactogenicity.html) has catalogued the number of severe adverse reactions caused by the Pfizer vaccine. Out of the 7,851 doses given (all age groups > 12), there were 0 "Grade 4" events, these are the events that would require you to be hospitalised.
+
+> The proportions of participants who reported at least 1 serious adverse event were 0.4% in the vaccine group and 0.2% in the placebo group. No serious adverse events were considered by FDA as possibly related to vaccine.
+
+You are more [likely to get into a car crash](https://www.stuff.co.nz/national/300278929/more-than-20-drivers-aged-100-are-still-on-kiwi-roads-as-ageing-population-prompts-plea-for-caution) than getting a severe reaction to the vaccine.
 
 
 ## Conclusion
