@@ -3,7 +3,7 @@
 shopt -s extglob
 cd marzukia.github.io/
 git checkout master
-rm -rv !("CNAME"|".git/")
+rm -rv .git
 cd ..
 hugo
 cd marzukia.github.io/
