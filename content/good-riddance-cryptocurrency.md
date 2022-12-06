@@ -10,6 +10,8 @@ tags: ['Cryptocurrency']
 
 ## Zero Sum Game
 
+Cryptocurrency had been hailed as a "revolutionary" new technology that would change the way we transact and store value. In reality, it has become a breeding ground for scams, fraud, and corruption. Despite its original promise of decentralization, transparency, and freedom from government control, cryptocurrency has become dominated by centralized exchanges, speculative trading, and other forms of manipulation.
+
 The catastrophic unravelling of cryptocurrency over the last year has been a sight to behold over the previous year. The perfect storm of FOMO, greed, a deafening lack of regulation and continuous and constant predatory behaviour (and people) has taken a novel concept into a 'too big to fail' zero-sum game which is now starting to fail.
 
 Cryptocurrency is a zero-sum game, meaning that the value of a particular coin or token is determined by the collective actions of all the participants in the market, with any gain by one person being balanced by an equal loss by someone else. Cryptocurrency has no intrinsic value, and it does not have any inherent worth or usefulness.
