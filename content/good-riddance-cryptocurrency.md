@@ -2,7 +2,7 @@
 author: 'Andryo Marzuki'
 title: "A Fond 'Good Riddance' to Cryptocurrency"
 date: '2022-12-06'
-description: 'Using your browser and Python to map out an undocumented API quickly'
+description: 'My thoughts on the current unravelling of the cryptocurrency economy'
 tags: ['Cryptocurrency']
 ---
 
@@ -32,7 +32,7 @@ In June 2022, Terra (an exchange) had its 'algorithmic stable coin' (paradoxical
 
 Terra Luna's collapse, in turn, caused 3 Arrows Capital, [Celsius](https://www.forbes.com/advisor/investing/cryptocurrency/what-is-celsius/), [Voyager](https://www.cnbc.com/2022/11/25/binance-others-line-up-bids-for-bankrupt-voyager-after-ftx-collapse.html), [BlockFi](https://markets.businessinsider.com/news/currencies/blockfi-bankruptcy-filings-ftx-collapse-crypto-lender-sbf-cryptocurrency-2022-12), [Hodlnaut](https://cointelegraph.com/news/hodlnaut-now-placed-under-creditor-protection-after-freezing-withdrawals), [Vauld](https://forkast.news/headlines/creditor-take-action-vauld-seeks-bankruptcy/), and [FTX](https://www.nytimes.com/2022/12/05/technology/crypto-future-ftx.html), to go bust in quick succession. Regrettably, this resulted in massive losses for the customers of those entities. Many of these people were likely unsophisticated investors lured in by promises of 'going to the moon.
 
-At the time of writing, many other exchanges look 'shaky', with some shakier than others. It's going to get worse. If for some reason, you're still invested in crypto and have not exited, I'm not sure what to tell you.
+At the time of writing, many other exchanges look 'shaky', with some shakier than others. [It's going to get worse](https://www.forbes.com/sites/qai/2022/11/30/gemini-crypto-pauses-withdrawals-fallout-continues-from-ftx-collapse/?sh=f44e4054a840).
 
 ## Good Riddance
 
