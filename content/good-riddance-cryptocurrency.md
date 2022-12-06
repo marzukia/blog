@@ -14,7 +14,7 @@ The catastrophic unravelling of cryptocurrency over the last year has been a sig
 
 Cryptocurrency is a zero-sum game, meaning that the value of a particular coin or token is determined by the collective actions of all the participants in the market, with any gain by one person being balanced by an equal loss by someone else. Cryptocurrency has no intrinsic value, and it does not have any inherent worth or usefulness.
 
-The current state of cryptocurrency is a perfect example of the greater fool theory, where people are willing to pay more for an asset than its intrinsic value because they believe they can sell it to someone else at an even higher price. The conclusion of the greater fool theory is that investors who rely on this approach are likely to suffer significant losses when the market reaches a saturation point. There are no longer any "greater fools" willing to pay higher prices for the assets.
+The current state of cryptocurrency is a perfect example of the greater fool theory, where people are willing to pay more for an asset than its intrinsic value because they believe they can sell it to someone else at an even higher price. The conclusion of the greater fool theory is that investors who rely on this approach are likely to suffer significant losses when the market reaches a saturation point. Unfortunately for crypto, it seems that there may be no longer any "greater fools" willing to pay higher prices for the assets.
 
 ## Market Goes Boom
 
