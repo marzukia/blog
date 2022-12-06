@@ -2,7 +2,7 @@
 author: 'Andryo Marzuki'
 title: "A Fond 'Good Riddance' to Cryptocurrency"
 date: '2022-12-06'
-description: 'My thoughts on the current unravelling of the cryptocurrency economy'
+description: 'The catastrophic unravelling of cryptocurrency over the last year has been a sight to behold over the previous year. The perfect storm of FOMO, greed, a deafening lack of regulation and continuous and constant predatory behaviour (and people) has taken a novel concept into a 'too big to fail' zero-sum game which is now starting to fail.'
 tags: ['Cryptocurrency']
 ---
 
