@@ -40,5 +40,12 @@
     --color-secondary-950: 17, 21, 0;
 
     font-family: "Roboto", sans-serif;
+}
 
+:root footer>div {
+    align-items: center;
+}
+
+:root footer div picture {
+    width: 35rem;
 }
