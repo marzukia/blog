@@ -1,0 +1,3 @@
+[submodule "marzukia.github.io"]
+	path = marzukia.github.io
+	url = git@github.com:marzukia/marzukia.github.io.git

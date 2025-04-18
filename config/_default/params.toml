@@ -1,0 +1,42 @@
+colorScheme = "fire"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+enableImageLazyLoading = true
+enableImageWebp = true
+enableQuicklink = true
+
+fingerprintAlgorithm = "sha256"
+
+
+[header]
+  layout = "basic" # valid options: basic, hamburger, hybrid, custom
+  logo = "img/logo.png"
+  showTitle = false
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "profile" # valid options: page, profile, custom
+  showRecent = true
+  recentLimit = 5
+
+[article]
+  showDate = true
+  showTableOfContents = true
+  showAuthor = true
+  editAppendPath = true
+  showHeadingAnchors = true
+  showPagination = true
+  invertPagination = false
+  showReadingTime = true
+  sharingLinks = ["reddit", "linkedin", "email", "bluesky"]
+
+[list]
+    showSummary = true

@@ -1,0 +1,16 @@
+baseURL = "https://mrzk.io/"
+languageCode = "en"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+summaryLength = 2
+
+[pagination]
+  pagerSize = 15
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[services]
+  [services.x]
+    disableInlineCSS = true

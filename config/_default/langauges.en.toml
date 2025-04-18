@@ -1,0 +1,11 @@
+# config/_default/languages.en.toml
+
+title = "Andryo Marzuki"
+
+[params.author]
+name = "Andryo Marzuki"
+image = "img/author.png"
+headline = "Net Zero Productivity by 2050"
+bio = "I'm Andryo — part-time climate risk lead, full-time overthinker. I spend my days turning obscure regulations and geospatial data into mildly functional platforms, and my nights wondering if I can automate myself out of a job. I’ve accidentally built a few award-nominated tools, which sounds more impressive than it felt at the time. This blog is where I document my finest procrastinations, half-baked insights, and the ongoing struggle to align ambition with a dangerously short attention span."
+
+publishDir = "marzukia.github.io"

@@ -1,0 +1,36 @@
+# config/_default/menus.en.toml
+
+[[main]]
+  name = "Blog"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "Topics"
+  pageRef = "tags"
+  weight = 20
+
+[[main]]
+  name = "GitHub"
+  url = "https://github.com/marzukia"
+  weight = 30
+  [main.params]
+    icon = "github"
+    showName = false
+    target = "_blank"
+
+[[main]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/andryomarzuki/"
+  weight = 30
+  [main.params]
+    icon = "linkedin"
+    showName = false
+    target = "_blank"
+
+[[main]]
+  identifier = "search"
+  weight = 99
+  [main.params]
+    action = "search"
+    icon = "search"
