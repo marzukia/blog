@@ -10,6 +10,8 @@ enableQuicklink = true
 
 fingerprintAlgorithm = "sha256"
 
+[seo]
+  ogBanner = "img/ogbanner.png"
 
 [header]
   layout = "basic" # valid options: basic, hamburger, hybrid, custom
