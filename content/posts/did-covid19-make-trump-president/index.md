@@ -132,6 +132,6 @@ In short, COVID-19 just gave us one more reason to dislike it.
 [^10]: https://edition.cnn.com/2024/09/29/politics/alabama-justice-department-election-lawsuit/index.html "Justice Department sues Alabama over its effort to remove more than 3,000 names from voter rolls too close to election"
 [^11]: https://www.teenvogue.com/story/north-carolina-republicans-college-students-votes-election "North Carolina Republicans are Trying to Throw Out College Students’ Votes to Steal an Election"
 [^12]: https://www.theguardian.com/us-news/2023/jul/13/florida-fines-voter-registration-groups "Revealed: Florida Republicans target voter registration groups with thousands in fines"
-[^13]: https://theemancipator.org/2024/11/05/topics/technology/voter-suppression-2-0-how-digital-misinformation-targets-marginalized-communities "Voter suppression 2.0: How digital misinformation targets marginalized communities"
+[^13]: [https://theemanc...ized-communities](https://theemancipator.org/2024/11/05/topics/technology/voter-suppression-2-0-how-digital-misinformation-targets-marginalized-communities) "Voter suppression 2.0: How digital misinformation targets marginalized communities"
 [^14]: https://www.brookings.edu/articles/for-covid-19-vaccinations-party-affiliation-matters-more-than-race-and-ethnicity/ "For COVID-19 vaccinations, party affiliation matters more than race and ethnicity"
 [^15]: https://www.act.org.nz/act-mps-back-rural-new-zealand-at-groundswell "ACT MPs back rural New Zealand at Groundswell"
