@@ -43,3 +43,7 @@ fingerprintAlgorithm = "sha256"
 [list]
     showSummary = true
     showTableOfContents = true
+
+[umamiAnalytics]
+  site = "598a7577-6be5-4c96-908b-82f9cc84d4ce"
+  region = "us"
