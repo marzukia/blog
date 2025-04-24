@@ -34,3 +34,13 @@
   [main.params]
     action = "search"
     icon = "search"
+
+[[main]]
+  name = "RSS"
+  url = "https://mrzk.io/index.xml"
+  weight = 30
+  [main.params]
+    icon = "rss"
+    showName = false
+    target = "_blank"
+    type = "application/rss+xml"
