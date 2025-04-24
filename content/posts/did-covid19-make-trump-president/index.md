@@ -124,7 +124,7 @@ In short, COVID-19 just gave us one more reason to dislike it.
 [^2]: https://www.nbcnews.com/politics/2024-elections/exit-polls "2024 Elections Exit Polls"
 [^3]: https://democrats-appropriations.house.gov/news/fact-sheets/fact-sheet-house-republican-funding-bill-denies-education-and-training "FACT SHEET: House Republican Funding Bill Denies Education and Training Opportunities for Students and Job Seekers at All Stages of Life"
 [^4]: https://files.eric.ed.gov/fulltext/EJ1151035.pdf "News Media Literacy and Political Engagement: What's the Connection?"
-[^5]: [https://www.researchgate.net/publication/340394976*Media*...Social_Media](https://www.researchgate.net/publication/340394976_Media_Literacy_Dimension_in_Reinforcing_Political_Participation_Integrity_Among_Young_People_in_Social_Media) "Media Literacy Dimension in Reinforcing Political Participation Integrity Among Young People in Social Media"
+[^5]: [https://www.rese...Social_Media](https://www.researchgate.net/publication/340394976_Media_Literacy_Dimension_in_Reinforcing_Political_Participation_Integrity_Among_Young_People_in_Social_Media) "Media Literacy Dimension in Reinforcing Political Participation Integrity Among Young People in Social Media"
 [^6]: https://www.americanprogress.org/article/the-save-act-would-disenfranchise-millions-of-citizens/ "The SAVE Act Would Disenfranchise Millions of Citizens"
 [^7]: https://today.yougov.com/travel/articles/46028-adults-under-30-more-likely-have-us-passport "Adults under 30 are more likely than older Americans to have a current U.S. passport"
 [^8]: https://www.npr.org/2025/04/13/g-s1-59684/save-act-married-women-vote-rights-explained "Will the SAVE Act make it harder for married women to vote? We ask legal experts"
