@@ -158,7 +158,7 @@ The result was a cumulative score that helped highlight suburbs with good fundam
 
 If we look at what the top 20 postcodes have in common:
 
-- Nearly all top-ranked suburbs are well-served by both tram and train lines—some with multiple options—leading to lower commute times. This aligns with your 40% weight on public transport.
+- Nearly all top-ranked suburbs are well-served by both tram and train lines—some with multiple options—leading to lower commute times.
 - Suburbs like 3054 (Carlton North / Princes Hill), 3053 (Carlton), and 3002 (East Melbourne) are all within an easy, flat cycling distance to the city, explaining their high cycle scores.
 - Inner-west and inner-north areas (3011 – Footscray, 3066 – Collingwood, 3057 – Brunswick East) show strong recent growth in income, suggesting they’re still evolving and may offer upside.
 - While not all top suburbs have the best schools, they tend to score decently. Lower scores here may be offset by strong access and rising affluence.
@@ -191,7 +191,7 @@ If we look at what the top 20 postcodes have in common:
 
 If we look at what the bottom 20 postcodes have in common:
 
-- Public transport access is consistently poor, with many areas lacking convenient tram or train connections. This significantly impacts their transit scores and is a major factor given your 40% weighting on public transport.
+- Public transport access is consistently poor, with many areas lacking convenient tram or train connections.
 - All bottom-ranked suburbs scored a full 1.0000 for cycling and transit, indicating long distances or poor infrastructure for both modes—likely outer suburban or fringe areas far from the CBD.
 - School rankings vary, but tend to be mid-to-low. Even when schools are decent (e.g. 3062 – Somerton/Roxburgh Park), they're not enough to offset poor access and distance.
 - Affluence is moderate but stagnant, with little indication of recent gentrification. Many postcodes (e.g. 3179 – Boronia, 3154 – The Basin) have middling income and minimal growth.
