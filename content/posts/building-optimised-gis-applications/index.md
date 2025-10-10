@@ -43,13 +43,13 @@ Modern spatial applications face unique challenges when dealing with large geosp
 
 The most frustrating theme I encountered during this journey was just how opaque (or out of date) everything seemed to be. You'd think after decades of people building mapping applications, there would be comprehensive guides on how to make them not perform like absolute rubbish. Instead, you get fragments of knowledge scattered across blog posts, Stack Overflow answers, and the occasional conference talk that leaves you with more questions than answers (or worse yet, _"edit: nvm fixed it"_).
 
-The spatial development community seems to have this unspoken agreement that everyone should figure things out the hard way. However, I've never been one to gatekeep information, so this post will be attempt to document everything I wish someone had told me when I first started building spatial applications that needed to handle more than a dozen points without bringing the browser to its knees.
+The spatial development community seems to have this unspoken agreement that everyone should figure things out the hard way. However, I've never been one to gatekeep information, so this post will attempt to document everything I wish someone had told me when I first started building spatial applications that needed to handle more than a dozen points without bringing the browser to its knees.
 
 ---
 
 **Preamble**
 
-* My experience has been using PostGIS as my spatial database and various ORMs as my server, however, most of my examples will show Django examples when showing psuedo/boilerplate code. 
+* My experience has been using PostGIS as my spatial database and various ORMs as my server, however, most of my examples will show Django examples when showing pseudo/boilerplate code. 
 * The database of your web application is incredibly important as it's what you'll want to use as the main backbone of any spatial functionality or activity. For example, if you have the ability to directly serve spatial tables already rendered as GeoJSON or MVT, you should do that. Whilst you can use your application layer to do some manipulation, it will be infinitely slower than leveraging your database.
 
 * For all of the suggestions/tricks in this post, you'll need to do the mental calculus whether or not the benefits from introducing some of these tweaks is greater than the introduced complexity overhead.
@@ -82,7 +82,7 @@ CREATE INDEX idx_points_spgist ON point_table USING SPGIST(location);
 
  **Gotchas:**
 
-* Don't assume that a simple geometry can be effectively indexed. If, for example, you have a very large square accross the entire country, that index is essentially useless. 
+* Don't assume that a simple geometry can be effectively indexed. If, for example, you have a very large square across the entire country, that index is essentially useless. 
 * Watch your projections, if you're using an `ST_Transform` in a query and the index of the geometry column has been done in the original projection, that spatial index will not be used.
 
 ## Geometry Subdivision for Performance
@@ -95,7 +95,7 @@ If you reduce this concept its simplest form, you can think of it like this - ha
 
 ### Implementation Approaches
 
-Pracatically, I think implementation options of implementing geometry subdivision in your application can boil down the following approaches:
+Practically, I think implementation options of implementing geometry subdivision in your application can boil down to the following approaches:
 
 1. Using ETL process; and/or
 2. Using specially structured queries; and/or
@@ -105,11 +105,11 @@ All have their own complexity overheads and advantages which I'll talk through i
 
 ---
 
-In someways, this is generally the easiest option to do if you want a simple implementation of this approach. The idea is that you implement additional database layers where you can transform any of the source spatial data into its subdivided parts before merging into your public layer.
+In some ways, this is generally the easiest option to do if you want a simple implementation of this approach. The idea is that you implement additional database layers where you can transform any of the source spatial data into its subdivided parts before merging into your public layer.
 
-If visual representation of spatial data is not required in the frontend or, if you want to handle aggregating/union the geometries in the applicatioin layer you may not need to maintain the original geometries. In this scenario, your implementation of the would almost be as simple as the following:
+If visual representation of spatial data is not required in the frontend or, if you want to handle aggregating/union the geometries in the application layer you may not need to maintain the original geometries. In this scenario, your implementation of the would almost be as simple as the following:
 
-```mermaid
+{{<mermaid>}}
 flowchart LR
 subgraph db
 	subgraph load
@@ -123,11 +123,11 @@ subgraph db
 	end
 end
 spatial.gpkg -- ogr2ogr --> load.foobar -- st_subdivide --> staging.foobar -- geom --> public.foobar
-```
+{{</mermaid>}}
 
-If you want to maintain the original geometries for visual purposes, for data lineage, accuracy, or any number of other reasons, your approach would look look something like:
+If you want to maintain the original geometries for visual purposes, for data lineage, accuracy, or any number of other reasons, your approach would look something like:
 
-```mermaid
+{{<mermaid>}}
 flowchart LR
 subgraph db
 	subgraph load
@@ -145,7 +145,7 @@ subgraph db
 end
 spatial.gpkg -- ogr2ogr --> load.foobar --> staging.foobar -- st_subdivide --> optimised.foobar_geometries 
 staging.foobar -- geom --> public.foobar
-```
+{{</mermaid>}}
 
 This approach is generally more complex as there's more moving parts. You'll need to implement specific application logic or a specific approach in how you query your data to ensure you utilise the subdivided geometries for any expensive operations. Additionally, depending on the size of the dataset, things like storage may need to be taken into account when doing your mental calculus. 
 
@@ -272,16 +272,16 @@ FROM (
 
 ---
 
-**Note**: If you're using an ORM like Django, the simplest approach in actually implementing the usage of these subdivided geometries (if stored seperately)  is to create or override the manager of your data model.
+**Note**: If you're using an ORM like Django, the simplest approach in actually implementing the usage of these subdivided geometries (if stored separately) is to create or override the manager of your data model.
 
  **Gotchas:**
 
 * You may need to adjust your subdivision approach and add additional additional parameters in determining subdivision candidates. For example, if you have an extremely large square covering the entire planet, any index will be useless.
-* The optimal amount of vertices to subdivide by will depend on the infrastructure you have available. 
+* The optimal number of vertices to subdivide by will depend on the infrastructure you have available. 
 
 ## Table Partitioning for Aggregated/Large Datasets
 
-When designing web applications which have multi-tenancy or SaaS-esque, it's important to reduce the amount of "configuration by code" that's required. Spatial tables in particular are a bit of a pain in things like spatial projections, etc. In the spatial applications I've built, I generally go for a "common" or "normalised" table approach where I destructure spatial tables into a set of tables. This means I can do things load entirely new datasets into an application without any code changes.
+When designing web applications which have multi-tenancy or SaaS-esque, it's important to reduce the amount of "configuration by code" that's required. Spatial tables in particular are a bit of a pain in things like spatial projections, etc. In the spatial applications I've built, I generally go for a "common" or "normalised" table approach where I destructure spatial tables into a set of tables. This means I can load entirely new datasets into an application without any code changes.
 
 However, this means that optimisation is extremely important as some tables have at times are in the billions of rows. Partitioning is crucial for applications dealing with large volumes of spatial records. However, the specific strategy in how you implement partitioning will be dependent on what your application is doing and the context of your datasets.
 
@@ -337,17 +337,17 @@ WHERE ST_DWithin(geom, point_geometry, 1000);
 
 ## Vector Tiles for High-Performance Mapping
 
-For a very long time, I was stuck using an old version of Leaflet for the frontend of one the applications I was developing. This was entirely due to the fact that the application was forced to use a whole load of outdated internal repositories. However, a few years ago I had switched the majority of my projects to using MapLibres and vector tiles were a complete game changer for me... they are the *absolute* best.
+For a very long time, I was stuck using an old version of Leaflet for the frontend of one of the applications I was developing. This was entirely due to the fact that the application was forced to use a whole load of outdated internal repositories. However, a few years ago I had switched the majority of my projects to using MapLibre and vector tiles were a complete game changer for me... they are the *absolute* best.
 
 Instead of sending structured JSON (or GeoJSON) to your client, you send protobuf vector tiles directly to MapLibre. It essentially copies the same approach that raster tiles use, i.e. using x, y, zoom to limit both data retrieved and fidelity of data based on how your map is positioned and zoomed.  
 
 ### Implementation Approaches
 
-The below is a high level overview of how I've generally structured my applications. Depending of the complexity of your needs, you may forgoe serving vector tiles from your backend entirely if all you need is basically visualisation purposes. For example, [Martin](https://martin.maplibre.org/) is a pretty awesome library I've used on some no-server projects.
+The below is a high level overview of how I've generally structured my applications. Depending on the complexity of your needs, you may forgo serving vector tiles from your backend entirely if all you need is basically visualisation purposes. For example, [Martin](https://martin.maplibre.org/) is a pretty awesome library I've used on some no-server projects.
 
 However, if you do have a server in the mix, your setup will likely end up looking like:
 
-```mermaid
+{{<mermaid>}}
 sequenceDiagram
     participant Client as React+MapLibre
     participant API as Django
@@ -367,7 +367,7 @@ sequenceDiagram
         API->>Cache: Store with infinite TTL
         API-->>Client: Binary MVT data
     end
-```
+{{</mermaid>}}
 
 In this scenario, whilst the server/application layer will be serving the vector tiles, we want to almost exclusively use the database to do this operation as it's expensive.  
 
@@ -380,7 +380,7 @@ GET /api/tiles/{layer}/{z}/{x}/{y}.mvt
 GET /api/tiles/{layer}/{z}/{x}/{y}.mvt?filter={encoded_filter}
 ```
 
-In the case of Django my implementation approach would be to create a selector that executes my MVT directly into a HTTP response, here's a generic boilerplate I created for myself when scaffolding new projects.
+In the case of Django my implementation approach would be to create a selector that executes my MVT directly into an HTTP response, here's a generic boilerplate I created for myself when scaffolding new projects.
 
 ```py
 @router.get("/layer/{zoom}/{x}/{y}", response=bytes)
@@ -547,7 +547,7 @@ There's a finite limit of how far we can optimise in this case before we hit dim
 1. Enable compression (e.g. gzip) middleware
 2. Minimise the data being sent to the frontend by:
    1. Sending _only_ the required data in an array of tuples; and/or
-   2. Removing whitepsace; and/or
+    2. Removing whitespace; and/or
    3. Reducing precision of coordinates; then
 3. Utilise a cache if dataset is not dynamic/variable; then
 4. Move serialisation/structuring of data to frontend library like `@turf` to structure the tuples into a valid `FeatureCollection`
@@ -646,7 +646,7 @@ Dynamic data: "mvt:{layer}:{zoom}:{x}:{y}:{filter_hash}"
 
 * With an additional cache like `redis` implemented, you will essentially have multiple layers of caching. It's important you understand how you will manage invalidation of response across your application.
 
-```mermaid
+{{<mermaid>}}
 graph TB
     subgraph "Client Layer"
         A[Browser Cache]
@@ -673,7 +673,7 @@ graph TB
     D --> E
     E --> F
     F --> G
-```
+{{</mermaid>}}
 
 
 
@@ -681,7 +681,7 @@ graph TB
 
 Another quirk of MapLibre which drives me somewhat insane is the race conditions that often occur with how it loads its layers; this is specifically an issue when using `react-map-gl`. Because of how React works, it can quickly get hacky and messy when you start using the map's ref directly to trigger reordering of layers.
 
-A hack that I've came up with is a concept called an 'overlay anchor'. Basically, you create empty layers (as many as you need) which act as anchors for the layers being loaded. This means you can safely use `beforeId` without worrying about racae conditions.
+A hack that I've came up with is a concept called an 'overlay anchor'. Basically, you create empty layers (as many as you need) which act as anchors for the layers being loaded. This means you can safely use `beforeId` without worrying about race conditions.
 
 ```tsx
 import { Source, Layer } from 'react-map-gl/maplibre'
