@@ -54,6 +54,17 @@ The spatial development community seems to have this unspoken agreement that eve
 
 * For all of the suggestions/tricks in this post, you'll need to do the mental calculus whether or not the benefits from introducing some of these tweaks is greater than the introduced complexity overhead.
 
+---
+
+## TL;DR
+
+- Index properly: GiST for polygons/complex geometries, SP‑GiST for large clustered points. Use compound indexes when filtering by attributes + geometry.
+- Optimize queries early: use bbox predicates first (`&&`), avoid unnecessary `ST_Transform` on indexed columns, and `EXPLAIN` regularly.
+- Subdivide big geometries: `ST_Subdivide` during ETL to let the planner prune quickly; keep originals only if you need perfect visuals.
+- Partition large tables: choose keys that match common filters so the planner prunes partitions; keep constraints and indexes tight.
+- Serve MVT from PostGIS: generate tiles in the DB (`ST_AsMVTGeom`/`ST_AsMVT`), and cache aggressively.
+- Frontend sanity: use MapLibre “overlay anchors” to control layer order; push heavy serialization to the client only when clustering demands it.
+
 ## Spatial Indexing Strategy
 
 The foundation of any high-performance spatial application lies in proper spatial indexing. Like any index, spatial indexes are way for your database to effectively filter our large volumes of irrelevant rows, it does this by creating a bounding box over a geometry.
@@ -85,6 +96,8 @@ CREATE INDEX idx_points_spgist ON point_table USING SPGIST(location);
 * Don't assume that a simple geometry can be effectively indexed. If, for example, you have a very large square across the entire country, that index is essentially useless. 
 * Watch your projections, if you're using an `ST_Transform` in a query and the index of the geometry column has been done in the original projection, that spatial index will not be used.
 
+_**When to use / Trade‑offs**: Always index geometry columns used for spatial predicates; compound indexes help mixed filters but increase write cost and disk usage._
+
 ## Geometry Subdivision for Performance
 
 Large and/or complex geometries can severely impact query performance. One of the most effective techniques I've discovered is using PostGIS's `ST_Subdivide` function during your ETL process to break down unwieldy polygons into manageable chunks.
@@ -102,6 +115,8 @@ Practically, I think implementation options of implementing geometry subdivision
 3. Using your application layer.
 
 All have their own complexity overheads and advantages which I'll talk through in more detail in the next few subsections. Note, you may need to do more than one depending on what you're doing with the data.
+
+_**When to use / Trade‑offs**: Subdivide when geometries are large/complex and queried spatially; it speeds intersects/tiling but adds ETL/storage complexity and requires careful query routing._
 
 ---
 
@@ -313,6 +328,8 @@ def ensure_partition_exists(sender, instance, **kwargs):
 * If performance is still poor, make sure you've got your indexes set up correctly. Partition tables will have multi-column primary indexes generally.
 * Depending on the scale of your data, you'll likely need to add additional partitioning rules such as country of dataset, or even state/locality, etc.
 
+_**When to use / Trade‑offs**: Use partitioning when tables are huge or retention/tenancy splits are natural; you’ll gain planner pruning and maintenance wins at the cost of more DDL and index overhead._
+
 ## Query Optimization Techniques
 
 **Spatial Query Optimization:**
@@ -370,6 +387,8 @@ sequenceDiagram
 {{</mermaid>}}
 
 In this scenario, whilst the server/application layer will be serving the vector tiles, we want to almost exclusively use the database to do this operation as it's expensive.  
+
+_**When to use / Trade‑offs**: Serve MVT for dynamic, interactive maps at scale; DB‑generated tiles are fast and cacheable but shift CPU to the database—monitor load and cache aggressively._
 
 #### Routing
 
@@ -606,6 +625,8 @@ def spatial_layer_endpoint(
 * Whilst you can optimise the payload to the browser into a small size (e.g. 4mb), you'll likely run into memory issues with the browser itself. This becomes quite common when you exceed a million points; it's very browser dependent on how it handles memory. 
 * If you're using persisted states in your frontend, you need to be careful how data is being stored in the client state (especially ith large amount of records).
 
+_**When to use / Trade‑offs**: Use tuple streams + client clustering when you truly need clustering today; payloads shrink, but the client pays in memory/CPU—watch browser limits._
+
 ## Implementing Response Caching
 
 Spatial queries are slow and expensive, even with all the optimisations in the world some queries can be extremely slow especially if the query is a complex one. 
@@ -652,6 +673,8 @@ graph TB
         A[Browser Cache]
         B[Service Worker Cache]
     end
+
+_**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part—plan keys and triggers upfront._
 
     subgraph "CDN Layer"
         C[CloudFront/CDN]
