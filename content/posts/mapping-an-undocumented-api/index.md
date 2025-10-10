@@ -3,7 +3,15 @@ author: "Andryo Marzuki"
 title: "Mapping an Undocumented API Easily With Python"
 date: "2020-09-13"
 description: "Using your browser and Python to map out an undocumented API quickly"
-tags: ["Python"]
+tags: ["Python", "APIs", "Reverse Engineering", "Developer Tools"]
+slug: "mapping-an-undocumented-api"
+lastmod: "2020-09-13"
+canonicalURL: "https://mrzk.io/posts/mapping-an-undocumented-api/"
+keywords:
+    - reverse engineer api
+    - har files api mapping
+    - python tooling
+    - undocumented api endpoints
 ---
 
 I was working on an NBA related project the other week and I had decided I wanted to create my own API wrapper (for fun) as part of the project. The primary source of data I was looking to use was the [stats.nba.com](stats.nba.com) API, our biggest challenge in using this endpoint is the fact they do not want to use it.

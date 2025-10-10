@@ -3,7 +3,16 @@ author: "Andryo Marzuki"
 title: "Did COVID-19 Help Trump Win In The 2024 Elections? Probably."
 date: "2025-04-23"
 description: "I've long entertained a personal pet conspiracy theory that COVID-19 has had a far deeper impact on Trump's re-election in 2024 than most realise. While numerous factors undoubtedly contributed to Trump's victory, this article specifically explores the subtle but significant role COVID-19 may have played."
-tags: ["Data Analysis", "COVID-19"]
+tags: ["Data Analysis", "COVID-19", "Elections", "USA", "Politics"]
+slug: "did-covid19-make-trump-president"
+lastmod: "2025-04-23"
+canonicalURL: "https://mrzk.io/posts/did-covid19-make-trump-president/"
+keywords:
+    - covid-19 election impact
+    - 2024 us election analysis
+    - voter disenfranchisement
+    - long covid politics
+    - political data analysis
 ---
 
 As a non-American observing America’s enthusiastic self-destructing, I find it utterly baffling that a man like Donald Trump could secure a second term. Over half the nation saw the individual who somehow achieved the rare feat of bankrupting not one but two casinos, which are famously designed to print money, as the best choice to lead the country. There's definitely something wrong with America right?
