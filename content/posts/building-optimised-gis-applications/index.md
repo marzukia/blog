@@ -674,8 +674,6 @@ graph TB
         B[Service Worker Cache]
     end
 
-_**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part—plan keys and triggers upfront._
-
     subgraph "CDN Layer"
         C[CloudFront/CDN]
     end
@@ -698,6 +696,8 @@ _**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; i
     F --> G
 {{</mermaid>}}
 
+
+_**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part—plan keys and triggers upfront._
 
 
 ## Forcing React MapLibre Order
