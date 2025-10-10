@@ -47,3 +47,9 @@
     width: 35rem;
 }
 
+/* Hide backticks around inline code */
+code::before,
+code::after {
+    content: "" !important;
+}
+

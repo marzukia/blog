@@ -5,6 +5,6 @@ cd marzukia.github.io
 
 git add .
 git commit -m 'new post or changes'
-git push --force
+git push origin HEAD:master --force
 
 cd ..
