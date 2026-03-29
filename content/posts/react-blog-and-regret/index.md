@@ -3,7 +3,16 @@ author: "Andryo Marzuki"
 title: "Making a React Blog and Why You Shouldn't (They Suck)"
 date: "2021-10-29"
 description: "The biggest strength of a static pages blog is that it's all pre-rendered; your website will load lightning-quick and give you great SEO; however, it becomes a massive chore when you attempt to integrate external projects. A couple of months ago, I thought it would be a fun project to create my own CMS/blog to replace the static pages (Hugo) blog I currently had deployed on my GitHub Pages. My primary motivator for doing this was my perceived lack of flexibility of Hugo, which was the lack of flexibility outside of written content."
-tags: ["React", "TypeScript"]
+tags: ["React", "TypeScript", "Static Site", "Hugo", "SSR", "SEO"]
+slug: "react-blog-and-regret"
+lastmod: "2021-10-29"
+canonicalURL: "https://mrzk.io/posts/react-blog-and-regret/"
+keywords:
+  - react blog
+  - static site vs react
+  - hugo vs react
+  - server side rendering
+  - seo performance
 ---
 
 The biggest strength of a static pages blog is that it's all pre-rendered; your website will load lightning-quick and give you great SEO; however, it becomes a massive chore when you attempt to integrate external projects.

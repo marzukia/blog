@@ -3,9 +3,17 @@ author: "Andryo Marzuki"
 title: "How Well Has New Zealand Handled COVID-19?"
 date: "2020-09-06"
 description: "How well has New Zealand handled COVID-19 in the context of economic impact aswell as human impact? An analysis using fund performance as a proxy."
-tags: ["Data Analysis", "COVID-19"]
+tags: ["Data Analysis", "COVID-19", "New Zealand", "Economy"]
 aliases:
   - "/post/how-well-has-new-zealand-handled-covid-19/"
+slug: "nz-usa-covid19"
+lastmod: "2020-09-06"
+canonicalURL: "https://mrzk.io/posts/nz-usa-covid19/"
+keywords:
+  - covid-19 new zealand economy
+  - nz vs usa covid response
+  - etf performance proxy
+  - pandemic analysis
 ---
 
 At the beginning of March, I made the unfortunate decision of investing into two exchange-traded funds (ETFs) which were SmartShare's FNZ (NZ Top 50) and USF (Fortune 500). It was unfortunate because the world decided to set itself on fire due to the COVID-19 pandemic.
