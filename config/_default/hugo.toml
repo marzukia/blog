@@ -1,4 +1,4 @@
-baseURL = "https://mrzk.io/"
+baseURL = "https://marzukia.github.io/"
 languageCode = "en"
 defaultContentLanguage = "en"
 
@@ -17,3 +17,7 @@ summaryLength = 2
 
   [services.googleAnalytics]
     id = 'G-F52W3SZVZ4'
+
+[params]
+  [params.githubPages]
+    enabled = true

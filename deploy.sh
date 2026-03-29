@@ -1,10 +1,11 @@
 #!/bin/bash
-hugo -d ./marzukia.github.io
+# Local build script for testing Hugo site
+# For automated deployment, push to main branch and GitHub Actions will handle it
 
-cd marzukia.github.io
+hugo --minify
 
-git add .
-git commit -m 'new post or changes'
-git push --force
-
-cd ..
+echo "Build complete! Site is in ./public"
+echo "To deploy to GitHub Pages, push to main branch:"
+echo "  git add ."
+echo "  git commit -m 'Your message'"
+echo "  git push origin main"
