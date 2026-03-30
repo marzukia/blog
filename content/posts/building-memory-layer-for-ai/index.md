@@ -1,8 +1,10 @@
 ---
+author: "Andryo Marzuki"
 title: "Building a Memory Layer for AI"
-date: 2026-03-29T12:00:00+11:00
-draft: true
-tags: ["ai", "llm", "memory", "technology"]
+date: "2026-03-29"
+description: "Exploring how to build AI systems that remember conversations and context through distillation, vector search, and temporal decay."
+tags: ["AI", "LLM", "Memory", "Technology"]
+ogImage: "https://mrzk.io/building-memory-layer-for-ai/cover.png"
 ---
 
 # Building a Memory Layer for AI
