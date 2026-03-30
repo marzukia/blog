@@ -19,7 +19,7 @@ This isn't a feature. It's a fundamental limitation of how LLMs work. Each conve
 
 I'm in a lucky position. I have the technical curiosity, the skills, and the excuse to actually look into this problem properly. In my work with geospatial data and climate risk modelling, I've seen how critical context is for meaningful analysis. Yet when it came to AI assistants, there was no good solution.
 
-The truth is, I don't necessarily think LLMs are the path to true AGI. They're incredibly impressive, sure, but they're fundamentally different from how human intelligence works. They're pattern matchers on steroids, not thinkers in any real sense.
+I don't think LLMs are the path to true AGI. They're incredibly impressive, sure, but they're fundamentally different from how human intelligence works. They're pattern matchers on steroids, not thinkers in any real sense.
 
 Recent research confirms this. There's growing evidence about the limitations of current AI approaches:
 
@@ -49,25 +49,19 @@ When I think about how I remember things, I don't remember every single sentence
 
 Most systems treat all conversation turns equally. My brain doesn't. It stores the essence, not the transcript.
 
-### The Architecture
+### How It Works
 
-Watermemo does three things:
+The system has three main components:
 
 ```
 User + Assistant exchange
-        │
-        ▼
+    ↓
   POST /api/memories/         ← stores raw content (returns immediately)
-        │
-        ├──▶ Background thread: LLM distillation (DISTILLATION.md prompt)
-        │         │
-        │         ├──▶ Evaluate core status (CORE_EVAL.md prompt)
-        │         └──▶ Create Distillation record (embedding auto-generated)
-        │
-        ▼
+    ↓
+  Background thread: LLM distillation (DISTILLATION.md prompt)
+    ↓
   POST /api/distillations/search   ← embed query → cosine similarity search
-        │
-        ▼
+    ↓
   Recalled distillations injected into system prompt
 ```
 
@@ -98,7 +92,7 @@ These get flagged and receive a 2x boost in recall threshold, ensuring they're a
 
 ## Not a Novel Idea, But a Novel Application
 
-It's worth acknowledging that this isn't a novel concept. The AI community has embraced vector databases as the de facto solution for AI memory. They excel at semantic search and power successful RAG (Retrieval Augmented Generation) systems. Papers like "When Large Language Models Meet Vector Databases: A Survey" (arXiv 2024) show how RAG emerges as a solution that addresses challenges faced by LLMs in integrating and processing large and dynamic data in external databases.
+This isn't a novel concept. The AI community has embraced vector databases as the de facto solution for AI memory. They excel at semantic search and power successful RAG (Retrieval Augmented Generation) systems. Papers like "When Large Language Models Meet Vector Databases: A Survey" (arXiv 2024) show how RAG emerges as a solution that addresses challenges faced by LLMs in integrating and processing large and dynamic data in external databases.
 
 There are already many practical implementations: Qdrant, pgvector, Pinecone, and others. The concept of using vector stores for long-term memory is well-established in the community.
 
@@ -122,7 +116,7 @@ When you build an AI assistant that remembers your preferences, you're not just 
 
 I was inspired by a simple observation. My AI should remember the accumulation of tiny events that build context. When I mention "that library I like" three weeks later, it should know which library that is. When I reference "the project we discussed," it should understand what project.
 
-It's about nuance. More natural or human-like recall would be beneficial in making decisions feel more human.
+It's about nuance.
 
 ## The Implementation: Pragmatic & Flexible
 
@@ -171,9 +165,9 @@ There are things I'm thinking about:
 
 Building AI applications that actually remember things is hard. But it's not impossible.
 
-The key insight: distill the memories, not the conversations. Store the raw exchanges, but let an LLM extract the essence. Search on that essence. Inject the relevant memories as context.
+Distill the memories, not the conversations. Store the raw exchanges, but let an LLM extract the essence. Search on that essence. Inject the relevant memories as context.
 
-It's a simple idea, but it makes all the difference. I think.
+It's a simple idea, but it makes all the difference.
 
 ---
 
