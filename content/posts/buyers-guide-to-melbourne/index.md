@@ -8,17 +8,17 @@ tags: ["Data Analysis", "Housing", "Melbourne", "Geospatial"]
 
 When I relocated to Melbourne last September, I found myself renting again for the first time in nearly a decade. One of the hardest parts of moving to a new country was having no intuitive sense of which neighbourhoods were considered good, up-and-coming, or best avoided.
 
-I've now gone unconditional on a property, and it would feel like a waste not to share the data I collected and the analysis I carried out—especially if it can help others navigating the same journey.
+I've now gone unconditional on a property, and it would feel like a waste not to share the data I collected and the analysis I carried out-especially if it can help others navigating the same journey.
 
 ## Where the Hell Do I Buy?
 
-Even with helpful advice from colleagues, I found it difficult to make sense of it all—lacking the local knowledge to properly weigh their suggestions.
+Even with helpful advice from colleagues, I found it difficult to make sense of it all-lacking the local knowledge to properly weigh their suggestions.
 
 Melbourne proved to be a completely different experience from Auckland. The sheer scale and density of the city meant that just a few kilometres could translate to a 30-minute drive. While public transport here is significantly better than Auckland’s (which, to be fair, is almost non-existent), it has its own quirks.
 
-Travel to and from the city centre is relatively straightforward, but commuting between nearby suburbs—especially those not directly connected to the CBD—can be surprisingly time-consuming. For example, cycling from Ascot Vale to Carlton North takes about 25 minutes, but the same trip by tram or train can take nearly an hour.
+Travel to and from the city centre is relatively straightforward, but commuting between nearby suburbs-especially those not directly connected to the CBD-can be surprisingly time-consuming. For example, cycling from Ascot Vale to Carlton North takes about 25 minutes, but the same trip by tram or train can take nearly an hour.
 
-Amid the usual uncertainty of renting, I felt a growing need to find a more permanent home—somewhere that could offer my daughter a greater sense of long-term stability. I wanted to take a methodical approach, using a simple scoring system to evaluate properties at a glance and filter them from 'interesting' to both interesting _and_ viable.
+Amid the usual uncertainty of renting, I felt a growing need to find a more permanent home-somewhere that could offer my daughter a greater sense of long-term stability. I wanted to take a methodical approach, using a simple scoring system to evaluate properties at a glance and filter them from 'interesting' to both interesting _and_ viable.
 
 ## Finding & Getting the Data
 
@@ -28,7 +28,7 @@ The goal was to build a cohesive view that brought together key livability and a
 
 #### Notes
 
-- All transport and cycling times are calculated to the ANZ Centre in Docklands and include walking time. If you work elsewhere, your mileage may vary—and some adjustments may be necessary.
+- All transport and cycling times are calculated to the ANZ Centre in Docklands and include walking time. If you work elsewhere, your mileage may vary-and some adjustments may be necessary.
 - High-resolution images and source data are available in the appendix.
 
 ### Train & Tram Routes
@@ -41,25 +41,25 @@ _**Key takeaway**: You'll want to be close to a train station or tram stop._
 
 ### Transit & Cycling Times to Docklands
 
-This one was straightforward—Google is more than happy to provide this information for a fee.
+This one was straightforward-Google is more than happy to provide this information for a fee.
 
 To estimate realistic travel times, I generated a grid of approximately 15,000 sample points spaced at ~0.05 degrees across metropolitan Melbourne. Using the Google Routing API, I calculated public transport and cycling times from each point, targeting an arrival time of 8:30 AM on a Monday.
 
 #### Public Transport
 
-Unsurprisingly, shorter travel times correlate strongly with proximity to train and tram stations. Efficient routes matter more than geographic closeness. Suburbs like Williamstown and St Kilda—while not particularly central—benefit from direct, fast train lines.
+Unsurprisingly, shorter travel times correlate strongly with proximity to train and tram stations. Efficient routes matter more than geographic closeness. Suburbs like Williamstown and St Kilda-while not particularly central-benefit from direct, fast train lines.
 
-_**Key takeaway**: Proximity to train or tram stations matters more than distance—efficient transport beats geographic closeness._
+_**Key takeaway**: Proximity to train or tram stations matters more than distance-efficient transport beats geographic closeness._
 
 ![Public transport times for Melbourne](pt-map.png)
 
 #### Cycling
 
-While Google Maps isn’t perfect at modelling cycling routes—particularly when it comes to elevation or actual bike lanes—it was accurate enough to give a rough sense of travel times.
+While Google Maps isn’t perfect at modelling cycling routes-particularly when it comes to elevation or actual bike lanes-it was accurate enough to give a rough sense of travel times.
 
 Unlike public transport, cycling times behave predictably: the further you are, the longer it takes.
 
-_**Key takeaway**: Distance matters—no shortcuts on a bike._
+_**Key takeaway**: Distance matters-no shortcuts on a bike._
 
 ![Cycling times for Melbourne](cycling-map.png)
 
@@ -77,15 +77,15 @@ _**Key takeaway**: Better-performing public schools tend to be in the eastern su
 
 ### Suburb Affluence & Gentrification
 
-As I settled into Melbourne, I kept hearing stories of suburbs that had become “nice” over the last decade—classic gentrification. The problem was, I had no personal context to assess these claims. I didn’t know what these places used to be like.
+As I settled into Melbourne, I kept hearing stories of suburbs that had become “nice” over the last decade-classic gentrification. The problem was, I had no personal context to assess these claims. I didn’t know what these places used to be like.
 
 This is where census data from the ABS came in handy. While not available in bulk at the postcode (POA) level, summary data was readily accessible through their portal and simple enough to scrape.
 
 #### Median Household Income
 
-The census data confirmed what many locals had told me: wealth is largely concentrated in the eastern suburbs. I didn’t scrape real estate listings, but casual observation suggests that higher income aligns with higher property prices. For scoring purposes, that made these areas less attractive—they were simply too competitive.
+The census data confirmed what many locals had told me: wealth is largely concentrated in the eastern suburbs. I didn’t scrape real estate listings, but casual observation suggests that higher income aligns with higher property prices. For scoring purposes, that made these areas less attractive-they were simply too competitive.
 
-The ideal is finding suburbs that weren’t historically affluent but have shown clear upward trends—strong signals of ongoing gentrification.
+The ideal is finding suburbs that weren’t historically affluent but have shown clear upward trends-strong signals of ongoing gentrification.
 
 _**Key takeaway**: Affluence is concentrated in the east, and it often comes with a premium._
 
@@ -95,11 +95,11 @@ _**Key takeaway**: Affluence is concentrated in the east, and it often comes wit
 
 I focused on changes in median monthly household income between the 2016 and 2021 censuses.
 
-As expected, already-affluent suburbs showed little movement. But inner-north and inner-west suburbs—like Yarraville, Kingsville, West Footscray, and Brunswick—saw noticeable income growth. The data backed up what I was hearing: these were the suburbs on the rise.
+As expected, already-affluent suburbs showed little movement. But inner-north and inner-west suburbs-like Yarraville, Kingsville, West Footscray, and Brunswick-saw noticeable income growth. The data backed up what I was hearing: these were the suburbs on the rise.
 
-This also suggests potential for value—areas that have gentrified but where the market hasn’t fully caught up.
+This also suggests potential for value-areas that have gentrified but where the market hasn’t fully caught up.
 
-_**Key takeaway**: The inner north and west have gentrified heavily—there’s still value to be found._
+_**Key takeaway**: The inner north and west have gentrified heavily-there’s still value to be found._
 
 ![Gentrification](gentrification-map.png)
 
@@ -125,7 +125,7 @@ The result was a cumulative score that helped highlight suburbs with good fundam
 
 #### Notes
 
-- The weights reflect my priorities—they might differ from yours.
+- The weights reflect my priorities-they might differ from yours.
 - The lower the cumulative score, the better.
 - All raw data and scripts are available in the appendix.
 
@@ -158,11 +158,11 @@ The result was a cumulative score that helped highlight suburbs with good fundam
 
 If we look at what the top 20 postcodes have in common:
 
-- Nearly all top-ranked suburbs are well-served by both tram and train lines—some with multiple options—leading to lower commute times.
+- Nearly all top-ranked suburbs are well-served by both tram and train lines-some with multiple options-leading to lower commute times.
 - Suburbs like 3054 (Carlton North / Princes Hill), 3053 (Carlton), and 3002 (East Melbourne) are all within an easy, flat cycling distance to the city, explaining their high cycle scores.
 - Inner-west and inner-north areas (3011 – Footscray, 3066 – Collingwood, 3057 – Brunswick East) show strong recent growth in income, suggesting they’re still evolving and may offer upside.
 - While not all top suburbs have the best schools, they tend to score decently. Lower scores here may be offset by strong access and rising affluence.
-- Suburbs like 3054, 3056 (Brunswick), and 3011 are still priced beneath the east-side powerhouses—making them viable options in terms of value-for-money.
+- Suburbs like 3054, 3056 (Brunswick), and 3011 are still priced beneath the east-side powerhouses-making them viable options in terms of value-for-money.
 
 ### Bottom 20 Postcodes
 
@@ -192,19 +192,19 @@ If we look at what the top 20 postcodes have in common:
 If we look at what the bottom 20 postcodes have in common:
 
 - Public transport access is consistently poor, with many areas lacking convenient tram or train connections.
-- All bottom-ranked suburbs scored a full 1.0000 for cycling and transit, indicating long distances or poor infrastructure for both modes—likely outer suburban or fringe areas far from the CBD.
+- All bottom-ranked suburbs scored a full 1.0000 for cycling and transit, indicating long distances or poor infrastructure for both modes-likely outer suburban or fringe areas far from the CBD.
 - School rankings vary, but tend to be mid-to-low. Even when schools are decent (e.g. 3062 – Somerton/Roxburgh Park), they're not enough to offset poor access and distance.
 - Affluence is moderate but stagnant, with little indication of recent gentrification. Many postcodes (e.g. 3179 – Boronia, 3154 – The Basin) have middling income and minimal growth.
-- Gentrification signals are weak—suburbs like 3153 (Bayswater) and 3428 (Roxburgh Park) may have affordable homes, but show limited signs of transformation or upward momentum.
-- Distance from the CBD is a common denominator. These areas might offer space, but they’re difficult to reach, especially if you don't drive—making them less viable under a livability model weighted towards access and upside potential.
+- Gentrification signals are weak-suburbs like 3153 (Bayswater) and 3428 (Roxburgh Park) may have affordable homes, but show limited signs of transformation or upward momentum.
+- Distance from the CBD is a common denominator. These areas might offer space, but they’re difficult to reach, especially if you don't drive-making them less viable under a livability model weighted towards access and upside potential.
 
 ## Conclusion
 
-Buying a home in a city you don’t fully understand is daunting—even more so when local knowledge is scattered, subjective, or anecdotal. My goal with this project wasn’t to find the “perfect” suburb, but to give myself a structured, data-driven way to make informed trade-offs.
+Buying a home in a city you don’t fully understand is daunting-even more so when local knowledge is scattered, subjective, or anecdotal. My goal with this project wasn’t to find the “perfect” suburb, but to give myself a structured, data-driven way to make informed trade-offs.
 
-By combining multiple datasets—transport access, school zoning, affluence, gentrification trends—I was able to narrow down the overwhelming number of options into something manageable and meaningful. The scoring model isn’t flawless, and the weights reflect my personal priorities, but it helped me move from uncertainty to clarity.
+By combining multiple datasets-transport access, school zoning, affluence, gentrification trends-I was able to narrow down the overwhelming number of options into something manageable and meaningful. The scoring model isn’t flawless, and the weights reflect my personal priorities, but it helped me move from uncertainty to clarity.
 
-If nothing else, I hope this approach offers a helpful starting point for others trying to navigate the Melbourne property market with both eyes open. And if you're a fellow spreadsheet tragic—well, now you’ve got something to plug your own assumptions into.
+If nothing else, I hope this approach offers a helpful starting point for others trying to navigate the Melbourne property market with both eyes open. And if you're a fellow spreadsheet tragic-well, now you’ve got something to plug your own assumptions into.
 
 Happy house hunting.
 
@@ -214,21 +214,21 @@ Happy house hunting.
 
 You can download all spatial datasets used in this analysis from the following links:
 
-- [census.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/census.gpkg) — Raw census summary data
-- [cycle_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/cycle_zones.gpkg) — Cycling time zones to Docklands
-- [gentrification.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/gentrification.gpkg) — Change in household income (2016–2021)
-- [median_age.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/median_age.gpkg) — Median age per postcode
-- [monthly_household_income.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/monthly_household_income.gpkg) — 2021 median household income
-- [monthly_rent.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/monthly_rent.gpkg) — Median rent per postcode
-- [people_per_household.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/people_per_household.gpkg) — Average number of people per household
-- [poa_2021.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/poa_2021.gpkg) — Postcode area geometries (2021)
-- [poa_scored.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/poa_scored.gpkg) — Final scored dataset used for ranking
-- [school_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/school_zones.gpkg) — Public school catchment areas
-- [train_routes.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/train_routes.gpkg) — Train route geometries
-- [train_stations.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/train_stations.gpkg) — Train station locations
-- [tram_routes.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/tram_routes.gpkg) — Tram route geometries
-- [tram_stops.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/tram_stops.gpkg) — Tram stop locations
-- [transit_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/transit_zones.gpkg) — Public transport time zones to Docklands
+- [census.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/census.gpkg) - Raw census summary data
+- [cycle_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/cycle_zones.gpkg) - Cycling time zones to Docklands
+- [gentrification.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/gentrification.gpkg) - Change in household income (2016–2021)
+- [median_age.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/median_age.gpkg) - Median age per postcode
+- [monthly_household_income.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/monthly_household_income.gpkg) - 2021 median household income
+- [monthly_rent.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/monthly_rent.gpkg) - Median rent per postcode
+- [people_per_household.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/people_per_household.gpkg) - Average number of people per household
+- [poa_2021.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/poa_2021.gpkg) - Postcode area geometries (2021)
+- [poa_scored.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/poa_scored.gpkg) - Final scored dataset used for ranking
+- [school_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/school_zones.gpkg) - Public school catchment areas
+- [train_routes.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/train_routes.gpkg) - Train route geometries
+- [train_stations.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/train_stations.gpkg) - Train station locations
+- [tram_routes.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/tram_routes.gpkg) - Tram route geometries
+- [tram_stops.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/tram_stops.gpkg) - Tram stop locations
+- [transit_zones.gpkg](https://github.com/marzukia/melbourne-house-data/raw/refs/heads/main/transit_zones.gpkg) - Public transport time zones to Docklands
 
 ### Scoring SQL
 

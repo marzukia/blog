@@ -49,7 +49,7 @@ The spatial development community seems to have this unspoken agreement that eve
 
 **Preamble**
 
-* My experience has been using PostGIS as my spatial database and various ORMs as my server, however, most of my examples will show Django examples when showing pseudo/boilerplate code. 
+* My experience has been using PostGIS as my spatial database and various ORMs as my server, however, most of my examples will show Django examples when showing pseudo/boilerplate code.
 * The database of your web application is incredibly important as it's what you'll want to use as the main backbone of any spatial functionality or activity. For example, if you have the ability to directly serve spatial tables already rendered as GeoJSON or MVT, you should do that. Whilst you can use your application layer to do some manipulation, it will be infinitely slower than leveraging your database.
 
 * For all of the suggestions/tricks in this post, you'll need to do the mental calculus whether or not the benefits from introducing some of these tweaks is greater than the introduced complexity overhead.
@@ -93,7 +93,7 @@ CREATE INDEX idx_points_spgist ON point_table USING SPGIST(location);
 
  **Gotchas:**
 
-* Don't assume that a simple geometry can be effectively indexed. If, for example, you have a very large square across the entire country, that index is essentially useless. 
+* Don't assume that a simple geometry can be effectively indexed. If, for example, you have a very large square across the entire country, that index is essentially useless.
 * Watch your projections, if you're using an `ST_Transform` in a query and the index of the geometry column has been done in the original projection, that spatial index will not be used.
 
 _**When to use / Trade‑offs**: Always index geometry columns used for spatial predicates; compound indexes help mixed filters but increase write cost and disk usage._
@@ -104,7 +104,7 @@ Large and/or complex geometries can severely impact query performance. One of th
 
 However, it should be important that this is not something you should always do universally. Subdividing geometries adds additional complexity to your application, so when deciding whether or not to subdivide, I always do the mental calculus in determining whether the increased complexity is worth the performance increases.
 
-If you reduce this concept its simplest form, you can think of it like this - having a  large spatial index is essentially the same as having no index, subdivision enables the query engine to eliminate the majority of a large geometry. 
+If you reduce this concept its simplest form, you can think of it like this - having a  large spatial index is essentially the same as having no index, subdivision enables the query engine to eliminate the majority of a large geometry.
 
 ### Implementation Approaches
 
@@ -158,18 +158,18 @@ subgraph db
 		public.foobar
 	end
 end
-spatial.gpkg -- ogr2ogr --> load.foobar --> staging.foobar -- st_subdivide --> optimised.foobar_geometries 
+spatial.gpkg -- ogr2ogr --> load.foobar --> staging.foobar -- st_subdivide --> optimised.foobar_geometries
 staging.foobar -- geom --> public.foobar
 {{</mermaid>}}
 
-This approach is generally more complex as there's more moving parts. You'll need to implement specific application logic or a specific approach in how you query your data to ensure you utilise the subdivided geometries for any expensive operations. Additionally, depending on the size of the dataset, things like storage may need to be taken into account when doing your mental calculus. 
+This approach is generally more complex as there's more moving parts. You'll need to implement specific application logic or a specific approach in how you query your data to ensure you utilise the subdivided geometries for any expensive operations. Additionally, depending on the size of the dataset, things like storage may need to be taken into account when doing your mental calculus.
 
 **ETL Basic Example**
 
 ```sql
 -- Step 1: Load raw data into staging
-CREATE TABLE staging.foobar AS 
-SELECT 
+CREATE TABLE staging.foobar AS
+SELECT
     id,
     name,
     category,
@@ -178,7 +178,7 @@ FROM load.foobar;
 
 -- Step 2: Create subdivided table directly
 CREATE TABLE public.foobar AS
-SELECT 
+SELECT
     id,
     name,
     category,
@@ -194,8 +194,8 @@ CREATE INDEX idx_foobar_geom ON public.foobar USING GIST (geom);
 
 ```sql
 -- Step 1: Staging table (original geometries)
-CREATE TABLE staging.foobar AS 
-SELECT 
+CREATE TABLE staging.foobar AS
+SELECT
     id,
     name,
     category,
@@ -205,12 +205,12 @@ FROM load.foobar;
 
 -- Step 2: Create optimized subdivisions for spatial operations
 CREATE TABLE optimised.foobar_geometries AS
-SELECT 
+SELECT
     id,
     generate_series(1, ST_NumGeometries(subdivided_geom)) as subdivision_id,
     ST_GeometryN(subdivided_geom, generate_series(1, ST_NumGeometries(subdivided_geom))) as geom
 FROM (
-    SELECT 
+    SELECT
         id,
         ST_Collect(ST_Subdivide(original_geom, 256)) as subdivided_geom
     FROM staging.foobar
@@ -219,7 +219,7 @@ FROM (
 
 -- Step 3: Public table with original geometries for display
 CREATE TABLE public.foobar AS
-SELECT 
+SELECT
     id,
     name,
     category,
@@ -248,7 +248,7 @@ WHERE f.id IN (
 -- Generate MVT tiles using subdivided geometries for better performance
 SELECT ST_AsMVT(tile_data, 'foobar_layer') as mvt
 FROM (
-    SELECT 
+    SELECT
         f.id,
         f.name,
         f.category,
@@ -261,7 +261,7 @@ FROM (
     FROM optimised.foobar_geometries og
     JOIN public.foobar f ON f.id = og.id
     WHERE ST_Intersects(
-        og.geom, 
+        og.geom,
         ST_Transform(ST_TileEnvelope($1, $2, $3), 4326)
     )
 ) tile_data
@@ -271,12 +271,12 @@ WHERE geom IS NOT NULL
 TRUNCATE optimised.foobar_geometries;
 
 INSERT INTO optimised.foobar_geometries (id, subdivision_id, geom)
-SELECT 
+SELECT
     id,
     generate_series(1, ST_NumGeometries(subdivided_geom)) as subdivision_id,
     ST_GeometryN(subdivided_geom, generate_series(1, ST_NumGeometries(subdivided_geom))) as geom
 FROM (
-    SELECT 
+    SELECT
         id,
         ST_Collect(ST_Subdivide(geom, 256)) as subdivided_geom
     FROM public.foobar
@@ -292,7 +292,7 @@ FROM (
  **Gotchas:**
 
 * You may need to adjust your subdivision approach and add additional additional parameters in determining subdivision candidates. For example, if you have an extremely large square covering the entire planet, any index will be useless.
-* The optimal number of vertices to subdivide by will depend on the infrastructure you have available. 
+* The optimal number of vertices to subdivide by will depend on the infrastructure you have available.
 
 ## Table Partitioning for Aggregated/Large Datasets
 
@@ -356,7 +356,7 @@ WHERE ST_DWithin(geom, point_geometry, 1000);
 
 For a very long time, I was stuck using an old version of Leaflet for the frontend of one of the applications I was developing. This was entirely due to the fact that the application was forced to use a whole load of outdated internal repositories. However, a few years ago I had switched the majority of my projects to using MapLibre and vector tiles were a complete game changer for me... they are the *absolute* best.
 
-Instead of sending structured JSON (or GeoJSON) to your client, you send protobuf vector tiles directly to MapLibre. It essentially copies the same approach that raster tiles use, i.e. using x, y, zoom to limit both data retrieved and fidelity of data based on how your map is positioned and zoomed.  
+Instead of sending structured JSON (or GeoJSON) to your client, you send protobuf vector tiles directly to MapLibre. It essentially copies the same approach that raster tiles use, i.e. using x, y, zoom to limit both data retrieved and fidelity of data based on how your map is positioned and zoomed.
 
 ### Implementation Approaches
 
@@ -386,9 +386,9 @@ sequenceDiagram
     end
 {{</mermaid>}}
 
-In this scenario, whilst the server/application layer will be serving the vector tiles, we want to almost exclusively use the database to do this operation as it's expensive.  
+In this scenario, whilst the server/application layer will be serving the vector tiles, we want to almost exclusively use the database to do this operation as it's expensive.
 
-_**When to use / Trade‑offs**: Serve MVT for dynamic, interactive maps at scale; DB‑generated tiles are fast and cacheable but shift CPU to the database—monitor load and cache aggressively._
+_**When to use / Trade‑offs**: Serve MVT for dynamic, interactive maps at scale; DB‑generated tiles are fast and cacheable but shift CPU to the database-monitor load and cache aggressively._
 
 #### Routing
 
@@ -483,14 +483,14 @@ def queryset_to_mvt_response(
 
     mvt_sql = f"""
         WITH tile_bounds AS (
-            SELECT 
+            SELECT
                 {tile_envelope} AS envelope,
                 {tile_envelope}::box2d AS bbox
         ),
         tile_data AS (
             SELECT
                 ST_AsMVTGeom(
-                    ST_Transform(t.{geometry_field}, 3857), 
+                    ST_Transform(t.{geometry_field}, 3857),
                     tile_bounds.bbox,
                     4096,  -- tile extent
                     256,   -- buffer pixels
@@ -500,11 +500,11 @@ def queryset_to_mvt_response(
             FROM ({base_query}) t
             CROSS JOIN tile_bounds
             WHERE ST_Intersects(
-                ST_Transform(t.{geometry_field}, 3857), 
+                ST_Transform(t.{geometry_field}, 3857),
                 tile_bounds.envelope
             )
         )
-        SELECT ST_AsMVT(tile_data.*, '{layer_name}', 4096) 
+        SELECT ST_AsMVT(tile_data.*, '{layer_name}', 4096)
         FROM tile_data
         WHERE geom IS NOT NULL;
     """
@@ -550,8 +550,8 @@ def spatial_queryset_to_tile(
 
 **Gotchas**
 
-* It's important when using an ORM like Django you do not just execute raw SQL without using the ORM's connection class. In this case, I know that Django sanitises any inputs meaning that vulnerabilities like SQL injection are not possible. While this is not entirely related to MVTs, the amount of time I've been able to execute SQL injection of spatial apps to grab the data I'm after is pretty shocking. 
-* Where possible, I always want to use the ORM to generate the base query. This means I can leverage all normal `QuerySet` and `Manager` functions prior to executing the query. This is useful where you have things like filters, or require calculations involving one or more tables.  
+* It's important when using an ORM like Django you do not just execute raw SQL without using the ORM's connection class. In this case, I know that Django sanitises any inputs meaning that vulnerabilities like SQL injection are not possible. While this is not entirely related to MVTs, the amount of time I've been able to execute SQL injection of spatial apps to grab the data I'm after is pretty shocking.
+* Where possible, I always want to use the ORM to generate the base query. This means I can leverage all normal `QuerySet` and `Manager` functions prior to executing the query. This is useful where you have things like filters, or require calculations involving one or more tables.
 
 ## Point Clustering for Large Datasets
 
@@ -575,7 +575,7 @@ I've been able to reduce payloads by nearly 90% doing the above changes cutting 
 
 ---
 
-**Tangent**: As an offtopic comment, while I was still stuck using Leaflet I had implemented server-side clustering by creating a ladder of zoom grids. However, the complexity this added was significant and was generally inferior to what's available out the box with MapLibre. For those reasons I'm not going to give advice on that front here. 
+**Tangent**: As an offtopic comment, while I was still stuck using Leaflet I had implemented server-side clustering by creating a ladder of zoom grids. However, the complexity this added was significant and was generally inferior to what's available out the box with MapLibre. For those reasons I'm not going to give advice on that front here.
 
 ---
 
@@ -591,17 +591,17 @@ def spatial_layer_endpoint(
 ) -> List[Tuple[int, float, float]]:
     """
     Generic spatial layer endpoint that returns optimized coordinate data.
-    
+
     Args:
         queryset: Base QuerySet to filter and process
         geometry_field: Name of geometry field in the model
         snap_precision: ST_SnapToGrid precision (affects accuracy vs performance)
         coordinate_precision: Number of decimal places for lat/lng rounding
-        
+
     Returns:
         List of tuples: (id, longitude, latitude)
     """
-    
+
     # Apply spatial optimizations
     optimized_queryset = (
         queryset
@@ -612,7 +612,7 @@ def spatial_layer_endpoint(
         )
         .values_list("id", "lng", "lat")
     )
-    
+
     # Convert to list for JSON serialization
     # Note: values_list is used instead of values() to minimize payload
     return list(optimized_queryset)
@@ -622,14 +622,14 @@ def spatial_layer_endpoint(
 **Gotchas**
 
 * Avoid using ORM serializers, they will significantly slow things down.
-* Whilst you can optimise the payload to the browser into a small size (e.g. 4mb), you'll likely run into memory issues with the browser itself. This becomes quite common when you exceed a million points; it's very browser dependent on how it handles memory. 
+* Whilst you can optimise the payload to the browser into a small size (e.g. 4mb), you'll likely run into memory issues with the browser itself. This becomes quite common when you exceed a million points; it's very browser dependent on how it handles memory.
 * If you're using persisted states in your frontend, you need to be careful how data is being stored in the client state (especially ith large amount of records).
 
-_**When to use / Trade‑offs**: Use tuple streams + client clustering when you truly need clustering today; payloads shrink, but the client pays in memory/CPU—watch browser limits._
+_**When to use / Trade‑offs**: Use tuple streams + client clustering when you truly need clustering today; payloads shrink, but the client pays in memory/CPU-watch browser limits._
 
 ## Implementing Response Caching
 
-Spatial queries are slow and expensive, even with all the optimisations in the world some queries can be extremely slow especially if the query is a complex one. 
+Spatial queries are slow and expensive, even with all the optimisations in the world some queries can be extremely slow especially if the query is a complex one.
 
 Caching is an easy boon to performance if you can justify the additional complexity overhead. In many of my use cases, spatial data is _generally_ slow to update (if ever), and in instances where I need to purely visualise the data, caching is a useful tool as it means that a call that would've otherwise hit the database is now being served through memory. In this particular scenario, I am only caching static-ish spatial data with triggers to invalidate the cache on any ETL change.
 
@@ -697,7 +697,7 @@ graph TB
 {{</mermaid>}}
 
 
-_**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part—plan keys and triggers upfront._
+_**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part-plan keys and triggers upfront._
 
 
 ## Forcing React MapLibre Order

@@ -1,5 +1,4 @@
 baseURL = "https://marzukia.github.io/"
-languageCode = "en"
 defaultContentLanguage = "en"
 
 enableRobotsTXT = true
