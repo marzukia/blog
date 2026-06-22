@@ -53,7 +53,7 @@ code::after {
     content: "" !important;
 }
 
-/* ── Portfolio cards ─────────────────────────────────────────── */
+/* ── Portfolio cards (image-led, light + dark) ───────────────── */
 .pf-h {
     font-size: 1.5rem;
     font-weight: 700;
@@ -67,16 +67,14 @@ code::after {
 }
 .pf-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.1rem;
     margin: 0 0 1.5rem;
 }
 .pf-card {
     display: flex;
     flex-direction: column;
-    position: relative;
     overflow: hidden;
-    padding: 1.3rem 1.4rem 1.25rem;
     border: 1px solid rgb(var(--color-neutral-200));
     border-radius: 14px;
     background: rgb(var(--color-neutral));
@@ -84,29 +82,30 @@ code::after {
     color: inherit;
     transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
 }
-.pf-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #2f9d8d 0 33.3%, #e8b04b 33.3% 66.6%, #d9594c 66.6%);
-}
 .pf-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
     border-color: rgb(var(--color-neutral-300));
 }
+.pf-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+    border-bottom: 1px solid rgb(var(--color-neutral-200));
+}
+.pf-body {
+    padding: 0.95rem 1.15rem 1.1rem;
+}
 .pf-card h3 {
-    margin: 0.45rem 0 0.4rem;
-    font-size: 1.08rem;
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: rgb(var(--color-neutral-900));
 }
 .pf-card p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.87rem;
     line-height: 1.5;
     color: rgb(var(--color-neutral-600));
 }
@@ -119,20 +118,22 @@ code::after {
     padding: 0.05rem 0.32rem;
     border-radius: 4px;
 }
-.pf-go {
-    margin-top: 0.75rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #2f9d8d;
-    font-family: monospace;
-}
 .pf-links {
-    margin-top: 0.75rem;
+    display: inline-block;
+    margin-top: 0.6rem;
     font-size: 0.85rem;
 }
 .pf-links a {
     color: #2f9d8d;
     font-weight: 600;
+}
+
+/* dark mode — flip card surface AND text (the bug was dark text on dark cards) */
+.dark .pf-h {
+    color: rgb(var(--color-neutral-100));
+}
+.dark .pf-note {
+    color: rgb(var(--color-neutral-400));
 }
 .dark .pf-card {
     background: rgb(var(--color-neutral-800));
@@ -141,8 +142,21 @@ code::after {
 .dark .pf-card:hover {
     border-color: rgb(var(--color-neutral-600));
 }
-.dark .pf-go,
+.dark .pf-thumb {
+    border-bottom-color: rgb(var(--color-neutral-700));
+}
+.dark .pf-card h3 {
+    color: rgb(var(--color-neutral-100));
+}
+.dark .pf-card p {
+    color: rgb(var(--color-neutral-400));
+}
+.dark .pf-card p em {
+    color: rgb(var(--color-neutral-500));
+}
+.dark .pf-card code {
+    background: rgb(var(--color-neutral-900));
+}
 .dark .pf-links a {
     color: #41b6a6;
 }
-
