@@ -9,11 +9,9 @@ showTableOfContents: false
 Things I've built and put online for free. An open-source Python charting library, plus a growing set of tools that run **entirely in your browser**. No accounts, no uploads, no paywalls.
 
 <h2 class="pf-h">Libraries</h2>
-<div class="pf-grid">
-  <div class="pf-card pf-card--lib">
-    <a href="https://charted.mrzk.io"><img class="pf-thumb pf-thumb-light" src="https://charted.mrzk.io/_static/og-image.png" alt="charted" loading="lazy"><img class="pf-thumb pf-thumb-dark" src="https://charted.mrzk.io/_static/og-image-dark.png" alt="charted" loading="lazy"></a>
-    <div class="pf-body"><h3>charted</h3><p>Zero-dependency SVG charting for Python. <code>pip install charted</code>, 15 chart types, no numpy, pandas or matplotlib. Ships an MCP server.</p><span class="pf-links"><a href="https://charted.mrzk.io">site</a> · <a href="https://pypi.org/project/charted/">PyPI</a> · <a href="https://github.com/marzukia/charted">GitHub</a></span></div>
-  </div>
+<div class="pf-card pf-card--lib">
+  <a class="pf-lib-media" href="https://charted.mrzk.io" aria-label="charted"><img class="pf-thumb pf-thumb-light" src="https://charted.mrzk.io/_static/og-image.png" alt="charted" loading="lazy"><img class="pf-thumb pf-thumb-dark" src="https://charted.mrzk.io/_static/og-image-dark.png" alt="charted" loading="lazy"></a>
+  <div class="pf-body"><h3>charted</h3><p>Zero-dependency SVG charting for Python. <code>pip install charted</code>, 15 chart types, no numpy, pandas or matplotlib. Ships an MCP server.</p><span class="pf-links"><a href="https://charted.mrzk.io">site</a> · <a href="https://pypi.org/project/charted/">PyPI</a> · <a href="https://github.com/marzukia/charted">GitHub</a></span></div>
 </div>
 
 <h2 class="pf-h">Tools</h2>
