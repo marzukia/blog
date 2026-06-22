@@ -7,7 +7,7 @@
 
 [[main]]
   name = "Apps"
-  pageRef = "portfolio"
+  pageRef = "apps"
   weight = 15
 
 [[main]]
