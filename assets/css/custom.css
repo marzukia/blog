@@ -97,6 +97,16 @@ code::after {
     object-fit: cover;
     border-bottom: 1px solid rgb(var(--color-neutral-200));
 }
+/* light/dark thumbnail swap */
+.pf-thumb-dark {
+    display: none;
+}
+.dark .pf-thumb-light {
+    display: none;
+}
+.dark .pf-thumb-dark {
+    display: block;
+}
 .pf-body {
     padding: 0.95rem 1.15rem 1.1rem;
 }
