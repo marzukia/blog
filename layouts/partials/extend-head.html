@@ -42,3 +42,18 @@
 <meta name="msapplication-config" content="/browserconfig.xml">
 
 <meta property="og:image" content="/{{ .Site.Params.seo.ogbanner }}">
+
+{{/* Person JSON-LD: establishes Andryo Marzuki's identity and sameAs links for SEO */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://mrzk.io/#person",
+  "name": "Andryo Marzuki",
+  "url": "https://mrzk.io",
+  "sameAs": [
+    "https://github.com/marzukia",
+    "https://www.linkedin.com/in/andryomarzuki/"
+  ]
+}
+</script>
