@@ -6,7 +6,7 @@ layout: "simple"
 showTableOfContents: false
 ---
 
-I have a low tolerance for paywalls. The kind that let you do 90% of a task, then demand a subscription to download the result. So I started building my own. Every tool here is **completely free**, runs **entirely in your browser** (nothing's uploaded, nothing's stored), and always will be. Consider it personal retribution.
+A library, and a growing set of free, **private, in-browser** tools.
 
 <h2 class="pf-h">Libraries</h2>
 <div class="pf-grid">
@@ -17,7 +17,7 @@ I have a low tolerance for paywalls. The kind that let you do 90% of a task, the
 </div>
 
 <h2 class="pf-h">Tools</h2>
-<p class="pf-note">Free, and everything happens in your browser. Nothing is ever uploaded.</p>
+<p class="pf-intro">I have a low tolerance for paywalls. The kind that let you do 90% of a task, then demand a subscription to download the result. So I started building my own. Every tool here is <strong>completely free</strong>, runs <strong>entirely in your browser</strong> (nothing's uploaded, nothing's stored), and always will be. Consider it personal retribution.</p>
 <div class="pf-grid">
   <a class="pf-card" href="https://colours.mrzk.io"><img class="pf-thumb pf-thumb-light" src="https://colours.mrzk.io/og.png" alt="colours" loading="lazy"><img class="pf-thumb pf-thumb-dark" src="https://colours.mrzk.io/og-dark.png" alt="colours" loading="lazy"><div class="pf-body"><h3>colours</h3><p>Colour gradient &amp; palette toolkit. LAB gradients, harmonious palettes, contrast and colour-blindness checks, export to CSS, Tailwind &amp; SVG.</p></div></a>
   <a class="pf-card" href="https://pdf.mrzk.io"><img class="pf-thumb pf-thumb-light" src="https://pdf.mrzk.io/og.png" alt="PDF Toolkit" loading="lazy"><img class="pf-thumb pf-thumb-dark" src="https://pdf.mrzk.io/og-dark.png" alt="PDF Toolkit" loading="lazy"><div class="pf-body"><h3>PDF Toolkit</h3><p>Merge, split, compress &amp; convert PDFs. An iLovePDF / Smallpdf alternative.</p></div></a>
