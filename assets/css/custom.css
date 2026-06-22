@@ -53,3 +53,96 @@ code::after {
     content: "" !important;
 }
 
+/* ── Portfolio cards ─────────────────────────────────────────── */
+.pf-h {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.6rem 0 0.9rem;
+    color: rgb(var(--color-neutral-800));
+}
+.pf-note {
+    color: rgb(var(--color-neutral-500));
+    font-size: 0.95rem;
+    margin: -0.4rem 0 0.9rem;
+}
+.pf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1rem;
+    margin: 0 0 1.5rem;
+}
+.pf-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    padding: 1.3rem 1.4rem 1.25rem;
+    border: 1px solid rgb(var(--color-neutral-200));
+    border-radius: 14px;
+    background: rgb(var(--color-neutral));
+    text-decoration: none !important;
+    color: inherit;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+.pf-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #2f9d8d 0 33.3%, #e8b04b 33.3% 66.6%, #d9594c 66.6%);
+}
+.pf-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    border-color: rgb(var(--color-neutral-300));
+}
+.pf-card h3 {
+    margin: 0.45rem 0 0.4rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: rgb(var(--color-neutral-900));
+}
+.pf-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgb(var(--color-neutral-600));
+}
+.pf-card p em {
+    font-style: normal;
+    color: rgb(var(--color-neutral-500));
+}
+.pf-card code {
+    background: rgb(var(--color-neutral-100));
+    padding: 0.05rem 0.32rem;
+    border-radius: 4px;
+}
+.pf-go {
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #2f9d8d;
+    font-family: monospace;
+}
+.pf-links {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+.pf-links a {
+    color: #2f9d8d;
+    font-weight: 600;
+}
+.dark .pf-card {
+    background: rgb(var(--color-neutral-800));
+    border-color: rgb(var(--color-neutral-700));
+}
+.dark .pf-card:hover {
+    border-color: rgb(var(--color-neutral-600));
+}
+.dark .pf-go,
+.dark .pf-links a {
+    color: #41b6a6;
+}
+
