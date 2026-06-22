@@ -163,7 +163,8 @@ code::after {
 }
 .dark .pf-card,
 .dark .pf-card:hover {
-    background: rgb(var(--color-neutral-800)) !important;
+    /* lifted above the page bg (neutral-800) so cards read as elevated surfaces */
+    background: rgb(34, 41, 49) !important;
     border-color: rgb(var(--color-neutral-700));
 }
 .dark .pf-card:hover {
@@ -300,25 +301,6 @@ main h2.flex.items-center {
 main h2.flex.items-center .text-neutral-400 {
     color: rgb(var(--color-neutral-500));
     white-space: nowrap;
-}
-
-/* Article: charts are baked-white-bg raster PNGs that glare as white boxes in dark
-   mode. Until they're re-exported, frame them so they read as intentional cards. */
-html.dark .article-content img,
-html.dark .prose img {
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 12px;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-/* never frame the author avatar / inline emoji */
-html.dark .article-content img.rounded-full,
-html.dark img[src*="author"],
-html.dark img[src*="avatar"] {
-    background: none;
-    border-radius: 9999px;
-    padding: 0;
-    box-shadow: none;
 }
 
 /* Table of contents: lift the dim dark-mode links, teal the active heading */
