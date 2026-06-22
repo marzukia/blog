@@ -82,9 +82,12 @@ code::after {
     color: inherit;
     transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
 }
+.pf-card,
 .pf-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+    background: rgb(var(--color-neutral)) !important;
+}
+.pf-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     border-color: rgb(var(--color-neutral-300));
 }
 .pf-thumb {
@@ -135,8 +138,9 @@ code::after {
 .dark .pf-note {
     color: rgb(var(--color-neutral-400));
 }
-.dark .pf-card {
-    background: rgb(var(--color-neutral-800));
+.dark .pf-card,
+.dark .pf-card:hover {
+    background: rgb(var(--color-neutral-800)) !important;
     border-color: rgb(var(--color-neutral-700));
 }
 .dark .pf-card:hover {
