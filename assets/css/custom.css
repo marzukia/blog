@@ -174,3 +174,6 @@ code::after {
 .dark .pf-links a {
     color: #41b6a6;
 }
+
+/* RSS (and any) nav icon: force currentColor — RSS svg ships with no fill */
+header nav svg { fill: currentColor; }
