@@ -1,4 +1,5 @@
 ---
+draft: true  # temporarily unpublished - superseded by junkyard.sh
 title: "Apps"
 description: "Libraries and free tools built by Andryo Marzuki: charts, colour, PDF, image, QR, OCR and more."
 aliases: ["/portfolio/", "/projects/"]
