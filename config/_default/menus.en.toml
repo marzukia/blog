@@ -6,11 +6,6 @@
   weight = 10
 
 [[main]]
-  name = "Apps"
-  pageRef = "apps"
-  weight = 15
-
-[[main]]
   name = "Topics"
   pageRef = "tags"
   weight = 20
