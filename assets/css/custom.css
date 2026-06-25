@@ -7,11 +7,11 @@
     --color-neutral-400: 168, 162, 158;
     --color-neutral-500: 120, 113, 108;
     --color-neutral-600: 87, 83, 78;
-    /* Cool the dark end toward brand near-black #13171a (was warm stone) */
-    --color-neutral-700: 52, 58, 65;
-    --color-neutral-800: 26, 31, 37;
-    --color-neutral-900: 17, 21, 26;
-    --color-neutral-950: 10, 13, 16;
+    /* Warm stone dark end (reverted from cool navy back to original) */
+    --color-neutral-700: 68, 64, 60;
+    --color-neutral-800: 41, 37, 36;
+    --color-neutral-900: 28, 25, 23;
+    --color-neutral-950: 12, 10, 9;
 
     /* Secondary: softened the harsh pure red to brand coral (#d9594c) — fits the wider palette */
     --color-secondary-50: 252, 237, 235;
@@ -263,8 +263,8 @@ header nav svg { fill: currentColor; }
 /* Light: brand near-white page (was pure #fff) so content + cards lift */
 html:not(.dark) body { background-color: #fafafa; }
 
-/* Dark: exact brand near-black page bg (was warm stone rgb(41,37,36)) */
-html.dark body { background-color: #13171a; }
+/* Dark: warm stone page bg (reverted from cool navy #13171a) */
+html.dark body { background-color: rgb(41, 37, 36); }
 
 /* Post links get a real affordance: brand teal on hover (lists + prose) */
 main article h2 a:hover,
