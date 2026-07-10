@@ -10,7 +10,7 @@ aliases:
 
 New Zealand has officially entered into a recession after 11 years following two consecutive periods of negative GDP growth. This last time New Zealand was in a recession was in 2008 due to the global financial crisis. Given the current circumstances, it's no surprise that this has occurred.
 
-Given the proximity to the elections, it's also no surprise that many political parties have taken the opportunity to blast the incumbent government for their 'poor handling' of our COVID-19 response. I had a look at our recovery so far in my [previous post](https://marzukia.github.io/post/how-well-has-new-zealand-handled-covid-19/).
+Given the proximity to the elections, it's also no surprise that many political parties have taken the opportunity to blast the incumbent government for their 'poor handling' of our COVID-19 response. I had a look at our recovery so far in my [previous post](https://mrzk.io/post/how-well-has-new-zealand-handled-covid-19/).
 
 In my opinion, many news sources and political parties have significantly mis-contextualized the extent of how significant our recession has been.
 
