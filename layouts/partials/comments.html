@@ -24,6 +24,11 @@
       border-top-color: hsla(0, 0%, 100%, 0.12);
     }
     
+    /* Ensure visibility in light mode - add a subtle background */
+    #giscus-container {
+      background: transparent;
+    }
+    
     /* Hide default Giscus padding, let Congo handle it */
     #giscus-container iframe {
       width: 100% !important;
@@ -38,10 +43,6 @@
     const isDarkMode = localStorage.getItem('appearance') === 'dark' || 
       (!localStorage.getItem('appearance') && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
-    const theme = isDarkMode ? 'dark' : 'light';
-    const darkTheme = 'https://giscus.app/themes/noborder.json'; // Or use a custom dark theme
-    const lightTheme = 'https://giscus.app/themes/light.json';
-
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.async = true;
@@ -55,7 +56,7 @@
     script.setAttribute('data-reactions-enabled', '{{ if $reactions }}1{{ else }}0{{ end }}');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', '{{ $inputPos }}');
-    script.setAttribute('data-theme', theme === 'dark' ? 'https://giscus.app/themes/dark' : 'https://giscus.app/themes/light');
+    script.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
     script.setAttribute('data-lang', '{{ $lang }}');
     script.setAttribute('data-loading', '{{ $loading }}');
     
@@ -64,7 +65,7 @@
     // Handle theme switching
     const observer = new MutationObserver(() => {
       const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'https://giscus.app/themes/dark' : 'https://giscus.app/themes/light';
+      const newTheme = isDark ? 'dark' : 'light';
       
       const iframe = document.querySelector('#giscus-container iframe');
       if (iframe) {
