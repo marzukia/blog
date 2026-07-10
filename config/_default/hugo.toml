@@ -26,6 +26,17 @@ summaryLength = 2
 
 [params.comments]
   enable = true
-  provider = "isso"
-  [params.comments.isso]
-    address = "https://comments.junkyard.sh"
+  provider = "giscus"
+  [params.comments.giscus]
+    repo = "marzukia/blog-comments"
+    repoId = "R_kgDOTUFlxA"
+    category = "General"
+    categoryId = ""
+    mapping = "pathname"
+    reactionsEnabled = true
+    emitMetadata = false
+    inputPosition = "bottom"
+    theme = "light"
+    lang = "en"
+    strict = false
+    loading = "lazy"

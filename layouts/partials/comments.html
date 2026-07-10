@@ -1,13 +1,28 @@
 {{- $provider := .Site.Params.comments.provider | default "disqus" -}}
 {{- $page := . -}}
 
-{{- if eq $provider "isso" -}}
-  {{- $address := .Site.Params.comments.isso.address | default "https://comments.example.com" -}}
-  {{- $uri := $page.RelPermalink -}}
-  {{- $title := $page.Title -}}
+{{- if eq $provider "giscus" -}}
+  {{- $repo := .Site.Params.comments.giscus.repo | default "your-repo" -}}
+  {{- $repoId := .Site.Params.comments.giscus.repoId | default "" -}}
+  {{- $category := .Site.Params.comments.giscus.category | default "General" -}}
+  {{- $categoryId := .Site.Params.comments.giscus.categoryId | default "" -}}
+  {{- $mapping := .Site.Params.comments.giscus.mapping | default "pathname" -}}
+  {{- $reactions := .Site.Params.comments.giscus.reactionsEnabled | default true -}}
+  {{- $theme := .Site.Params.comments.giscus.theme | default "light" -}}
+  {{- $lang := .Site.Params.comments.giscus.lang | default "en" -}}
   
-  <div id="isso-thread"></div>
-  <script data-isso="{{ $address }}" 
-          data-isso-id="{{ $page.File.BaseFileName }}"
-          src="{{ $address }}/js/embed.min.js"></script>
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ $repo }}"
+    data-repo-id="{{ $repoId }}"
+    data-category="{{ $category }}"
+    data-category-id="{{ $categoryId }}"
+    data-mapping="{{ $mapping }}"
+    data-reactions-enabled="{{ if $reactions }}1{{ else }}0{{ end }}"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="{{ $theme }}"
+    data-lang="{{ $lang }}"
+    crossorigin="anonymous"
+    async>
+  </script>
 {{- end -}}
