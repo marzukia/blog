@@ -8,21 +8,76 @@
   {{- $categoryId := .Site.Params.comments.giscus.categoryId | default "" -}}
   {{- $mapping := .Site.Params.comments.giscus.mapping | default "pathname" -}}
   {{- $reactions := .Site.Params.comments.giscus.reactionsEnabled | default true -}}
-  {{- $theme := .Site.Params.comments.giscus.theme | default "light" -}}
+  {{- $inputPos := .Site.Params.comments.giscus.inputPosition | default "bottom" -}}
   {{- $lang := .Site.Params.comments.giscus.lang | default "en" -}}
-  
-  <script src="https://giscus.app/client.js"
-    data-repo="{{ $repo }}"
-    data-repo-id="{{ $repoId }}"
-    data-category="{{ $category }}"
-    data-category-id="{{ $categoryId }}"
-    data-mapping="{{ $mapping }}"
-    data-reactions-enabled="{{ if $reactions }}1{{ else }}0{{ end }}"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="{{ $theme }}"
-    data-lang="{{ $lang }}"
-    crossorigin="anonymous"
-    async>
+  {{- $strict := .Site.Params.comments.giscus.strict | default false -}}
+  {{- $loading := .Site.Params.comments.giscus.loading | default "lazy" -}}
+
+  <!-- Giscus Styles to match Congo -->
+  <style>
+    #giscus-container {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid hsla(0, 0%, 100%, 0.12);
+    }
+    .dark #giscus-container {
+      border-top-color: hsla(0, 0%, 100%, 0.12);
+    }
+    
+    /* Hide default Giscus padding, let Congo handle it */
+    #giscus-container iframe {
+      width: 100% !important;
+      border: none !important;
+    }
+  </style>
+
+  <div id="giscus-container"></div>
+
+  <script>
+    // Detect dark mode from Congo's local storage or system preference
+    const isDarkMode = localStorage.getItem('appearance') === 'dark' || 
+      (!localStorage.getItem('appearance') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    const theme = isDarkMode ? 'dark' : 'light';
+    const darkTheme = 'https://giscus.app/themes/noborder.json'; // Or use a custom dark theme
+    const lightTheme = 'https://giscus.app/themes/light.json';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    
+    script.setAttribute('data-repo', '{{ $repo }}');
+    script.setAttribute('data-repo-id', '{{ $repoId }}');
+    script.setAttribute('data-category', '{{ $category }}');
+    script.setAttribute('data-category-id', '{{ $categoryId }}');
+    script.setAttribute('data-mapping', '{{ $mapping }}');
+    script.setAttribute('data-reactions-enabled', '{{ if $reactions }}1{{ else }}0{{ end }}');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', '{{ $inputPos }}');
+    script.setAttribute('data-theme', theme === 'dark' ? 'https://giscus.app/themes/dark' : 'https://giscus.app/themes/light');
+    script.setAttribute('data-lang', '{{ $lang }}');
+    script.setAttribute('data-loading', '{{ $loading }}');
+    
+    document.getElementById('giscus-container').appendChild(script);
+
+    // Handle theme switching
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      const newTheme = isDark ? 'https://giscus.app/themes/dark' : 'https://giscus.app/themes/light';
+      
+      const iframe = document.querySelector('#giscus-container iframe');
+      if (iframe) {
+        iframe.contentWindow.postMessage({
+          giscus: {
+            setConfig: {
+              theme: newTheme
+            }
+          }
+        }, 'https://giscus.app');
+      }
+    });
+    
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
   </script>
 {{- end -}}
