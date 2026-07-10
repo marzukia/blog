@@ -10,6 +10,9 @@ summaryLength = 2
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[params.article]
+  showComments = true
+
 [services]
   [services.x]
     disableInlineCSS = true
@@ -20,3 +23,9 @@ summaryLength = 2
 [params]
   [params.githubPages]
     enabled = true
+
+[params.comments]
+  enable = true
+  provider = "isso"
+  [params.comments.isso]
+    address = "https://comments.junkyard.sh"

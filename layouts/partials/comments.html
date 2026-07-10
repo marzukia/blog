@@ -1,0 +1,13 @@
+{{- $provider := .Site.Params.comments.provider | default "disqus" -}}
+{{- $page := . -}}
+
+{{- if eq $provider "isso" -}}
+  {{- $address := .Site.Params.comments.isso.address | default "https://comments.example.com" -}}
+  {{- $uri := $page.RelPermalink -}}
+  {{- $title := $page.Title -}}
+  
+  <div id="isso-thread"></div>
+  <script data-isso="{{ $address }}" 
+          data-isso-id="{{ $page.File.BaseFileName }}"
+          src="{{ $address }}/js/embed.min.js"></script>
+{{- end -}}
