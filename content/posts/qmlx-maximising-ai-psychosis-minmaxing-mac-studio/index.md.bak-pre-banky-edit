@@ -1,0 +1,121 @@
+---
+author: "Andryo Marzuki"
+title: "Why I Dropped DS4 Flash for Qwen 3.5 122B on Apple Silicon"
+date: "2026-07-10"
+description: "DS4 Flash looked promising on paper. In practice, it was too slow for long contexts and unreliable for agentic coding. Here's why I switched to Qwen 3.5 122B and the bugs I had to kill to make it usable."
+tags: ["AI", "Inference", "Apple Silicon", "Qwen", "DS4", "Machine Learning"]
+slug: "why-i-dropped-ds4-flash-for-qwen-122b"
+lastmod: "2026-07-10"
+draft: false
+---
+
+Inspired by [antirez/ds4](https://github.com/antirez/ds4) — a brilliant experiment in running large models on consumer hardware — I set out to do the same.
+
+**To the dozen other geeks who have been obsessed with maximising your Mac Studio, I come with good tidings!** (And by "good tidings," I mean "I spent three weeks debugging a cache leak so you don't have to.")
+
+Two months ago, I impulse-bought an M3 Mac Studio Ultra. I feared RAM prices would make 96GB configurations unattainable soon, and I really wanted to dive into local inference stacks while I'm on parental leave. The goal was simple: run a 122B parameter model on a single machine, keep it warm, and have a conversational AI that actually understands context.
+
+It worked. The model fits in unified memory. It answers coherently. But after weeks of daily use, I made a hard pivot: I dropped DS4 Flash and switched to Qwen 3.5 122B.
+
+The closest thing I could find that gave me what I needed was `rapid-mlx`. But they chose to go a different direction with their approach to hybrid attention. Given that fact, I decided to fork rather than submit a PR. The divergence was too fundamental to reconcile upstream.
+
+## Why Qwen 3.5 122B on Paper Was Irresistible
+
+Before the bugs, the specs looked like a dream match for the M3 Ultra Studio:
+
+*   **Near SOTA / Frontier fully local**: No API calls, no rate limits, no data leaving the machine. A 122B model that rivals proprietary systems, running entirely offline.
+*   **Fast and responsive, no brutal prefill**: The goal was sub-second turnarounds even on long contexts, avoiding the multi-minute waits that make chatbots unusable.
+*   **Good balance of tool calling and reasoning**: Enough reasoning depth to handle complex code logic, but robust enough for reliable function calling and agent orchestration.
+*   **Perfect active param size for the Ultra's bandwidth**: The M3 Ultra's memory bandwidth is massive. A 122B model (even quantised) sits in the "sweet spot" where the GPU can feed the compute units without stalling.
+*   **Appropriate size for unified KV cache**: With 96GB of unified memory, a 122B model leaves just enough headroom for a deep SSD-backed KV cache, enabling long-context retention without swapping.
+
+Here's why.
+
+## The DS4 Flash Problem
+
+DS4 Flash looked great in benchmarks. On paper, it should have been perfect for my use case: long-context agentic coding, where the model needs to remember thousands of tokens of conversation, code snippets, and tool outputs.
+
+In practice, it became unusable for my primary focus: **pair programming at long contexts**.
+
+1.  **Prefill times killed the flow**  
+    As the conversation grew past 50k tokens, the prefill time became unacceptable. A simple follow-up question would take 3–5 minutes before the first token appeared. That's not a chatbot; that's a batch job. You go make coffee while it thinks. You can't pair program with a model that makes you wait for a cup of tea.
+
+2.  **Latency broke the coding rhythm**  
+    When you're in the flow of writing code, the model needs to respond instantly. DS4 Flash's latency meant the context window was effectively useless for real-time collaboration. By the time the model caught up, you'd already moved on to the next problem.
+
+3.  **Quality degradation at scale**  
+    The quality drop-off as context lengthened was noticeable. At 130k tokens, the model's reasoning started to fray. It would miss subtle dependencies in code, misread error messages, or fail to connect dots that were obvious at shorter contexts. It wasn't that the model was "unreliable" — it was just too slow to be useful for the specific workflow I needed.
+
+## The Qwen Trade-Off
+
+On paper, Qwen 3.5 122B was the perfect model for the M3 Ultra Studio. The specs aligned: 122B parameters, quantised layout, massive context window, and a target that felt tailor-made for Apple Silicon's unified memory.
+
+It never worked correctly out of the box. The culprit was the hybrid attention architecture: a mix of GatedDeltaNet (SSM) layers and dense attention. The recurrent state in the SSM layers can't be rewound or trimmed, which broke the standard in-memory prefix caching strategies. Every turn would cold-fill, reprocessing the entire 100k+ token context from scratch. Minutes of wait time for a single reply.
+
+The speed increase of Qwen is worth the loss in reasoning, but only after fixing the cache.
+
+## The Real Work: Killing Three Bugs
+
+Switching to Qwen was only half the battle. The model fits, but it was unusable out of the box. Every follow-up message reprocessed the entire conversation from scratch. On a 130k-token context, that's a multi-minute wait before the model emits a single word.
+
+Fixing it turned into a chain of three separate bugs, each hiding behind the last.
+
+### Bug One: A Timestamp in the System Prompt
+
+The cache is byte-exact. If the prompt changes even slightly, the cache miss and everything recomputes.
+
+Our agent framework was stamping a unique message ID into the system prompt on every turn. That unique value, near the top of a 130k-token prompt, meant the prompt was never byte-stable. Turn two differed from turn one within the first few hundred tokens. The cached agent got thrown out, the whole system prompt rebuilt, and the match diverged early. Every turn, cold.
+
+The fix: delete the line. The message ID was decorative; nothing read it back. The agent already had the ID through the per-turn user message. Nothing unique-per-turn belongs in the cached prefix. Put it in the part of the prompt that is supposed to change.
+
+### Bug Two: The Reply That Never Happened
+
+System prompt fixed, and it held for a while, then broke again deeper in the conversation.
+
+When you send a message while the model is still replying, the agent interrupts the run. Correct behavior. But on the interrupt path, it broke out of the loop without saving the reply it had already streamed. The inference server had already decoded those tokens into its KV cache, but the history was missing the assistant turn. Divergence. Deep in the body. Cold fill.
+
+The fix: persist the streamed reply on the interrupt path before breaking, the same recovery the code already did for a dropped network stream. As a bonus, the agent stops forgetting things it said.
+
+The general rule: if a generation's tokens can reach the server's cache, that generation has to be committed to history on every exit path, including the messy ones.
+
+### Bug Three: Poison in the Checkpoint Store
+
+After the first two fixes, the cache held warm for turn after turn, then dropped cold exactly once on any turn that used a tool or got interrupted.
+
+Two writers touched the checkpoint store. One wrote the real thing: a checkpoint keyed to the prompt, the one the next turn restores from. The other was a background hook writing a full checkpoint every 256 generated tokens, with no token key attached, so it could never be matched or restored. Dead weight. And it counted against the disk cap.
+
+A long tool-using turn generates a lot of tokens, which triggers a lot of those junk writes, which pushed the store over its cap, and the eviction policy dropped oldest-first, taking the one good checkpoint down with the junk.
+
+On disk at the time: 27 GB of unmatchable bodies in a single directory, crowding out the checkpoints that mattered. The fix teaches eviction to drop the unmatchable checkpoints first and gates the junk writer off entirely when restore is on. The good checkpoint survives, the next turn restores it, and the cold fills stop.
+
+## Where It Landed
+
+Same conversation that used to cold-fill 30k tokens on every turn, after the fixes, growing from 31k to 57k tokens:
+
+```
+uid=58 HIT cached=53267 prefill=670
+uid=59 HIT cached=54009 prefill=33
+uid=60 HIT cached=54113 prefill=1671
+uid=61 HIT cached=55867 prefill=45
+uid=62 HIT cached=55996 prefill=1869
+```
+
+Every turn restores the prior context and prefills only the new message. Sub-second where it used to be minutes. The checkpoint directory settled into a clean state, every checkpoint matchable, no junk.
+
+## Honest Numbers
+
+One more thing, because it is a small point of pride. When we built the metrics for this, we refused the usual throughput lie: total tokens divided by wall time, which folds the near-instant prefill into the number and makes a slow decoder look fast.
+
+Prefill and decode are different phases and we measure them separately. Decode tokens per second is generated tokens over the decode window only. Prefill throughput excludes anything served from cache, because the cache didn't compute those tokens, it skipped them.
+
+The rule we held the whole surface to: any number that rises when you send a longer prompt at constant decode speed is lying to you.
+
+The cache-hit number that actually matters on this model is the disk restore hit rate, since the in-memory cache is structurally dead. That is the one on the front of the dashboard.
+
+## The Verdict
+
+DS4 Flash was a brilliant proof of concept. antirez did the hard work of showing you can run massive models on consumer hardware. But for my use case — long-context agentic coding on Apple Silicon — it wasn't the right fit.
+
+Qwen 3.5 122B is faster, more reliable, and after fixing a few gnarly bugs, it's actually usable. The reasoning is slightly less sharp at short contexts, but the speed gain and cache stability make it worth the trade-off.
+
+That's the alpha.
