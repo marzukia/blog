@@ -37,11 +37,9 @@ draft: false
 ---
 
 
-If you've read the title of the post and actually clicked this post I'm going to make an assumption that you are already someone who has technical knowledge in this domain, as such, this post will be quite technical and go into some of the most important things I've learnt over the last eight years.
+Modern spatial applications face unique challenges when dealing with large geospatial datasets, real-time mapping interfaces, and complex spatial queries. In other words, it can often be an _extreme_ pain in the ass to get things working smoothly. I've spent an embarrassing amount of time wrestling with spatial web applications. What started as a small side-project turned into a career, and finally into what I can only describe as a love-hate relationship with anything involving coordinates and polygons.
 
-Modern spatial applications face unique challenges when dealing with large geospatial datasets, real-time mapping interfaces, and complex spatial queries. In other words, it can often be an _extreme_ pain in the ass to get things working smoothly.  In retrospect, I've spent an embarrassing amount of time wrestling with spatial web applications. What started as a small side-project turned into a career, and finally into what I can only describe as a love-hate relationship with anything involving coordinates and polygons.
-
-The most frustrating theme I encountered during this journey was just how opaque (or out of date) everything seemed to be. You'd think after decades of people building mapping applications, there would be comprehensive guides on how to make them not perform like absolute rubbish. Instead, you get fragments of knowledge scattered across blog posts, Stack Overflow answers, and the occasional conference talk that leaves you with more questions than answers (or worse yet, _"edit: nvm fixed it"_).
+The most frustrating theme I encountered during this journey was just how opaque (or out of date) everything seemed to be. You'd think after decades of people building mapping applications, there would be comprehensive guides on how to make them not perform like absolute rubbish. Instead, you get fragments of knowledge scattered across blog posts and Stack Overflow answers, plus the occasional conference talk that leaves you with more questions than answers (or worse yet, _"edit: nvm fixed it"_).
 
 The spatial development community seems to have this unspoken agreement that everyone should figure things out the hard way. However, I've never been one to gatekeep information, so this post will attempt to document everything I wish someone had told me when I first started building spatial applications that needed to handle more than a dozen points without bringing the browser to its knees.
 
