@@ -15,8 +15,8 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hamburger" # valid options: basic, hamburger, hybrid, custom
-  logo = "img/logo.png"
-  logoDark = "img/logo-dark.png"
+  logo = "img/logo.svg"
+  logoDark = "img/logo-dark.svg"
   showTitle = false
 
 [footer]
