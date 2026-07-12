@@ -337,3 +337,7 @@ html.dark #TableOfContents a {
 #TableOfContents a.active {
     color: rgb(var(--color-primary-500));
 }
+
+/* About page avatar: modest, responsive (not a giant face on mobile) */
+.about-avatar{width:180px;height:180px;display:block;margin:0.5rem auto 1.5rem;}
+@media (max-width:640px){.about-avatar{width:152px;height:152px;}}

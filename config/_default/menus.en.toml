@@ -44,3 +44,8 @@
     showName = false
     target = "_blank"
     type = "application/rss+xml"
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 5
