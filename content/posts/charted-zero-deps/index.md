@@ -33,7 +33,7 @@ Fast forward to 2026. I'm now a sleepless father to a newborn, and one of the th
 
 Here's the thing nobody really tells you about charts and agents. The existing options are genuinely awful for it. matplotlib drags in numpy and a pile of compiled wheels (back to my Alpine problem). Anything browser-based wants a headless Chrome and a font stack that you will, at some point, spend an evening debugging. Both are miserable inside a slim container or a sandbox, which is exactly where agents tend to live.
 
-charted's output is just SVG. It's text. There's nothing to compile, no binary to ship, no browser to drive. The model produces a chart the same way it produces a code block. That's the whole trick, and I can't claim I designed it on purpose. I just happened to have built the right thing a couple of years early.
+charted's output is pure SVG. Nothing to compile, no binary to ship, no browser to drive. The model produces a chart the same way it produces a code block. That's the whole trick; I happened to build the right thing a couple of years early.
 
 So I wrote `charted-mcp`, a small MCP server that lets an agent render a chart straight into the conversation. Ask for "monthly active users by plan as a stacked area chart," get an actual chart back inline, no tooling, no round-trip, no screenshot. For someone running a local inference stack and a graveyard of half-built Django projects with no frontend, this is kind of the dream.
 
@@ -54,12 +54,10 @@ Where it's at now:
 * **`charted-mcp`**, for the agentic stuff above.
 * **Still zero required dependencies.** PNG export and a few niceties are opt-in extras, but the core is pure stdlib.
 
-charted started as a way to keep my hands busy during a stressful move, built on an opinion I refused to let go of. A couple of years later it's quietly become one of the more useful things I've made, and the constraint I picked for fun turned out to be the actual feature. If you've ever fought numpy wheels on Alpine at 2am, or, lately, watched an agent try to render a chart and quietly give up, give it a go.
+charted started as a way to keep my hands busy during a stressful move, built on an opinion I refused to let go of. The constraint I picked for fun turned out to be the actual feature. If you've ever fought numpy wheels on Alpine at 2am, or watched an agent try to render a chart and quietly give up, give it a go.
 
 ```sh
 uv add charted
 ```
 
-You can see all of it, and play with the gallery, at [charted.mrzk.io](https://charted.mrzk.io).
-
-Go build something. Make it look good.
+The gallery and docs are at [charted.mrzk.io](https://charted.mrzk.io).
