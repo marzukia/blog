@@ -20,11 +20,8 @@ So I started rebuilding them.
 ## The approach
 
 When I find a useful tool trapped behind a subscription, I look at what it actually does, then rebuild the core as a self-contained browser app. This is not about hating on SaaS companies. It is about tools that:
-
-- never disappear when a company pivots or shuts down
-- never change pricing without notice
-- never touch your files, because nothing leaves your machine
-- can be audited, forked, and improved by anyone
+When I find a useful tool trapped behind a subscription, I look at what it actually does, then rebuild the core as a self-contained browser app. This is not about hating on SaaS companies. It is about tools that:
+ They never disappear when a company pivots. Pricing never changes without notice. Your files never leave your machine because nothing is uploaded. Anyone can audit, fork, and improve them.
 
 ## The toolkit in action
 
@@ -64,5 +61,6 @@ Fix a bug, improve a tool, or add your own salvage and send a PR. No gatekeeping
 ## The bottom line
 
 Salvage what you can, share what works. **junkyard.sh** is 48 tools that run in your browser, free, open source, no accounts. Take what you need, fork what you want, and keep the web usable for humans rather than paying customers.
+ The tools are live at [junkyard.sh](https://junkyard.sh). Fork the repo at [marzukia/junkyard](https://github.com/marzukia/junkyard) to add your own.
 
 *Built with [Bun](https://bun.sh) and a healthy dose of frustration.*
