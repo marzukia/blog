@@ -333,9 +333,23 @@ main h2.flex.items-center .text-neutral-400 {
 html.dark #TableOfContents a {
     color: rgb(var(--color-neutral-400));
 }
-#TableOfContents a:hover,
-#TableOfContents a.active {
+#TableOfContents a:hover {
     color: rgb(var(--color-primary-500));
+}
+/* Active/jumped-to ToC entry: readable white text on a coral pill (was coral
+   text on the coral highlight, which vanished). Covers the scrollspy .active
+   class, the :target state, and text selection. */
+#TableOfContents a.active,
+#TableOfContents a:target,
+#TableOfContents li:target > a {
+    background-color: rgb(var(--color-primary-600));
+    color: #fff;
+    border-radius: 4px;
+    padding: 0.02rem 0.35rem;
+}
+#TableOfContents ::selection {
+    background-color: rgb(var(--color-primary-600));
+    color: #fff;
 }
 
 /* About page avatar: modest, responsive (not a giant face on mobile) */
