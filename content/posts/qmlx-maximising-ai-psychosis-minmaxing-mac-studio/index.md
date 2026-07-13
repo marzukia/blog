@@ -112,6 +112,8 @@ The red bar says 350 to 600 tok/s. The green bar, the one that governs how fast 
 
 The number that actually matters in a conversation is neither of those in isolation. Because the cache makes prefill effectively free on warm turns, sustained conversational throughput is just the decode rate: roughly 55 tok/s at short context, holding around 28 even at 64k. The cache is what lets me quote the honest number and still sound fast.
 
+That "effectively free" needs one honest qualifier, because restore is not the same as free. On a deep turn the cache serves 99% or more of the prompt straight from SSD, so time to first token tracks the delta, the new tokens since the last checkpoint, not the whole prompt. Sitting at 168k tokens, a short follow-up is 67 new tokens and 2.6s to first token, the other 168,373 come off disk. But that delta is still prefilled at full cost, and at this depth each new token has to attend over the entire 165k KV, so it runs about 10ms a token. A one-line question stays fast. Paste a big tool result or a file, 1,800 new tokens deep in the conversation, and you are back to 17s before the first token. Restore kills the cold-prefill cliff. It does not make deep-context prefill free: the deeper you are, the more each delta token costs.
+
 ## Design principles
 
 A short list, because most of the decisions above fall out of it.
