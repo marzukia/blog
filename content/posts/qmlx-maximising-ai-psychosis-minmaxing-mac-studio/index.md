@@ -112,6 +112,19 @@ The red bar says 350 to 600 tok/s. The green bar, the one that governs how fast 
 
 The number that actually matters in a conversation is neither of those in isolation. Because the cache makes prefill effectively free on warm turns, sustained conversational throughput is just the decode rate: roughly 55 tok/s at short context, holding around 28 even at 64k. The cache is what lets me quote the honest number and still sound fast.
 
+## Design principles
+
+A short list, because most of the decisions above fall out of it.
+
+*   **Built for the Mac Studio, not portability.** Optimise for Apple Silicon and unified memory. No abstraction tax to keep a CUDA path alive.
+*   **Hybrid attention and DeltaNet are first-class.** Recurrent state cannot be trimmed like a KV block, so the cache path handles it explicitly instead of pretending it is KV-only.
+*   **SSD cache streaming is a first-class tier, not a fallback.** Unified memory is scarce, so reusable context lives on NVMe and streams back rather than being hoarded in RAM.
+*   **Specialise for the models you run.** Qwen-first. Breadth is a cost, not a feature.
+*   **Honest about the concurrency profile.** Single user, one sequence. A component that earns zero hits gets deleted, not tuned.
+*   **Correctness beats cleverness on the cache path.** A wrong restore does not throw, it corrupts. Verify the token blob byte for byte, quarantine bad checkpoints, and prove changes on real traffic.
+*   **Measure on the real box.** Numbers from an M3 Ultra with real models, not CI that cannot load a 122B.
+*   **Lean by default.** Minimal dependencies, no cruft.
+
 ## qMLX and the tools
 
 Everything above ships. qMLX is my fork of `rapid-mlx`, specialised for the hybrid Qwen 3.5 and 3.6 models on Apple Silicon, with the disk-KV-restore subsystem the whole post is about. None of it would exist without [raullenchai/rapid-mlx](https://github.com/raullenchai/Rapid-MLX). The base engine, the OpenAI and Anthropic API surface, and the MLX serving path are all theirs. qMLX only adds the hybrid-aware disk restore, the eviction and metrics work, and the Qwen specialisation. Thanks for the foundation to build on.
