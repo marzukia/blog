@@ -71,6 +71,8 @@ The multiplexer turns three chats into roughly one GPU's worth of compute by ser
 
 ### Other Diary Notes
 
+_n.b. I was going to go in more detail with these but I spent too long writing the KV cache eviction BS._
+
 ### Observations About Lower Bit Models
 
 One of my overarching goals is to get 262K context with Qwen3.5 122b but the fact I only have 96GB ram is the primary wall that I am facing right now. One of the avenues I looked into was using a 3.7bit quant of Qwen3.5 122b, however, I ran into two problems which pretty much made this a dead end for me:
