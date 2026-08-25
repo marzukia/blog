@@ -23,7 +23,7 @@ Commands and gotchas live in each sibling repo's `AGENTS.md`. Do not hand-edit `
 | post | figures | state |
 | --- | --- | --- |
 | qmlx-optimising-multiplexing-and-dogfood | 6 SVG | DONE (5 figures migrated; 1 SVG was never referenced). Delete old SVGs after sign-off. |
-| qmlx-maximising-ai-psychosis-minmaxing-mac-studio | 4 SVG (chart-ab-cache, chart-decode, chart-prefill, chart-throughput-lie) | NOT STARTED |
+| qmlx-maximising-ai-psychosis-minmaxing-mac-studio | 4 SVG (chart-ab-cache, chart-decode, chart-prefill, chart-throughput-lie) | DONE (4 figures: 2 grouped bar, 2 line). Add en-bar `series` (grouped) to ui + spec + shortcode. Awaiting sign-off. |
 | collectable-video-games-market-manipulation | 7 chart PNG (wata_*) | TO DO |
 | did-covid19-make-trump-president | 6 chart PNG (unvax, long-covid, poverty, votes-*) | TO DO |
 | election-results-advanced-analytics | 3 chart PNG (age_party, housing_party, votes_seats_party) + 1 map | TO DO (confirm map scope) |
