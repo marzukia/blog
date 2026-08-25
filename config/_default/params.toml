@@ -5,7 +5,8 @@ footerStamp = "GO BUILD"
 footerMeta = "mrzk.io · enokidev/ui"
 
 # home hero
-heroTitle = "ANDRYO MARZUKI"
+heroTitle = "ANDRYO"
+heroHollow = "MARZUKI"
 heroChips = ["Climate Risk", "Data", "Open Source", "Productivity"]
 
 # general (harmless, some consumed by site partials)
