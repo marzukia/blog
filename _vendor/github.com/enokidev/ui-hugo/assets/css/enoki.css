@@ -3953,6 +3953,16 @@ textarea.en-input {
   opacity: 1;
 }
 
+/* dense cloud: thousands of marks fade in as one group, never staggered */
+.fg-ptdense {
+  opacity: 0;
+  transition: opacity 0.7s ease 0.15s;
+}
+
+.en-diagram.in .fg-ptdense {
+  opacity: 1;
+}
+
 /* ---- gantt ----------------------------------------------------------------- */
 
 .fg-g-row {
@@ -4281,7 +4291,8 @@ textarea.en-input {
   }
   .fg-bar-val,
   .fg-area,
-  .fg-whg {
+  .fg-whg,
+  .fg-ptdense {
     opacity: 1;
     transition: none;
   }

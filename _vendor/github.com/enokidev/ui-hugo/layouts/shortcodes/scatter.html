@@ -1,0 +1,53 @@
+{{/*
+  Scatter figure (en-scatter).
+
+  Small (hero) scatter:
+    {{< scatter tag="SCATTER" cap="MODELS" axis-x="TOK/S" axis-y="USD/HR"
+        points='[{"name":"mac a3b","x":42,"y":6},{"name":"rtx 27b","x":55,"y":14}]'
+        hero="1" >}}
+
+  Dense cloud (thousands of points, a few interactive highlights):
+    {{< scatter tag="FIG. 04" cap="SALE PRICES OVER TIME"
+        hint="9,286 sales. four headline sales punch through the cloud."
+        points="wata_scatter.json"
+        highlights='[8448,1614,4678,6206]'
+        x-min="2019" x-max="2021.9" y-max="1600000"
+        x-ticks='[{"v":2019,"label":"2019"},{"v":2020,"label":"2020"},{"v":2021,"label":"2021"}]'
+        axis-x="SALE DATE" axis-y="SALE PRICE" >}}
+
+  points:  compact JSON array, OR a path to a .json file next to the post.
+  dense:   "true" switches on dense mode.
+  highlights: indices (into points) of labelled, focusable points (dense).
+  x-ticks:  [{v, label}] explicit tick positions (e.g. years).
+  x-min / x-max / y-max: domain overrides (dense only).
+  JSON args must be compact (no line breaks). Do NOT pre-escape with
+  replaceRE (it double-escapes to a literal &amp;#39; in the output).
+*/}}
+{{- $points := .Get "points" -}}
+{{- if and $points (not (or (strings.Contains $points "{") (strings.Contains $points "["))) -}}
+{{-   $res := .Page.Resources.Get $points -}}
+{{-   if $res -}}
+{{-     $raw := $res.Content | strings.TrimSpace -}}
+{{-     $points = $raw -}}
+{{-   end -}}
+{{- end -}}
+{{- $dense := .Get "dense" -}}
+{{- $xmin := .Get "x-min" -}}
+{{- $xmax := .Get "x-max" -}}
+{{- $ymax := .Get "y-max" -}}
+{{- $hi := .Get "highlights" -}}
+{{- $xt := .Get "x-ticks" -}}
+<en-scatter
+  cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
+  tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
+  hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  axis-x="{{ .Get "axis-x" | default "" | safeHTMLAttr }}"
+  axis-y="{{ .Get "axis-y" | default "" | safeHTMLAttr }}"
+  {{- if ne $dense nil }} dense{{ end }}
+  {{- with .Get "hero" }} hero="{{ . }}"{{ end }}
+  {{- with $hi }} highlights='{{ . | safeHTMLAttr }}'{{ end }}
+  {{- with $xmin }} x-min="{{ . }}"{{ end }}
+  {{- with $xmax }} x-max="{{ . }}"{{ end }}
+  {{- with $ymax }} y-max="{{ . }}"{{ end }}
+  {{- with $xt }} x-ticks='{{ . | safeHTMLAttr }}'{{ end }}
+  points='{{ $points | safeHTMLAttr }}'></en-scatter>
