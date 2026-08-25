@@ -3963,6 +3963,32 @@ textarea.en-input {
   opacity: 1;
 }
 
+/* trend line + confidence band: reveal with the cloud, line last */
+.fg-trend-band {
+  fill: var(--en-accent);
+  fill-opacity: 0.12;
+  opacity: 0;
+  transition: opacity 0.7s ease 0.45s;
+  pointer-events: none;
+}
+
+.en-diagram.in .fg-trend-band {
+  opacity: 1;
+}
+
+.fg-trend {
+  stroke: var(--en-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.55s;
+  pointer-events: none;
+}
+
+.en-diagram.in .fg-trend {
+  opacity: 1;
+}
+
 /* ---- gantt ----------------------------------------------------------------- */
 
 .fg-g-row {

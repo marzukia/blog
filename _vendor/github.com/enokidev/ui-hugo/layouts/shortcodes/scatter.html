@@ -20,6 +20,16 @@
   highlights: indices (into points) of labelled, focusable points (dense).
   x-ticks:  [{v, label}] explicit tick positions (e.g. years).
   x-min / x-max / y-max: domain overrides (dense only).
+  y-fmt:   "usd" (default) | "pct" | "plain" y-axis label format.
+  trend:   [{x0, y0, x1, y1}] regression line in data coordinates.
+  trend-band: closed polygon [{x, y}] confidence band under the trend line.
+
+  County-level scatter with trend (dense):
+    {{< scatter tag="FIG. 03" cap="..." dense="true"
+        points="fig-scatter-2024.json" y-fmt="pct"
+        trend='{"x0":1.8,"y0":49.6,"x1":72.6,"y1":90.53}'
+        trend-band='[{"x":1.8,"y":48.3},...]'
+        axis-x="UNVACCINATED RATE" axis-y="GOP VOTE SHARE" >}}
   JSON args must be compact (no line breaks). Do NOT pre-escape with
   replaceRE (it double-escapes to a literal &amp;#39; in the output).
 */}}
@@ -37,6 +47,9 @@
 {{- $ymax := .Get "y-max" -}}
 {{- $hi := .Get "highlights" -}}
 {{- $xt := .Get "x-ticks" -}}
+{{- $yf := .Get "y-fmt" -}}
+{{- $tr := .Get "trend" -}}
+{{- $tb := .Get "trend-band" -}}
 <en-scatter
   cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
   tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
@@ -50,4 +63,7 @@
   {{- with $xmax }} x-max="{{ . }}"{{ end }}
   {{- with $ymax }} y-max="{{ . }}"{{ end }}
   {{- with $xt }} x-ticks='{{ . | safeHTMLAttr }}'{{ end }}
+  {{- with $yf }} y-fmt="{{ . }}"{{ end }}
+  {{- with $tr }} trend='{{ . | safeHTMLAttr }}'{{ end }}
+  {{- with $tb }} trend-band='{{ . | safeHTMLAttr }}'{{ end }}
   points='{{ $points | safeHTMLAttr }}'></en-scatter>
