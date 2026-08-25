@@ -1,0 +1,8 @@
+[
+  {"from":"browser","to":"cdn"},
+  {"from":"sw","to":"cdn"},
+  {"from":"cdn","to":"redis"},
+  {"from":"redis","to":"appmem"},
+  {"from":"appmem","to":"pgbuf"},
+  {"from":"pgbuf","to":"osfs"}
+]

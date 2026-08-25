@@ -1,0 +1,6 @@
+[
+  {"swatch":"var(--en-ink2)","label":"client layer"},
+  {"swatch":"var(--en-blue)","label":"cdn layer"},
+  {"swatch":"var(--en-green)","label":"application layer"},
+  {"swatch":"var(--en-accent)","label":"database layer"}
+]

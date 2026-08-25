@@ -122,43 +122,11 @@ In some ways, this is generally the easiest option to do if you want a simple im
 
 If visual representation of spatial data is not required in the frontend or, if you want to handle aggregating/union the geometries in the application layer you may not need to maintain the original geometries. In this scenario, your implementation of the would almost be as simple as the following:
 
-{{<mermaid>}}
-flowchart LR
-subgraph db
-	subgraph load
-		load.foobar
-	end
-	subgraph staging
-		staging.foobar
-	end
-	subgraph public
-		public.foobar
-	end
-end
-spatial.gpkg -- ogr2ogr --> load.foobar -- st_subdivide --> staging.foobar -- geom --> public.foobar
-{{</mermaid>}}
+{{< topology tag="FIG. 01" title="ETL PIPELINE" hint="One direction, no loops. The subdivided table is what gets queried." controls="false" aria-label="ETL pipeline: spatial.gpkg to load to staging to public" nodes="fig-etl-simple.json" edges="fig-etl-simple-edges.json" >}}
 
 If you want to maintain the original geometries for visual purposes, for data lineage, accuracy, or any number of other reasons, your approach would look something like:
 
-{{<mermaid>}}
-flowchart LR
-subgraph db
-	subgraph load
-		load.foobar
-	end
-	subgraph staging
-		staging.foobar
-	end
-	subgraph optimised
-		optimised.foobar_geometries
-	end
-	subgraph public
-		public.foobar
-	end
-end
-spatial.gpkg -- ogr2ogr --> load.foobar --> staging.foobar -- st_subdivide --> optimised.foobar_geometries
-staging.foobar -- geom --> public.foobar
-{{</mermaid>}}
+{{< topology tag="FIG. 02" title="ETL, ORIGINALS KEPT" hint="Staging forks: subdivided geoms for speed, originals for display." controls="false" aria-label="ETL pipeline keeping original geometries" nodes="fig-etl-originals.json" edges="fig-etl-originals-edges.json" >}}
 
 This approach is generally more complex as there's more moving parts. You'll need to implement specific application logic or a specific approach in how you query your data to ensure you utilise the subdivided geometries for any expensive operations. Additionally, depending on the size of the dataset, things like storage may need to be taken into account when doing your mental calculus.
 
@@ -362,27 +330,7 @@ The below is a high level overview of how I've generally structured my applicati
 
 However, if you do have a server in the mix, your setup will likely end up looking like:
 
-{{<mermaid>}}
-sequenceDiagram
-    participant Client as React+MapLibre
-    participant API as Django
-    participant Cache as Redis
-    participant DB as PostGIS
-
-    Client->>API: Request tile /z/x/y.mvt
-    API->>Cache: Check cache key
-
-    alt Cache Hit
-        Cache-->>API: Return cached MVT
-        API-->>Client: Binary MVT data
-    else Cache Miss
-        API->>DB: Query spatial data
-        DB->>DB: ST_AsMVT generation
-        DB-->>API: Binary MVT
-        API->>Cache: Store with infinite TTL
-        API-->>Client: Binary MVT data
-    end
-{{</mermaid>}}
+{{< sequence tag="FIG. 03" title="TILE REQUEST" hint="Solid = request, light = reply. A hit serves from Redis; a miss falls through to PostGIS." aria-label="MVT tile request sequence: client to api to cache to database" lanes="fig-tile-req-lanes.json" messages="fig-tile-req-messages.json" >}}
 
 In this scenario, whilst the server/application layer will be serving the vector tiles, we want to almost exclusively use the database to do this operation as it's expensive.
 
@@ -665,34 +613,7 @@ Dynamic data: "mvt:{layer}:{zoom}:{x}:{y}:{filter_hash}"
 
 * With an additional cache like `redis` implemented, you will essentially have multiple layers of caching. It's important you understand how you will manage invalidation of response across your application.
 
-{{<mermaid>}}
-graph TB
-    subgraph "Client Layer"
-        A[Browser Cache]
-        B[Service Worker Cache]
-    end
-
-    subgraph "CDN Layer"
-        C[CloudFront/CDN]
-    end
-
-    subgraph "Application Layer"
-        D[Redis Cache]
-        E[Application Memory Cache]
-    end
-
-    subgraph "Database Layer"
-        F[PostGIS Buffer Cache]
-        G[OS File System Cache]
-    end
-
-    A --> C
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-{{</mermaid>}}
+{{< topology tag="FIG. 04" title="CACHE LAYERS" hint="Requests cascade down the stack. Each layer serves before the next is touched." controls="false" aria-label="Cache layers from browser to operating system file system" nodes="fig-cache-layers.json" edges="fig-cache-layers-edges.json" legend="fig-cache-layers-legend.json" >}}
 
 
 _**When to use / Trade‑offs**: Cache static‑ish tiles and layer responses; invalidation strategy is the hard part-plan keys and triggers upfront._

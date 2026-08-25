@@ -1,0 +1,11 @@
+[
+  {"from":"client","to":"api","label":"request /z/x/y.mvt"},
+  {"from":"api","to":"cache","label":"check cache key"},
+  {"from":"cache","to":"api","label":"HIT: cached MVT","ret":true},
+  {"from":"api","to":"client","label":"serve MVT (hit)","ret":true},
+  {"from":"api","to":"db","label":"MISS: query spatial data"},
+  {"from":"db","to":"db","label":"ST_AsMVT generation","self":true},
+  {"from":"db","to":"api","label":"binary MVT","ret":true},
+  {"from":"api","to":"cache","label":"store, infinite TTL","ret":true},
+  {"from":"api","to":"client","label":"serve MVT (miss)","ret":true}
+]

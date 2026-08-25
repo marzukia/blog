@@ -1,0 +1,9 @@
+[
+  {"id":"browser","label":"BROWSER","sub":"disk + memory","x":300,"y":95,"w":220,"h":68,"role":"state","tip":"<div class=\"en-tip-title\">BROWSER CACHE</div>first hop. stale tiles never reach the server"},
+  {"id":"sw","label":"SERVICE WORKER","sub":"intercepts fetch","x":700,"y":95,"w":230,"h":68,"role":"state","tip":"<div class=\"en-tip-title\">SERVICE WORKER CACHE</div>offline-first layer between the app and the network"},
+  {"id":"cdn","label":"CDN","sub":"cloudfront edge","x":500,"y":243,"w":200,"h":68,"role":"blue","tip":"<div class=\"en-tip-title\">CLOUDFRONT / CDN</div>edge cache in front of the origin"},
+  {"id":"redis","label":"REDIS","sub":"tile cache","x":300,"y":391,"w":220,"h":68,"role":"green","tip":"<div class=\"en-tip-title\">REDIS CACHE</div>app-level cache, infinite TTL on static tiles"},
+  {"id":"appmem","label":"APP MEMORY","sub":"process cache","x":700,"y":391,"w":220,"h":68,"role":"green","tip":"<div class=\"en-tip-title\">APPLICATION MEMORY</div>in-process responses, warm on repeat hits"},
+  {"id":"pgbuf","label":"POSTGIS BUFFER","sub":"pg buffer cache","x":300,"y":539,"w":230,"h":68,"role":"accent","tip":"<div class=\"en-tip-title\">POSTGIS BUFFER CACHE</div>shared buffers holding hot pages"},
+  {"id":"osfs","label":"OS FILE SYSTEM","sub":"page cache","x":700,"y":539,"w":230,"h":68,"role":"accent","tip":"<div class=\"en-tip-title\">OS FILE SYSTEM CACHE</div>last hop before the disk"}
+]

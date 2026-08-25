@@ -1,0 +1,6 @@
+[
+  {"from":"gpkg","to":"load","label":"ogr2ogr"},
+  {"from":"load","to":"staging"},
+  {"from":"staging","to":"optimised","label":"st_subdivide"},
+  {"from":"staging","to":"public","label":"geom"}
+]

@@ -1,0 +1,45 @@
+{{/*
+  Sequence figure (en-sequence).
+
+  JSON args (lanes/messages) accept EITHER compact inline JSON OR a path to a
+  .json file sitting next to the post (e.g. lanes="tile-req.json").
+  Inline must be compact (no line breaks) and double-quoted with escaped
+  inner quotes (\"), never single-quoted call-side (Hugo parses spaces +
+  quotes as positional params). Do NOT pre-escape with replaceRE.
+
+    {{< sequence tag="FIG. 03" title="TILE REQUEST"
+        hint="solid = request, light = reply. press play to replay."
+        lanes="tile-req.json"
+        messages="tile-req.json" >}}
+
+  lanes:    [{"id","label","x"}]  lane x is the vertical rail x (1000 wide).
+  messages: [{"from","to","label","ret"?,"self"?}]
+            ret = dimmed reply/status line. self = loop on one lane.
+            max ~9 messages fit the canvas (STEP 52, floor 540).
+  auto-play: "false" disables the one-shot playback on first view.
+*/}}
+{{- $lanes := .Get "lanes" -}}
+{{- $messages := .Get "messages" -}}
+{{- $autopl := .Get "auto-play" -}}
+{{- if and $lanes (not (or (strings.Contains $lanes "{") (strings.Contains $lanes "["))) -}}
+{{-   $res := .Page.Resources.Get $lanes -}}
+{{-   if $res -}}
+{{-     $raw := $res.Content | strings.TrimSpace -}}
+{{-     $lanes = $raw -}}
+{{-   end -}}
+{{- end -}}
+{{- if and $messages (not (or (strings.Contains $messages "{") (strings.Contains $messages "["))) -}}
+{{-   $res := .Page.Resources.Get $messages -}}
+{{-   if $res -}}
+{{-     $raw := $res.Content | strings.TrimSpace -}}
+{{-     $messages = $raw -}}
+{{-   end -}}
+{{- end -}}
+<en-sequence
+  title="{{ .Get "title" | default "" | safeHTMLAttr }}"
+  tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
+  hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  aria-label="{{ .Get "aria-label" | default "" | safeHTMLAttr }}"
+  {{- if eq $autopl "false" }} auto-play="false"{{ end }}
+  {{- with $messages }} messages='{{ . | safeHTMLAttr }}'{{ end }}
+  lanes='{{ $lanes | safeHTMLAttr }}'></en-sequence>

@@ -1,0 +1,6 @@
+[
+  {"id":"client","label":"CLIENT","x":140},
+  {"id":"api","label":"API","x":400},
+  {"id":"cache","label":"CACHE","x":660},
+  {"id":"db","label":"DB","x":880}
+]
