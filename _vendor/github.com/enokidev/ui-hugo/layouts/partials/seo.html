@@ -1,0 +1,130 @@
+{{- /*
+  SEO head: canonical, robots, OpenGraph, Twitter cards, JSON-LD.
+  Param-driven so any consumer site gets full meta out of the box.
+
+  Site params (all optional):
+    params.seo.ogBanner       path to a 1200x630 default share image
+    params.seo.twitterHandle  "@handle" -> twitter:site
+    params.seo.authorImage    profile image used in Article JSON-LD
+    params.robots             site-wide robots meta
+
+  Page params (all optional):
+    robots         page-level robots meta (wins over site)
+    canonicalUrl   override the canonical link
+-*/ -}}
+{{- $iso := "2006-01-02T15:04:05-07:00" -}}
+{{- $siteName := site.Params.seo.siteName | default site.Title -}}
+{{- $desc := .Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description) -}}
+{{/* author may be a string or a [params.author] map (name/image/bio) */}}
+{{- $authorRaw := site.Params.author }}
+{{- $authorName := "" }}
+{{- if reflect.IsMap $authorRaw }}
+{{-   $authorName = $authorRaw.name }}
+{{- else }}
+{{-   $authorName = $authorRaw }}
+{{- end }}
+{{/* tag titles as plain strings (jsonify of term pages would be huge) */}}
+{{- $tagNames := slice }}
+{{- range .GetTerms "tags" }}
+{{-   $tagNames = $tagNames | append .Title }}
+{{- end }}
+
+{{/* canonicalUrl frontmatter wins (lets dev servers emit production URLs) */}}
+{{- $url := .Params.canonicalUrl | default .Permalink }}
+
+{{/* ---------- canonical + robots ---------- */}}
+<link rel="canonical" href="{{ $url }}" />
+{{- with .Params.robots | default site.Params.robots }}
+<meta name="robots" content="{{ . }}" />
+{{- end }}
+
+{{/* ---------- OpenGraph ---------- */}}
+<meta property="og:url" content="{{ $url }}" />
+<meta property="og:site_name" content="{{ $siteName }}" />
+<meta property="og:title" content="{{ .Title }}" />
+{{- with $desc }}
+<meta property="og:description" content="{{ . | plainify | htmlUnescape }}" />
+{{- end }}
+{{- with site.Language.Locale }}
+<meta property="og:locale" content="{{ . }}" />
+{{- end }}
+{{- if .IsPage }}
+<meta property="og:type" content="article" />
+{{- else if .IsHome }}
+<meta property="og:type" content="website" />
+{{- else }}
+<meta property="og:type" content="object" />
+{{- end }}
+{{- $cover := "" }}
+{{- if .IsPage }}
+{{-   with .Resources.GetMatch "cover.png" }}
+{{-     $cover = .Permalink }}
+{{-   end }}
+{{- end }}
+{{- $ogBanner := site.Params.seo.ogBanner | default site.Params.seo.ogbanner }}
+{{- if $cover }}
+<meta property="og:image" content="{{ $cover }}" />
+{{- else if $ogBanner }}
+<meta property="og:image" content="{{ $ogBanner | absURL }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+{{- end }}
+{{- if .IsPage }}
+{{-   with site.GetPage .Section }}
+<meta property="article:section" content="{{ .Title }}" />
+{{-   end }}
+<meta property="article:published_time" content="{{ .Date.Format $iso }}" />
+<meta property="article:modified_time" content="{{ .Lastmod.Format $iso }}" />
+{{-   range .GetTerms "tags" }}
+<meta property="article:tag" content="{{ .Title }}" />
+{{-   end }}
+{{- end }}
+
+{{/* ---------- Twitter cards ---------- */}}
+<meta name="twitter:card" content="summary_large_image" />
+{{- with $desc }}
+<meta name="twitter:description" content="{{ . | plainify | htmlUnescape }}" />
+{{- end }}
+<meta name="twitter:title" content="{{ .Title }}" />
+{{- if $cover }}
+<meta name="twitter:image" content="{{ $cover }}" />
+{{- else if $ogBanner }}
+<meta name="twitter:image" content="{{ $ogBanner | absURL }}" />
+{{- end }}
+{{- with site.Params.seo.twitterHandle }}
+<meta name="twitter:site" content="{{ . }}" />
+{{- end }}
+
+{{/* ---------- JSON-LD ---------- */}}
+{{- if .IsHome }}
+{{- $site := dict "@context" "https://schema.org" "@type" "WebSite" "@id" ((site.GetPage "/").Permalink) "name" site.Title "url" ((site.GetPage "/").Permalink) }}
+{{- with $desc }}{{ $site = merge $site (dict "description" (. | plainify | htmlUnescape)) }}{{ end }}
+{{- with $authorName }}{{ $site = merge $site (dict "publisher" (dict "@type" "Person" "name" .)) }}{{ end }}
+<script type="application/ld+json">{{ $site | jsonify | safeJS }}</script>
+{{- else if .IsPage }}
+{{- $author := dict "@type" "Person" "name" ($authorName | default "Unknown") }}
+{{- $article := dict "@context" "https://schema.org" "@type" "Article" "headline" (.Title | plainify) "url" $url "author" $author "dateCreated" (.Date.Format $iso) "datePublished" (.Date.Format $iso) "dateModified" (.Lastmod.Format $iso) "wordCount" .WordCount "mainEntityOfPage" "true" }}
+{{- with site.GetPage .Section }}{{ $article = merge $article (dict "articleSection" (.Title | plainify)) }}{{ end }}
+{{- with site.Language.Locale }}{{ $article = merge $article (dict "inLanguage" .) }}{{ end }}
+{{- with $desc }}{{ $article = merge $article (dict "description" (. | plainify | htmlUnescape)) }}{{ end }}
+{{- with .Summary }}{{ $article = merge $article (dict "abstract" (. | plainify | htmlUnescape)) }}{{ end }}
+{{- if $tagNames }}{{ $article = merge $article (dict "keywords" $tagNames) }}{{ end }}
+{{- if $cover }}{{ $article = merge $article (dict "image" $cover) }}{{ else if $ogBanner }}{{ $article = merge $article (dict "image" ($ogBanner | absURL)) }}{{ end }}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{- /* BreadcrumbList: home -> section -> post */}}
+{{- $items := slice (dict "@type" "ListItem" "position" 1 "name" site.Title "item" (site.GetPage "/").Permalink) }}
+{{- with .Parent }}
+{{-   if ne .Kind "home" }}
+{{-     $items = $items | append (dict "@type" "ListItem" "position" 2 "name" (.Title | plainify) "item" .Permalink) }}
+{{-   end }}
+{{- end }}
+{{- $last := 1 }}
+{{- with .Parent }}
+{{-   if ne .Kind "home" }}
+{{-     $last = 2 }}
+{{-   end }}
+{{- end }}
+{{- $items = $items | append (dict "@type" "ListItem" "position" (math.Add $last 1) "name" (.Title | plainify)) }}
+{{- $bc := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items }}
+<script type="application/ld+json">{{ $bc | jsonify | safeJS }}</script>
+{{- end }}
