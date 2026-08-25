@@ -24,7 +24,14 @@
   legend: [{"swatch":"var(--fg-mbin-0)","label":"...","hollow"?}] shown under
           the body. Omit for no legend.
   scalekm: scale bar length in km. Omit for no scale bar.
+  token:   Mapbox access token for the base map tiles. Defaults to
+          params.mapboxToken in the site config. Omit (or leave the param
+          unset) for a plain paper background.
+  style:   base map. Bare Mapbox style name (default 'light-v11') or a full
+          style URL. Only applies with a token.
 */}}
+{{- $token := .Get "token" | default (.Site.Params.mapboxToken) -}}
+{{- $style := .Get "style" | default (.Site.Params.mapboxStyle | default "light-v11") -}}
 {{- $geo := .Get "geo" -}}
 {{- if and $geo (not (or (strings.Contains $geo "{") (strings.Contains $geo "["))) -}}
 {{-   $res := .Page.Resources.Get $geo -}}
@@ -45,4 +52,6 @@
   hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
   {{- with .Get "scalekm" }} scalekm="{{ . | safeHTMLAttr }}"{{ end }}
   {{- with $legend }} legend='{{ . | safeHTMLAttr }}'{{ end }}
+  {{- with $token }} token="{{ . | safeHTMLAttr }}"{{ end }}
+  {{- if $style }} style="{{ $style | safeHTMLAttr }}"{{ end }}
   geo='{{ $geo | safeHTMLAttr }}'></en-map>

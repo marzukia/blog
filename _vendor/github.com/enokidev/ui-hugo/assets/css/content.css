@@ -196,4 +196,11 @@ en-article > en-breadcrumbs { margin: 10px 0 40px; }
   .en-feed-when { order: -1; }
   .en-feed-item en-icon { display: none; }
   .en-feed-title { font-size: 22px; }
+  /* Wide data tables scroll sideways instead of crushing columns. */
+  .en-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 }
