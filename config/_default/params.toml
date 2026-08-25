@@ -2,7 +2,7 @@
 brand = "MRZK"
 description = "A candid blog by climate risk expert Andryo Marzuki — data, sustainability, finance, and the occasional breakdown in productivity."
 footerStamp = "GO BUILD"
-footerMeta = "mrzk.io · enokidev/ui"
+footerMeta = "© 2026 Andryo Marzuki"
 
 # home hero
 heroTitle = "ANDRYO"
@@ -20,6 +20,8 @@ mapboxStyle = "light-v11"
 [seo]
   ogBanner = "img/ogbanner.png"
 
+# Umami, self-hosted at umami.junkyard.sh (congo used the us.umami.is SaaS).
+# Loaded only in production (HUGO_ENVIRONMENT=production) to keep dev traffic out.
 [umamiAnalytics]
-  site = "598a7577-6be5-4c96-908b-82f9cc84d4ce"
-  region = "us"
+  script = "https://umami.junkyard.sh/script.js"
+  site = "bb6395f2-323e-4762-b242-62c1ca258e6c"

@@ -13,23 +13,13 @@
   {{- $strict := .Site.Params.comments.giscus.strict | default false -}}
   {{- $loading := .Site.Params.comments.giscus.loading | default "lazy" -}}
 
-  <!-- Giscus Styles to match Congo -->
   <style>
     #giscus-container {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid hsla(0, 0%, 100%, 0.12);
-    }
-    .dark #giscus-container {
-      border-top-color: hsla(0, 0%, 100%, 0.12);
-    }
-    
-    /* Ensure visibility in light mode - add a subtle background */
-    #giscus-container {
+      border-top: 1px solid var(--en-line, rgba(128, 128, 128, 0.25));
       background: transparent;
     }
-    
-    /* Hide default Giscus padding, let Congo handle it */
     #giscus-container iframe {
       width: 100% !important;
       border: none !important;
@@ -39,15 +29,18 @@
   <div id="giscus-container"></div>
 
   <script>
-    // Detect dark mode from Congo's local storage or system preference
-    const isDarkMode = localStorage.getItem('appearance') === 'dark' || 
-      (!localStorage.getItem('appearance') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
+    // enoki theme: html[data-theme] is the source of truth (set before paint by
+    // head.html from localStorage['enoki-theme'], kept in sync by the switch).
+    // Values: "carbon" = dark, "paper" = light. No attr = light default.
+    function enokiDark() {
+      return document.documentElement.getAttribute("data-theme") === "carbon";
+    }
+
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.async = true;
     script.crossOrigin = 'anonymous';
-    
+
     script.setAttribute('data-repo', '{{ $repo }}');
     script.setAttribute('data-repo-id', '{{ $repoId }}');
     script.setAttribute('data-category', '{{ $category }}');
@@ -56,29 +49,20 @@
     script.setAttribute('data-reactions-enabled', '{{ if $reactions }}1{{ else }}0{{ end }}');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', '{{ $inputPos }}');
-    script.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    script.setAttribute('data-theme', enokiDark() ? 'dark' : 'light');
     script.setAttribute('data-lang', '{{ $lang }}');
     script.setAttribute('data-loading', '{{ $loading }}');
-    
+
     document.getElementById('giscus-container').appendChild(script);
 
-    // Handle theme switching
+    // Follow the theme switch at runtime.
     const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'dark' : 'light';
-      
+      const newTheme = enokiDark() ? 'dark' : 'light';
       const iframe = document.querySelector('#giscus-container iframe');
       if (iframe) {
-        iframe.contentWindow.postMessage({
-          giscus: {
-            setConfig: {
-              theme: newTheme
-            }
-          }
-        }, 'https://giscus.app');
+        iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: newTheme } } }, 'https://giscus.app');
       }
     });
-    
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   </script>
 {{- end -}}

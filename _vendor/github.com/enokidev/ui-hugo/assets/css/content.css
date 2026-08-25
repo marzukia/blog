@@ -76,7 +76,7 @@
 /* ---------- article (single) ---------- */
 
 .en-article { max-width: 780px; margin: 0 auto; }
-en-article > en-breadcrumbs { margin: 10px 0 40px; }
+en-article > en-breadcrumbs { margin: 28px 0 44px; }
 /* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
 .en-content en-bar,
 .en-content en-line {
