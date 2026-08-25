@@ -2506,12 +2506,34 @@ textarea.en-input {
   flex: none;
 }
 
-/* Narrow screens: drop the nav + rule, keep brand + actions. */
+/* Narrow screens: keep everything, compact it. */
 @media (max-width: 720px) {
-  .en-topbar-main { gap: 12px; }
-  .en-topbar-nav,
+  .en-topbar-main {
+    gap: 10px;
+    padding: 0 10px;
+  }
+  .en-topbar-brand .en-link {
+    font-size: 14px;
+  }
   .en-topbar-div {
     display: none;
+  }
+  .en-topbar-nav {
+    gap: 12px;
+  }
+  .en-topbar-nav .en-link {
+    font-size: var(--en-f-mono-10);
+  }
+  .en-topbar-actions {
+    gap: 8px;
+  }
+  .en-topbar-actions .en-socials-link {
+    width: 22px;
+    height: 22px;
+  }
+  .en-topbar-actions .en-theme-switch button {
+    width: 24px;
+    height: 22px;
   }
 }
 

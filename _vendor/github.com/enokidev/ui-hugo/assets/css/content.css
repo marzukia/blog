@@ -14,13 +14,15 @@
   gap: 22px;
   align-items: baseline;
   padding: 22px 4px;
-  border-top: 1px solid var(--en-line);
   color: inherit;
   text-decoration: none;
-  transition: background 0.12s ease, padding-left 0.12s ease;
+  transition: background 0.12s ease;
 }
+/* first row: the section header rule is the top edge; no double line */
+.en-feed-item:first-child { border-top: none; }
+.en-feed-item:not(:first-child) { border-top: 1px solid var(--en-line); }
 .en-feed-item:last-child { border-bottom: 1px solid var(--en-line); }
-.en-feed-item:hover { background: var(--en-paper2); padding-left: 14px; }
+.en-feed-item:hover { background: var(--en-paper2); }
 .en-feed-item:hover .en-feed-title { color: var(--en-accent); }
 
 .en-feed-when {

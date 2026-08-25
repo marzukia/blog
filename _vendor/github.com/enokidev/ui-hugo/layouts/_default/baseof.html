@@ -10,6 +10,27 @@
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}
+    <script>
+      // en-pagination navigation: delegated click handler. WC children go
+      // through dangerouslySetInnerHTML so inline scripts inside en-* tags
+      // never run; document-level delegation works regardless of hydration.
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest("en-pagination .en-pagi-btn") : null;
+        if (!btn || btn.disabled) return;
+        var host = btn.closest("en-pagination");
+        if (!host) return;
+        var base = host.getAttribute("data-url-base");
+        if (!base) return;
+        var count = parseInt(host.getAttribute("page-count"), 10) || 1;
+        var cur = parseInt(host.getAttribute("page"), 10) || 1;
+        var p = parseInt(btn.textContent, 10);
+        if (isNaN(p)) {
+          p = btn.getAttribute("aria-label") === "Next page" ? cur + 1 : cur - 1;
+        }
+        p = Math.min(count, Math.max(1, p));
+        window.location.href = p <= 1 ? base : base + "page/" + p + "/";
+      });
+    </script>
     <script type="module" src="{{ "js/enoki.js" | relURL }}"></script>
   </body>
 </html>

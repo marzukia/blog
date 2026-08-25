@@ -13,15 +13,11 @@
 </div>
 {{ if and .paged .pag }}
 <div class="en-feed-page">
-  <en-pagination id="en-feed-pag" page="{{ .pag.PageNumber }}" page-count="{{ .pag.TotalPages }}"></en-pagination>
-  <script>
-    (function () {
-      var el = document.getElementById("en-feed-pag");
-      if (!el) return;
-      el.onChange = function (n) {
-        window.location.href = n <= 1 ? "{{ .pag.URL }}" : "{{ .pag.URL }}page/" + n + "/";
-      };
-    })();
-  </script>
+  <en-pagination
+    id="en-feed-pag"
+    page="{{ .pag.PageNumber }}"
+    page-count="{{ .pag.TotalPages }}"
+    data-url-base="{{ .pag.URL }}">
+  </en-pagination>
 </div>
 {{ end }}

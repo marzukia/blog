@@ -18,7 +18,6 @@
   {{- with site.Params.heroHollow }} hollow="{{ . | upper }}"{{ end }}
   sub="{{ site.Params.description | default site.Title }}"
   chips='{{ $chips | jsonify }}'
-  stats='[{"value": {{ len $posts }}, "label": "posts written"}]'
   ctas='[{"label":"READ THE BLOG","href":"/posts/","arrow":true},{"label":"ABOUT","href":"/about/","ghost":true}]'>
 </en-hero>
 {{- if $posts }}
