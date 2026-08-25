@@ -28,7 +28,8 @@
       {{ range . }}<a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a>{{ end }}
     </div>
     {{- end }}
-    {{- with .Resources.GetMatch "cover.png" }}<img class="en-article-cover" src="{{ .RelPermalink }}" alt="" loading="lazy" />{{ end }}
+    {{- /* in-page cover removed: the OG poster (og.png) carries the visual,
+          the h1 is the header moment (no duplicated title banner) */}}
   </header>
   <div class="en-content">{{ .Content }}</div>
   <hr class="en-rule" />

@@ -1,0 +1,11 @@
+{
+  "name": "mrzk-blog",
+  "private": true,
+  "scripts": {
+    "og": "bun run scripts/og.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.33.4"
+  }
+}

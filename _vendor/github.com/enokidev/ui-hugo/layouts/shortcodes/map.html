@@ -18,8 +18,13 @@
                                   g = [[outer ring [[x,y]...], hole rings...]]
                                   l/p = label + centroid (meters).
     overlay?:  [{l, p, g}]        boundary + label layer (e.g. POA outlines).
-    lines?:    [{g, k?}]          k 0 = train (ink), 1 = tram (blue).
+    lines?:    [{g, k?}]          k 0 = train, 1 = tram.
     points?:   [{s, g}]           s 0 = station (ring), 1 = stop (dot).
+    view?:     [minx,miny,maxx,maxy]  initial zoom box (meters). Default is
+              the full data extent. Set to open zoomed into the core.
+    center?:   [x, y]             radial anchor (meters). When set, each line
+              is auto-coloured by its bearing from center (transit-map look:
+              one colour per radial direction; bright for train, muted tram).
   }
   legend: [{"swatch":"var(--fg-mbin-0)","label":"...","hollow"?}] shown under
           the body. Omit for no legend.

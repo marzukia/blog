@@ -11,6 +11,11 @@
   Page params (all optional):
     robots         page-level robots meta (wins over site)
     canonicalUrl   override the canonical link
+
+  Share image resolution (og:image / twitter:image / JSON-LD image):
+    1. page resource "og.png"   auto-generated 1200x630 (preferred)
+    2. page resource "cover.png" legacy, size unknown
+    3. params.seo.ogBanner       site-wide 1200x630 fallback
 -*/ -}}
 {{- $iso := "2006-01-02T15:04:05-07:00" -}}
 {{- $siteName := site.Params.seo.siteName | default site.Title -}}
@@ -55,19 +60,32 @@
 {{- else }}
 <meta property="og:type" content="object" />
 {{- end }}
-{{- $cover := "" }}
+{{- $ogImage := "" }}
+{{- $ogImageSize := false }}
 {{- if .IsPage }}
-{{-   with .Resources.GetMatch "cover.png" }}
-{{-     $cover = .Permalink }}
+{{-   with .Resources.GetMatch "og.png" }}
+{{-     $ogImage = .Permalink }}
+{{-     $ogImageSize = true }}
+{{-   end }}
+{{- end }}
+{{- if eq $ogImage "" }}
+{{-   if .IsPage }}
+{{-     with .Resources.GetMatch "cover.png" }}
+{{-       $ogImage = .Permalink }}
+{{-     end }}
 {{-   end }}
 {{- end }}
 {{- $ogBanner := site.Params.seo.ogBanner | default site.Params.seo.ogbanner }}
-{{- if $cover }}
-<meta property="og:image" content="{{ $cover }}" />
-{{- else if $ogBanner }}
-<meta property="og:image" content="{{ $ogBanner | absURL }}" />
+{{- if and (eq $ogImage "") $ogBanner }}
+{{-   $ogImage = $ogBanner | absURL }}
+{{-   $ogImageSize = true }}
+{{- end }}
+{{- if $ogImage }}
+<meta property="og:image" content="{{ $ogImage }}" />
+{{- if $ogImageSize }}
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+{{- end }}
 {{- end }}
 {{- if .IsPage }}
 {{-   with site.GetPage .Section }}
@@ -86,10 +104,8 @@
 <meta name="twitter:description" content="{{ . | plainify | htmlUnescape }}" />
 {{- end }}
 <meta name="twitter:title" content="{{ .Title }}" />
-{{- if $cover }}
-<meta name="twitter:image" content="{{ $cover }}" />
-{{- else if $ogBanner }}
-<meta name="twitter:image" content="{{ $ogBanner | absURL }}" />
+{{- if $ogImage }}
+<meta name="twitter:image" content="{{ $ogImage }}" />
 {{- end }}
 {{- with site.Params.seo.twitterHandle }}
 <meta name="twitter:site" content="{{ . }}" />
@@ -109,7 +125,7 @@
 {{- with $desc }}{{ $article = merge $article (dict "description" (. | plainify | htmlUnescape)) }}{{ end }}
 {{- with .Summary }}{{ $article = merge $article (dict "abstract" (. | plainify | htmlUnescape)) }}{{ end }}
 {{- if $tagNames }}{{ $article = merge $article (dict "keywords" $tagNames) }}{{ end }}
-{{- if $cover }}{{ $article = merge $article (dict "image" $cover) }}{{ else if $ogBanner }}{{ $article = merge $article (dict "image" ($ogBanner | absURL)) }}{{ end }}
+{{- if $ogImage }}{{ $article = merge $article (dict "image" $ogImage) }}{{ end }}
 <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
 {{- /* BreadcrumbList: home -> section -> post */}}
 {{- $items := slice (dict "@type" "ListItem" "position" 1 "name" site.Title "item" (site.GetPage "/").Permalink) }}

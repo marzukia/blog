@@ -40,6 +40,16 @@ jobs:
           cd /home/runner/work/blog/blog
           go mod download
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          version: latest
+
+      - name: Generate OG images
+        run: |
+          bun install --frozen-lockfile
+          bun run og
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
