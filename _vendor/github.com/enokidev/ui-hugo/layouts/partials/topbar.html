@@ -1,8 +1,23 @@
+{{ $socialIcons := slice "github" "linkedin" "rss" }}
+{{ $socials := slice }}
+{{ range .Site.Menus.main }}
+{{- $m := . -}}
+{{- if in $socialIcons $m.Params.icon }}
+{{-   $socials = $socials | append (dict "icon" $m.Params.icon "label" $m.Name "href" $m.URL) -}}
+{{- end }}
+{{ end }}
 <en-topbar>
   <en-link href="{{ "/" | relURL }}">{{ site.Params.brand | default site.Title | upper }}</en-link>
   {{ range .Site.Menus.main }}
   {{- $m := . -}}
+  {{- if not (in $socialIcons $m.Params.icon) }}
   {{- with $m.URL }}<en-link href="{{ . | relURL }}">{{ $m.Name | upper }}</en-link>{{ end }}
+  {{- end }}
   {{ end }}
-  <en-theme-toggle></en-theme-toggle>
+  <span class="en-topbar-actions">
+    {{- with $socials }}
+    <en-socials links='{{ . | jsonify }}'></en-socials>
+    {{- end }}
+    <en-theme-switch></en-theme-switch>
+  </span>
 </en-topbar>

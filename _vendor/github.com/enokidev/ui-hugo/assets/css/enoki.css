@@ -2106,6 +2106,63 @@ textarea.en-input {
   color: var(--en-accent);
 }
 
+/* Socials: row of compact brand-mark icon buttons.
+   2px house rule around each 26px box; hover inverts to ink. */
+
+.en-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.en-socials-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: var(--en-bw) solid var(--en-line);
+  color: var(--en-ink);
+  transition:
+    background var(--en-d-quick) var(--en-ease-ui),
+    color var(--en-d-quick) var(--en-ease-ui);
+}
+
+.en-socials-link:hover {
+  background: var(--en-ink);
+  color: var(--en-paper);
+}
+
+/* ThemeSwitch: icon-only [sun][moon] segments. Same house rule as
+   ThemeToggle, no text. The active segment inverts to ink. */
+
+.en-theme-switch {
+  display: inline-flex;
+  align-items: stretch;
+  border: var(--en-bw) solid var(--en-line);
+}
+
+.en-theme-switch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  color: var(--en-ink);
+  transition:
+    background var(--en-d-quick) var(--en-ease-ui),
+    color var(--en-d-quick) var(--en-ease-ui);
+}
+
+.en-theme-switch button[aria-pressed='true'] {
+  background: var(--en-ink);
+  color: var(--en-paper);
+}
+
 /* Breadcrumbs. Mono 11px uppercase path, house link style on the middle
    crumbs, last crumb is solid ink. The separator is a printed slash in
    ink2, never a box. */
@@ -2399,8 +2456,24 @@ textarea.en-input {
 .en-topbar-main {
   display: flex;
   flex: 1;
+  align-items: center;
+  gap: 16px;
   min-width: 0;
   overflow: hidden;
+  padding: 0 12px;
+}
+
+/* nav links in the bar drop the underline; hover still warms to accent */
+.en-topbar-main .en-link {
+  text-decoration: none;
+}
+
+/* trailing cluster (socials, theme switch): push right */
+.en-topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
 }
 
 .en-topbar-side {

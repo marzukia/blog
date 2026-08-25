@@ -6,7 +6,6 @@ footerMeta = "mrzk.io · enokidev/ui"
 
 # home hero
 heroTitle = "ANDRYO MARZUKI"
-heroHollow = "NET ZERO PRODUCTIVITY"
 heroChips = ["Climate Risk", "Data", "Open Source", "Productivity"]
 
 # general (harmless, some consumed by site partials)
