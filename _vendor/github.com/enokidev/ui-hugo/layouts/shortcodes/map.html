@@ -1,0 +1,48 @@
+{{/*
+  Map figure (en-map).
+
+  Geo payload for EPSG:3857 meters (Web Mercator). `geo` accepts EITHER a
+  compact inline JSON OR a path to a .json file sitting next to the post
+  (geo="fig-map-routes.json"). Inline must be double-quoted with escaped
+  inner quotes (\"), never single-quoted call-side (Hugo parses spaces +
+  quotes as positional params). Do NOT pre-escape with replaceRE.
+
+    {{< map tag="FIG. 07" cap="SUBURB SCORE"
+        hint="Composite score by postcode area."
+        geo="fig-map-scored.json"
+        scalekm="15"
+        legend='[{"swatch":"var(--fg-mbin-0)","label":"0.415-0.599"},{"swatch":"var(--fg-mbin-4)","label":"0.911-1.037"}]' >}}
+
+  geo: {
+    features?: [{c, g, l?, p?}]   c = bin 0..5 (0 = best), -1 = no data.
+                                  g = [[outer ring [[x,y]...], hole rings...]]
+                                  l/p = label + centroid (meters).
+    overlay?:  [{l, p, g}]        boundary + label layer (e.g. POA outlines).
+    lines?:    [{g, k?}]          k 0 = train (ink), 1 = tram (blue).
+    points?:   [{s, g}]           s 0 = station (ring), 1 = stop (dot).
+  }
+  legend: [{"swatch":"var(--fg-mbin-0)","label":"...","hollow"?}] shown under
+          the body. Omit for no legend.
+  scalekm: scale bar length in km. Omit for no scale bar.
+*/}}
+{{- $geo := .Get "geo" -}}
+{{- if and $geo (not (or (strings.Contains $geo "{") (strings.Contains $geo "["))) -}}
+{{-   $res := .Page.Resources.Get $geo -}}
+{{-   if $res -}}
+{{-     $geo = $res.Content | strings.TrimSpace -}}
+{{-   end -}}
+{{- end -}}
+{{- $legend := .Get "legend" -}}
+{{- if and $legend (not (or (strings.Contains $legend "{") (strings.Contains $legend "["))) -}}
+{{-   $res := .Page.Resources.Get $legend -}}
+{{-   if $res -}}
+{{-     $legend = $res.Content | strings.TrimSpace -}}
+{{-   end -}}
+{{- end -}}
+<en-map
+  cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
+  tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
+  hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  {{- with .Get "scalekm" }} scalekm="{{ . | safeHTMLAttr }}"{{ end }}
+  {{- with $legend }} legend='{{ . | safeHTMLAttr }}'{{ end }}
+  geo='{{ $geo | safeHTMLAttr }}'></en-map>

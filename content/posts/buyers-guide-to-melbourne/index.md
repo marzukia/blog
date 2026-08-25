@@ -37,7 +37,10 @@ The data was sourced from Public Transport Victoria’s interactive tools, which
 
 _**Key takeaway**: You'll want to be close to a train station or tram stop._
 
-![Tram and train routes & stops](routes.png)
+{{< map tag="FIG. 01" cap="RAIL & TRAM NETWORK"
+      hint="PTV train lines, tram lines, stations, and stops. Proximity to a stop is the first filter."
+      geo="fig-map-routes.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--en-ink)\",\"label\":\"TRAIN\"},{\"swatch\":\"var(--en-blue)\",\"label\":\"TRAM\"},{\"swatch\":\"\",\"label\":\"STATION\",\"hollow\":true},{\"swatch\":\"var(--en-ink2)\",\"label\":\"STOP\"}]" >}}
 
 ### Transit & Cycling Times to Docklands
 
@@ -51,7 +54,10 @@ Unsurprisingly, shorter travel times correlate strongly with proximity to train 
 
 _**Key takeaway**: Proximity to train or tram stations matters more than distance-efficient transport beats geographic closeness._
 
-![Public transport times for Melbourne](pt-map.png)
+{{< map tag="FIG. 02" cap="TRANSIT TIME TO DOCKLANDS"
+      hint="Google Directions transit time from a 15,000-point grid, Monday 8:30 AM arrival. Efficient routes beat raw distance."
+      geo="fig-map-pt.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"30 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"40 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"50 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"60 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"70 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-5)\",\"label\":\"70 MIN OR MORE\"}]" >}}
 
 #### Cycling
 
@@ -61,7 +67,10 @@ Unlike public transport, cycling times behave predictably: the further you are, 
 
 _**Key takeaway**: Distance matters-no shortcuts on a bike._
 
-![Cycling times for Melbourne](cycling-map.png)
+{{< map tag="FIG. 03" cap="CYCLING TIME TO DOCKLANDS"
+      hint="Google Directions cycling time from the same grid. No shortcuts: the further you are, the longer it takes."
+      geo="fig-map-cycling.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"20 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"30 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"40 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"50 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"60 MIN OR LESS\"},{\"swatch\":\"var(--fg-mbin-5)\",\"label\":\"60 MIN OR MORE\"}]" >}}
 
 ### Public School Zoning & Performance
 
@@ -73,7 +82,10 @@ The more difficult task was assessing school performance. Most available ranking
 
 _**Key takeaway**: Better-performing public schools tend to be in the eastern suburbs._
 
-![Ranked secondary schools for Melbourne](schools-map.png)
+{{< map tag="FIG. 04" cap="PUBLIC SCHOOL QUALITY BY CATCHMENT"
+      hint="VCE outcomes for public schools, matched to their catchment zones. Better schools cluster in the east."
+      geo="fig-map-schools.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"TOP 20%\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"20-40%\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"40-60%\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"60-80%\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"BOTTOM 20%\"}]" >}}
 
 ### Suburb Affluence & Gentrification
 
@@ -89,7 +101,10 @@ The ideal is finding suburbs that weren’t historically affluent but have shown
 
 _**Key takeaway**: Affluence is concentrated in the east, and it often comes with a premium._
 
-![Monthly household income](income-map.png)
+{{< map tag="FIG. 05" cap="MEDIAN HOUSEHOLD INCOME"
+      hint="2021 census median monthly household income, by postcode. Affluence is concentrated in the east."
+      geo="fig-map-income.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"TOP 20%\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"20-40%\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"40-60%\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"60-80%\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"BOTTOM 20%\"}]" >}}
 
 #### Gentrification (2016–2021)
 
@@ -101,7 +116,10 @@ This also suggests potential for value-areas that have gentrified but where the 
 
 _**Key takeaway**: The inner north and west have gentrified heavily-there’s still value to be found._
 
-![Gentrification](gentrification-map.png)
+{{< map tag="FIG. 06" cap="GENTRIFICATION 2016-2021"
+      hint="Change in median household income between censuses. The inner north and west are moving hardest."
+      geo="fig-map-gentrification.json" scalekm="10"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"MOST CHANGE (TOP 20%)\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"20-40%\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"40-60%\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"60-80%\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"LEAST CHANGE (80-100%)\"}]" >}}
 
 ## The Results
 
@@ -129,7 +147,10 @@ The result was a cumulative score that helped highlight suburbs with good fundam
 - The lower the cumulative score, the better.
 - All raw data and scripts are available in the appendix.
 
-![Scored](scored-map.png)
+{{< map tag="FIG. 07" cap="SUBURB SCORE, LOWER IS BETTER"
+      hint="Weighted composite: transit 40%, cycling 20%, schools 20%, income + gentrification 20%. Blue is value."
+      geo="fig-map-scored.json" scalekm="15"
+      legend="[{\"swatch\":\"var(--fg-mbin-0)\",\"label\":\"0.415-0.599\"},{\"swatch\":\"var(--fg-mbin-1)\",\"label\":\"0.599-0.734\"},{\"swatch\":\"var(--fg-mbin-2)\",\"label\":\"0.734-0.831\"},{\"swatch\":\"var(--fg-mbin-3)\",\"label\":\"0.831-0.911\"},{\"swatch\":\"var(--fg-mbin-4)\",\"label\":\"0.911-1.037\"}]" >}}
 
 ### Top 20 Postcodes
 

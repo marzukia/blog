@@ -4264,6 +4264,109 @@ textarea.en-input {
   pointer-events: none;
 }
 
+/* ---- map -------------------------------------------------------------------- */
+/* Geo choropleth + network. Bins 0..5 run best to worst. Hue rotation
+   (blue -> green -> amber -> accent) mirrors the originals' RdYlGn ramp;
+   a two-hue lightness ramp reads "red sea" once class 4+5 cover >40% of
+   the map. color-mix with paper keeps the ramp shape theme-safe. -1 = no data. */
+
+:root {
+  --fg-mbin-0: color-mix(in srgb, var(--en-blue) 60%, var(--en-paper));
+  --fg-mbin-1: color-mix(in srgb, var(--en-green) 55%, var(--en-paper));
+  --fg-mbin-2: color-mix(in srgb, var(--en-amber) 30%, var(--en-paper));
+  --fg-mbin-3: color-mix(in srgb, var(--en-amber) 50%, var(--en-paper));
+  --fg-mbin-4: color-mix(in srgb, var(--en-amber) 85%, var(--en-paper));
+  --fg-mbin-5: color-mix(in srgb, var(--en-accent) 80%, var(--en-paper));
+  --fg-mbin-na: var(--en-paper2);
+}
+
+.fg-mbin-0 {
+  fill: var(--fg-mbin-0);
+}
+.fg-mbin-1 {
+  fill: var(--fg-mbin-1);
+}
+.fg-mbin-2 {
+  fill: var(--fg-mbin-2);
+}
+.fg-mbin-3 {
+  fill: var(--fg-mbin-3);
+}
+.fg-mbin-4 {
+  fill: var(--fg-mbin-4);
+}
+.fg-mbin-5 {
+  fill: var(--fg-mbin-5);
+}
+.fg-mbin-na {
+  fill: var(--fg-mbin-na);
+}
+
+.fg-map-poly {
+  stroke: var(--en-ink);
+  stroke-width: 0.75;
+  stroke-opacity: 0.55;
+  stroke-linejoin: round;
+}
+
+.fg-map-poa {
+  fill: none;
+  stroke: var(--en-ink);
+  stroke-width: 1.3;
+  stroke-opacity: 0.8;
+  stroke-linejoin: round;
+}
+
+.fg-map-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fg-map-line-train {
+  stroke: var(--en-ink);
+  stroke-width: 2.2;
+}
+.fg-map-line-tram {
+  stroke: var(--en-blue);
+  stroke-width: 1.3;
+}
+
+.fg-map-station {
+  fill: var(--en-paper);
+  stroke: var(--en-ink);
+  stroke-width: 1.5;
+}
+.fg-map-stop {
+  fill: var(--en-ink2);
+}
+
+.fg-map-lbl {
+  font-family: var(--en-mono);
+  font-size: 9px;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: var(--en-paper);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.fg-map-scalebar {
+  stroke: var(--en-ink);
+  stroke-width: 3;
+}
+.fg-map-scaletick {
+  stroke: var(--en-ink);
+  stroke-width: 1.5;
+}
+.fg-map-scalelbl {
+  font-family: var(--en-mono);
+  font-size: 10px;
+  fill: var(--en-ink);
+  letter-spacing: 0.5px;
+}
+
 /* ---- ambient dots ------------------------------------------------------------------- */
 
 .fg-dot-walk {
