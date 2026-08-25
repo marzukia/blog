@@ -75,8 +75,10 @@
 
 /* ---------- article (single) ---------- */
 
-.en-article { max-width: 780px; margin: 0 auto; }
-en-article > en-breadcrumbs { margin: 28px 0 44px; }
+/* the en-breadcrumbs host is display:contents, so a margin on it is
+   ignored by layout — the top clearance must be padding on the article
+   box (margins would also collapse through it to <main>'s padding). */
+.en-article { max-width: 780px; margin: 0 auto; padding-top: 56px; }
 /* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
 .en-content en-bar,
 .en-content en-line {

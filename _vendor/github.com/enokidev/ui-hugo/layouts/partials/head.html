@@ -1,6 +1,15 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#efe9db" />
+{{/* Kill the pre-CSS serif (UA Times) flash: set a sans base before
+    enoki.css arrives, and start the two primary font files in parallel
+    with the stylesheet so the Anton/Archivo swap-in is instant. */}}
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/anton-latin-400-normal.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/archivo-latin-400-normal.woff2" />
+<style>
+  html { font-family: "Archivo", system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6 { font-family: "Anton", "Archivo", sans-serif; }
+</style>
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 {{- $headDesc := .Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description) }}
 <meta name="description" content="{{ $headDesc | plainify | htmlUnescape }}" />
