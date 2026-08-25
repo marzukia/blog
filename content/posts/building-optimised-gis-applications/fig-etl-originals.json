@@ -1,7 +1,7 @@
 [
-  {"id":"gpkg","label":"SPATIAL.GPKG","sub":"source data","x":80,"y":320,"w":160,"h":84,"role":"state","tip":"<div class=\"en-tip-title\">SPATIAL.GPKG</div>raw source export<br>loaded once per ETL run"},
-  {"id":"load","label":"LOAD.FOOBAR","sub":"raw load","x":310,"y":320,"w":160,"h":84,"tip":"<div class=\"en-tip-title\">LOAD.FOOBAR</div>raw rows, original geometries<br>untouched by design"},
-  {"id":"staging","label":"STAGING.FOOBAR","sub":"raw geometries","x":540,"y":320,"w":180,"h":84,"tip":"<div class=\"en-tip-title\">STAGING.FOOBAR</div>full rows, original geometries kept<br>the fork point of the pipeline"},
-  {"id":"optimised","label":"OPTIMISED","sub":"foobar_geometries","x":780,"y":170,"w":190,"h":88,"role":"blue","tip":"<div class=\"en-tip-title\">OPTIMISED.FOOBAR_GEOMETRIES</div>one row per subdivision<br>heavy spatial ops query this table"},
-  {"id":"public","label":"PUBLIC.FOOBAR","sub":"original geoms","x":780,"y":470,"w":190,"h":88,"role":"green","tip":"<div class=\"en-tip-title\">PUBLIC.FOOBAR</div>original geometries for display + lineage<br>never used for expensive predicates"}
+  {"id":"gpkg","label":"SPATIAL.GPKG","sub":"source data","x":143,"y":320,"w":160,"h":84,"role":"state","tip":"<div class=\"en-tip-title\">SPATIAL.GPKG</div>raw source export<br>loaded once per ETL run"},
+  {"id":"load","label":"LOAD.FOOBAR","sub":"raw load","x":373,"y":320,"w":160,"h":84,"tip":"<div class=\"en-tip-title\">LOAD.FOOBAR</div>raw rows, original geometries<br>untouched by design"},
+  {"id":"staging","label":"STAGING.FOOBAR","sub":"raw geometries","x":603,"y":320,"w":180,"h":84,"tip":"<div class=\"en-tip-title\">STAGING.FOOBAR</div>full rows, original geometries kept<br>the fork point of the pipeline"},
+  {"id":"optimised","label":"OPTIMISED","sub":"foobar_geometries","x":843,"y":170,"w":190,"h":88,"role":"blue","tip":"<div class=\"en-tip-title\">OPTIMISED.FOOBAR_GEOMETRIES</div>one row per subdivision<br>heavy spatial ops query this table"},
+  {"id":"public","label":"PUBLIC.FOOBAR","sub":"original geoms","x":843,"y":470,"w":190,"h":88,"role":"green","tip":"<div class=\"en-tip-title\">PUBLIC.FOOBAR</div>original geometries for display + lineage<br>never used for expensive predicates"}
 ]

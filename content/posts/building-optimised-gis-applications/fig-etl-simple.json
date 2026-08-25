@@ -1,6 +1,6 @@
 [
-  {"id":"gpkg","label":"SPATIAL.GPKG","sub":"source data","x":80,"y":320,"w":170,"h":90,"role":"state","tip":"<div class=\"en-tip-title\">SPATIAL.GPKG</div>raw source export<br>loaded once per ETL run"},
-  {"id":"load","label":"LOAD.FOOBAR","sub":"raw load","x":330,"y":320,"w":160,"h":90,"tip":"<div class=\"en-tip-title\">LOAD.FOOBAR</div>raw rows, original geometries<br>untouched by design"},
-  {"id":"staging","label":"STAGING.FOOBAR","sub":"st_subdivide(geom,256)","x":610,"y":320,"w":180,"h":90,"tip":"<div class=\"en-tip-title\">STAGING.FOOBAR</div>big polys split into chunks<br>the index can now prune most of them"},
-  {"id":"public","label":"PUBLIC.FOOBAR","sub":"serves the app","x":830,"y":320,"w":150,"h":90,"role":"green","tip":"<div class=\"en-tip-title\">PUBLIC.FOOBAR</div>subdivided geoms serve spatial queries<br>original shapes dropped in this variant"}
+  {"id":"gpkg","label":"SPATIAL.GPKG","sub":"source data","x":130,"y":320,"w":170,"h":90,"role":"state","tip":"<div class=\"en-tip-title\">SPATIAL.GPKG</div>raw source export<br>loaded once per ETL run"},
+  {"id":"load","label":"LOAD.FOOBAR","sub":"raw load","x":380,"y":320,"w":160,"h":90,"tip":"<div class=\"en-tip-title\">LOAD.FOOBAR</div>raw rows, original geometries<br>untouched by design"},
+  {"id":"staging","label":"STAGING.FOOBAR","sub":"st_subdivide(geom,256)","x":660,"y":320,"w":180,"h":90,"tip":"<div class=\"en-tip-title\">STAGING.FOOBAR</div>big polys split into chunks<br>the index can now prune most of them"},
+  {"id":"public","label":"PUBLIC.FOOBAR","sub":"serves the app","x":880,"y":320,"w":150,"h":90,"role":"green","tip":"<div class=\"en-tip-title\">PUBLIC.FOOBAR</div>subdivided geoms serve spatial queries<br>original shapes dropped in this variant"}
 ]

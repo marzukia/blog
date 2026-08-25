@@ -73,7 +73,7 @@ Labour has some significant challenges in their near future with some of the key
 
 - Handling of the COVID19 recovery both economically and socially. Would be continued and prolonged lockdowns erode the public goodwill in the Labour' brand'?
 - Opposition from both the right and left will likely cause additional pressure Labour did not experience in their last term.
-- Actually dealing with the housing crisis. 80% of their voters do not own their own home; it's a severe no brainer to deal with this if they want to retain their voting base.
+- Actually dealing with the housing crisis. 76% of their voters do not own their own home (FIG. 06); it's a severe no brainer to deal with this if they want to retain their voting base.
 
 Labour's position is more or less 'keep the status quo' - maybe that's just what New Zealanders want?
 

@@ -4300,24 +4300,21 @@ textarea.en-input {
   outline: none;
 }
 
-/* Zone label chips (HTML markers): mono on a paper chip, like the
-   originals' white-box labels. JS declutters by projected area. */
-.fg-map-chip {
+/* Postcode popup: click the map to reveal the POA's postal area. A MapLibre
+   Popup, house-styled (mono on a paper chip, hairline border). */
+.fg-map-popup .maplibregl-popup-content {
   font-family: var(--en-mono);
-  font-size: 10px;
-  line-height: 1;
+  font-size: 12px;
   letter-spacing: 0.5px;
   color: var(--en-ink);
-  background: color-mix(in srgb, var(--en-paper) 88%, transparent);
+  background: color-mix(in srgb, var(--en-paper) 94%, transparent);
   border: 1px solid color-mix(in srgb, var(--en-ink) 30%, transparent);
-  padding: 2px 4px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 400ms ease;
+  border-radius: 0;
+  padding: 4px 8px;
 }
-.fg-map-chip.on {
-  opacity: 1;
+.fg-map-popup .maplibregl-popup-tip {
+  border-top-color: color-mix(in srgb, var(--en-paper) 94%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--en-paper) 94%, transparent);
 }
 
 /* House-ify the MapLibre chrome we keep (scale bar + attribution). */
