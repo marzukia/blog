@@ -1,0 +1,33 @@
+{{ define "main" }}{{ if .Content }}
+{{/* Home with hand-written <en-*> content (exampleSite style) */}}
+{{ .Content }}
+{{ else }}
+{{/* Blog home: hero + recent posts feed */}}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $chips := slice -}}
+{{- range site.Params.heroChips -}}
+{{-   $chips = $chips | append (dict "label" (. | upper)) -}}
+{{- end -}}
+{{- $recent := first 6 $posts.ByDate.Reverse -}}
+{{- $items := slice -}}
+{{- range $recent -}}
+{{-   $items = $items | append . -}}
+{{- end -}}
+<en-hero
+  title="{{ site.Params.heroTitle | default (site.Params.brand | default site.Title) | upper }}"
+  {{- with site.Params.heroHollow }} hollow="{{ . | upper }}"{{ end }}
+  sub="{{ site.Params.description | default site.Title }}"
+  chips='{{ $chips | jsonify }}'
+  stats='[{"value": {{ len $posts }}, "label": "posts written"}]'
+  ctas='[{"label":"READ THE BLOG","href":"/posts/","arrow":true},{"label":"ABOUT","href":"/about/","ghost":true}]'>
+</en-hero>
+{{- if $posts }}
+<en-section num="01" title="LATEST WRITING" blurb="Newest first. The data, the code, and the occasional spiral.">
+  {{ partial "feed.html" (dict "items" $items "paged" false) }}
+  {{ with site.GetPage "posts" }}
+  <div class="en-feed-more"><en-link href="{{ .RelPermalink }}">ALL POSTS &rarr;</en-link></div>
+  {{ end }}
+</en-section>
+{{ end }}
+{{ end }}
+{{ end }}

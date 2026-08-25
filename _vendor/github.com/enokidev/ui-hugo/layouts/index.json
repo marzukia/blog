@@ -1,0 +1,8 @@
+[{{ range $i, $p := site.RegularPages.ByDate.Reverse }}
+{{- $tags := slice -}}
+{{- range $p.GetTerms "tags" -}}
+{{-   $tags = $tags | append .Title -}}
+{{- end -}}
+{{ if $i }},{{ end }}
+{{ dict "title" $p.Title "url" $p.RelPermalink "date" ($p.Date.Format "2006-01-02") "description" ($p.Description | default "" | plainify | truncate 300) "tags" $tags | jsonify }}
+{{ end }}]

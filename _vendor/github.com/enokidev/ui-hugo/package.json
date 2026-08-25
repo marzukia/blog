@@ -1,0 +1,17 @@
+{
+  "name": "ui-hugo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hugo theme that renders the @enokidev/ui design system via <en-*> web components. Zero drift: assets are built from the real packages.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "bun scripts/build.mjs",
+    "dev": "bun scripts/build.mjs && hugo --source exampleSite --navigateToChanged --disableFastRender",
+    "serve": "bun scripts/build.mjs && hugo --source exampleSite server -D --port 1313"
+  },
+  "dependencies": {
+    "@enokidev/ui": "file:../franky-ui",
+    "@enokidev/ui-wc": "file:../ui-wc"
+  }
+}

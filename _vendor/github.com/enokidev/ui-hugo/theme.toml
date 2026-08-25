@@ -1,0 +1,12 @@
+name = "ui-hugo"
+license = "MIT"
+licenses = [{type = "MIT", url = "https://github.com/enokidev/ui-hugo/blob/main/LICENSE"}]
+description = "Hugo theme that renders the @enokidev/ui design system via <en-*> web components. Zero drift."
+homepage = "https://github.com/enokidev/ui-hugo"
+tags = ["web-components", "react", "design-system", "brutalist"]
+features = ["zero-drift", "web-components", "live-figures", "theme-toggle", "self-hosted-fonts"]
+min_version = "0.120.0"
+
+[author]
+  name = "enokidev"
+  homepage = "https://github.com/enokidev"

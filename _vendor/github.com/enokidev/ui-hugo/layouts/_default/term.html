@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{- $pages := .Pages.ByDate.Reverse -}}
+{{- $pag := .Paginate $pages -}}
+{{- $items := slice -}}
+{{- range $pag.Pages -}}
+{{-   $items = $items | append . -}}
+{{- end -}}
+<en-section
+  num="00"
+  title="{{ .Title | upper }}"
+  blurb="{{ len .Pages }} {{ .Data.Plural }} entries">
+  {{- if $pag.TotalPages }}
+  {{ partial "feed.html" (dict "items" $items "paged" true "pag" $pag) }}
+  {{- else }}
+  <en-empty title="NOTHING HERE YET" body="No posts under this tag."></en-empty>
+  {{- end }}
+</en-section>
+{{ end }}

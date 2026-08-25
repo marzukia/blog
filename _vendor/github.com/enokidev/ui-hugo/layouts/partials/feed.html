@@ -1,0 +1,27 @@
+{{/* Post feed rows. Args: dict "items" (page slice) "paged" (bool) "pag" (paged collection, when paged) */}}
+<div class="en-feed">
+  {{ range .items }}
+  <a class="en-feed-item" href="{{ .RelPermalink }}">
+    <span class="en-feed-when">{{ .Date | time.Format "2006.01.02" }}</span>
+    <span class="en-feed-body">
+      <span class="en-feed-title">{{ .Title }}</span>
+      {{- with .Description }}<span class="en-feed-desc">{{ . | plainify | truncate 180 }}</span>{{ end }}
+    </span>
+    <en-icon name="arrow-right"></en-icon>
+  </a>
+  {{ end }}
+</div>
+{{ if and .paged .pag }}
+<div class="en-feed-page">
+  <en-pagination id="en-feed-pag" page="{{ .pag.PageNumber }}" page-count="{{ .pag.TotalPages }}"></en-pagination>
+  <script>
+    (function () {
+      var el = document.getElementById("en-feed-pag");
+      if (!el) return;
+      el.onChange = function (n) {
+        window.location.href = n <= 1 ? "{{ .pag.URL }}" : "{{ .pag.URL }}page/" + n + "/";
+      };
+    })();
+  </script>
+</div>
+{{ end }}

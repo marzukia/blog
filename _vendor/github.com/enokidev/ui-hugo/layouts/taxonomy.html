@@ -1,0 +1,9 @@
+{{ define "main" }}
+<en-section num="00" title="{{ .Title | upper }}" blurb="Everything I've written, by topic.">
+  <div class="en-tags">
+    {{ range .Pages.ByTitle }}
+    <a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a><span class="en-tag-count">{{ len .Pages }}</span>
+    {{ end }}
+  </div>
+</en-section>
+{{ end }}

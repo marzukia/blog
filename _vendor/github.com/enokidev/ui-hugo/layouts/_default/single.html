@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ if and .IsPage (or .Params.num .Params.blurb) }}
+{{/* exampleSite-style page: explicit section wrapper */}}
+<en-section num="{{ .Params.num | default "" }}" title="{{ .Title | upper }}" blurb="{{ .Params.blurb | default "" }}">
+  {{ .Content }}
+</en-section>
+{{ else }}
+{{/* Blog article: header + content + comments */}}
+{{- $crumbs := slice (dict "label" "home" "href" ("/" | relURL)) -}}
+{{- with .Parent -}}
+{{-   if ne .Kind "home" -}}
+{{-     $crumbs = $crumbs | append (dict "label" (.Title | upper) "href" .RelPermalink) -}}
+{{-   end -}}
+{{- end -}}
+{{- $crumbs = $crumbs | append (dict "label" (.Title | upper)) -}}
+<article class="en-article">
+  <en-breadcrumbs items='{{ $crumbs | jsonify }}'></en-breadcrumbs>
+  <header class="en-article-head">
+    <div class="en-article-meta">
+      {{- if ne .Params.showDate false }}<span class="en-article-date">{{ .Date | time.Format "2006.01.02" }}</span>{{ end }}
+      {{- if ne .Params.showAuthor false }}{{ with .Params.author }} · <span>{{ . | upper }}</span>{{ end }}{{ end }}
+      {{- if ne .Params.showReadingTime false }} · <span>{{ .ReadingTime }} MIN READ</span>{{ end }}
+    </div>
+    <h1 class="en-article-title">{{ .Title }}</h1>
+    {{- with .Description }}<p class="en-article-desc">{{ . | plainify }}</p>{{ end }}
+    {{- with .GetTerms "tags" }}
+    <div class="en-article-tags">
+      {{ range . }}<a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a>{{ end }}
+    </div>
+    {{- end }}
+    {{- with .Resources.GetMatch "cover.png" }}<img class="en-article-cover" src="{{ .RelPermalink }}" alt="" loading="lazy" />{{ end }}
+  </header>
+  <div class="en-content">{{ .Content }}</div>
+  <hr class="en-rule" />
+  {{ partial "comments.html" . }}
+</article>
+{{ end }}
+{{ end }}

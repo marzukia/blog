@@ -1,0 +1,8 @@
+<en-topbar>
+  <en-link href="{{ "/" | relURL }}">{{ site.Params.brand | default site.Title | upper }}</en-link>
+  {{ range .Site.Menus.main }}
+  {{- $m := . -}}
+  {{- with $m.URL }}<en-link href="{{ . | relURL }}">{{ $m.Name | upper }}</en-link>{{ end }}
+  {{ end }}
+  <en-theme-toggle></en-theme-toggle>
+</en-topbar>

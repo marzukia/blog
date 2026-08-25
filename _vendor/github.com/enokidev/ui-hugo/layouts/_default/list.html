@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- $pag := .Paginate $pages -}}
+{{- $items := slice -}}
+{{- range $pag.Pages -}}
+{{-   $items = $items | append . -}}
+{{- end -}}
+<en-section
+  num="{{ .Params.num | default "00" }}"
+  title="{{ .Title | upper }}"
+  blurb="{{ .Description | default .Params.blurb | default "" }}">
+  {{- with .Content }}{{ . }}{{ end -}}
+  {{- if $pag.TotalPages }}
+  {{ partial "feed.html" (dict "items" $items "paged" true "pag" $pag) }}
+  {{- else }}
+  <en-empty title="NOTHING HERE YET" body="This section has no posts."></en-empty>
+  {{- end }}
+</en-section>
+{{ end }}

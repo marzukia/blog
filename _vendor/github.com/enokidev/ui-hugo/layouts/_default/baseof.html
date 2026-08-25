@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "en" }}" data-theme="paper">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{ partial "chrome.html" . }}
+    {{ partial "topbar.html" . }}
+    <main style="max-width:1100px;margin:0 auto;padding:44px 26px 120px;">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    <script type="module" src="{{ "js/enoki.js" | relURL }}"></script>
+  </body>
+</html>

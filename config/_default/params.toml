@@ -1,49 +1,20 @@
-colorScheme = "fire"
-defaultAppearance = "light"
-autoSwitchAppearance = true
+# ui-hugo theme params
+brand = "MRZK"
+description = "A candid blog by climate risk expert Andryo Marzuki — data, sustainability, finance, and the occasional breakdown in productivity."
+footerStamp = "GO BUILD"
+footerMeta = "mrzk.io · enokidev/ui"
 
-enableSearch = true
-enableCodeCopy = true
+# home hero
+heroTitle = "ANDRYO MARZUKI"
+heroHollow = "NET ZERO PRODUCTIVITY"
+heroChips = ["Climate Risk", "Data", "Open Source", "Productivity"]
+
+# general (harmless, some consumed by site partials)
 enableImageLazyLoading = true
-enableImageWebp = true
-enableQuicklink = true
-
 fingerprintAlgorithm = "sha256"
 
 [seo]
   ogBanner = "img/ogbanner.png"
-
-[header]
-  layout = "hamburger" # valid options: basic, hamburger, hybrid, custom
-  logo = "img/logo.svg"
-  logoDark = "img/logo-dark.svg"
-  showTitle = false
-
-[footer]
-  showCopyright = true
-  showThemeAttribution = false
-  showAppearanceSwitcher = true
-  showScrollToTop = true
-
-[homepage]
-  layout = "profile" # valid options: page, profile, custom
-  showRecent = true
-  recentLimit = 5
-
-[article]
-  showDate = true
-  showTableOfContents = true
-  showAuthor = true
-  editAppendPath = true
-  showHeadingAnchors = true
-  showPagination = true
-  invertPagination = false
-  showReadingTime = true
-  sharingLinks = ["reddit", "linkedin", "email", "bluesky"]
-
-[list]
-    showSummary = true
-    showTableOfContents = true
 
 [umamiAnalytics]
   site = "598a7577-6be5-4c96-908b-82f9cc84d4ce"

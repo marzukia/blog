@@ -1,0 +1,190 @@
+/* ============================================================
+   ui-hugo content layer
+   Blog layouts (feed, article, tags) built on the enoki tokens.
+   Loaded after enoki.css.
+   ============================================================ */
+
+/* ---------- post feed (home / list / term) ---------- */
+
+.en-feed { display: flex; flex-direction: column; }
+
+.en-feed-item {
+  display: grid;
+  grid-template-columns: 108px 1fr 24px;
+  gap: 22px;
+  align-items: baseline;
+  padding: 22px 4px;
+  border-top: 1px solid var(--en-line);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.12s ease, padding-left 0.12s ease;
+}
+.en-feed-item:last-child { border-bottom: 1px solid var(--en-line); }
+.en-feed-item:hover { background: var(--en-paper2); padding-left: 14px; }
+.en-feed-item:hover .en-feed-title { color: var(--en-accent); }
+
+.en-feed-when {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--en-ink2);
+}
+.en-feed-title {
+  display: block;
+  font-family: "Anton", sans-serif;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.en-feed-desc {
+  display: block;
+  margin-top: 7px;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--en-ink2);
+}
+.en-feed-more { margin-top: 26px; }
+.en-feed-page { margin-top: 26px; display: flex; justify-content: flex-end; }
+
+/* ---------- tag clouds (taxonomy + article tags) ---------- */
+
+.en-tags { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.en-tag {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  border: 1px solid var(--en-line);
+  background: var(--en-paper2);
+  color: var(--en-ink);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.en-tag:hover { background: var(--en-ink); color: var(--en-paper); }
+.en-tag-count {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--en-ink2);
+  margin-right: 8px;
+}
+
+/* ---------- article (single) ---------- */
+
+.en-article { max-width: 780px; margin: 0 auto; }
+.en-article-head { margin: 26px 0 40px; }
+.en-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--en-ink2);
+}
+.en-article-date { color: var(--en-accent); }
+.en-article-title {
+  margin: 16px 0 12px;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(38px, 6vw, 62px);
+  line-height: 0.98;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.en-article-desc {
+  margin: 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--en-ink2);
+}
+.en-article-tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+.en-article-cover {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  border: 1px solid var(--en-line);
+  box-shadow: var(--en-sh-4);
+}
+.en-rule { border: none; border-top: 1px solid var(--en-line); margin: 56px 0 24px; }
+
+/* ---------- article body typography ---------- */
+
+.en-content {
+  font-family: "Archivo", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--en-ink);
+}
+.en-content h2 {
+  margin: 54px 0 14px;
+  font-family: "Anton", sans-serif;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.en-content h3 { margin: 38px 0 10px; font-family: "Archivo", sans-serif; font-weight: 700; font-size: 20px; }
+.en-content p { margin: 0 0 20px; }
+.en-content a { color: var(--en-accent); text-underline-offset: 3px; }
+.en-content ul, .en-content ol { margin: 0 0 20px; padding-left: 26px; }
+.en-content li { margin: 6px 0; }
+.en-content li::marker { color: var(--en-accent); }
+.en-content blockquote {
+  margin: 28px 0;
+  padding: 14px 22px;
+  border-left: 3px solid var(--en-accent);
+  background: var(--en-paper2);
+  font-style: italic;
+}
+.en-content code {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.88em;
+  padding: 2px 6px;
+  border: 1px solid var(--en-line);
+  background: var(--en-paper2);
+}
+.en-content pre {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--en-line);
+  box-shadow: var(--en-sh-3);
+  background: var(--en-ink);
+  color: var(--en-paper);
+  overflow-x: auto;
+}
+.en-content pre code { padding: 0; border: none; background: none; color: inherit; }
+.en-content table { width: 100%; margin: 0 0 24px; border-collapse: collapse; font-size: 15px; }
+.en-content th {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  background: var(--en-paper2);
+}
+.en-content th, .en-content td { border: 1px solid var(--en-line); padding: 10px 12px; }
+.en-content img { max-width: 100%; margin: 10px 0 4px; border: 1px solid var(--en-line); }
+.en-content img.about-avatar { display: block; margin: 0 auto 24px; border-radius: 50%; }
+.en-content figure { margin: 0 0 26px; }
+.en-content figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--en-ink2);
+}
+.en-content hr { border: none; border-top: 1px solid var(--en-line); margin: 44px 0; }
+.en-content strong { font-weight: 700; }
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 640px) {
+  .en-feed-item { grid-template-columns: 1fr; gap: 6px; }
+  .en-feed-when { order: -1; }
+  .en-feed-item en-icon { display: none; }
+  .en-feed-title { font-size: 22px; }
+}

@@ -1,0 +1,22 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ .Description | default site.Params.description | default site.Title }}" />
+{{ with site.Params.author }}<meta name="author" content="{{ . }}" />{{ end }}
+{{ with site.Params.tags }}<meta name="keywords" content="{{ delimit . ", " }}" />{{ end }}
+{{ $css := resources.Get "css/enoki.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+{{ $content := resources.Get "css/content.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $content.RelPermalink }}" />
+{{ with site.Params.favicon }}<link rel="icon" href="{{ . | relURL }}" />{{ end }}
+<script>
+  // Set the saved theme before paint to avoid a flash. The ThemeToggle keeps
+  // this in sync with html[data-theme] + localStorage at runtime.
+  (function () {
+    try {
+      var t = localStorage.getItem("enoki-theme");
+      if (t === "carbon" || t === "paper")
+        document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
