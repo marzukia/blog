@@ -27,15 +27,21 @@ This metric intends to do the following:
 - Act as my proxy to quantify the overall 'brand power' of each party (votes)
 - Describe how effectively they've translated party donations into actual power (seats)
 
-<img src="votes_seats_party.png" width="100%" alt="votes_seats_party" />
+{{< bar tag="FIG. 01" cap="NUMBER OF VOTES, 2020" fmt="num" hint="Labour nearly doubled National's party votes. ACT out-voted Green by a hair." data="[{\"label\":\"National\",\"value\":640000},{\"label\":\"Labour\",\"value\":1170000},{\"label\":\"Green\",\"value\":180000},{\"label\":\"ACT\",\"value\":190000}]" >}}
 
-The graph is a summary of the main parties, and how well they've translated their donation funds into both votes and seats.
+{{< bar tag="FIG. 02" cap="DONATIONS RECEIVED, 2018-2019" fmt="usd" hint="National banked $1.96M, nearly double the next highest party. Green raised near Labour's total on far fewer votes." data="[{\"label\":\"National\",\"value\":1960000},{\"label\":\"Labour\",\"value\":960000},{\"label\":\"Green\",\"value\":940000},{\"label\":\"ACT\",\"value\":480000}]" >}}
+
+{{< bar tag="FIG. 03" cap="COST PER VOTE, LOWER IS BETTER" fmt="usd" hint="Labour bought each vote for $0.82. National spent 3.8x more per vote; Green the most at $5.23." data="[{\"label\":\"National\",\"value\":3.08},{\"label\":\"Labour\",\"value\":0.82},{\"label\":\"Green\",\"value\":5.23},{\"label\":\"ACT\",\"value\":2.51}]" >}}
+
+{{< bar tag="FIG. 04" cap="COST PER SEAT, LOWER IS BETTER" fmt="usd" hint="Each Labour seat cost $14.96K in donations. Green seats cost 6.3x as much." data="[{\"label\":\"National\",\"value\":56110},{\"label\":\"Labour\",\"value\":14960},{\"label\":\"Green\",\"value\":94270},{\"label\":\"ACT\",\"value\":47710}]" >}}
+
+The figures are a summary of the main parties, and how well each translated its donation funds into both votes and seats.
 
 ## Voter Age Demographics
 
 Age plays a significant factor on who you would likely vote for; this is simply because your generation will dictate things like your phase in life, asset ownership or general financial security.
 
-<img src="age_party.png" width="100%" alt="age_party" />
+{{< bar tag="FIG. 05" cap="VOTER AGE BY GENERATION" hint="Stacked to 100% of each party's voter base. Green and Labour skew Gen Z and Millennial; National skews Gen X and Boomer." data="[{\"label\":\"ACT New Zealand\",\"value\":100,\"parts\":[{\"name\":\"GEN Z\",\"value\":14.9},{\"name\":\"MILLENNIALS\",\"value\":22.4},{\"name\":\"GEN X\",\"value\":25.7},{\"name\":\"BABY BOOMERS\",\"value\":31.7},{\"name\":\"OTHER\",\"value\":5.3}]},{\"label\":\"Green Party\",\"value\":100,\"parts\":[{\"name\":\"GEN Z\",\"value\":31.5},{\"name\":\"MILLENNIALS\",\"value\":34.1},{\"name\":\"GEN X\",\"value\":16.3},{\"name\":\"BABY BOOMERS\",\"value\":13.9},{\"name\":\"OTHER\",\"value\":4.1}]},{\"label\":\"Labour Party\",\"value\":100,\"parts\":[{\"name\":\"GEN Z\",\"value\":26.2},{\"name\":\"MILLENNIALS\",\"value\":28.8},{\"name\":\"GEN X\",\"value\":23.1},{\"name\":\"BABY BOOMERS\",\"value\":18.3},{\"name\":\"OTHER\",\"value\":3.6}]},{\"label\":\"National Party\",\"value\":100,\"parts\":[{\"name\":\"GEN Z\",\"value\":14.2},{\"name\":\"MILLENNIALS\",\"value\":24.0},{\"name\":\"GEN X\",\"value\":27.9},{\"name\":\"BABY BOOMERS\",\"value\":28.8},{\"name\":\"OTHER\",\"value\":5.0}]}]" >}}
 
 There wasn't much that I wasn't expecting when seeing the results, key take-aways being:
 
@@ -46,7 +52,7 @@ There wasn't much that I wasn't expecting when seeing the results, key take-away
 
 The housing crisis in New Zealand is one of the most significant issues that New Zealand currently faces, so naturally, I wanted to make a graph on that too.
 
-<img src="housing_party.png" width="100%" alt="housing_party" />
+{{< bar tag="FIG. 06" cap="HOME OWNERSHIP AMONG VOTERS" hint="76% of Labour voters do not own a home. National and ACT voters are homeowners by a narrow majority." data="[{\"label\":\"ACT New Zealand\",\"value\":0},{\"label\":\"Green Party\",\"value\":0},{\"label\":\"Labour Party\",\"value\":0},{\"label\":\"National Party\",\"value\":0}]" series="[{\"name\":\"DOES NOT OWN HOME\",\"values\":[42.8,71.5,76.1,45.7]},{\"name\":\"OWNS HOME\",\"values\":[54.6,25.8,21.2,51.6]}]" >}}
 
 There are some interesting that instantly pop out to me when I view this data:
 

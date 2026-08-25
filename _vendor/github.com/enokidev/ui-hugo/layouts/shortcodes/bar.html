@@ -18,6 +18,10 @@
     series='[{"name":"honest decode tok/s","values":[55,54]},{"name":"marketing throughput","values":[357,471]}]'
   In grouped mode per-bar value labels, capacity ghosts, and target rules are off.
 
+  fmt: value label + y-axis formatter. 'compact' (default), 'num' (640K,
+  1.17M), or 'usd' ($0.82, $56.11K, $1.96M). Use 'usd' for per-unit costs so
+  sub-dollar values do not round away.
+
   data must be compact JSON (no line breaks). Single quotes inside JSON are
   fine: Go html/template escapes them to &#39; in the attribute value. Do NOT
   pre-escape them with replaceRE — the template escapes once more and the
@@ -32,6 +36,7 @@
   cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
   tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
   hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  fmt="{{ .Get "fmt" | default "compact" | safeHTMLAttr }}"
   values='{{ $data | safeHTMLAttr }}'
   ticks='{{ $ticks | safeHTMLAttr }}'
   series='{{ $series | safeHTMLAttr }}'></en-bar>
