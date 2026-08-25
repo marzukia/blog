@@ -80,17 +80,17 @@ Every turn restores the prior context and prefills only the new message. Sub-sec
 
 The cache does not just help, it changes the shape of the problem. Here is the same repeated prompt with the cache on and off, prefill time in seconds, lower is better:
 
-![Repeated-prompt prefill: cache on vs off](chart-ab-cache.svg)
+{{< bar tag="FIG. 01" cap="REPEATED-PROMPT PREFILL: CACHE ON VS OFF" hint="Prefill seconds for the same repeated prompt. Cache off pays full cost at every size; cache on sits flat against the floor, and the gap widens from 13x at 1k to 137x at 32k." data="[{\"label\":\"1k\",\"value\":0},{\"label\":\"2k\",\"value\":0},{\"label\":\"4k\",\"value\":0},{\"label\":\"8k\",\"value\":0},{\"label\":\"16k\",\"value\":0},{\"label\":\"32k\",\"value\":0}]" series="[{\"name\":\"CACHE ON\",\"values\":[0.19,0.21,0.3,0.28,0.39,0.64]},{\"name\":\"CACHE OFF\",\"values\":[2.4,4.3,8.5,17.4,37.6,88.8]}]" >}}
 
-With the cache off, a repeated 32k-token prompt still costs 88 seconds of prefill every single time. With it on, 0.64 seconds. The green bars are there, they are just flat against the floor. That gap is the entire point of the disk restore subsystem, and it grows with context: 13x faster at 1k, 137x at 32k.
+With the cache off, a repeated 32k-token prompt still costs 88 seconds of prefill every single time. With it on, 0.64 seconds. The cache-on bars are there, they are just flat against the floor. That gap is the entire point of the disk restore subsystem, and it grows with context: 13x faster at 1k, 137x at 32k.
 
 Every number in this post comes from one machine: a Mac Studio with the M3 Ultra, a 28-core CPU (20 performance and 8 efficiency), a 60-core GPU, and 96GB of unified memory, running macOS 26.4. That is the only spec qMLX has been tested on. I have not run it on a binned Ultra, an M-series without the Ultra bandwidth, or a different memory config, so treat the thresholds here (the guard sizing, the shape of the decode curve) as specific to this box until someone reproduces them elsewhere.
 
 Here is what the raw hardware does across context length, prefill throughput and decode throughput measured separately:
 
-![Prefill tok/s vs context](chart-prefill.svg)
+{{< line tag="FIG. 02" cap="PREFILL TOK/S VS CONTEXT" axis-x="CONTEXT" axis-y="TOK/S" hint="Raw hardware prefill throughput. Peaks around 700 tok/s at short context, tapers to 386 by 64k as the attention KV grows." y-min="380" series="[{\"name\":\"PREFILL TOK/S\",\"points\":[{\"t\":\"1k\",\"v\":684},{\"t\":\"2k\",\"v\":715},{\"t\":\"4k\",\"v\":719},{\"t\":\"8k\",\"v\":696},{\"t\":\"16k\",\"v\":650},{\"t\":\"32k\",\"v\":561},{\"t\":\"64k\",\"v\":386}]}]" >}}
 
-![Decode tok/s vs context](chart-decode.svg)
+{{< line tag="FIG. 03" cap="DECODE TOK/S VS CONTEXT" axis-x="CONTEXT" axis-y="TOK/S" hint="Generated tokens per second. Slides from 55 to 28 over a 64x context increase: the dense-attention layers re-read the whole KV cache per token, the DeltaNet state does not." y-min="25" series="[{\"name\":\"DECODE TOK/S\",\"points\":[{\"t\":\"1k\",\"v\":55},{\"t\":\"2k\",\"v\":53},{\"t\":\"4k\",\"v\":50},{\"t\":\"8k\",\"v\":48},{\"t\":\"16k\",\"v\":45},{\"t\":\"32k\",\"v\":39},{\"t\":\"64k\",\"v\":28}]}]" >}}
 
 Prefill peaks around 700 tok/s at short context and tapers to 386 by 64k as the attention KV grows. Decode slides from 55 tok/s to 28. That decode curve is the visible cost of the 25% of layers that are dense attention: each generated token re-reads the whole KV cache, and that read grows with context. The 75% that are DeltaNet carry constant-size recurrent state and do not slow down at all, which is exactly why the drop is a gentle 2x over a 64x context increase instead of a cliff. The hybrid design is not a compromise here, it is the thing keeping long-context decode usable.
 
@@ -106,9 +106,9 @@ The cache-hit number that actually matters on this model is the disk restore hit
 
 Which brings me to the number I refuse to print without a warning label. Here is the "throughput" a benchmark would put on a slide, tokens processed plus generated divided by wall time, next to the decode rate you actually feel:
 
-![The throughput lie: marketing number vs real decode](chart-throughput-lie.svg)
+{{< bar tag="FIG. 04" cap="THE THROUGHPUT LIE: MARKETING NUMBER VS REAL DECODE" hint="Tokens processed plus generated over wall time, next to the decode rate that governs how fast the reply streams. Longer prompt, same decode speed: the marketing number rises, the reply does not." data="[{\"label\":\"1k\",\"value\":0},{\"label\":\"2k\",\"value\":0},{\"label\":\"4k\",\"value\":0},{\"label\":\"8k\",\"value\":0},{\"label\":\"16k\",\"value\":0},{\"label\":\"32k\",\"value\":0}]" series="[{\"name\":\"HONEST DECODE\",\"values\":[55,54,53,49,45,38]},{\"name\":\"MARKETING 'THROUGHPUT'\",\"values\":[357,471,559,598,586,508]}]" >}}
 
-The red bar says 350 to 600 tok/s. The green bar, the one that governs how fast the reply actually streams to you, is 28 to 55. The red number is not so much wrong as meaningless: it rises the moment you send a longer prompt at constant decode speed, because it is dominated by prefill tokens that land almost instantly. Send a 46k-token prompt, generate 128 tokens, and you can advertise 500 tok/s whilst the user watches text appear at 38.
+The red bar says 350 to 600 tok/s. The other bar, the one that governs how fast the reply actually streams to you, is 28 to 55. The red number is not so much wrong as meaningless: it rises the moment you send a longer prompt at constant decode speed, because it is dominated by prefill tokens that land almost instantly. Send a 46k-token prompt, generate 128 tokens, and you can advertise 500 tok/s whilst the user watches text appear at 38.
 
 The number that actually matters in a conversation is neither of those in isolation. Because the cache makes prefill effectively free on warm turns, sustained conversational throughput is just the decode rate: roughly 55 tok/s at short context, holding around 28 even at 64k. The cache is what lets me quote the real number and still sound fast.
 
@@ -151,4 +151,4 @@ Qwen 3.5 122B is the one that fits it. After killing three gnarly bugs it is fas
 
 ---
 
-*Graphs made with [charted](https://github.com/marzukia/charted), my zero-dependency Python charting library, btw.*
+*Figures rendered with [enoki ui](https://github.com/enokidev/ui), my web-component UI kit. The numbers underneath come from the `bench_qmlx.py` sweep, btw.*

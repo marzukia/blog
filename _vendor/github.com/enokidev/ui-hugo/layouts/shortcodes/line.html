@@ -11,7 +11,9 @@
   series: [{name, role?, points:[{t,v}]}] — first series gets the hatch area.
   refs:   [{value, label?}] — dashed rules with ink-plate labels.
   y-min:  domain floor for zoomed bands (default 0).
-  JSON args must be compact (no single quotes, no line breaks).
+  JSON args must be compact (no line breaks). Single quotes inside JSON are
+  fine: Go html/template escapes them in the attribute value. Do NOT pre-escape
+  with replaceRE (it double-escapes to a literal &amp;#39; in the output).
 */}}
 {{- $series := .Get "series" -}}
 {{- $refs := .Get "refs" -}}
@@ -22,5 +24,5 @@
   axis-x="{{ .Get "axis-x" | default "" | safeHTMLAttr }}"
   axis-y="{{ .Get "axis-y" | default "" | safeHTMLAttr }}"
   y-min="{{ .Get "y-min" | default "" | safeHTMLAttr }}"
-  series='{{ $series | replaceRE "'" "&#39;" | safeHTMLAttr }}'
-  refs='{{ $refs | replaceRE "'" "&#39;" | safeHTMLAttr }}'></en-line>
+  series='{{ $series | safeHTMLAttr }}'
+  refs='{{ $refs | safeHTMLAttr }}'></en-line>
