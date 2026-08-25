@@ -24,7 +24,7 @@ Commands and gotchas live in each sibling repo's `AGENTS.md`. Do not hand-edit `
 | --- | --- | --- |
 | qmlx-optimising-multiplexing-and-dogfood | 6 SVG | DONE (5 figures migrated; 1 SVG was never referenced). Delete old SVGs after sign-off. |
 | qmlx-maximising-ai-psychosis-minmaxing-mac-studio | 4 SVG (chart-ab-cache, chart-decode, chart-prefill, chart-throughput-lie) | DONE (4 figures: 2 grouped bar, 2 line). Sign-off given; old SVGs deleted (`42cb4c5`). |
-| collectable-video-games-market-manipulation | 7 chart PNG (wata_*) | DONE (3 bars, 1 dense scatter, 2 trend lines, 1 histogram). Data wins over published images: 2021-07 spike $8.9M, avg trend RISING into 2021, 96.8% under $10K. Flagged to Andryo. Awaiting sign-off; delete 7 wata PNGs after sign-off (keep wata_scatter.json). |
+| collectable-video-games-market-manipulation | 7 chart PNG (wata_*) | DONE (6 figures: 3 bars, 1 dense scatter, 1 trend line, 1 histogram). Andryo dropped FIG.07 avg-price figure + "trending downwards" claim (data showed avg RISING); 7 wata PNGs deleted (`b24e04e`), wata_scatter.json kept. Awaiting sign-off; blog not pushed yet (more posts to migrate). |
 | did-covid19-make-trump-president | 6 chart PNG (unvax, long-covid, poverty, votes-*) | TO DO |
 | election-results-advanced-analytics | 3 chart PNG (age_party, housing_party, votes_seats_party) + 1 map | TO DO (confirm map scope) |
 | buyers-guide-to-melbourne | 7 maps | confirm with Andryo whether maps are in scope |
