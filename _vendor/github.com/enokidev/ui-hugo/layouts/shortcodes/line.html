@@ -1,0 +1,26 @@
+{{/*
+  Line figure (en-line).
+
+  Usage:
+    {{< line tag="FIG. 03" cap="GPU MEMORY PRESSURE"
+        axis-x="SCHEDULER SAMPLE" axis-y="GB UNIFIED" y-min="75"
+        hint="Metal active held ~79-81 GB under the 88.9 GB soft cap."
+        series='[{"name":"METAL ACTIVE","role":"accent","points":[{"t":"s1","v":79.6},{"t":"s2","v":79.2}]}]'
+        refs='[{"value":88.9,"label":"SOFT CAP"},{"value":90,"label":"PEAK"}]' >}}
+
+  series: [{name, role?, points:[{t,v}]}] — first series gets the hatch area.
+  refs:   [{value, label?}] — dashed rules with ink-plate labels.
+  y-min:  domain floor for zoomed bands (default 0).
+  JSON args must be compact (no single quotes, no line breaks).
+*/}}
+{{- $series := .Get "series" -}}
+{{- $refs := .Get "refs" -}}
+<en-line
+  cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
+  tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
+  hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  axis-x="{{ .Get "axis-x" | default "" | safeHTMLAttr }}"
+  axis-y="{{ .Get "axis-y" | default "" | safeHTMLAttr }}"
+  y-min="{{ .Get "y-min" | default "" | safeHTMLAttr }}"
+  series='{{ $series | replaceRE "'" "&#39;" | safeHTMLAttr }}'
+  refs='{{ $refs | replaceRE "'" "&#39;" | safeHTMLAttr }}'></en-line>

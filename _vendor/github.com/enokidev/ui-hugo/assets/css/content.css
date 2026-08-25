@@ -77,6 +77,12 @@
 
 .en-article { max-width: 780px; margin: 0 auto; }
 en-article > en-breadcrumbs { margin: 10px 0 40px; }
+/* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
+.en-content en-bar,
+.en-content en-line {
+  display: block;
+  margin: 30px 0 36px;
+}
 .en-article-head { margin: 26px 0 40px; }
 .en-article-meta {
   display: flex;

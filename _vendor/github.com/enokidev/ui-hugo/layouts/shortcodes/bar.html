@@ -1,0 +1,21 @@
+{{/*
+  Bar figure (en-bar).
+
+  Usage:
+    {{< bar tag="FIG. 01" cap="PROMPT TOKENS: CACHE VS RECOMPUTE"
+        hint="789,351 prompt tokens offered → only 6.2% hit the GPU."
+        data='[{"label":"REUSED FROM DISK KV","value":740355},{"label":"RECOMPUTED ON GPU","value":48996}]' >}}
+
+  Stacked:
+    data='[{"label":"00:47","value":58704,"parts":[{"name":"REUSED","value":24028},{"name":"RECOMPUTED","value":34676}]}]'
+
+  data must be compact JSON (no single quotes, no line breaks).
+  NOTE: the output HTML attr is `values`, not `data` — Go html/template treats
+  a `data` attr value as a URL (percent-encodes it, colon breaks it).
+*/}}
+{{- $data := .Get "data" -}}
+<en-bar
+  cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
+  tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
+  hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
+  values='{{ $data | replaceRE "'" "&#39;" | safeHTMLAttr }}'></en-bar>
