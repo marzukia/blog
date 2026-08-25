@@ -76,6 +76,7 @@
 /* ---------- article (single) ---------- */
 
 .en-article { max-width: 780px; margin: 0 auto; }
+en-article > en-breadcrumbs { margin: 10px 0 40px; }
 .en-article-head { margin: 26px 0 40px; }
 .en-article-meta {
   display: flex;

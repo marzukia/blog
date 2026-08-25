@@ -7,7 +7,7 @@ footerMeta = "mrzk.io · enokidev/ui"
 # home hero
 heroTitle = "ANDRYO"
 heroHollow = "MARZUKI"
-heroChips = ["NET ZERO BY 2050"]
+heroChips = ["NET ZERO PRODUCTIVITY BY 2030"]
 
 # general (harmless, some consumed by site partials)
 enableImageLazyLoading = true
