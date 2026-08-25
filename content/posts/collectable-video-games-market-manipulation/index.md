@@ -42,7 +42,7 @@ To date, Wata Games has not released a population report. A population report is
 
 In my analysis of the data I collected, I think I can summarise my findings to the following points:
 
-- Recent sales of video games at ridiculous prices have distorted the perception of video game prices. The average price of video games has been trending downwards over the last two years.
+- Recent sales of video games at ridiculous prices have distorted the perception of video game prices.
 - These 'headline' sales are extreme outliers when viewed concerning the distribution of other video game sale prices.
 - Only a handful of games have sale prices more significant than the six-figure mark, and there is seemingly no relationship with a given video game's overall popularity.
 - While not definitive, the data strongly suggests that these 'headline' sales are being used as a mechanism to inflate the prices of games artificially, or at the very least, the perception of said games.
