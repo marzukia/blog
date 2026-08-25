@@ -3824,6 +3824,11 @@ textarea.en-input {
   pointer-events: none;
 }
 
+/* Rotated variant: the slant ends at the band center, so anchor at the end. */
+.fg-bar-lbl-r {
+  text-anchor: end;
+}
+
 .fg-target {
   stroke: var(--en-accent);
   stroke-width: 2;

@@ -53,15 +53,17 @@ As I've stated at the start of the article, the data I've collected is [availabl
 
 ## Game Inflation & Activity
 
-If the market were genuinely surging, I'd expect that the max sale price of a collectable game would have a uniform deviation from their average price. If we look at the top ten video games with the highest deviation from their average price we find the following: ![](wata_top_ten_delta_max.png)
+If the market were genuinely surging, I'd expect that the max sale price of a collectable game would have a uniform deviation from their average price. If we look at the top ten video games with the highest deviation from their average price we find the following:
+
+{{< bar tag="FIG. 01" cap="TOP TEN GAMES BY DELTA: MAX VS AVERAGE" hint="How far each game's top sale strays above its own average price. The biggest gaps sit on iconic, mass-market titles: the headline sale is 13x to 55x the normal fetch." data="[{\"label\":\"THE LEGEND OF ZELDA\",\"value\":54.99},{\"label\":\"DONKEY KONG\",\"value\":35.85},{\"label\":\"MARIO BROS\",\"value\":30.51},{\"label\":\"SUPER MARIO BROS\",\"value\":29.94},{\"label\":\"SUPER MARIO BROS 3\",\"value\":18.76},{\"label\":\"GYROMITE\",\"value\":16.87},{\"label\":\"F-ZERO\",\"value\":16.65},{\"label\":\"FINAL FANTASY VII\",\"value\":15.97},{\"label\":\"COMMANDO\",\"value\":14.91},{\"label\":\"SUPER MARIO 64\",\"value\":13.54}]" >}}
 
 If you're at all familiar with video games, these names should be very familiar as they are either culturally iconic games, sold millions of copies, or both.
 
-![](wata_top_ten_copies_sold.png)
+{{< bar tag="FIG. 02" cap="TOP TEN GAMES BY DELTA: COPIES SOLD" hint="The same ten games by lifetime copies sold. Volumes range from 1.1M to 40.2M with no relation to the delta ranking: the rarity narrative does not follow popularity." data="[{\"label\":\"THE LEGEND OF ZELDA\",\"value\":6510000},{\"label\":\"DONKEY KONG\",\"value\":7000000},{\"label\":\"MARIO BROS\",\"value\":2280000},{\"label\":\"SUPER MARIO BROS\",\"value\":40240000},{\"label\":\"SUPER MARIO BROS 3\",\"value\":17280000},{\"label\":\"GYROMITE\",\"value\":1320000},{\"label\":\"F-ZERO\",\"value\":5850000},{\"label\":\"FINAL FANTASY VII\",\"value\":12800000},{\"label\":\"COMMANDO\",\"value\":1140000},{\"label\":\"SUPER MARIO 64\",\"value\":11000000}]" >}}
 
 However, when we look at the maximum prices of these games, we see some very striking outliers. In particular, we have three games (Super Mario 64, Super Mario Bros, The Legend of Zelda) with extremely high sale prices compared to other games in the top ten.
 
-![](wata_top_ten_sale_price.png)
+{{< bar tag="FIG. 03" cap="TOP TEN GAMES BY DELTA: MAX SALE PRICE" hint="The same ten games by top sale price. Three names tower over the field: the outliers the key findings keep circling back to." data="[{\"label\":\"THE LEGEND OF ZELDA\",\"value\":870000},{\"label\":\"DONKEY KONG\",\"value\":72000},{\"label\":\"MARIO BROS\",\"value\":156000},{\"label\":\"SUPER MARIO BROS\",\"value\":660000},{\"label\":\"SUPER MARIO BROS 3\",\"value\":156000},{\"label\":\"GYROMITE\",\"value\":33600},{\"label\":\"F-ZERO\",\"value\":10800},{\"label\":\"FINAL FANTASY VII\",\"value\":144000},{\"label\":\"COMMANDO\",\"value\":15600},{\"label\":\"SUPER MARIO 64\",\"value\":1560000}]" >}}
 
 If we plot the relationship of these ten games regarding their lifetime copies sold versus their maximum sale price, there is no clear pattern or relationship visible. Granted, the population for this visualisation is small.
 
