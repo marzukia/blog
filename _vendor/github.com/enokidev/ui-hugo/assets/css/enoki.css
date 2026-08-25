@@ -2158,7 +2158,7 @@ textarea.en-input {
     color var(--en-d-quick) var(--en-ease-ui);
 }
 
-.en-theme-switch button[aria-pressed='true'] {
+.en-theme-switch button[aria-pressed="true"] {
   background: var(--en-ink);
   color: var(--en-paper);
 }
@@ -2437,7 +2437,7 @@ textarea.en-input {
 }
 
 /* Topbar (design 6.1). Fixed 37px strip. The bottom edge is the house
-   rule: inset 0 -2px 0 line. Left carries the marquee, right the actions.
+   rule: inset 0 -2px 0 line. Left carries brand + nav, right the actions.
    Consumers pad their page 37px so content clears the bar. */
 
 .en-topbar {
@@ -2457,32 +2457,62 @@ textarea.en-input {
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   min-width: 0;
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 14px;
 }
 
-/* nav links in the bar drop the underline; hover still warms to accent */
-.en-topbar-main .en-link {
+/* Brand: display face, set apart from the nav. */
+.en-topbar-brand .en-link {
+  font-family: var(--en-disp);
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: var(--en-ink);
   text-decoration: none;
+  white-space: nowrap;
+}
+.en-topbar-brand .en-link:hover {
+  color: var(--en-accent);
 }
 
-/* trailing cluster (socials, theme switch): push right */
+/* Thin vertical rule between brand and nav. */
+.en-topbar-div {
+  flex: none;
+  width: 2px;
+  height: 18px;
+  background: var(--en-line);
+}
+
+/* Nav: compact mono links, no underline, hover warms to accent. */
+.en-topbar-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+.en-topbar-nav .en-link {
+  font-size: var(--en-f-mono-11);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Trailing cluster (socials, theme switch): pushed right. */
 .en-topbar-actions {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   margin-left: auto;
+  flex: none;
 }
 
-.en-topbar-side {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px;
-  background: var(--en-paper2);
-  box-shadow: inset 2px 0 0 var(--en-line);
+/* Narrow screens: drop the nav + rule, keep brand + actions. */
+@media (max-width: 720px) {
+  .en-topbar-main { gap: 12px; }
+  .en-topbar-nav,
+  .en-topbar-div {
+    display: none;
+  }
 }
 
 /* Marquee (design 6.1). Ink ticker strip. The track holds two identical

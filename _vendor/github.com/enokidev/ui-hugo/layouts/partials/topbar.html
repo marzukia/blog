@@ -7,13 +7,16 @@
 {{- end }}
 {{ end }}
 <en-topbar>
-  <en-link href="{{ "/" | relURL }}">{{ site.Params.brand | default site.Title | upper }}</en-link>
-  {{ range .Site.Menus.main }}
-  {{- $m := . -}}
-  {{- if not (in $socialIcons $m.Params.icon) }}
-  {{- with $m.URL }}<en-link href="{{ . | relURL }}">{{ $m.Name | upper }}</en-link>{{ end }}
-  {{- end }}
-  {{ end }}
+  <en-link class="en-topbar-brand" href="{{ "/" | relURL }}">{{ site.Params.brand | default site.Title | upper }}</en-link>
+  <span class="en-topbar-div"></span>
+  <span class="en-topbar-nav">
+    {{ range .Site.Menus.main }}
+    {{- $m := . -}}
+    {{- if not (in $socialIcons $m.Params.icon) }}
+    {{- with $m.URL }}<en-link href="{{ . | relURL }}">{{ $m.Name | upper }}</en-link>{{ end }}
+    {{- end }}
+    {{ end }}
+  </span>
   <span class="en-topbar-actions">
     {{- with $socials }}
     <en-socials links='{{ . | jsonify }}'></en-socials>
