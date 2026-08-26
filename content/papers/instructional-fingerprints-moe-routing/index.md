@@ -24,9 +24,9 @@ Our contribution is a controlled negative and a methodological warning. Under th
 
 ## Links
 
-- **Paper** — [moe-fingerprint-localisation.pdf (377 KB)]({{ .Params.pdf }})
+- **Paper** — [moe-fingerprint-localisation.pdf (377 KB)](https://zenodo.org/records/22006608/files/moe-fingerprint-localisation.pdf?download=1)
 - **DOI** — [10.5281/zenodo.22006608](https://doi.org/10.5281/zenodo.22006608)
-- **Zenodo record** — [zenodo.org/records/22006608]({{ .Params.zenodo }})
-- **arXiv** — {{ if .Params.arxiv }}[{{ .Params.arxiv }}]({{ .Params.arxiv }}){{ else }}pending endorsement{{ end }}
+- **Zenodo record** — [zenodo.org/records/22006608](https://zenodo.org/records/22006608)
+- **arXiv** — pending endorsement
 
 *Andryo Marzuki & Jeremiah Mannings · Mainlobe Labs · [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)*

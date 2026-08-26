@@ -23,10 +23,10 @@ Damage falls from +0.4469 to +0.2780 nats per token, which is 44.2% of base NLL 
 
 ## Links
 
-- **Paper** — [measured-pruning-damage-paper-v1.pdf (285 KB)]({{ .Params.pdf }})
-- **Artifacts** — [measured-pruning-damage-artifacts-v1.tgz (101 KB)]({{ .Params.artifact }}) — every number reported in the paper is read from a file in `out/`, with the scripts that produced them in `tools/`.
+- **Paper** — [measured-pruning-damage-paper-v1.pdf (285 KB)](https://zenodo.org/records/21869190/files/measured-pruning-damage-paper-v1.pdf?download=1)
+- **Artifacts** — [measured-pruning-damage-artifacts-v1.tgz (101 KB)](https://zenodo.org/records/21869190/files/measured-pruning-damage-artifacts-v1.tgz?download=1) — every number reported in the paper is read from a file in `out/`, with the scripts that produced them in `tools/`.
 - **DOI** — [10.5281/zenodo.21869190](https://doi.org/10.5281/zenodo.21869190)
-- **Zenodo record** — [zenodo.org/records/21869190]({{ .Params.zenodo }})
-- **arXiv** — {{ if .Params.arxiv }}[{{ .Params.arxiv }}]({{ .Params.arxiv }}){{ else }}pending endorsement{{ end }}
+- **Zenodo record** — [zenodo.org/records/21869190](https://zenodo.org/records/21869190)
+- **arXiv** — pending endorsement
 
 *Andryo Marzuki & Jeremiah Mannings · Mainlobe Labs · [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)*
