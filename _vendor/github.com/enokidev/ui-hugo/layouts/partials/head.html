@@ -29,6 +29,14 @@
 {{ partial "seo.html" . }}
 {{ $css := resources.Get "css/enoki.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+{{/* MapLibre chrome CSS ships with the lazy figures JS chunk, so load it only
+    on pages that actually render an <en-map>. Keeps the ~83KB off every other
+    page (mirrors the JS: enoki.js dynamically imports the figures chunk when
+    a <en-map> element is present in the DOM). */}}
+{{ $figCss := resources.Get "css/enoki-figures.css" | fingerprint }}
+{{ if findRE "<en-map" .Content }}
+<link rel="stylesheet" href="{{ $figCss.RelPermalink }}" />
+{{ end }}
 {{ $content := resources.Get "css/content.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $content.RelPermalink }}" />
 {{ with site.Params.favicon }}<link rel="icon" href="{{ . | relURL }}" />{{ end }}
