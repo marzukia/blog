@@ -2,10 +2,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#efe9db" />
 {{/* Kill the pre-CSS serif (UA Times) flash: set a sans base before
-    enoki.css arrives, and start the two primary font files in parallel
-    with the stylesheet so the Anton/Archivo swap-in is instant. */}}
+    enoki.css arrives, and start the primary font files in parallel
+    with the stylesheet so the Anton/Archivo/serif swap-in is instant. */}}
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/anton-latin-400-normal.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/archivo-latin-400-normal.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/source-serif-4-latin-400-normal.woff2" />
 <style>
   html { font-family: "Archivo", system-ui, sans-serif; }
   h1, h2, h3, h4, h5, h6 { font-family: "Anton", "Archivo", sans-serif; }

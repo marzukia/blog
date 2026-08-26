@@ -26,14 +26,14 @@
 .en-feed-item:hover .en-feed-title { color: var(--en-accent); }
 
 .en-feed-when {
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--en-ink2);
 }
 .en-feed-title {
   display: block;
-  font-family: "Anton", sans-serif;
+  font-family: var(--en-disp);
   font-size: 28px;
   line-height: 1.05;
   letter-spacing: 0.5px;
@@ -42,7 +42,7 @@
 .en-feed-desc {
   display: block;
   margin-top: 7px;
-  font-family: "Archivo", sans-serif;
+  font-family: var(--en-ui);
   font-size: 15px;
   line-height: 1.55;
   color: var(--en-ink2);
@@ -54,7 +54,7 @@
 
 .en-tags { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .en-tag {
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -67,7 +67,7 @@
 }
 .en-tag:hover { background: var(--en-ink); color: var(--en-paper); }
 .en-tag-count {
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 11px;
   color: var(--en-ink2);
   margin-right: 8px;
@@ -97,7 +97,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -106,7 +106,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-article-date { color: var(--en-accent); }
 .en-article-title {
   margin: 16px 0 12px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--en-disp);
   font-size: clamp(38px, 6vw, 62px);
   line-height: 0.98;
   letter-spacing: 0.5px;
@@ -114,7 +114,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 }
 .en-article-desc {
   margin: 0;
-  font-family: "Archivo", sans-serif;
+  font-family: var(--en-ui);
   font-size: 19px;
   line-height: 1.5;
   color: var(--en-ink2);
@@ -132,20 +132,20 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 /* ---------- article body typography ---------- */
 
 .en-content {
-  font-family: "Archivo", sans-serif;
+  font-family: var(--en-body);
   font-size: 17px;
   line-height: 1.7;
   color: var(--en-ink);
 }
 .en-content h2 {
   margin: 54px 0 14px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--en-disp);
   font-size: 30px;
   line-height: 1.05;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
-.en-content h3 { margin: 38px 0 10px; font-family: "Archivo", sans-serif; font-weight: 700; font-size: 20px; }
+.en-content h3 { margin: 38px 0 10px; font-family: var(--en-ui); font-weight: 700; font-size: 20px; }
 .en-content p { margin: 0 0 20px; }
 .en-content a { color: var(--en-accent); text-underline-offset: 3px; }
 .en-content ul, .en-content ol { margin: 0 0 20px; padding-left: 26px; }
@@ -159,7 +159,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   font-style: italic;
 }
 .en-content code {
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-mono);
   font-size: 0.88em;
   padding: 2px 6px;
   border: 1px solid var(--en-line);
@@ -177,7 +177,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-content pre code { padding: 0; border: none; background: none; color: inherit; }
 .en-content table { width: 100%; margin: 0 0 24px; border-collapse: collapse; font-size: 15px; }
 .en-content th {
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -191,7 +191,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-content figcaption {
   margin-top: 8px;
   text-align: center;
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--en-ui);
   font-size: 12px;
   color: var(--en-ink2);
 }
