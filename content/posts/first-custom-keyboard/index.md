@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "My First Custom Keyboard - Learnings & Advice to Newbies"
+seotitle: "My First Custom Keyboard: Learnings"
 date: "2021-10-28"
 description: "This post details my experience and journey with building my first custom keyboard. This post shares some of the lingo you'll need to learn and my learnings from trial-and-error."
 tags: ["Life"]

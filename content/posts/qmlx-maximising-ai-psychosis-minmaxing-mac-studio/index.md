@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "qMLX: Maximising my AI psychosis by minmaxing my Mac Studio"
+seotitle: "qMLX: Minmaxing my Mac Studio"
 date: "2026-07-10"
 description: "DS4 Flash looked promising on paper. In practice it was too slow for long contexts and unreliable for agentic coding. Here is why I switched to Qwen 3.5 122B and the three bugs I had to kill to make it usable."
 tags: ["AI"]

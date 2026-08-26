@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "Charted: a zero-dependency charting library (and an accidental agentic sidequest)"
+seotitle: "Charted: a Zero-Dependency Charting Library"
 date: "2026-06-19"
 description: "Why I built charted, a zero-dependency Python library for beautiful SVG charts, and how a constraint I picked for fun turned out to be the perfect fit for agentic workflows."
 tags: ["Data", "AI"]

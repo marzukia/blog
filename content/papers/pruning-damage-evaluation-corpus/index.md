@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "Measured Pruning Damage Depends on the Evaluation Corpus: A Renaming Control for Mixture-of-Experts Expert Pruning"
+seotitle: "MoE Pruning Damage Depends on the Eval Corpus"
 date: "2026-08-08"
 description: "Expert-pruning damage on code depends on the eval corpus: a renaming control on CPython stdlib moves reported damage 1.6x at constant program structure."
 tags: ["AI"]

@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "Performant Spatial Apps with PostGIS: 8 Years of Head‑Banging"
+seotitle: "Performant Spatial Apps with PostGIS"
 date: "2025-09-28"
 slug: "building-high-performance-spatial-apps"
 aliases:

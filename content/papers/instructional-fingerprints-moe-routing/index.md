@@ -1,6 +1,7 @@
 ---
 author: "Andryo Marzuki"
 title: "Do Instructional Fingerprints Produce Stable Expert-Routing Signatures in a Mixture-of-Experts Model?"
+seotitle: "Instructional Fingerprints in MoE Routing"
 date: "2026-08-19"
 description: "A controlled negative: fingerprints implanted in Qwen1.5-MoE-A2.7B shift expert routing but no stable trigger signature emerges above matched nulls."
 tags: ["AI"]
