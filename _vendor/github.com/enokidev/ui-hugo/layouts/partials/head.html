@@ -23,6 +23,9 @@
 {{- end }}
 {{ with $authorName }}<meta name="author" content="{{ . }}" />{{ end }}
 {{ with site.Params.tags }}<meta name="keywords" content="{{ delimit . ", " }}" />{{ end }}
+{{ with site.Home.OutputFormats.Get "RSS" }}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .RelPermalink }}" />
+{{ end }}
 {{ partial "seo.html" . }}
 {{ $css := resources.Get "css/enoki.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" />

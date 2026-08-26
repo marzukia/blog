@@ -13,6 +13,10 @@ heroChips = ["NET ZERO PRODUCTIVITY BY 2030"]
 enableImageLazyLoading = true
 fingerprintAlgorithm = "sha256"
 
+# Site-wide robots meta. max-image-preview:large lets Google show full-size
+# image previews for the map/figure heavy posts.
+robots = "index, follow, max-image-preview:large"
+
 # MapLibre base map (en-map figures). Public pk. token, client-side.
 mapboxToken = "pk.eyJ1IjoiYW5kcnlvbWFyenVraSIsImEiOiJjbXQ4eWJnaTYwMjVyMnpwcDk5a2ZsbXR0In0.Wm4Zsj-4zdBn0kmkmyLtTg"
 mapboxStyle = "light-v11"
