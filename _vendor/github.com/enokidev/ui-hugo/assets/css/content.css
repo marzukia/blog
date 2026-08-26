@@ -79,6 +79,13 @@
    ignored by layout — the top clearance must be padding on the article
    box (margins would also collapse through it to <main>'s padding). */
 .en-article { max-width: 780px; margin: 0 auto; padding-top: 56px; }
+/* The article page stacks many composited layers (fixed topbar/grid/rail,
+   7 WebGL map canvases, the giscus iframe). On some GPUs Chrome loses the
+   paint of static content near the top when scrolling back up after a
+   layer invalidation off-screen ("breadcrumbs disappear" bug). Promoting
+   the crumbs to their own compositor layer keeps the compositor in charge
+   of that region instead of the main-frame paint. */
+en-article nav.en-crumbs { transform: translateZ(0); }
 /* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
 .en-content en-bar,
 .en-content en-line {
