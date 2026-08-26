@@ -4,7 +4,6 @@ title: "My First Custom Keyboard - Learnings & Advice to Newbies"
 date: "2021-10-28"
 description: "This post details my experience and journey with building my first custom keyboard. This post shares some of the lingo you'll need to learn and my learnings from trial-and-error."
 tags: ["Life"]
-ogImage: "https://mrzk.io/1.jpg"
 ---
 
 When Auckland went into lock-down in August 2021, I decided to get myself a custom keyboard after being suckered in by various videos by [Glarses](https://www.youtube.com/channel/UCFtOX-21N1earf-K58C7HjQ) and [Hipyo Tech](https://www.youtube.com/channel/UCXlDgfWY2JbsYEam2m68Hyw). I spend so much time at my computer for work and personal projects I thought it'd be a worthwhile endeavour to make something I could enjoy 12+ hours a day.

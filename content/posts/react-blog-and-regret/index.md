@@ -5,6 +5,7 @@ date: "2021-10-29"
 description: "The biggest strength of a static pages blog is that it's all pre-rendered; your website will load lightning-quick and give you great SEO; however, it becomes a massive chore when you attempt to integrate external projects. A couple of months ago, I thought it would be a fun project to create my own CMS/blog to replace the static pages (Hugo) blog I currently had deployed on my GitHub Pages. My primary motivator for doing this was my perceived lack of flexibility of Hugo, which was the lack of flexibility outside of written content."
 tags: ["Web"]
 slug: "react-blog-and-regret"
+aliases: ["/posts/making-a-react-blog-and-why-it-sucks/"]
 lastmod: "2021-10-29"
 canonicalURL: "https://mrzk.io/posts/react-blog-and-regret/"
 keywords:
@@ -31,7 +32,7 @@ An application made with React can be incredibly dynamic and flexible. Still, on
 
 Server-side rendering (SSR) becomes a necessity when you dynamically set meta tags for your content; this means that the minimum architecture you would need to deploy a React CMS/blog is as follows:
 
-![Architecture flow chart of my project](/images/react_blog/flow.png)
+<en-topology title="SSR FLOW" tag="django · react · nginx" hint="the architecture i regretted. run loop plays a full request round-trip." aria-label="Server-side rendering flow: user request through NGINX to React SSR, metadata fetch from the Django backend, rendered page back to the user." cycle='["user","nginx","ssr","backend","ssr","nginx","user"]' legend='[{"swatch":"var(--en-accent)","label":"nginx — the middleman"},{"swatch":"var(--en-blue)","label":"react ssr"},{"swatch":"var(--en-green)","label":"django + drf"},{"swatch":"var(--en-paper3)","label":"user"}]' nodes='[{"id":"user","label":"USER","sub":"browser","x":140,"y":320,"w":150,"h":90,"role":"state","tip":"<div class=\"en-tip-title\">USER</div>requests a page"},{"id":"nginx","label":"NGINX","sub":"reverse proxy","x":400,"y":320,"w":170,"h":90,"role":"accent","tip":"<div class=\"en-tip-title\">NGINX</div>routes the request, merges the responses"},{"id":"ssr","label":"REACT SSR","sub":"render + meta","x":680,"y":180,"w":180,"h":90,"role":"blue","tip":"<div class=\"en-tip-title\">REACT SSR</div>renders the page + meta tags<br>needs metadata from the backend first"},{"id":"backend","label":"DJANGO + DRF","sub":"metadata api","x":680,"y":460,"w":180,"h":90,"role":"green","tip":"<div class=\"en-tip-title\">BACKEND</div>django + drf + postgres<br>where the metadata lives"}]' edges='[{"from":"user","to":"nginx","label":"1 · request","off":-12,"labelX":252,"labelY":296},{"from":"nginx","to":"ssr","label":"2 · route","off":-12},{"from":"ssr","to":"backend","label":"3 · metadata","off":-12,"labelX":715,"labelY":320},{"from":"backend","to":"ssr","label":"4 · data","off":-12,"labelX":645,"labelY":320},{"from":"ssr","to":"nginx","label":"5 · html + meta","off":-12},{"from":"nginx","to":"user","label":"6 · page","off":-12,"labelX":268,"labelY":352}]'></en-topology>
 
 The application flow works out to be something like this:
 
