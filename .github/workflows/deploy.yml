@@ -31,6 +31,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      # go.mod replace-directs the theme at ../ui-hugo (works on dev
+      # machines); in CI the sibling must exist for `go mod download`.
+      - name: Checkout theme
+        uses: actions/checkout@v4
+        with:
+          repository: enokidev/ui-hugo
+          path: ../ui-hugo
+          fetch-depth: 1
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
