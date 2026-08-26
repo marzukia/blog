@@ -31,14 +31,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      # go.mod replace-directs the theme at ../ui-hugo (works on dev
-      # machines); in CI the sibling must exist for `go mod download`.
+      # go.mod replace-directs the theme at ../ui-hugo (dev-machine
+      # layout); in CI clone the private theme repo as the sibling so
+      # `go mod download` resolves. actions/checkout can't write outside
+      # the workspace, hence the raw clone.
       - name: Checkout theme
-        uses: actions/checkout@v4
-        with:
-          repository: enokidev/ui-hugo
-          path: ../ui-hugo
-          fetch-depth: 1
+        run: |
+          git clone --depth 1 \
+            "https://x-access-token:${{ secrets.FRANKTROPIC_TOKEN }}@github.com/enokidev/ui-hugo.git" \
+            ../ui-hugo
 
       - name: Setup Pages
         id: pages
