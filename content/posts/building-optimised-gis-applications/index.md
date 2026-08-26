@@ -10,17 +10,7 @@ categories:
     - Geospatial
     - Engineering
     - Backend
-tags:
-    - GIS
-    - PostGIS
-    - MapLibre
-    - Vector Tiles
-    - MVT
-    - Django
-    - Python
-    - Spatial Indexing
-    - Performance
-    - Caching
+tags: ["Data", "Web"]
 keywords:
     - postgis performance
     - maplibre vector tiles

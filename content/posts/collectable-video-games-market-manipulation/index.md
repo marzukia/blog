@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Collectable Video Games & Market Manipulation"
 date: "2021-09-11"
 description: "Diving deep into the unraveling collectable video game market, analysing sales data to identify whether potential market manipulation is occurring."
-tags: ["Data Analysis"]
+tags: ["Data"]
 aliases:
   - "/posts/17/"
 ---

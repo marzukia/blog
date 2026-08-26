@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Modelling the Unseen: A Statistical Look at COVID-19's Impact on Voter Behaviour"
 date: "2025-04-23"
 description: "I've long entertained a personal pet conspiracy theory that COVID-19 has had a far deeper impact on Trump's re-election in 2024 than most realise. While numerous factors undoubtedly contributed to Trump's victory, this article specifically explores the subtle but significant role COVID-19 may have played."
-tags: ["Data Analysis", "COVID-19", "Elections", "USA", "Politics"]
+tags: ["Data", "World"]
 slug: "did-covid19-make-trump-president"
 lastmod: "2025-04-23"
 canonicalURL: "https://mrzk.io/posts/did-covid19-make-trump-president/"

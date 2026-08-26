@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Mapping an Undocumented API Easily With Python"
 date: "2020-09-13"
 description: "Using your browser and Python to map out an undocumented API quickly"
-tags: ["Python", "APIs", "Reverse Engineering", "Developer Tools"]
+tags: ["Data", "Web"]
 slug: "mapping-an-undocumented-api"
 lastmod: "2020-09-13"
 canonicalURL: "https://mrzk.io/posts/mapping-an-undocumented-api/"

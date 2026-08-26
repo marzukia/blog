@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Vaccinations Matter (aka Why Anti-Vaxxers Should Really Reconsider)"
 date: "2021-10-30"
 description: "Few things frustrate me more than seeing anti-lockdown protestors, anti-vaxxers, or those who believe that vaccines somehow infringe upon their personal freedoms. The value of vaccination should be self-evident to anyone with even a shred of common sense. In this post, I explain why getting vaccinated isn’t just important-it’s essential, and refusing to do so is both reckless and selfish."
-tags: ["Data Analysis", "COVID-19", "Public Health", "Vaccines"]
+tags: ["Data", "World"]
 ogImage: "https://mrzk.io/images/vaccinations/og.png"
 slug: "vaccinations-matter"
 lastmod: "2021-10-30"

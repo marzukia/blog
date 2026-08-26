@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Breaking Down the 2020 Elections"
 date: "2020-10-21"
 description: "I'll be the first to admit that I'm not the greatest fan of politics, in a typical scenario I'd avoid talking about it like the plague. However, as the elections have come and gone, it'd be sacrilege for me to pretend the goldmine of electoral data now available did not exist. In this case, my love for all things data outweighs my disdain for politics."
-tags: ["Data Analysis", "Geospatial"]
+tags: ["Data", "World"]
 ---
 
 I'll be the first to admit that I'm not the greatest fan of politics, in a typical scenario I'd avoid talking about it like the plague. However, as the elections have come and gone, it'd be sacrilege for me to pretend the goldmine of electoral data now available did not exist. In this case, my love for all things data outweighs my disdain for politics. So I thought, why not make it fun?

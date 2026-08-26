@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "A Data-Driven House Buyer's Guide to Melbourne"
 date: "2025-04-18"
 description: "Using data to cut through the noise and make informed, location-based decisions when buying property in Melbourne."
-tags: ["Data Analysis", "Housing", "Melbourne", "Geospatial"]
+tags: ["Data"]
 ---
 
 When I relocated to Melbourne last September, I found myself renting again for the first time in nearly a decade. One of the hardest parts of moving to a new country was having no intuitive sense of which neighbourhoods were considered good, up-and-coming, or best avoided.

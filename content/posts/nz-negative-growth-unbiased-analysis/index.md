@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Diving Deeper Into New Zealand's Official Recession"
 date: "2020-09-17"
 description: ""
-tags: ["Data Analysis", "COVID-19"]
+tags: ["Data", "World"]
 aliases:
   - "/post/diving-deeper-into-new-zealands-official-recession/"
 ---

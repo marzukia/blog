@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "How Well Has New Zealand Handled COVID-19?"
 date: "2020-09-06"
 description: "How well has New Zealand handled COVID-19 in the context of economic impact aswell as human impact? An analysis using fund performance as a proxy."
-tags: ["Data Analysis", "COVID-19", "New Zealand", "Economy"]
+tags: ["Data", "World"]
 aliases:
   - "/post/how-well-has-new-zealand-handled-covid-19/"
 slug: "nz-usa-covid19"

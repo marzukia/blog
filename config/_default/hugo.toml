@@ -17,9 +17,6 @@ summaryLength = 2
   [services.x]
     disableInlineCSS = true
 
-  [services.googleAnalytics]
-    id = 'G-F52W3SZVZ4'
-
 [params]
   [params.githubPages]
     enabled = true

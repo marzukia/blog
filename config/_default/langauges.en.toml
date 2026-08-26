@@ -4,7 +4,7 @@ locale = "en"
 title = "Andryo Marzuki - Net Zero Productivity by 2050"
 
 [params]
-    description = "A candid blog by climate risk expert Andryo Marzuki, exploring data, sustainability, finance, and the occasional breakdown in productivity. Featuring insights on geospatial modelling, regulatory tech, platform design, and creative problem-solving in climate and ESG."
+    description = "A candid blog by climate risk expert Andryo Marzuki: geospatial modelling, data, sustainability, finance, and the occasional breakdown in productivity."
 
 [params.author]
     name = "Andryo Marzuki"
