@@ -1,0 +1,14 @@
+{{/* ScholarlyArticle JSON-LD for pages with a doi param (the papers section). */}}
+{{ if .Params.doi }}
+{{ $authors := slice }}
+{{ range .Params.authors }}
+{{ if eq . "Andryo Marzuki" }}
+{{ $authors = $authors | append (dict "@type" "Person" "@id" "https://mrzk.io/#person" "name" "Andryo Marzuki") }}
+{{ else }}
+{{ $authors = $authors | append (dict "@type" "Person" "name" .) }}
+{{ end }}
+{{ end }}
+{{ $scholarly := dict "@context" "https://schema.org" "@type" "ScholarlyArticle" "headline" (.Title | plainify) "description" (.Description | plainify | htmlUnescape) "datePublished" (.Date.Format "2006-01-02") "inLanguage" "en" "url" .Permalink "license" "https://creativecommons.org/licenses/by/4.0/" "sameAs" (printf "https://doi.org/%s" .Params.doi) "author" $authors }}
+{{ with .Resources.GetMatch "og.png" }}{{ $scholarly = merge $scholarly (dict "image" .Permalink) }}{{ end }}
+<script type="application/ld+json">{{ $scholarly | jsonify | safeJS }}</script>
+{{ end }}

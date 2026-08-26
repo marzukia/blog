@@ -1,11 +1,12 @@
-// OG image generator for mrzk.io — one 1200x630 poster per post + site default.
+// OG image generator for mrzk.io — one 1200x630 poster per post/paper + site default.
 //
 // Usage:  bun run og        (before `hugo` in CI, or once after cloning for dev)
 //
-// Reads each post's front matter (title, tags, date) and writes
-// content/posts/<slug>/og.png. The site default (home + pages without a post
-// image) is written to static/img/ogbanner.png. Outputs are gitignored and
-// regenerated on every build, so adding a post needs zero manual work.
+// Reads each item's front matter (title, tags, date) in content/posts and
+// content/papers and writes content/<section>/<slug>/og.png. The site default
+// (home + pages without a post image) is written to static/img/ogbanner.png.
+// Outputs are gitignored and regenerated on every build, so adding a post
+// needs zero manual work.
 //
 // Design system: enokidev/ui (enoki.css tokens) 3-face system. Poster frame
 // with hard offset shadow, Anton display (solid + hollow last word),
@@ -66,9 +67,9 @@ const headerStrip = (label) =>
     sp({ color: "#ff5a3c" }, `${W}×${H}`),
   );
 
-const metaRow = ({ date, words }) =>
+const metaRow = ({ date, words, kind = "POSTS" }) =>
   d({ justifyContent: "space-between", alignItems: "center", ...mono({ fontSize: 16, color: INK2 }) },
-    sp(null, `${SITE} / POSTS`),
+    sp(null, `${SITE} / ${kind}`),
     d(null, date ? sp({ color: RED, fontWeight: 700 }, date) : null, sp(null, `${date ? "  /  " : ""}${words} WORDS`)),
   );
 
@@ -89,8 +90,8 @@ function fitTitleSize(title, maxW = TITLE_MAX_W, areaH = TITLE_AREA_H) {
   return 56;
 }
 
-// ---- poster for a post ----
-function poster({ title, date, words, tags }) {
+// ---- poster for a post / paper ----
+function poster({ title, date, words, tags, kind = "POSTS" }) {
   const safe = title.replace(/[\u2010-\u2015\u2212]/g, "-"); // normalise fancy hyphens for the display font
   const size = fitTitleSize(safe);
   const i = safe.lastIndexOf(" ");
@@ -112,7 +113,7 @@ function poster({ title, date, words, tags }) {
     d({ width: "100%", height: "100%", background: PAPER, border: `3px solid ${INK}`, boxShadow: `14px 14px 0 ${INK}`, flexDirection: "column", boxSizing: "border-box" },
       headerStrip(`${SITE} — ${SLOGAN}`),
       d({ flex: 1, flexDirection: "column", padding: "30px 36px 28px" },
-        metaRow({ date, words }),
+        metaRow({ date, words, kind }),
         rule(),
         d({ marginTop: 34, flex: 1, flexDirection: "column" },
           h("h1", { style: titleStyle(INK) }, rest),
@@ -180,19 +181,22 @@ function readPost(dir) {
 }
 
 // ---- main ----
-const postsDir = join(ROOT, "content/posts");
-const dirs = readdirSync(postsDir).filter((n) => statSync(join(postsDir, n)).isDirectory());
 let failed = 0;
-for (const n of dirs) {
-  const dir = join(postsDir, n);
-  if (!existsSync(join(dir, "index.md"))) continue;
-  try {
-    const data = readPost(dir);
-    await render(join(dir, "og.png"), poster(data));
-    console.log(`og  ${n}  (${data.words} words, ${data.title.slice(0, 48)}...)`);
-  } catch (e) {
-    failed++;
-    console.error(`FAIL ${n}: ${e.message}`);
+for (const section of ["posts", "papers"]) {
+  const sectionDir = join(ROOT, "content", section);
+  if (!existsSync(sectionDir)) continue;
+  const dirs = readdirSync(sectionDir).filter((n) => statSync(join(sectionDir, n)).isDirectory());
+  for (const n of dirs) {
+    const dir = join(sectionDir, n);
+    if (!existsSync(join(dir, "index.md"))) continue;
+    try {
+      const data = readPost(dir);
+      await render(join(dir, "og.png"), poster({ ...data, kind: section.toUpperCase() }));
+      console.log(`og  ${section}/${n}  (${data.words} words, ${data.title.slice(0, 48)}...)`);
+    } catch (e) {
+      failed++;
+      console.error(`FAIL ${section}/${n}: ${e.message}`);
+    }
   }
 }
 try {
