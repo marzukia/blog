@@ -8,7 +8,7 @@
 <en-section
   num="00"
   title="{{ .Title | upper }}"
-  blurb="{{ len .Pages }} {{ .Data.Plural }} entries">
+  blurb="{{ len .Pages }} post{{ if ne (len .Pages) 1 }}s{{ end }}">
   {{- if $pag.TotalPages }}
   {{ partial "feed.html" (dict "items" $items "paged" true "pag" $pag) }}
   {{- else }}

@@ -3,6 +3,10 @@
 {{- range $p.GetTerms "tags" -}}
 {{-   $tags = $tags | append .Title -}}
 {{- end -}}
+{{- $projs := slice -}}
+{{- range $p.GetTerms "projects" -}}
+{{-   $projs = $projs | append .Title -}}
+{{- end -}}
 {{ if $i }},{{ end }}
-{{ dict "title" $p.Title "url" $p.RelPermalink "date" ($p.Date.Format "2006-01-02") "description" ($p.Description | default "" | plainify | truncate 300) "tags" $tags | jsonify }}
+{{ dict "title" $p.Title "url" $p.RelPermalink "date" ($p.Date.Format "2006-01-02") "description" ($p.Description | default "" | plainify | truncate 300) "tags" $tags "projects" $projs | jsonify }}
 {{ end }}]

@@ -1,9 +1,25 @@
 {{ define "main" }}
-<en-section num="00" title="{{ .Title | upper }}" blurb="Everything I've written, by topic.">
+{{- $projBlurb := "Tools, repos, and things I've built." -}}
+{{- $blurb := "Everything I've written, by topic." }}
+{{- if eq .Data.Plural "projects" }}{{ $blurb = $projBlurb }}{{ end }}
+<en-section num="00" title="{{ .Title | upper }}" blurb="{{ $blurb }}">
   <div class="en-tags">
     {{ range .Pages.ByTitle }}
     <a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a><span class="en-tag-count">{{ len .Pages }}</span>
     {{ end }}
   </div>
 </en-section>
+{{- if eq .Data.Plural "tags" }}
+{{- with site.GetPage "/projects" }}
+{{- with .Pages }}
+<en-section num="01" title="PROJECTS" blurb="{{ $projBlurb }}">
+  <div class="en-tags">
+    {{ range .ByTitle }}
+    <a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a><span class="en-tag-count">{{ len .Pages }}</span>
+    {{ end }}
+  </div>
+</en-section>
+{{- end }}
+{{- end }}
+{{- end }}
 {{ end }}

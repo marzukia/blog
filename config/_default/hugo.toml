@@ -10,6 +10,10 @@ summaryLength = 2
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+# topics (broad) vs projects (named things he built: qMLX, charted, junkyard)
+[taxonomies]
+  projects = "projects"
+
 [params.article]
   showComments = true
 

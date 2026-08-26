@@ -23,9 +23,12 @@
     </div>
     <h1 class="en-article-title">{{ .Title }}</h1>
     {{- with .Description }}<p class="en-article-desc">{{ . | plainify }}</p>{{ end }}
-    {{- with .GetTerms "tags" }}
+    {{- $projs := .GetTerms "projects" }}
+    {{- $tags := .GetTerms "tags" }}
+    {{- if or $projs $tags }}
     <div class="en-article-tags">
-      {{ range . }}<a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a>{{ end }}
+      {{- range $projs }}<a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a>{{ end }}
+      {{- range $tags }}<a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a>{{ end }}
     </div>
     {{- end }}
     {{- /* in-page cover removed: the OG poster (og.png) carries the visual,

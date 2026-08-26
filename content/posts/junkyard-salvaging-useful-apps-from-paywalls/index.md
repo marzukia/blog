@@ -3,6 +3,7 @@ title: "junkyard.sh: Salvaging useful apps from the terrors of paywalls"
 date: 2026-07-01T00:00:00Z
 description: "Why I rebuilt 48 paywalled web tools to run free in your browser, with no account and no upload."
 tags: ["Web", "Life"]
+projects: ["junkyard"]
 categories: ["Philosophy"]
 draft: false
 ---
