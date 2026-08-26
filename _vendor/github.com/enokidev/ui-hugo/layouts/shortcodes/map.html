@@ -7,6 +7,11 @@
   inner quotes (\"), never single-quoted call-side (Hugo parses spaces +
   quotes as positional params). Do NOT pre-escape with replaceRE.
 
+  File paths are LAZY: the shortcode emits geo-url="<relpermalink>" instead
+  of inlining the payload, and the component fetches the file only when the
+  figure scrolls into view. This keeps multi-megabyte map data out of the
+  page HTML. The file is emitted to public/ next to the post.
+
     {{< map tag="FIG. 07" cap="SUBURB SCORE"
         hint="Composite score by postcode area."
         geo="fig-map-scored.json"
@@ -38,10 +43,12 @@
 {{- $token := .Get "token" | default (.Site.Params.mapboxToken) -}}
 {{- $style := .Get "style" | default (.Site.Params.mapboxStyle | default "light-v11") -}}
 {{- $geo := .Get "geo" -}}
+{{- $geoUrl := "" -}}
 {{- if and $geo (not (or (strings.Contains $geo "{") (strings.Contains $geo "["))) -}}
 {{-   $res := .Page.Resources.Get $geo -}}
 {{-   if $res -}}
-{{-     $geo = $res.Content | strings.TrimSpace -}}
+{{-     $geoUrl = $res.RelPermalink -}}
+{{-     $geo = "" -}}
 {{-   end -}}
 {{- end -}}
 {{- $legend := .Get "legend" -}}
@@ -59,4 +66,5 @@
   {{- with $legend }} legend='{{ . | safeHTMLAttr }}'{{ end }}
   {{- with $token }} token="{{ . | safeHTMLAttr }}"{{ end }}
   {{- if $style }} style="{{ $style | safeHTMLAttr }}"{{ end }}
-  geo='{{ $geo | safeHTMLAttr }}'></en-map>
+  {{- with $geoUrl }} geo-url="{{ . | safeHTMLAttr }}"{{ end }}
+  {{- with $geo }} geo='{{ . | safeHTMLAttr }}'{{ end }}></en-map>
