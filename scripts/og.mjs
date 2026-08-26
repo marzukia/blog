@@ -7,8 +7,9 @@
 // image) is written to static/img/ogbanner.png. Outputs are gitignored and
 // regenerated on every build, so adding a post needs zero manual work.
 //
-// Design system: enokidev/ui (enoki.css tokens). Poster frame with hard offset
-// shadow, Anton display (solid + hollow last word), Space Mono meta, tag chips.
+// Design system: enokidev/ui (enoki.css tokens) 3-face system. Poster frame
+// with hard offset shadow, Anton display (solid + hollow last word),
+// Archivo labels (site UI face), tag chips. No serif — posters carry no prose.
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import { createElement as h } from "satori/jsx";
@@ -36,8 +37,6 @@ const fonts = [
   { name: "Archivo", data: readFileSync(join(fontDir, "archivo-400.woff")), weight: 400 },
   { name: "Archivo", data: readFileSync(join(fontDir, "archivo-600.woff")), weight: 600 },
   { name: "Archivo", data: readFileSync(join(fontDir, "archivo-700.woff")), weight: 700 },
-  { name: "SpaceMono", data: readFileSync(join(fontDir, "spm-400.woff")), weight: 400 },
-  { name: "SpaceMono", data: readFileSync(join(fontDir, "spm-700.woff")), weight: 700 },
 ];
 
 const W = 1200;
@@ -51,7 +50,7 @@ const URL = "mrzk.io";
 // ---- element helpers (satori: every container with children needs display) ----
 const d = (style, ...c) => h("div", { style: { display: "flex", ...style } }, ...c);
 const sp = (style, ...c) => h("span", { style: { display: "flex", ...style } }, ...c);
-const mono = (o = {}) => ({ fontFamily: "SpaceMono, monospace", textTransform: "uppercase", letterSpacing: "0.08em", ...o });
+const mono = (o = {}) => ({ fontFamily: "Archivo, sans-serif", textTransform: "uppercase", letterSpacing: "0.08em", ...o });
 const anton = (o = {}) => ({ fontFamily: "Anton, sans-serif", textTransform: "uppercase", ...o });
 
 const chip = (t) =>
