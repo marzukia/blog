@@ -939,6 +939,18 @@ samp {
   max-width: 280px;
 }
 
+/* Mobile: the right-pinned 280px box is a desktop device (it sits at the
+   right end of the num+title row). Below 600px it wraps to its own line and
+   its left edge lands under the title, reading as a random indent.
+   Left-align it to the container edge instead. Must come after the base
+   rule above (equal specificity, source order wins). */
+@media (max-width: 600px) {
+  .en-shead-blurb {
+    margin: 0;
+    max-width: none;
+  }
+}
+
 
 /* Icon. Inherits currentColor, never its own palette. */
 
