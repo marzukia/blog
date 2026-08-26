@@ -888,6 +888,21 @@ samp {
   }
 }
 
+/* Visually hidden, still announced by screen readers and indexed by
+   crawlers. Used for static H1s on pages whose visible heading is
+   rendered by JS (e.g. <en-hero>). */
+.en-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .en-sec {
   padding-block: var(--en-sec-pad);
   border-top: var(--en-bw) solid var(--en-ink);

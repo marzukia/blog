@@ -2,7 +2,9 @@
 {{- $projBlurb := "Tools, repos, and things I've built." -}}
 {{- $blurb := "Everything I've written, by topic." }}
 {{- if eq .Data.Plural "projects" }}{{ $blurb = $projBlurb }}{{ end }}
-<en-section num="00" title="{{ .Title | upper }}" blurb="{{ $blurb }}">
+{{/* Static H1 for crawlers: the visible section header is rendered by JS. */}}
+<h1 class="en-vh">{{ .Title }}</h1>
+<en-section h1 num="00" title="{{ .Title | upper }}" blurb="{{ $blurb }}">
   <div class="en-tags">
     {{ range .Pages.ByTitle }}
     <a class="en-tag" href="{{ .RelPermalink }}">{{ .Title | upper }}</a><span class="en-tag-count">{{ len .Pages }}</span>

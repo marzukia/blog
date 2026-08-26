@@ -44,7 +44,7 @@ In this section, I've listed down the main arguments I often hear being repeated
 
 Getting the population vaccinated helps stop the spread of COVID-19, but vaccinations do not give total immunity to the virus. It only reduces the chance of transmission (and severity of symptoms if contracted). Every person who does not get vaccinated adds to the pool of infectious people in the community, potentially infecting others (even those vaccinated).
 
-![](transmission.png)
+![How unvaccinated people expand the pool of infectious people in the community](transmission.png)
 
 _You can also point out having this stance is incredibly selfish._
 

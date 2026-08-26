@@ -2,7 +2,7 @@
 author: "Andryo Marzuki"
 title: "Mapping an Undocumented API Easily With Python"
 date: "2020-09-13"
-description: "Using your browser and Python to map out an undocumented API quickly"
+description: "Mapping the undocumented stats.nba.com API with just browser devtools and Python: sniffing the endpoint, decoding the parameters, building a clean client."
 tags: ["Data", "Web"]
 slug: "mapping-an-undocumented-api"
 lastmod: "2020-09-13"

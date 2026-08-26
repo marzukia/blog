@@ -28,7 +28,7 @@ Cryptocurrency was supposed to be decentralized and free from government control
 
 The ongoing implosion of the cryptocurrency ecosystem is the conclusion of the practical application of the greater fool theory. The sharp drop in prices in early 2022 was like a child kicking the foundation of a castle made of sand and technical jargon, causing it to come crashing down. The sharp drop in prices shattered the illusion that the market would only ever go up and led to a massive chain reaction of significant players going bankrupt. If you were invested in Bitcoin 5 years ago, you would now be down 13%.
 
-![](./crypto-price.png "Line go down")
+![Cryptocurrency price chart trending down](./crypto-price.png)
 
 In June 2022, Terra (an exchange) had its 'algorithmic stable coin' (paradoxical) [lose its dollar peg crashing to \$1.999967e-7, that's a millionth of a dollar](https://indianexpress.com/article/technology/crypto/luna-terra-crash-a-brief-history-of-failed-algorithmic-stablecoins-7934293/). A stable coin is a type of cryptocurrency that is pegged to a stable asset (e.g. a USD), and people may have invested in them because they believed they offered a safer (it didn't) and more predictable alternative to other cryptocurrencies (it wasn't).
 

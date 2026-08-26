@@ -5,7 +5,10 @@
 {{- range $pag.Pages -}}
 {{-   $items = $items | append . -}}
 {{- end -}}
+{{/* Static H1 for crawlers: the visible section header is rendered by JS. */}}
+<h1 class="en-vh">{{ .Title }}</h1>
 <en-section
+  h1
   num="{{ .Params.num | default "00" }}"
   title="{{ .Title | upper }}"
   blurb="{{ .Description | default .Params.blurb | default "" }}">

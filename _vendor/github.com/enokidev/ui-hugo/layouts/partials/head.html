@@ -11,9 +11,19 @@
   html { font-family: "Archivo", system-ui, sans-serif; }
   h1, h2, h3, h4, h5, h6 { font-family: "Anton", "Archivo", sans-serif; }
 </style>
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-{{- $headDesc := .Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description) }}
-<meta name="description" content="{{ $headDesc | plainify | htmlUnescape }}" />
+{{/* Article pages use the short domain suffix: Google renders ~60 chars of
+    the title, and the full site title (49 chars) was eating the whole
+    budget before the article title could show. Section indexes and the
+    home keep full branding, where the name IS the point. */}}
+{{- $titleSuffix := site.Title -}}
+{{- if .IsPage -}}
+{{-   $titleSuffix = "mrzk.io" -}}
+{{- end -}}
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ $titleSuffix }}{{ end }}</title>
+{{/* Cap at 155: Google truncates SERP snippets around 155-160 chars.
+    truncate 153 + the ellipsis suffix lands exactly on 155. */}}
+{{- $headDesc := (.Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description)) | plainify | htmlUnescape | truncate 153 -}}
+<meta name="description" content="{{ $headDesc }}" />
 {{- $authorRaw := site.Params.author }}
 {{- $authorName := "" }}
 {{- if reflect.IsMap $authorRaw }}

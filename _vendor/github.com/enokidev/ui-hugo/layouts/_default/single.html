@@ -1,7 +1,9 @@
 {{ define "main" }}
 {{ if and .IsPage (or .Params.num .Params.blurb) }}
 {{/* exampleSite-style page: explicit section wrapper */}}
-<en-section num="{{ .Params.num | default "" }}" title="{{ .Title | upper }}" blurb="{{ .Params.blurb | default "" }}">
+{{/* Static H1 for crawlers: the visible section header is rendered by JS. */}}
+<h1 class="en-vh">{{ .Title }}</h1>
+<en-section h1 num="{{ .Params.num | default "" }}" title="{{ .Title | upper }}" blurb="{{ .Params.blurb | default "" }}">
   {{ .Content }}
 </en-section>
 {{ else }}

@@ -2,7 +2,7 @@
 author: "Andryo Marzuki"
 title: "Measured Pruning Damage Depends on the Evaluation Corpus: A Renaming Control for Mixture-of-Experts Expert Pruning"
 date: "2026-08-08"
-description: "Code-side evaluation of MoE expert pruning runs on corpora the model has partly memorised. A renaming control on CPython stdlib moves reported damage 1.6x while preserving program structure."
+description: "Expert-pruning damage on code depends on the eval corpus: a renaming control on CPython stdlib moves reported damage 1.6x at constant program structure."
 tags: ["AI"]
 authors: ["Andryo Marzuki", "Jeremiah Mannings"]
 affiliation: "Mainlobe Labs"

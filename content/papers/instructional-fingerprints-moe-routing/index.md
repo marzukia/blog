@@ -2,7 +2,7 @@
 author: "Andryo Marzuki"
 title: "Do Instructional Fingerprints Produce Stable Expert-Routing Signatures in a Mixture-of-Experts Model?"
 date: "2026-08-19"
-description: "A controlled negative: implanting three trigger-response fingerprints in Qwen1.5-MoE-A2.7B with router-trainable fine-tuning produces measurable routing changes, but no stable trigger-specific expert-routing signature above matched nulls."
+description: "A controlled negative: fingerprints implanted in Qwen1.5-MoE-A2.7B shift expert routing but no stable trigger signature emerges above matched nulls."
 tags: ["AI"]
 authors: ["Andryo Marzuki", "Jeremiah Mannings"]
 affiliation: "Mainlobe Labs"

@@ -13,6 +13,10 @@
 {{- range $recent -}}
 {{-   $items = $items | append . -}}
 {{- end -}}
+{{/* Static H1: the visible hero heading is rendered by JS (<en-hero>), so
+    crawlers reading raw HTML see no H1. Keep the text in sync with the
+    hero attributes below. */}}
+<h1 class="en-vh">{{ site.Params.heroTitle | default (site.Params.brand | default site.Title) | upper }}{{ with site.Params.heroHollow }} {{ . | upper }}{{ end }}</h1>
 <en-hero
   title="{{ site.Params.heroTitle | default (site.Params.brand | default site.Title) | upper }}"
   {{- with site.Params.heroHollow }} hollow="{{ . | upper }}"{{ end }}

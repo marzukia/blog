@@ -127,7 +127,7 @@ vim ~/qmk_firmware/keyboards/gmmk/pro/ansi/keymaps/<name>/keymap.c
 
 At this point, you’ll see something like this:
 
-![](/79.png)
+![The generated keymap.c after running qmk new-keymap](/79.png)
 
 Once you’ve modified your keybinds to your preference, load the keyboard into bootloader mode and then run the following:
 

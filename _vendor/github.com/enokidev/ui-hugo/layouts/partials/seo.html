@@ -21,7 +21,9 @@
 -*/ -}}
 {{- $iso := "2006-01-02T15:04:05-07:00" -}}
 {{- $siteName := site.Params.seo.siteName | default site.Title -}}
-{{- $desc := .Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description) -}}
+{{/* Cap at 155 (truncate 153 + ellipsis): matches the meta description in
+    head.html; keeps og/twitter snippets inside Google/FB display width. */}}
+{{- $desc := (.Description | default (cond .IsPage .Summary "") | default (site.Language.Params.description | default site.Params.description)) | plainify | htmlUnescape | truncate 153 -}}
 {{/* author may be a string or a [params.author] map (name/image/bio) */}}
 {{- $authorRaw := site.Params.author }}
 {{- $authorName := "" }}
