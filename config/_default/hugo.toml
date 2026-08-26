@@ -1,7 +1,7 @@
 baseURL = "https://mrzk.io/"
 defaultContentLanguage = "en"
 
-enableRobotsTXT = true
+enableRobotsTXT = false
 summaryLength = 2
 
 [pagination]
