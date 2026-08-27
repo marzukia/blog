@@ -1468,6 +1468,10 @@ textarea.en-input {
   border: var(--en-bw) solid var(--en-line);
   border-radius: var(--en-r);
   box-shadow: var(--en-sh-6);
+  /* same grid-lift as .en-card: a static tile paints under the fixed
+     z-index:0 grid (interior audit 2026-08-27). */
+  position: relative;
+  z-index: var(--en-z-content);
 }
 
 .en-stat-v {
@@ -1504,6 +1508,332 @@ textarea.en-input {
 @media (max-width: 720px) {
   .en-stat-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Semicircular ink gauge. Track = paper3 slab with a 2px ink ring,
+   value arc = accent, needle sweeps 180° over 0.6s. */
+
+.en-gauge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+.en-gauge-arcwrap {
+  position: relative;
+  width: 100%;
+}
+
+.en-gauge-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.en-gauge-base {
+  fill: none;
+  stroke: var(--en-line);
+  stroke-width: 18;
+}
+
+.en-gauge-track {
+  fill: none;
+  stroke: var(--en-paper3);
+  stroke-width: 14;
+}
+
+.en-gauge-arc {
+  fill: none;
+  stroke: var(--en-accent);
+  stroke-width: 14;
+  transition: stroke-dasharray 0.6s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.en-gauge-tick {
+  stroke: var(--en-ink2);
+  stroke-width: 1.5;
+}
+
+.en-gauge-needle {
+  transform: rotate(var(--en-gauge-deg, 0deg));
+  transform-origin: 100px 100px;
+  transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.en-gauge-needle line {
+  stroke: var(--en-ink);
+  stroke-width: 3;
+}
+
+.en-gauge-hub {
+  fill: var(--en-ink);
+}
+
+.en-gauge-hubdot {
+  fill: var(--en-paper);
+}
+
+.en-gauge-end {
+  fill: var(--en-ink2);
+  font-family: var(--en-ui);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+.en-gauge-read {
+  position: absolute;
+  top: 56%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.en-gauge-num {
+  font-family: var(--en-disp);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--en-ink);
+}
+
+.en-gauge-unit {
+  font-family: var(--en-disp);
+  font-size: 16px;
+  color: var(--en-ink2);
+}
+
+.en-gauge-label {
+  margin-top: 2px;
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--en-ink);
+}
+
+.en-gauge-caption {
+  margin-top: 6px;
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  letter-spacing: 0.3px;
+  color: var(--en-ink2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .en-gauge-needle,
+  .en-gauge-arc {
+    transition: none;
+  }
+}
+
+/* Log slab: paper2 surface, 2px ink border, mono lines with a timestamp
+   gutter. Head carries a blinking dot + label + line count. */
+
+.en-term {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--en-paper2);
+  border: var(--en-bw) solid var(--en-line);
+  border-radius: var(--en-r);
+  box-shadow: var(--en-sh-4);
+  overflow: hidden;
+}
+
+.en-term-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-bottom: var(--en-bw-thin) solid var(--en-line);
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-10);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--en-ink);
+}
+
+@keyframes en-termblink {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  61%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.en-term-dot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  background: var(--en-green);
+  border-radius: 50%;
+  animation: en-termblink 1.6s steps(1) infinite;
+}
+
+.en-term-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.en-term-count {
+  margin-left: auto;
+  flex: none;
+  color: var(--en-ink2);
+}
+
+/* overflow (both axes): vertical auto-follows the tail, horizontal scrolls
+   long lines. The line min-width below is what makes the horizontal scroll
+   SHARED — every line stretches to the widest line, so one scrollbar on the
+   body moves everything together (per-line scroll would be unusable). */
+.en-term-body {
+  overflow: auto;
+  padding: 8px 10px;
+  font-family: var(--en-mono);
+  font-size: var(--en-f-mono-11);
+  line-height: 1.55;
+  scrollbar-width: thin;
+  scrollbar-color: var(--en-ink2) transparent;
+}
+
+.en-term-line {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+  min-width: max-content;
+}
+
+.en-term-ts {
+  flex: none;
+  color: var(--en-ink2);
+  opacity: 0.75;
+}
+
+.en-term-txt {
+  color: var(--en-ink);
+}
+
+.en-term-dim .en-term-txt {
+  color: var(--en-ink2);
+}
+
+.en-term-ok .en-term-txt {
+  color: var(--en-green);
+}
+
+.en-term-err .en-term-txt {
+  color: var(--en-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .en-term-dot {
+    animation: none;
+  }
+}
+
+/* Rubber stamp: Anton caps inside a double ring, tilted, hard "thunk"
+   entrance. Ghost = dashed + faded (milestone not yet earned). */
+
+.en-stamp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 8px 13px 9px;
+  border: 2.5px solid currentColor;
+  border-radius: 2px;
+  font-family: var(--en-disp);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* inner ring, 2px gap */
+.en-stamp::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.en-stamp-accent {
+  color: var(--en-accent);
+}
+
+.en-stamp-ink {
+  color: var(--en-ink);
+}
+
+.en-stamp-blue {
+  color: var(--en-blue);
+}
+
+.en-stamp-green {
+  color: var(--en-green);
+}
+
+.en-stamp-t {
+  font-size: 15px;
+}
+
+.en-stamp-s {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  letter-spacing: 0.8px;
+  opacity: 0.85;
+}
+
+@keyframes en-stampthunk {
+  0% {
+    transform: rotate(var(--en-stamp-rot, -4deg)) scale(1.7);
+    opacity: 0;
+  }
+  55% {
+    transform: rotate(var(--en-stamp-rot, -4deg)) scale(0.93);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--en-stamp-rot, -4deg)) scale(1);
+    opacity: 1;
+  }
+}
+
+.en-stamp-on {
+  transform: rotate(var(--en-stamp-rot, -4deg));
+  animation: en-stampthunk 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+  opacity: 0.92;
+}
+
+.en-stamp-ghost {
+  transform: rotate(var(--en-stamp-rot, -4deg));
+  opacity: 0.3;
+  border-style: dashed;
+}
+
+.en-stamp-ghost::after {
+  border-style: dashed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .en-stamp-on {
+    animation: none;
   }
 }
 
@@ -1594,6 +1924,10 @@ textarea.en-input {
 
 .en-kv-seg-dim {
   background: var(--en-ink2);
+}
+
+.en-kv-seg-amber {
+  background: var(--en-amber);
 }
 
 .en-kv-w {
@@ -2183,13 +2517,21 @@ textarea.en-input {
    body well gets the 12px step instead (interior audit 2026-08-22). */
 
 /* cards sit in auto-fit grids; let the track shrink below the card's
-   min-content so inner figures scroll instead of widening the page. */
+   min-content so inner figures scroll instead of widening the page.
+   Body surface is paper2 — on the paper page, paper-on-paper read as a
+   transparent hole next to filled components (tables, stats, tracks).
+   Every panel surface is the same slab. */
 .en-card {
   min-width: 0;
-  background: var(--en-paper);
+  background: var(--en-paper2);
   border: var(--en-bw) solid var(--en-line);
   border-radius: var(--en-r);
   box-shadow: var(--en-sh-8);
+  /* the ambient grid is fixed z-index:0; a static card paints UNDER it and
+     the grid bleeds through the slab. Lift to the content layer, like
+     .en-wrap and .en-diagram. */
+  position: relative;
+  z-index: var(--en-z-content);
 }
 
 .en-card-hd {
@@ -2311,6 +2653,47 @@ textarea.en-input {
 .en-theme-switch button[aria-pressed="true"] {
   background: var(--en-ink);
   color: var(--en-paper);
+}
+
+/* ThemeToggle: paper / carbon segmented switch. House rule: 2px ink frame,
+   mono 11px uppercase, active segment inverts to ink. Inside a topbar
+   action slot the segments stretch to the full bar height (the slot is
+   align-items: stretch); standalone they size to their 6px vertical pad. */
+
+.en-theme-toggle {
+  display: inline-flex;
+  align-items: stretch;
+  border: var(--en-bw) solid var(--en-ink);
+  font-family: var(--en-ui);
+  text-transform: uppercase;
+  letter-spacing: var(--en-tr-mono);
+}
+
+.en-theme-toggle button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  color: var(--en-ink);
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  font-weight: 700;
+  letter-spacing: var(--en-tr-mono);
+  transition: background var(--en-d-quick) var(--en-ease-ui);
+}
+
+.en-theme-toggle button[aria-pressed="true"] {
+  background: var(--en-ink);
+  color: var(--en-paper);
+}
+
+@media (max-width: 720px) {
+  .en-theme-toggle button {
+    padding: 0 10px;
+  }
 }
 
 /* Breadcrumbs. Mono 11px uppercase path, house link style on the middle
@@ -2613,6 +2996,13 @@ textarea.en-input {
   padding: 0 14px;
 }
 
+/* Marquee-in-main: the ticker IS the bar. Full-bleed ink strip, full
+   height — a half-height band next to taller controls reads as cramped. */
+.en-topbar-main:has(> .en-marquee) {
+  padding: 0;
+  align-items: stretch;
+}
+
 /* Brand: display face, set apart from the nav. */
 .en-topbar-brand .en-link {
   font-family: var(--en-disp);
@@ -2656,6 +3046,31 @@ textarea.en-input {
   flex: none;
 }
 
+/* Action slot: one control system. Every child stretches to the full bar
+   height (same box, same borders, same baseline) so nothing floats at a
+   different level. Ruled off from the marquee. */
+.en-topbar-side {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-left: auto;
+  flex: none;
+  padding: 0 12px;
+  border-left: var(--en-bw) solid var(--en-line);
+}
+
+.en-topbar-side > * {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* the theme toggle is a container, not a leaf: its segments must stretch
+   to the full bar height or the active fill reads as a floating band */
+.en-topbar-side > .en-theme-toggle {
+  align-items: stretch;
+}
+
 /* Narrow screens: keep everything, compact it. */
 @media (max-width: 720px) {
   .en-topbar-main {
@@ -2684,6 +3099,14 @@ textarea.en-input {
   .en-topbar-actions .en-theme-switch button {
     width: 24px;
     height: 22px;
+  }
+  .en-topbar-side {
+    gap: 6px;
+    padding: 0 10px;
+  }
+  .en-topbar-side .en-chip {
+    padding: 0 8px;
+    gap: 5px;
   }
 }
 
@@ -3205,10 +3628,13 @@ textarea.en-input {
  * legend, mini buttons, tooltip.
  */
 
+/* paper2 slab, matching the Card: on the paper page a paper figure
+   read as a transparent hole next to filled cards (interior audit
+   2026-08-27, rate-card vs billing complaint). */
 .en-diagram {
   margin: 0;
   border: 2px solid var(--en-line);
-  background: var(--en-paper);
+  background: var(--en-paper2);
   box-shadow: var(--en-sh-8);
   position: relative;
 }
