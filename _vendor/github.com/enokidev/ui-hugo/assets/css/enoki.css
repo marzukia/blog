@@ -363,6 +363,8 @@
   --en-paper: #efe9db;
   --en-paper2: #e7ddc9;
   --en-paper3: #ddd0b6;
+  /* card surfaces (diagram nodes): lifted off the paper2 figure slab */
+  --en-card: #fffdf6;
   --en-ink: #16130e;
   --en-ink2: #5a5140;
   --en-line: #16130e;
@@ -393,6 +395,8 @@
   --en-paper: #141110;
   --en-paper2: #1d1813;
   --en-paper3: #27201a;
+  /* card surfaces (diagram nodes): lifted off the paper2 figure slab */
+  --en-card: #2a231b;
   --en-ink: #f1ead9;
   --en-ink2: #b8ac93;
   --en-line: #f1ead9;
@@ -3938,7 +3942,7 @@ textarea.en-input {
 }
 
 .en-node .dg-box {
-  fill: var(--en-paper2);
+  fill: var(--en-card);
   stroke: var(--en-line);
   stroke-width: 2.5;
   transition: fill 0.15s ease;
@@ -3983,7 +3987,7 @@ textarea.en-input {
 }
 
 .en-node:hover .dg-box {
-  fill: var(--en-paper3);
+  fill: color-mix(in srgb, var(--en-card) 88%, var(--en-ink));
 }
 
 .en-node.lit .dg-box {
