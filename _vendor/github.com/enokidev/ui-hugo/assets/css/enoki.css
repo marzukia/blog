@@ -371,7 +371,6 @@
   --en-blue: #1546ff;
   --en-green: #0f8a46;
   --en-amber: #e08e05;
-  --en-halo-a: 0.22;
   --en-grid: rgba(22, 19, 14, 0.06);
   --en-sh: #16130e;
   --en-code-sky: #8fd1ff;
@@ -402,7 +401,6 @@
   --en-blue: #6f92ff;
   --en-green: #37c579;
   --en-amber: #f0b429;
-  --en-halo-a: 0.28;
   --en-grid: rgba(241, 234, 217, 0.05);
   --en-sh: rgba(0, 0, 0, 0.55);
   --en-code-sky: #006cb8;
@@ -3939,28 +3937,6 @@ textarea.en-input {
   cursor: pointer;
 }
 
-.en-node .dg-halo {
-  fill: var(--dg-c, var(--en-ink2));
-  fill-opacity: var(--en-halo-a, 0.24);
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: en-breathe 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes en-breathe {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(1.02);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.1);
-  }
-}
-
 .en-node .dg-box {
   fill: var(--en-paper2);
   stroke: var(--en-line);
@@ -3979,20 +3955,6 @@ textarea.en-input {
 }
 .en-node .dg-strip[data-role="state"] {
   fill: var(--en-ink2);
-}
-
-/* halo colour follows the node role strip */
-.en-node[data-role="accent"] {
-  --dg-c: var(--en-accent);
-}
-.en-node[data-role="blue"] {
-  --dg-c: var(--en-blue);
-}
-.en-node[data-role="green"] {
-  --dg-c: var(--en-green);
-}
-.en-node[data-role="state"] {
-  --dg-c: var(--en-ink2);
 }
 
 .en-node .dg-cluster-dot {
@@ -4201,10 +4163,6 @@ textarea.en-input {
 /* ---- reduced motion: everything rests in its drawn state -------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .en-node .dg-halo {
-    animation: none;
-    opacity: 0;
-  }
   .en-edge.draw,
   .en-trans.draw {
     stroke-dashoffset: 0;
@@ -4228,6 +4186,12 @@ textarea.en-input {
  * React renders the DOM, d3 computes and writes attributes, CSS owns
  * state and the draw-in. Token palette only, via classes.
  */
+
+/* font floor: nothing in a figure reads below 12px (2026-09-09) */
+figure.en-diagram {
+  --en-f-mono-10: 12px;
+  --en-f-mono-11: 12px;
+}
 
 /* ---- plot chrome -------------------------------------------------------- */
 
@@ -4318,27 +4282,6 @@ textarea.en-input {
   stroke: var(--en-paper);
 }
 
-/* role context: sets the glow colour var without painting. Put on the
-   group that owns a .fg-halo / .fg-q-halo so the glow follows the mark. */
-.fg-ctx-accent {
-  --fg-c: var(--en-accent);
-}
-.fg-ctx-blue {
-  --fg-c: var(--en-blue);
-}
-.fg-ctx-green {
-  --fg-c: var(--en-green);
-}
-.fg-ctx-amber {
-  --fg-c: var(--en-amber);
-}
-.fg-ctx-ink {
-  --fg-c: var(--en-ink);
-}
-.fg-ctx-ink2 {
-  --fg-c: var(--en-ink2);
-}
-
 /* ---- labels ------------------------------------------------------------- */
 
 /* direct value on a mark, paper halo keeps it readable over flow */
@@ -4385,7 +4328,7 @@ textarea.en-input {
 }
 
 .fg-plate .fg-plate-sub {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   opacity: 0.7;
 }
@@ -4400,18 +4343,6 @@ textarea.en-input {
 
 .en-diagram.in .fg-draw {
   stroke-dashoffset: 0;
-}
-
-/* ---- halo (one per figure, behind the hero mark) ------------------------ */
-
-.fg-halo {
-  fill: var(--fg-c, var(--en-ink2));
-  fill-opacity: var(--en-halo-a, 0.24);
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: en-breathe 4s ease-in-out infinite;
-  pointer-events: none;
 }
 
 /* ---- donut ---------------------------------------------------------------- */
@@ -4464,7 +4395,7 @@ textarea.en-input {
 
 .fg-donut-sub {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -4502,7 +4433,13 @@ textarea.en-input {
   transform: scaleY(1);
 }
 
-.fg-bargrp:hover .fg-bar {
+/* plain/stacked: hovering the band lights its bar (or whole stack).
+   grouped (fg-bar-g): only the bar under the pointer lights up. */
+.fg-bargrp:hover .fg-bar:not(.fg-bar-g) {
+  fill: var(--en-accent);
+  stroke: var(--en-accent);
+}
+.fg-bar-g:hover {
   fill: var(--en-accent);
   stroke: var(--en-accent);
 }
@@ -4889,16 +4826,6 @@ textarea.en-input {
 
 /* ---- quadrant ------------------------------------------------------------------ */
 
-.fg-q-halo {
-  fill: var(--fg-c, var(--en-ink2));
-  fill-opacity: var(--en-halo-a, 0.24);
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: en-breathe 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
 .fg-q-corner {
   font-family: var(--en-ui);
   font-size: 12px;
@@ -5062,7 +4989,7 @@ textarea.en-input {
 /* House-ify the MapLibre chrome we keep (scale bar + attribution). */
 .maplibregl-ctrl-scale {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.5px;
   color: var(--en-ink);
   background: color-mix(in srgb, var(--en-paper) 88%, transparent);
@@ -5071,7 +4998,7 @@ textarea.en-input {
 }
 .maplibregl-ctrl-attrib.maplibregl-compact {
   font-family: var(--en-ui);
-  font-size: 10px;
+  font-size: 12px;
   background: color-mix(in srgb, var(--en-paper) 88%, transparent);
   color: var(--en-ink2);
 }
@@ -6003,7 +5930,7 @@ textarea.en-input {
 }
 .fg-esc-tiny {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -6250,7 +6177,7 @@ textarea.en-input {
   }
   .fg-tw-row > .fg-tw-cell:nth-child(3)::before,
   .fg-tw-row > .fg-tw-cell:nth-child(4)::before {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -6304,11 +6231,6 @@ textarea.en-input {
   .fg-ptdense {
     opacity: 1;
     transition: none;
-  }
-  .fg-halo,
-  .fg-q-halo {
-    animation: none;
-    opacity: 0;
   }
   .fg-g-ring,
   .fg-loop-flow-line,

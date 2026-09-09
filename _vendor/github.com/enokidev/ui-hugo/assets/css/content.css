@@ -101,7 +101,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 @media (min-width: 1280px) {
   .en-content .en-diagram:not(.frameless) {
     width: min(1200px, calc(100vw - 96px));
-    margin-inline: calc((100% - min(1200px, calc(100vw - 96px))) / -2);
+     margin-inline: calc((100% - min(1200px, calc(100vw - 96px))) / 2);
   }
 }
 .en-article-head { margin: 26px 0 40px; }
