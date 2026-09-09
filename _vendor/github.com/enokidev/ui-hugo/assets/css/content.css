@@ -92,6 +92,18 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   display: block;
   margin: 30px 0 36px;
 }
+/* Full-bleed figures on wide desktops: inside the 780px column the
+   viewBoxes scale to 0.65-0.91x, shrinking in-plot text to 6-9px
+   (unreadable). On >=1280px viewports the figure breaks out to 1200px,
+   centred, keeping symmetric page gutters. 1:1 for the 1200-viewBox
+   narrative figures, ~1.2-1.4x for the data charts. Below 1280px the
+   column width rules (no negative-margin breakout on smaller screens). */
+@media (min-width: 1280px) {
+  .en-content .en-diagram:not(.frameless) {
+    width: min(1200px, calc(100vw - 96px));
+    margin-inline: calc((100% - min(1200px, calc(100vw - 96px))) / -2);
+  }
+}
 .en-article-head { margin: 26px 0 40px; }
 .en-article-meta {
   display: flex;

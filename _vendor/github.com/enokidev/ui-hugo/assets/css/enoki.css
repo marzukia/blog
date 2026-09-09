@@ -4012,7 +4012,7 @@ textarea.en-input {
 
 .en-node .dg-sub {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   letter-spacing: 0.5px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -4067,7 +4067,7 @@ textarea.en-input {
 
 .en-elabel {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   letter-spacing: 0.5px;
   fill: var(--en-ink2);
   text-transform: uppercase;
@@ -4105,7 +4105,7 @@ textarea.en-input {
 .en-state text {
   font-family: var(--en-ui);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   fill: var(--en-ink);
   text-anchor: middle;
@@ -4168,7 +4168,7 @@ textarea.en-input {
 
 .en-lane-head text {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-paper);
@@ -4190,7 +4190,7 @@ textarea.en-input {
 
 .en-msg-lbl {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-ink);
   opacity: 1;
   paint-order: stroke;
@@ -4244,14 +4244,14 @@ textarea.en-input {
 
 .fg-tick-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   letter-spacing: 0.5px;
   fill: var(--en-ink2);
 }
 
 .fg-axis-title {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   letter-spacing: 1.5px;
   fill: var(--en-ink2);
   text-transform: uppercase;
@@ -4344,7 +4344,7 @@ textarea.en-input {
 /* direct value on a mark, paper halo keeps it readable over flow */
 .fg-lbl-halo {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   letter-spacing: 0.5px;
   fill: var(--en-ink);
   paint-order: stroke;
@@ -4376,7 +4376,7 @@ textarea.en-input {
 .fg-plate text {
   font-family: var(--en-ui);
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 1px;
   fill: var(--en-paper);
   text-anchor: middle;
@@ -4385,7 +4385,7 @@ textarea.en-input {
 }
 
 .fg-plate .fg-plate-sub {
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 400;
   opacity: 0.7;
 }
@@ -4464,7 +4464,7 @@ textarea.en-input {
 
 .fg-donut-sub {
   font-family: var(--en-ui);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -4530,7 +4530,7 @@ textarea.en-input {
 
 .fg-bar-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-10);
+  font-size: 12px;
   letter-spacing: 1px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -4552,7 +4552,7 @@ textarea.en-input {
 
 .fg-target-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   letter-spacing: 1px;
   fill: var(--en-accent);
   text-transform: uppercase;
@@ -4716,7 +4716,7 @@ textarea.en-input {
 
 .fg-g-label {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.5px;
   fill: var(--en-ink);
   text-transform: uppercase;
@@ -4726,7 +4726,7 @@ textarea.en-input {
 /* empty plan placeholder */
 .fg-g-empty {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-ink2);
@@ -4871,7 +4871,7 @@ textarea.en-input {
 
 .fg-box-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-10);
+  font-size: 12px;
   letter-spacing: 1px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -4881,7 +4881,7 @@ textarea.en-input {
 
 .fg-box-med-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   letter-spacing: 0.5px;
   fill: var(--en-ink);
   pointer-events: none;
@@ -4901,7 +4901,7 @@ textarea.en-input {
 
 .fg-q-corner {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1.5px;
   fill: var(--en-ink2);
   paint-order: stroke;
@@ -4940,7 +4940,7 @@ textarea.en-input {
 /* layout failure (cyclic graph, missing node): shown in place of the flow */
 .fg-serr {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   fill: var(--en-ink2);
@@ -4979,7 +4979,7 @@ textarea.en-input {
 
 .fg-slbl-n {
   font-family: var(--en-ui);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.5px;
   fill: var(--en-ink);
   text-transform: uppercase;
@@ -4991,7 +4991,7 @@ textarea.en-input {
 
 .fg-slbl-v {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   fill: var(--en-ink2);
   paint-order: stroke;
   stroke: var(--en-paper);
@@ -5036,7 +5036,7 @@ textarea.en-input {
   display: grid;
   place-items: center;
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--en-ink2);
@@ -5046,7 +5046,7 @@ textarea.en-input {
    Popup, house-styled (mono on a paper chip, hairline border). */
 .fg-map-popup .maplibregl-popup-content {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.5px;
   color: var(--en-ink);
   background: color-mix(in srgb, var(--en-paper) 94%, transparent);
@@ -5062,7 +5062,7 @@ textarea.en-input {
 /* House-ify the MapLibre chrome we keep (scale bar + attribution). */
 .maplibregl-ctrl-scale {
   font-family: var(--en-ui);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.5px;
   color: var(--en-ink);
   background: color-mix(in srgb, var(--en-paper) 88%, transparent);
@@ -5071,7 +5071,7 @@ textarea.en-input {
 }
 .maplibregl-ctrl-attrib.maplibregl-compact {
   font-family: var(--en-ui);
-  font-size: 9px;
+  font-size: 10px;
   background: color-mix(in srgb, var(--en-paper) 88%, transparent);
   color: var(--en-ink2);
 }
@@ -5142,7 +5142,7 @@ textarea.en-input {
 }
 .fg-race-bell-sub {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   letter-spacing: 1px;
   fill: var(--en-ink2);
   text-anchor: middle;
@@ -5159,7 +5159,7 @@ textarea.en-input {
 
 .fg-race-name {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-12);
+  font-size: var(--en-f-mono-13);
   font-weight: 700;
   letter-spacing: 1.5px;
   text-anchor: start;
@@ -5179,13 +5179,13 @@ textarea.en-input {
 }
 .fg-race-ms-l1 {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink);
   text-anchor: middle;
 }
 .fg-race-ms-l2 {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   fill: var(--en-ink2);
   text-anchor: middle;
 }
@@ -5198,7 +5198,7 @@ textarea.en-input {
 }
 .fg-race-tgt-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   text-anchor: middle;
   pointer-events: none;
 }
@@ -5229,7 +5229,7 @@ textarea.en-input {
 
 .fg-race-note {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5258,7 +5258,7 @@ textarea.en-input {
 }
 .fg-bl-axis-title {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5276,7 +5276,7 @@ textarea.en-input {
 }
 .fg-bl-mu-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   opacity: 0;
   transition: opacity 0.5s ease var(--d, 0s);
   pointer-events: none;
@@ -5291,14 +5291,14 @@ textarea.en-input {
 }
 .fg-bl-delta-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink);
   pointer-events: none;
 }
 
 .fg-bl-curve-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   text-anchor: middle;
   opacity: 0;
   transition: opacity 0.5s ease var(--d, 0s);
@@ -5314,7 +5314,7 @@ textarea.en-input {
 }
 .fg-bl-inset-title {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   fill: var(--en-ink2);
 }
 .fg-bl-chance {
@@ -5325,7 +5325,7 @@ textarea.en-input {
 }
 .fg-bl-chance-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   fill: var(--en-accent);
   text-anchor: end;
   pointer-events: none;
@@ -5339,7 +5339,7 @@ textarea.en-input {
 }
 .fg-bl-inset-lbl {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-8);
+  font-size: var(--en-f-mono-10);
   fill: var(--en-ink2);
   pointer-events: none;
 }
@@ -5365,7 +5365,7 @@ textarea.en-input {
 }
 .fg-bl-footer {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5441,7 +5441,7 @@ textarea.en-input {
 
 .fg-loop-flow-l1 {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-12);
+  font-size: var(--en-f-mono-13);
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-accent);
@@ -5449,7 +5449,7 @@ textarea.en-input {
 }
 .fg-loop-flow-l2 {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-9);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
 }
@@ -5473,13 +5473,13 @@ textarea.en-input {
 }
 .fg-loop-node-sub {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-10);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
 }
 .fg-loop-node-note {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-10);
+  font-size: var(--en-f-mono-11);
   fill: var(--en-ink2);
   text-anchor: middle;
 }
@@ -5503,7 +5503,7 @@ textarea.en-input {
 .fg-loop-center-l2,
 .fg-loop-center-l3 {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-11);
+  font-size: var(--en-f-mono-12);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5562,7 +5562,7 @@ textarea.en-input {
 
 .fg-grav-name {
   font-family: var(--en-ui);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   fill: var(--en-ink);
   text-anchor: middle;
@@ -5570,7 +5570,7 @@ textarea.en-input {
 }
 .fg-grav-note {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-11);
+  font-size: var(--en-f-mono-12);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5581,7 +5581,7 @@ textarea.en-input {
 
 .fg-grav-layer {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-12);
+  font-size: var(--en-f-mono-13);
   font-weight: 700;
   letter-spacing: 2px;
   fill: var(--en-ink2);
@@ -5613,7 +5613,7 @@ textarea.en-input {
 }
 .fg-grav-center-s {
   font-family: var(--en-ui);
-  font-size: var(--en-f-mono-11);
+  font-size: var(--en-f-mono-12);
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
@@ -5688,7 +5688,7 @@ textarea.en-input {
 
 .fg-circ-name-in {
   font-family: var(--en-ui);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   fill: var(--en-ink);
   text-anchor: middle;
@@ -5696,7 +5696,7 @@ textarea.en-input {
 }
 .fg-circ-val-in {
   font-family: var(--en-ui);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   fill: var(--en-accent);
   text-anchor: middle;
@@ -5704,7 +5704,7 @@ textarea.en-input {
 }
 .fg-circ-name-out {
   font-family: var(--en-ui);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   fill: var(--en-ink);
   text-anchor: middle;
@@ -5712,7 +5712,7 @@ textarea.en-input {
 }
 .fg-circ-val-out {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   fill: var(--en-accent);
   text-anchor: middle;
@@ -5720,14 +5720,14 @@ textarea.en-input {
 }
 .fg-circ-sub {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
 }
 .fg-circ-flab {
   font-family: var(--en-ui);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-accent);
@@ -5746,14 +5746,14 @@ textarea.en-input {
 }
 .fg-circ-quote {
   font-family: var(--en-ui);
-  font-size: 13px;
+  font-size: 14px;
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
 }
 .fg-circ-subc {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   fill: var(--en-ink2);
   opacity: 0.8;
   text-anchor: middle;
@@ -5854,7 +5854,7 @@ textarea.en-input {
   pointer-events: none;
 }
 .fg-mk-idplate text:last-child {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0;
   opacity: 0.7;
@@ -5862,13 +5862,13 @@ textarea.en-input {
 
 .fg-mk-title {
   font-family: var(--en-ui);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   fill: var(--en-ink);
 }
 .fg-mk-sub {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   fill: var(--en-ink2);
 }
 .fg-mk-left {
@@ -5976,7 +5976,7 @@ textarea.en-input {
 
 .fg-esc-label {
   font-family: var(--en-ui);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-ink);
@@ -5986,7 +5986,7 @@ textarea.en-input {
 }
 .fg-esc-label-sm {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   fill: var(--en-ink);
@@ -5996,27 +5996,27 @@ textarea.en-input {
 }
 .fg-esc-sub {
   font-family: var(--en-ui);
-  font-size: 12px;
+  font-size: 13px;
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
 }
 .fg-esc-tiny {
   font-family: var(--en-ui);
-  font-size: 10px;
+  font-size: 11px;
   fill: var(--en-ink2);
   text-anchor: middle;
   pointer-events: none;
 }
 .fg-esc-comms-lbl {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-blue);
   text-anchor: middle;
 }
 .fg-esc-time {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-accent);
   text-anchor: middle;
 }
@@ -6038,7 +6038,7 @@ textarea.en-input {
 }
 .fg-esc-note-sm {
   font-family: var(--en-ui);
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--en-ink2);
   text-anchor: middle;
 }
@@ -6068,7 +6068,7 @@ textarea.en-input {
 
 .fg-tw-sub {
   margin: 4px 16px 14px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--en-ink2);
 }
 
@@ -6085,7 +6085,7 @@ textarea.en-input {
 }
 
 .fg-tw-head {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -6145,17 +6145,17 @@ textarea.en-input {
   color: var(--en-ink);
 }
 .fg-tw-ctx {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--en-ink2);
 }
 .fg-tw-w1,
 .fg-tw-t1 {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--en-ink);
 }
 .fg-tw-w2,
 .fg-tw-t2 {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--en-ink2);
 }
 .fg-tw-statecol {
@@ -6164,7 +6164,7 @@ textarea.en-input {
 
 .fg-tw-chip {
   font-family: var(--en-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   padding: 6px 10px;
@@ -6211,7 +6211,7 @@ textarea.en-input {
 }
 .fg-tw-sources {
   margin: 8px 0 0;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--en-ink2);
 }
 
@@ -6250,7 +6250,7 @@ textarea.en-input {
   }
   .fg-tw-row > .fg-tw-cell:nth-child(3)::before,
   .fg-tw-row > .fg-tw-cell:nth-child(4)::before {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
