@@ -367,10 +367,11 @@
   --en-ink2: #5a5140;
   --en-line: #16130e;
   --en-accent: #c21c00;
+  --en-red: #a31221;
   --en-blue: #1546ff;
   --en-green: #0f8a46;
   --en-amber: #e08e05;
-  --en-halo: rgba(194, 28, 0, 0.22);
+  --en-halo-a: 0.22;
   --en-grid: rgba(22, 19, 14, 0.06);
   --en-sh: #16130e;
   --en-code-sky: #8fd1ff;
@@ -397,10 +398,11 @@
   --en-ink2: #b8ac93;
   --en-line: #f1ead9;
   --en-accent: #ff5a3c;
+  --en-red: #ff453a;
   --en-blue: #6f92ff;
   --en-green: #37c579;
   --en-amber: #f0b429;
-  --en-halo: rgba(255, 90, 60, 0.28);
+  --en-halo-a: 0.28;
   --en-grid: rgba(241, 234, 217, 0.05);
   --en-sh: rgba(0, 0, 0, 0.55);
   --en-code-sky: #006cb8;
@@ -1482,10 +1484,23 @@ textarea.en-input {
   color: var(--en-ink);
 }
 
+/* the value never breaks mid-token ("3 / 3", "A$135.28"): a run with
+   spaces would otherwise wrap between its own spaces and read as two
+   half-numbers. Too wide for the tile = overflow, which dense consumers
+   (the HUD) absorb by shrinking the font via container queries. */
+.en-stat-num {
+  white-space: nowrap;
+}
+
 .en-stat-unit {
-  font-size: 0.42em;
+  /* 0.42 of the value, floored at 9px: when the value shrinks to fit a
+     tight cell, the unit must not shrink into unreadability. */
+  font-size: max(0.42em, 9px);
   letter-spacing: 1px;
   color: var(--en-accent);
+  /* units stay whole ("M words", "tok/d") — a split unit reads as a
+     second value. No room = the whole unit drops under the value. */
+  white-space: nowrap;
 }
 
 .en-stat-l {
@@ -1545,6 +1560,40 @@ textarea.en-input {
   fill: none;
   stroke: var(--en-paper3);
   stroke-width: 14;
+}
+
+/* colored operating-range bands under the value arc */
+.en-gauge-zone {
+  fill: none;
+  stroke-width: 14;
+}
+
+.en-gauge-zone--dim {
+  stroke: var(--en-paper3);
+}
+
+.en-gauge-zone--blue {
+  stroke: var(--en-blue);
+}
+
+.en-gauge-zone--green {
+  stroke: var(--en-green);
+}
+
+.en-gauge-zone--amber {
+  stroke: var(--en-amber);
+}
+
+.en-gauge-zone--accent {
+  stroke: var(--en-accent);
+}
+
+.en-gauge-zone--red {
+  stroke: var(--en-red);
+}
+
+.en-gauge-zone--ink {
+  stroke: var(--en-ink);
 }
 
 .en-gauge-arc {
@@ -1901,6 +1950,10 @@ textarea.en-input {
   min-width: 8px;
   flex: none;
   overflow: hidden;
+  /* cqw reference for the label-visibility rule below: the segment is
+     the container, so a label can be hidden when its own segment is
+     too narrow for it. */
+  container-type: inline-size;
   color: var(--en-paper);
   font-family: var(--en-ui);
   font-size: var(--en-f-mono-12);
@@ -1933,6 +1986,18 @@ textarea.en-input {
 .en-kv-w {
   position: absolute;
   white-space: nowrap;
+}
+
+/* centered nowrap text in a narrow segments clips to a mid-word sliver when
+   the segment is narrower than the label ("paid back" in a 43px
+   payback segment read "aid bac"). 70px ≈ the widest 2-word mono-12 label
+   plus breathing room; the row label + pill above carry the meaning and
+   the aria-label keeps the exact %. The JSX 10% guard still handles the
+   narrow-bar case, this handles the wide-bar narrow-segment case. */
+@container (max-width: 70px) {
+  .en-kv-w {
+    display: none;
+  }
 }
 
 .en-kv-foot {
@@ -2449,6 +2514,20 @@ textarea.en-input {
   font-size: var(--en-f-step-body);
   line-height: var(--en-lh-body);
   color: var(--en-ink2);
+}
+
+/* Screen-reader-only state label. The done/active/todo state is CSS
+   class + node color only, so each item says its state out loud. */
+.en-tl-state {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Code block. The inverted-ink ground of P2 Code, promoted to a figure
@@ -3643,6 +3722,28 @@ textarea.en-input {
   display: block;
 }
 
+/* frameless: embedded in a card that already carries the frame and
+   title — drop the figure's own chrome, keep plot + compact legend. */
+.en-diagram.frameless {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.en-diagram.frameless .en-dg-body {
+  padding: 0;
+}
+
+.en-diagram.frameless .en-dg-legend {
+  padding: 10px 2px 0;
+}
+
+/* the gantt's row hover paints --en-paper2, invisible on a paper2 card:
+   step up one tone inside frameless. */
+.en-diagram.frameless .fg-g-row:hover {
+  fill: var(--en-paper3);
+}
+
 .en-dg-bar {
   display: flex;
   align-items: center;
@@ -3839,7 +3940,8 @@ textarea.en-input {
 }
 
 .en-node .dg-halo {
-  fill: var(--en-halo);
+  fill: var(--dg-c, var(--en-ink2));
+  fill-opacity: var(--en-halo-a, 0.24);
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
@@ -3877,6 +3979,20 @@ textarea.en-input {
 }
 .en-node .dg-strip[data-role="state"] {
   fill: var(--en-ink2);
+}
+
+/* halo colour follows the node role strip */
+.en-node[data-role="accent"] {
+  --dg-c: var(--en-accent);
+}
+.en-node[data-role="blue"] {
+  --dg-c: var(--en-blue);
+}
+.en-node[data-role="green"] {
+  --dg-c: var(--en-green);
+}
+.en-node[data-role="state"] {
+  --dg-c: var(--en-ink2);
 }
 
 .en-node .dg-cluster-dot {
@@ -4202,6 +4318,27 @@ textarea.en-input {
   stroke: var(--en-paper);
 }
 
+/* role context: sets the glow colour var without painting. Put on the
+   group that owns a .fg-halo / .fg-q-halo so the glow follows the mark. */
+.fg-ctx-accent {
+  --fg-c: var(--en-accent);
+}
+.fg-ctx-blue {
+  --fg-c: var(--en-blue);
+}
+.fg-ctx-green {
+  --fg-c: var(--en-green);
+}
+.fg-ctx-amber {
+  --fg-c: var(--en-amber);
+}
+.fg-ctx-ink {
+  --fg-c: var(--en-ink);
+}
+.fg-ctx-ink2 {
+  --fg-c: var(--en-ink2);
+}
+
 /* ---- labels ------------------------------------------------------------- */
 
 /* direct value on a mark, paper halo keeps it readable over flow */
@@ -4268,7 +4405,8 @@ textarea.en-input {
 /* ---- halo (one per figure, behind the hero mark) ------------------------ */
 
 .fg-halo {
-  fill: var(--en-halo);
+  fill: var(--fg-c, var(--en-ink2));
+  fill-opacity: var(--en-halo-a, 0.24);
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
@@ -4585,6 +4723,17 @@ textarea.en-input {
   pointer-events: none;
 }
 
+/* empty plan placeholder */
+.fg-g-empty {
+  font-family: var(--en-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-ink2);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
 .fg-g-bar {
   stroke-width: 2;
   transform-box: fill-box;
@@ -4741,7 +4890,8 @@ textarea.en-input {
 /* ---- quadrant ------------------------------------------------------------------ */
 
 .fg-q-halo {
-  fill: var(--en-halo);
+  fill: var(--fg-c, var(--en-ink2));
+  fill-opacity: var(--en-halo-a, 0.24);
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
@@ -4786,6 +4936,15 @@ textarea.en-input {
 }
 
 /* ---- sankey ---------------------------------------------------------------------- */
+
+/* layout failure (cyclic graph, missing node): shown in place of the flow */
+.fg-serr {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--en-ink2);
+}
 
 /* stroke comes from the hatch pattern attribute */
 .fg-ribbon {
@@ -4940,6 +5099,1174 @@ textarea.en-input {
   pointer-events: none;
 }
 
+/* ---- race (IPO track) ---------------------------------------------------------- */
+
+.fg-race-lane {
+  outline: none;
+  transition: opacity 0.25s ease;
+}
+.fg-race-lane.dim {
+  opacity: 0.35;
+}
+
+.fg-race-track {
+  stroke-width: 4;
+  opacity: 0.5;
+}
+.fg-race-lane:hover .fg-race-track,
+.fg-race-lane:focus .fg-race-track {
+  opacity: 0.95;
+}
+
+.fg-race-finish {
+  stroke-width: 2;
+  stroke-dasharray: 8 6;
+  opacity: 0;
+  transition: opacity 0.6s ease var(--d, 0s);
+  pointer-events: none;
+}
+.en-diagram.in .fg-race-finish {
+  opacity: 1;
+}
+
+.fg-race-flag {
+  fill: var(--en-accent);
+}
+
+.fg-race-bell {
+  font-family: var(--en-disp);
+  font-size: 22px;
+  letter-spacing: 2px;
+  fill: var(--en-ink);
+  text-anchor: middle;
+}
+.fg-race-bell-sub {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  letter-spacing: 1px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+
+/* generic fade-in for race annotations (fired by the canvas .in) */
+.fg-race-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-race-fade {
+  opacity: 1;
+}
+
+.fg-race-name {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-12);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.fg-race-ms-tick {
+  stroke-width: 2;
+  opacity: 0.7;
+  transition:
+    opacity 0.15s ease,
+    stroke-width 0.15s ease;
+}
+.fg-race-ms:hover .fg-race-ms-tick {
+  opacity: 1;
+  stroke-width: 3;
+}
+.fg-race-ms-l1 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink);
+  text-anchor: middle;
+}
+.fg-race-ms-l2 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-8);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+
+.fg-race-tgt-line {
+  stroke-width: 3;
+  stroke-dasharray: 2 8;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.fg-race-tgt-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* the runner sits at its final position in the DOM; before reveal a CSS
+   shift parks it on the start line, then it sprints the track */
+.fg-race-runner {
+  transform: translateX(calc(-1 * var(--shift, 0px)));
+  transition: transform 1.4s var(--en-ease-out) var(--d, 0s);
+}
+.en-diagram.in .fg-race-runner {
+  transform: translateX(0);
+}
+
+.fg-race-ball {
+  fill: var(--en-paper);
+  stroke-width: 3;
+}
+
+.fg-race-badge {
+  font-family: var(--en-ui);
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.fg-race-note {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* ---- blind spot (tested vs served) ------------------------------------------------- */
+
+.fg-bl-area {
+  opacity: 0;
+  transition: opacity 0.7s ease var(--d, 0s);
+  pointer-events: none;
+}
+.en-diagram.in .fg-bl-area {
+  opacity: 0.3;
+}
+
+.fg-bl-line {
+  fill: none;
+  stroke-width: 2.5;
+  pointer-events: none;
+}
+
+.fg-bl-axis {
+  stroke: var(--en-line);
+  stroke-width: 1.5;
+}
+.fg-bl-axis-title {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.fg-bl-mu {
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+  pointer-events: none;
+}
+.en-diagram.in .fg-bl-mu {
+  opacity: 1;
+}
+.fg-bl-mu-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+  pointer-events: none;
+}
+.en-diagram.in .fg-bl-mu-lbl {
+  opacity: 1;
+}
+
+.fg-bl-delta {
+  stroke: var(--en-ink);
+  stroke-width: 1.5;
+}
+.fg-bl-delta-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink);
+  pointer-events: none;
+}
+
+.fg-bl-curve-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  text-anchor: middle;
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+  pointer-events: none;
+}
+.en-diagram.in .fg-bl-curve-lbl {
+  opacity: 1;
+}
+
+.fg-bl-inset {
+  fill: var(--en-paper2);
+  stroke: var(--en-line);
+}
+.fg-bl-inset-title {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-8);
+  fill: var(--en-ink2);
+}
+.fg-bl-chance {
+  stroke: var(--en-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  pointer-events: none;
+}
+.fg-bl-chance-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-8);
+  fill: var(--en-accent);
+  text-anchor: end;
+  pointer-events: none;
+}
+.fg-bl-inset-dot {
+  fill: var(--en-ink2);
+  transition: fill 0.15s ease;
+}
+.fg-bl-inset-dot:hover {
+  fill: var(--en-ink);
+}
+.fg-bl-inset-lbl {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-8);
+  fill: var(--en-ink2);
+  pointer-events: none;
+}
+
+/* enlarged invisible hit target over the inset dots */
+.fg-bl-inset-hit {
+  fill: transparent;
+  outline: none;
+}
+
+.fg-bl-cap {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  fill: var(--en-ink);
+  pointer-events: none;
+}
+.fg-bl-punch {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-13);
+  font-weight: 700;
+  fill: var(--en-accent);
+  pointer-events: none;
+}
+.fg-bl-footer {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.fg-bl-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-bl-fade {
+  opacity: 1;
+}
+
+/* hover scrub: crosshair + density readout */
+.fg-bl-scrub {
+  opacity: 0;
+  pointer-events: none;
+}
+.fg-bl-scrub.on {
+  opacity: 1;
+}
+.fg-bl-scrub-line {
+  stroke: var(--en-ink);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+/* ---- loop (circular commitments) ------------------------------------------------ */
+
+/* dashed flow ring: fades in, then the dash marches clockwise while .in */
+@keyframes fg-loop-march {
+  to {
+    stroke-dashoffset: -42; /* two 12+9 dash cycles */
+  }
+}
+
+.fg-loop-flow {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.fg-loop-flow.dim {
+  opacity: 0.15;
+}
+.fg-loop-flow-line {
+  fill: none;
+  stroke: var(--en-accent);
+  stroke-width: 3;
+  stroke-dasharray: 12 9;
+}
+.en-diagram.in .fg-loop-flow-line {
+  animation: fg-loop-march 1.1s linear infinite;
+}
+.fg-loop-flow.lit .fg-loop-flow-line {
+  stroke-width: 4;
+}
+.fg-loop-flow-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 18;
+}
+.fg-loop-arr {
+  fill: var(--en-accent);
+}
+
+/* generic fade-in for loop annotations (fired by the canvas .in) */
+.fg-loop-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-loop-fade {
+  opacity: 1;
+}
+
+.fg-loop-flow-l1 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-12);
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-accent);
+  text-anchor: middle;
+}
+.fg-loop-flow-l2 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-9);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+
+.fg-loop-node {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.fg-loop-node.dim {
+  opacity: 0.18;
+}
+.fg-loop-node-circ {
+  fill: var(--en-paper2);
+  stroke-width: 2;
+}
+.fg-loop-node-name {
+  font-family: var(--en-ui);
+  font-weight: 700;
+  fill: var(--en-ink);
+  text-anchor: middle;
+}
+.fg-loop-node-sub {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-10);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+.fg-loop-node-note {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-10);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+
+.fg-loop-center-t {
+  font-family: var(--en-ui);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-loop-center-l1 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-13);
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-loop-center-l2,
+.fg-loop-center-l3 {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* ---- gravity well (stake + supply map) -------------------------------------- */
+
+.fg-grav-node,
+.fg-grav-well {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+.fg-grav-node.dim {
+  opacity: 0.35;
+}
+
+/* quadrant dividers: quieter than spokes' ink, still present */
+.fg-grav-div {
+  stroke: var(--en-ink2);
+  stroke-width: 1;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.fg-grav-spoke {
+  stroke: var(--en-ink);
+  stroke-width: 1;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* generic fade-in for gravity annotations (fired by the canvas .in) */
+.fg-grav-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-grav-fade {
+  opacity: 1;
+}
+
+/* hollow bubble: paper fill, role stroke; pops in via .fg-pt.
+   declares its own transition so the pop and the hover weight
+   share one rule (wins over .fg-pt by file order) */
+.fg-grav-bub {
+  fill: var(--en-paper);
+  stroke-width: 2.5;
+  transition:
+    transform 0.35s var(--en-ease-pop) var(--d, 0s),
+    stroke-width 0.15s ease;
+}
+.fg-grav-node:hover .fg-grav-bub,
+.fg-grav-node:focus .fg-grav-bub {
+  stroke-width: 4;
+}
+
+.fg-grav-name {
+  font-family: var(--en-ui);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-grav-note {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-grav-note-side {
+  text-anchor: start;
+}
+
+.fg-grav-layer {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-12);
+  font-weight: 700;
+  letter-spacing: 2px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.fg-grav-core {
+  fill: var(--en-paper2);
+  stroke-width: 3;
+}
+
+.fg-grav-center-t {
+  font-family: var(--en-ui);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-grav-center-v {
+  font-family: var(--en-ui);
+  font-size: 18px;
+  font-weight: 700;
+  fill: var(--en-accent);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-grav-center-s {
+  font-family: var(--en-ui);
+  font-size: var(--en-f-mono-11);
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* ---- circuits (circular cash flows) ----------------------------------------- */
+
+/* outer flow ring: static dash pattern; while .in the dash marches clockwise */
+@keyframes fg-circ-march {
+  to {
+    stroke-dashoffset: -24; /* two 4+8 dash cycles */
+  }
+}
+
+.fg-circ-ring {
+  fill: none;
+  stroke: var(--en-ink2);
+  stroke-width: 2;
+  stroke-dasharray: 4 8;
+  opacity: 0.5;
+}
+.en-diagram.in .fg-circ-ring {
+  animation: fg-circ-march 1.2s linear infinite;
+}
+
+.fg-circ-arr {
+  fill: none;
+  stroke: var(--en-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.fg-circ-node {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+.fg-circ-node.dim {
+  opacity: 0.3;
+}
+
+.fg-circ-spoke {
+  stroke: var(--en-ink);
+  stroke-width: 1;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* generic fade-in for circuits annotations (fired by the canvas .in) */
+.fg-circ-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-circ-fade {
+  opacity: 1;
+}
+
+/* filled bubble: paper2 fill, accent stroke; pops in via .fg-pt.
+   declares its own transition so the pop and the hover weight
+   share one rule (wins over .fg-pt by file order) */
+.fg-circ-bub {
+  fill: var(--en-paper2);
+  stroke-width: 2.5;
+  transition:
+    transform 0.35s var(--en-ease-pop) var(--d, 0s),
+    stroke-width 0.15s ease;
+}
+.fg-circ-node:hover .fg-circ-bub,
+.fg-circ-node:focus .fg-circ-bub {
+  stroke-width: 4;
+}
+
+.fg-circ-name-in {
+  font-family: var(--en-ui);
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-val-in {
+  font-family: var(--en-ui);
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--en-accent);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-name-out {
+  font-family: var(--en-ui);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-val-out {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--en-accent);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-sub {
+  font-family: var(--en-ui);
+  font-size: 11px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-flab {
+  font-family: var(--en-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-accent);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.fg-circ-title {
+  font-family: var(--en-ui);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-quote {
+  font-family: var(--en-ui);
+  font-size: 13px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-circ-subc {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  fill: var(--en-ink2);
+  opacity: 0.8;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* ---- mask (one company, two vocabularies) ----------------------------------- */
+
+/* the two halves scale in around the circle center (fixed viewBox origin) */
+.fg-mk-reveal {
+  transform-box: view-box;
+  transform-origin: 600px 400px;
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    transform 0.55s var(--en-ease-pop) var(--d, 0s),
+    opacity 0.4s ease var(--d, 0s);
+}
+.en-diagram.in .fg-mk-reveal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* half discs: role fills slightly see-through; light up + glow on focus,
+   dim while the other half is lit */
+.fg-mk-half {
+  transition:
+    fill-opacity 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+.fg-mk-half.fg-mk-says {
+  fill: var(--en-amber);
+  fill-opacity: 0.85;
+}
+.fg-mk-half.fg-mk-does {
+  fill: var(--en-accent);
+  fill-opacity: 0.9;
+}
+.fg-mk-half.fg-mk-says.lit {
+  fill-opacity: 1;
+  filter: drop-shadow(0 0 10px var(--en-amber));
+}
+.fg-mk-half.fg-mk-does.lit {
+  fill-opacity: 1;
+  filter: drop-shadow(0 0 10px var(--en-accent));
+}
+.fg-mk-half.dim {
+  opacity: 0.45;
+}
+
+.fg-mk-callout {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+.fg-mk-callout.dim {
+  opacity: 0.35;
+}
+
+.fg-mk-leader {
+  stroke-width: 1;
+  opacity: 0.7;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    stroke-width 0.15s ease;
+}
+.fg-mk-leader.lit {
+  opacity: 1;
+  stroke-width: 2;
+}
+
+/* generic fade-in for mask annotations (fired by the canvas .in) */
+.fg-mk-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-mk-fade {
+  opacity: 1;
+}
+
+/* ink plates over the role fills (house plate grammar) */
+.fg-mk-hlbl rect,
+.fg-mk-idplate rect {
+  fill: var(--en-ink);
+  stroke: var(--en-line);
+  stroke-width: 2;
+}
+.fg-mk-hlbl text,
+.fg-mk-idplate text {
+  font-family: var(--en-ui);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-paper);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-mk-idplate text:last-child {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  opacity: 0.7;
+}
+
+.fg-mk-title {
+  font-family: var(--en-ui);
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--en-ink);
+}
+.fg-mk-sub {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  fill: var(--en-ink2);
+}
+.fg-mk-left {
+  text-anchor: end;
+}
+.fg-mk-right {
+  text-anchor: start;
+}
+
+/* escape (nobody directed the attack) ----------------------------------- */
+
+.fg-esc-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-esc-fade {
+  opacity: 1;
+}
+
+.fg-esc-panel {
+  fill: var(--en-paper2);
+}
+
+.fg-esc-sandbox {
+  stroke: var(--en-ink2);
+  stroke-width: 2;
+  stroke-dasharray: 8 6;
+}
+
+.fg-esc-dot {
+  fill: var(--en-blue);
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.3s var(--en-ease-pop) var(--d, 0s);
+}
+.en-diagram.in .fg-esc-dot {
+  transform: scale(1);
+}
+
+.fg-esc-node-dot {
+  fill: var(--en-accent);
+  opacity: 0.85;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.3s var(--en-ease-pop) var(--d, 0s);
+}
+.en-diagram.in .fg-esc-node-dot {
+  transform: scale(1);
+}
+
+.fg-esc-swarm {
+  transition: filter 0.15s ease;
+}
+.fg-esc-swarm.hot {
+  filter: brightness(1.45);
+}
+
+.fg-esc-comms {
+  stroke: var(--en-blue);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.fg-esc-break,
+.fg-esc-hop {
+  stroke: var(--en-accent);
+  fill: none;
+}
+.fg-esc-break {
+  stroke-width: 3;
+}
+.fg-esc-hop {
+  stroke-width: 4;
+}
+
+.fg-esc-ring {
+  stroke-width: 2.5;
+  transition: stroke-width 0.15s ease;
+}
+.fg-esc-node.hot .fg-esc-ring,
+.fg-esc-node.lit .fg-esc-ring {
+  stroke-width: 4;
+}
+.fg-esc-node {
+  transition: filter 0.15s ease;
+}
+.fg-esc-node--blue.hot,
+.fg-esc-node--blue.lit {
+  filter: drop-shadow(0 0 8px var(--en-blue));
+}
+.fg-esc-node--accent.hot,
+.fg-esc-node--accent.lit {
+  filter: drop-shadow(0 0 8px var(--en-accent));
+}
+
+.fg-esc-run {
+  fill: var(--en-accent);
+  stroke: var(--en-paper);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px var(--en-accent));
+  pointer-events: none;
+}
+
+.fg-esc-label {
+  font-family: var(--en-ui);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-ink);
+  text-transform: uppercase;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-esc-label-sm {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-ink);
+  text-transform: uppercase;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-esc-sub {
+  font-family: var(--en-ui);
+  font-size: 12px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-esc-tiny {
+  font-family: var(--en-ui);
+  font-size: 10px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-esc-comms-lbl {
+  font-family: var(--en-ui);
+  font-size: 11px;
+  fill: var(--en-blue);
+  text-anchor: middle;
+}
+.fg-esc-time {
+  font-family: var(--en-ui);
+  font-size: 11px;
+  fill: var(--en-accent);
+  text-anchor: middle;
+}
+.fg-esc-foot {
+  font-family: var(--en-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--en-accent);
+  text-transform: uppercase;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.fg-esc-note {
+  font-family: var(--en-ui);
+  font-size: 14px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+.fg-esc-note-sm {
+  font-family: var(--en-ui);
+  font-size: 11px;
+  fill: var(--en-ink2);
+  text-anchor: middle;
+}
+
+/* tripwires (five things to watch) ------------------------------------- */
+/* HTML docket, not SVG: table text wraps, chips need button semantics. */
+
+.fg-tw-docket {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 480px;
+  font-family: var(--en-mono);
+}
+
+.fg-tw-fade {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s ease var(--d, 0s),
+    transform 0.5s ease var(--d, 0s);
+}
+.en-diagram.in .fg-tw-fade {
+  opacity: 1;
+  transform: none;
+}
+
+.fg-tw-sub {
+  margin: 4px 16px 14px;
+  font-size: 12px;
+  color: var(--en-ink2);
+}
+
+.fg-tw-head,
+.fg-tw-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.25fr) minmax(200px, 1fr) minmax(
+      200px,
+      1fr
+    ) 132px;
+  gap: 16px;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.fg-tw-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--en-ink2);
+  padding-bottom: 10px;
+}
+
+.fg-tw-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--en-line);
+}
+
+.fg-tw-row {
+  position: relative;
+  min-height: 92px;
+  border-top: 1px solid var(--en-line);
+  transition: background 0.15s ease;
+}
+.fg-tw-row.hot {
+  background: var(--en-paper2);
+}
+
+.fg-tw-bar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 48px;
+  transform: translateY(-50%);
+  background: var(--en-accent);
+  opacity: 0.7;
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease;
+}
+.fg-tw-row.is-tripped .fg-tw-bar {
+  background: var(--en-amber);
+}
+.fg-tw-row.is-clear .fg-tw-bar {
+  background: var(--en-green);
+}
+.fg-tw-row.hot .fg-tw-bar {
+  opacity: 1;
+}
+
+.fg-tw-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fg-tw-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--en-ink);
+}
+.fg-tw-ctx {
+  font-size: 11px;
+  color: var(--en-ink2);
+}
+.fg-tw-w1,
+.fg-tw-t1 {
+  font-size: 12px;
+  color: var(--en-ink);
+}
+.fg-tw-w2,
+.fg-tw-t2 {
+  font-size: 11px;
+  color: var(--en-ink2);
+}
+.fg-tw-statecol {
+  text-align: center;
+}
+
+.fg-tw-chip {
+  font-family: var(--en-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border: 1.5px solid;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.fg-tw-chip.is-armed {
+  color: var(--en-accent);
+  border-color: var(--en-accent);
+  background: color-mix(in srgb, var(--en-accent) 10%, transparent);
+}
+.fg-tw-chip.is-tripped {
+  color: var(--en-amber);
+  border-color: var(--en-amber);
+  background: color-mix(in srgb, var(--en-amber) 12%, transparent);
+}
+.fg-tw-chip.is-clear {
+  color: var(--en-green);
+  border-color: var(--en-green);
+  background: color-mix(in srgb, var(--en-green) 10%, transparent);
+}
+.fg-tw-chip:focus-visible {
+  outline: var(--en-bw) solid var(--en-accent);
+  outline-offset: 2px;
+}
+
+.fg-tw-foot {
+  margin-top: auto;
+  padding: 24px 16px 6px;
+  text-align: center;
+}
+.fg-tw-footline {
+  margin: 0;
+  font-family: var(--en-ui);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--en-ink);
+}
+.fg-tw-sources {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--en-ink2);
+}
+
+/* narrow screens: the 4-column grid needs ~832px, so below 880px the
+   docket reflows into per-row cards (2x2 areas, no horizontal pan). The
+   hidden column head is replaced by a label on the watch and trip cells. */
+@media (max-width: 880px) {
+  .fg-tw-docket {
+    min-height: 0;
+  }
+  .fg-tw-head {
+    display: none;
+  }
+  .fg-tw-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name chip"
+      "watch trip";
+    row-gap: 12px;
+    column-gap: 16px;
+    align-items: start;
+    min-height: 0;
+    padding: 14px 16px;
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(2) {
+    grid-area: name;
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(3) {
+    grid-area: watch;
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(4) {
+    grid-area: trip;
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(5) {
+    grid-area: chip;
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(3)::before,
+  .fg-tw-row > .fg-tw-cell:nth-child(4)::before {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--en-ink2);
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(3)::before {
+    content: "watch";
+  }
+  .fg-tw-row > .fg-tw-cell:nth-child(4)::before {
+    content: "trip";
+  }
+  .fg-tw-bar {
+    height: 40px;
+  }
+}
+
 /* ---- reduced motion: everything rests in its drawn state ---------------------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -4983,7 +6310,9 @@ textarea.en-input {
     animation: none;
     opacity: 0;
   }
-  .fg-g-ring {
+  .fg-g-ring,
+  .fg-loop-flow-line,
+  .fg-circ-ring {
     animation: none;
   }
   .fg-dot-walk,
@@ -4997,6 +6326,51 @@ textarea.en-input {
   }
   .fg-slice {
     animation: none;
+    transition: none;
+  }
+  .fg-race-runner {
+    transform: none;
+    transition: none;
+  }
+  .fg-race-fade,
+  .fg-race-finish,
+  .fg-loop-fade,
+  .fg-grav-fade,
+  .fg-circ-fade,
+  .fg-mk-fade,
+  .fg-bl-fade,
+  .fg-bl-mu,
+  .fg-bl-mu-lbl,
+  .fg-bl-curve-lbl {
+    opacity: 1;
+    transition: none;
+  }
+  .fg-grav-bub,
+  .fg-circ-bub {
+    transform: scale(1);
+    transition: none;
+  }
+  .fg-mk-reveal {
+    transform: scale(1);
+    opacity: 1;
+    transition: none;
+  }
+  .fg-esc-fade {
+    opacity: 1;
+    transition: none;
+  }
+  .fg-esc-dot,
+  .fg-esc-node-dot {
+    transform: scale(1);
+    transition: none;
+  }
+  .fg-tw-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .fg-bl-area {
+    opacity: 0.3;
     transition: none;
   }
 }

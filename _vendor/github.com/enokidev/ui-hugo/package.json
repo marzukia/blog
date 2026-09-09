@@ -8,10 +8,10 @@
   "scripts": {
     "build": "bun scripts/build.mjs",
     "dev": "bun scripts/build.mjs && hugo --source exampleSite --navigateToChanged --disableFastRender",
-    "serve": "bun scripts/build.mjs && hugo --source exampleSite server -D --port 1313"
+    "serve": "bun scripts/build.mjs && hugo --source exampleSite server -D --port 1313",
+    "smoke:blog": "bun tools/blog-smoke.mjs"
   },
-  "dependencies": {
-    "@enokidev/ui": "file:../franky-ui",
-    "@enokidev/ui-wc": "file:../ui-wc"
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
   }
 }
