@@ -92,18 +92,12 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   display: block;
   margin: 30px 0 36px;
 }
-/* Full-bleed figures on wide desktops: inside the 780px column the
-   viewBoxes scale to 0.65-0.91x, shrinking in-plot text to 6-9px
-   (unreadable). On >=1280px viewports the figure breaks out to 1200px,
-   centred, keeping symmetric page gutters. 1:1 for the 1200-viewBox
-   narrative figures, ~1.2-1.4x for the data charts. Below 1280px the
-   column width rules (no negative-margin breakout on smaller screens). */
-@media (min-width: 1280px) {
-  .en-content .en-diagram:not(.frameless) {
-    width: min(1200px, calc(100vw - 96px));
-     margin-inline: calc((100% - min(1200px, calc(100vw - 96px))) / 2);
-  }
-}
+/* Figures stay inside the article text column at every viewport
+   (andryo, 2026-09-10: no full-bleed breakout — figures wider than
+   the 780px column read as off-grid). Consequence: in-figure text
+   scales with the column (~0.65x at 780px); the 12px SVG-unit font
+   floor still applies, and authored fonts can be boosted if a
+   figure looks dense at column width. */
 .en-article-head { margin: 26px 0 40px; }
 .en-article-meta {
   display: flex;
