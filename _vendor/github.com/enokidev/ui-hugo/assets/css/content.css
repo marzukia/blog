@@ -78,7 +78,7 @@
 /* the en-breadcrumbs host is display:contents, so a margin on it is
    ignored by layout — the top clearance must be padding on the article
    box (margins would also collapse through it to <main>'s padding). */
-.en-article { max-width: 780px; margin: 0 auto; padding-top: 56px; }
+.en-article { max-width: 780px; margin: 0 auto; padding-top: 84px; }
 /* The article page stacks many composited layers (fixed topbar/grid/rail,
    7 WebGL map canvases, the giscus iframe). On some GPUs Chrome loses the
    paint of static content near the top when scrolling back up after a
@@ -90,7 +90,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-content en-bar,
 .en-content en-line {
   display: block;
-  margin: 30px 0 36px;
+  margin: 52px 0 60px;
 }
 /* Figures stay inside the article text column at every viewport
    (andryo, 2026-09-10: no full-bleed breakout — figures wider than
@@ -98,7 +98,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
    scales with the column (~0.65x at 780px); the 12px SVG-unit font
    floor still applies, and authored fonts can be boosted if a
    figure looks dense at column width. */
-.en-article-head { margin: 26px 0 40px; }
+.en-article-head { margin: 44px 0 60px; }
 .en-article-meta {
   display: flex;
   flex-wrap: wrap;
@@ -111,7 +111,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 }
 .en-article-date { color: var(--en-accent); }
 .en-article-title {
-  margin: 16px 0 12px;
+  margin: 30px 0 18px;
   font-family: var(--en-disp);
   font-size: clamp(28px, 4.2vw, 44px);
   line-height: 0.98;
@@ -125,15 +125,15 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   line-height: 1.5;
   color: var(--en-ink2);
 }
-.en-article-tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+.en-article-tags { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
 .en-article-cover {
   display: block;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 44px;
   border: 1px solid var(--en-line);
   box-shadow: var(--en-sh-4);
 }
-.en-rule { border: none; border-top: 1px solid var(--en-line); margin: 56px 0 24px; }
+.en-rule { border: none; border-top: 1px solid var(--en-line); margin: 88px 0 40px; }
 
 /* ---------- article body typography ---------- */
 
@@ -144,21 +144,21 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   color: var(--en-ink);
 }
 .en-content h2 {
-  margin: 54px 0 14px;
+  margin: 80px 0 20px;
   font-family: var(--en-disp);
   font-size: 26px;
   line-height: 1.05;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
-.en-content h3 { margin: 38px 0 10px; font-family: var(--en-ui); font-weight: 700; font-size: 20px; }
-.en-content p { margin: 0 0 20px; }
+.en-content h3 { margin: 56px 0 14px; font-family: var(--en-ui); font-weight: 700; font-size: 20px; }
+.en-content p { margin: 0 0 28px; }
 .en-content a { color: var(--en-accent); text-underline-offset: 3px; }
-.en-content ul, .en-content ol { margin: 0 0 20px; padding-left: 26px; }
-.en-content li { margin: 6px 0; }
+.en-content ul, .en-content ol { margin: 0 0 28px; padding-left: 26px; }
+.en-content li { margin: 10px 0; }
 .en-content li::marker { color: var(--en-accent); }
 .en-content blockquote {
-  margin: 28px 0;
+  margin: 44px 0;
   padding: 14px 22px;
   border-left: 3px solid var(--en-accent);
   background: var(--en-paper2);
@@ -172,7 +172,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
   background: var(--en-paper2);
 }
 .en-content pre {
-  margin: 0 0 24px;
+  margin: 0 0 36px;
   padding: 18px 20px;
   border: 1px solid var(--en-line);
   box-shadow: var(--en-sh-3);

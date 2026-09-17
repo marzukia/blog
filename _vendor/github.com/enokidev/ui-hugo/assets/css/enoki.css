@@ -6350,6 +6350,41 @@ figure.en-diagram {
   }
 }
 
+/* ---- 2026-09-17 pass 3: calm mode -----------------------------------------
+   Figures render static: no draw-in, no pop, no fade, no glow.
+   (andryo: motion + glow read tacky on the blog.) Scoped at the same
+   specificity as the .in rules so this block wins on position. */
+figure.en-diagram .fg-draw,
+figure.en-diagram .fg-series.draw {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  transition: none;
+}
+figure.en-diagram .fg-bar,
+figure.en-diagram .fg-pt,
+figure.en-diagram .fg-slice {
+  transform: none;
+  transition: none;
+  animation: none;
+}
+figure.en-diagram .fg-area {
+  opacity: 0.45;
+  transition: none;
+}
+figure.en-diagram .fg-ptdense,
+figure.en-diagram .fg-trend-band {
+  opacity: 1;
+  transition: none;
+}
+figure.en-diagram .fg-mk-half.lit,
+figure.en-diagram .fg-esc-run,
+figure.en-diagram .fg-esc-node--blue.hot,
+figure.en-diagram .fg-esc-node--blue.lit,
+figure.en-diagram .fg-esc-node--accent.hot,
+figure.en-diagram .fg-esc-node--accent.lit {
+  filter: none;
+}
+
 /* enoki lede (spec 4.2 lede 16 / 400 / 1.55, 4.3 marks). */
 
 .en-lede {
