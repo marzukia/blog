@@ -22,6 +22,9 @@
   1.17M), or 'usd' ($0.82, $56.11K, $1.96M). Use 'usd' for per-unit costs so
   sub-dollar values do not round away.
 
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
+
   data must be compact JSON (no line breaks). Single quotes inside JSON are
   fine: Go html/template escapes them to &#39; in the attribute value. Do NOT
   pre-escape them with replaceRE — the template escapes once more and the
@@ -39,4 +42,6 @@
   fmt="{{ .Get "fmt" | default "compact" | safeHTMLAttr }}"
   values='{{ $data | safeHTMLAttr }}'
   ticks='{{ $ticks | safeHTMLAttr }}'
-  series='{{ $series | safeHTMLAttr }}'></en-bar>
+  series='{{ $series | safeHTMLAttr }}'>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "cap") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-bar>

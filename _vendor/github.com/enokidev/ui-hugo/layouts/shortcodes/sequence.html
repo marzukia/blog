@@ -17,6 +17,9 @@
             ret = dimmed reply/status line. self = loop on one lane.
             max ~9 messages fit the canvas (STEP 52, floor 540).
   auto-play: "false" disables the one-shot playback on first view.
+
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
 */}}
 {{- $lanes := .Get "lanes" -}}
 {{- $messages := .Get "messages" -}}
@@ -42,4 +45,6 @@
   aria-label="{{ .Get "aria-label" | default "" | safeHTMLAttr }}"
   {{- if eq $autopl "false" }} auto-play="false"{{ end }}
   {{- with $messages }} messages='{{ . | safeHTMLAttr }}'{{ end }}
-  lanes='{{ $lanes | safeHTMLAttr }}'></en-sequence>
+  lanes='{{ $lanes | safeHTMLAttr }}'>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "title") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-sequence>

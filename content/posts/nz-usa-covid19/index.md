@@ -30,7 +30,7 @@ Given that I had equally split my investment in two different funds representing
 
 I acknowledge that this proxy has a very glaring and obvious bias which will skew the results. The bias being that COVID-19 is more likely to significantly impact smaller businesses and businesses that do not have the scale or means to absorb the financial burdens of this pandemic. Additionally, I'm cognizant some industries will be significantly more impacted than others, i.e. tourism versus agriculture.
 
-<img src="fnz_vs_usf.png" width="100%" alt="fnz_vs_usf" />
+<img src="fnz_vs_usf.png" width="100%" alt="Line chart of SmartShares FNZ (New Zealand) and USF (USA) fund values indexed to 1.0 dollar on 4 March 2020: FNZ drops 31% to 0.69 dollars around the 23 March lockdown, then recovers to 0.95 dollars by September 2020, while USF dips to about 0.83 dollars and recovers above 1.0 to about 1.11 dollars." />
 
 The above diagram is the performance of both my FNZ and USF funds, indexed to a dollar-based on the first day of my investment (4 March 2020).
 
@@ -48,7 +48,7 @@ It would be foolish to look solely at economic impact alone when considering how
 
 The results of these actions are evident in the graph below.
 
-<img src="cases_per_million.png" width="100%" alt="cases_per_million" />
+<img src="cases_per_million.png" width="100%" alt="Line chart of cumulative COVID-19 cases per million people from March to September 2020: the USA series rises to 18,870 cases per million while New Zealand stays near flat and ends at 295, with dashed markers for NZ lockdown (23 Mar 2020), lockdown end (27 Apr 2020) and the Auckland lockdown (11 Aug 2020)." />
 
 There is a stark difference in the two countries which had seemingly very similar economic impacts. The difference is that at the time of writing New Zealand has a total of 1,772 cases and 24 deaths, while the USA 6.26 million cases and 188 thousand deaths.
 

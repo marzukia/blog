@@ -39,6 +39,9 @@
           unset) for a plain paper background.
   style:   base map. Bare Mapbox style name (default 'light-v11') or a full
           style URL. Only applies with a token.
+
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
 */}}
 {{- $token := .Get "token" | default (.Site.Params.mapboxToken) -}}
 {{- $style := .Get "style" | default (.Site.Params.mapboxStyle | default "light-v11") -}}
@@ -67,4 +70,6 @@
   {{- with $token }} token="{{ . | safeHTMLAttr }}"{{ end }}
   {{- if $style }} style="{{ $style | safeHTMLAttr }}"{{ end }}
   {{- with $geoUrl }} geo-url="{{ . | safeHTMLAttr }}"{{ end }}
-  {{- with $geo }} geo='{{ . | safeHTMLAttr }}'{{ end }}></en-map>
+  {{- with $geo }} geo='{{ . | safeHTMLAttr }}'{{ end }}>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "cap") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-map>

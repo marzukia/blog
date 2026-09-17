@@ -128,7 +128,7 @@ All sources are openly available from Stats New Zealand. If you want to do somet
 - Total votes were summed using party name, and SA2 area name.
 - The top ten SA2 areas for each major party was chosen as a representative sample for its voter base. The metric chosen was the total amount of party votes as a percentage of total SA2 votes.
 
-<img src="elections-map-gis.png" width="100%" alt="elections-map-gis" />
+<img src="elections-map-gis.png" width="100%" alt="GIS map of the 2020 New Zealand election analysis: red outlines are the unioned meshblocks grouped by Statistical Area 2, thin blue lines are the underlying meshblocks, and yellow dots are the geolocated voting stations used to assign votes to areas." />
 
 The above excerpt shows this visually:
 

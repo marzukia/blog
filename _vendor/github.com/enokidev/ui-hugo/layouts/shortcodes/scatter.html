@@ -32,6 +32,9 @@
         axis-x="UNVACCINATED RATE" axis-y="GOP VOTE SHARE" >}}
   JSON args must be compact (no line breaks). Do NOT pre-escape with
   replaceRE (it double-escapes to a literal &amp;#39; in the output).
+
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
 */}}
 {{- $points := .Get "points" -}}
 {{- if and $points (not (or (strings.Contains $points "{") (strings.Contains $points "["))) -}}
@@ -66,4 +69,6 @@
   {{- with $yf }} y-fmt="{{ . }}"{{ end }}
   {{- with $tr }} trend='{{ . | safeHTMLAttr }}'{{ end }}
   {{- with $tb }} trend-band='{{ . | safeHTMLAttr }}'{{ end }}
-  points='{{ $points | safeHTMLAttr }}'></en-scatter>
+  points='{{ $points | safeHTMLAttr }}'>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "cap") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-scatter>

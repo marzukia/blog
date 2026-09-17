@@ -14,6 +14,9 @@
   JSON args must be compact (no line breaks). Single quotes inside JSON are
   fine: Go html/template escapes them in the attribute value. Do NOT pre-escape
   with replaceRE (it double-escapes to a literal &amp;#39; in the output).
+
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
 */}}
 {{- $series := .Get "series" -}}
 {{- $refs := .Get "refs" -}}
@@ -25,4 +28,6 @@
   axis-y="{{ .Get "axis-y" | default "" | safeHTMLAttr }}"
   y-min="{{ .Get "y-min" | default "" | safeHTMLAttr }}"
   series='{{ $series | safeHTMLAttr }}'
-  refs='{{ $refs | safeHTMLAttr }}'></en-line>
+  refs='{{ $refs | safeHTMLAttr }}'>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "cap") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-line>

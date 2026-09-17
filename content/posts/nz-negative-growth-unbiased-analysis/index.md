@@ -19,7 +19,7 @@ In my opinion, many news sources and political parties have significantly mis-co
 
 > **Recession**, _noun_, a period of temporary economic decline during which trade and industrial activity are reduced, generally identified by a fall in GDP in two successive quarters.
 
-<img src="gdp_qtr_growth_pct.png" width="100%" alt="gdp_qtr_growth" />
+<img src="gdp_qtr_growth_pct.png" width="100%" alt="Bar chart of New Zealand quarterly GDP growth in percent: y-axis is the quarterly delta in percent, x-axis is quarters from September 2018 to June 2020, with growth falling from positive to -1.44% in the March 2020 quarter and -12.16% in the June 2020 quarter." />
 
 This visualization is something you may have seen frequently on the mainstream news sites. It highlights and shows our drastic fall into a recession. Without context, you'd be correct to be incredibly alarmed. U
 
@@ -29,27 +29,27 @@ Unlike other countries, New Zealand could quickly return to relative normalcy, s
 
 On 19 March 2020, New Zealand closed its borders to almost all travelers, this in conjunction with our effective lockdown procedures, New Zealand got COVID-19 under control very quickly.
 
-<img src="cases_per_million.png" width="100%" alt="cases_per_million" />
+<img src="cases_per_million.png" width="100%" alt="Line chart of cumulative COVID-19 cases per million people from March to September 2020: the USA series rises to 18,870 cases per million while New Zealand stays near flat and ends at 295, with dashed markers for NZ lockdown (23 Mar 2020), lockdown end (27 Apr 2020) and the Auckland lockdown (11 Aug 2020)." />
 
 This border closure had an immediate effect, with our monthly arrivals plummeting to practically zero by the start of April. This sharp drop in overseas visitors significantly impacted New Zealand's tourism industry, which makes up a significant proportion of its economy.
 
-<img src="overseas_monthly_arrivals.png" width="100%" alt="overseas_monthly_arrivals" />
+<img src="overseas_monthly_arrivals.png" width="100%" alt="Line chart of monthly overseas visitor arrivals to New Zealand, November 2019 to July 2020: arrivals hold around 310,000 per month through January 2020, then collapse to near zero by April 2020 after the border closed and stay there." />
 
 In FY19 international and domestic tourism contributed $40.9B of expenditure into our economy; international tourism equaled $17.162B. The indirect and direct value of tourism was quantified to be a 9.8% contribution to our GDP.
 
-<img src="intl_dom_tourist_expenditure.png" width="100%" alt="intl_dom_tourist_expenditure" />
+<img src="intl_dom_tourist_expenditure.png" width="100%" alt="Stacked bar chart of New Zealand tourism expenditure in thousands of dollars for the fiscal years ending March 2012 to March 2019: the total climbs from about 26.6 billion to 40.9 billion dollars, with FY2019 split into 23.696 billion domestic and 17.162 billion international." />
 
 ## Contextualizing the Numbers
 
 Let's contextualize the GDP graph from our 'Headline Numbers' section with the above in mind.
 
-<img src="gdp_qtr_growth_nom.png" width="100%" alt="gdp_qtr_growth_nom" />
+<img src="gdp_qtr_growth_nom.png" width="100%" alt="Bar chart of New Zealand quarterly GDP growth in nominal dollars: y-axis is the quarterly delta, x-axis is quarters from September 2018 to June 2020, with GDP contracting by 922 million dollars in the March 2020 quarter and 7.685 billion dollars in the June 2020 quarter, an 8.067 billion dollar total loss." />
 
 If we convert the graph from percentage to nominal terms, we can see that New Zealand GDP contracted by $922M and $7.685B for quarters one and two, respectively, this is a total of $8.067B in lost GDP.
 
 At the time of writing, it has been 182 days since New Zealand closed its borders. We can pro-rata the value of FY19's total international tourism expenditure as our proxy for what we've lost by international tourism in FY20. This figure is $8.557B in lost expenditure.
 
-<img src="lost_gdp_vs_tourism.png" width="100%" alt="lost_gdp_vs_tourism" />
+<img src="lost_gdp_vs_tourism.png" width="100%" alt="Horizontal bar chart comparing lost GDP (2020Q1 plus 2020Q2, 8.07 billion dollars total) against lost international tourism expenditure (8.557 billion dollars): the two bars are nearly the same length, showing the recession was about as large as the entire international tourism economy." />
 
 I believe that our borders' closure was an essential step in getting our domestic economy to recover at the pace it has. The above graph shows that the recession New Zealand has entered was practically unavoidable.
 

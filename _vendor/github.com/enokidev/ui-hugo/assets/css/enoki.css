@@ -6257,7 +6257,7 @@ figure.en-diagram .fg-esc-node--accent.lit {
 .en-footer-stamp {
   font-family: var(--en-disp);
   font-weight: 800;
-  font-size: clamp(20px, 4vw, 38px);
+  font-size: clamp(28px, 5vw, 56px); /* 2026-09-18: bigger, matches name hero bump (andryo) */
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;

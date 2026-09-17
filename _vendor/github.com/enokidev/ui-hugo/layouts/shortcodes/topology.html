@@ -22,6 +22,9 @@
   legend: [{"swatch":"var(--en-ink)","label":"..."}] shown under the body.
           Omit on a custom node set for no legend.
   controls: "false" hides the run loop / reset buttons.
+
+  Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
+  light-DOM children; React removes it on upgrade, no double render.
 */}}
 {{- $nodes := .Get "nodes" -}}
 {{- $edges := .Get "edges" -}}
@@ -65,4 +68,6 @@
   {{- with $legend }} legend='{{ . | safeHTMLAttr }}'{{ end }}
   {{- with $cycle }} cycle='{{ . | safeHTMLAttr }}'{{ end }}
   {{- with $edges }} edges='{{ . | safeHTMLAttr }}'{{ end }}
-  nodes='{{ $nodes | safeHTMLAttr }}'></en-topology>
+  nodes='{{ $nodes | safeHTMLAttr }}'>
+  {{- partial "fig-noscript.html" (dict "title" (.Get "title") "tag" (.Get "tag") "hint" (.Get "hint")) }}
+</en-topology>

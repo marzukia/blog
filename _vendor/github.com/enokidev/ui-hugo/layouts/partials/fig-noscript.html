@@ -1,0 +1,27 @@
+{{/*
+  No-JS fallback for en-* figure shortcodes (a11y F5: 1.1.1).
+
+  Emitted as light-DOM content INSIDE the custom element host (en-bar,
+  en-line, en-map, en-scatter, en-sequence, en-topology).
+
+  - JS off: the custom element is never upgraded, so the figure's title
+    bar and hint remain and the reader still gets the title + summary.
+  - JS on: ui-wc's EnokiReactElement runs createRoot(host).render(...) in
+    connectedCallback; React replaces the host's existing children on its
+    first render, and the wrapped component (Bar/Line/...) ignores
+    children, so this block is removed at upgrade — no double render.
+
+  Params (dict): title, tag, hint.
+*/}}
+<figure class="en-diagram">
+  <div class="en-dg-bar">
+    <span class="en-dg-dot" aria-hidden="true"></span>
+    <span class="en-dg-title">{{ with .title }}{{ . }}{{ end }}</span>
+    {{- with .tag }}
+    <span class="en-dg-tag">{{ . }}</span>
+    {{- end }}
+  </div>
+  {{- with .hint }}
+  <figcaption class="en-dg-hint">{{ . }}</figcaption>
+  {{- end }}
+</figure>
