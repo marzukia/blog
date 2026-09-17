@@ -3240,6 +3240,38 @@ textarea.en-input {
   }
 }
 
+/* Phone: the chip padding on nav links is what overflows. Strip it and
+   compact the trailing cluster so all four links survive at 390px. */
+@media (max-width: 480px) {
+  .en-topbar-main {
+    gap: 6px;
+    padding: 0 8px;
+  }
+  .en-topbar-brand .en-link {
+    font-size: 12px;
+    padding: 0 2px;
+  }
+  .en-topbar-nav {
+    gap: 7px;
+  }
+  .en-topbar-nav .en-link {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    padding: 0 2px;
+  }
+  .en-topbar-actions {
+    gap: 5px;
+  }
+  .en-topbar-actions .en-socials-link {
+    width: 18px;
+    height: 18px;
+  }
+  .en-topbar-actions .en-theme-switch button {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /* Marquee (design 6.1). Ink ticker strip. The track holds two identical
    halves separated by padding, so translateX(-50%) (the en-marquee keyframe
    in base/motion.css) loops without a seam. */
@@ -6466,16 +6498,16 @@ figure.en-diagram .fg-esc-node--accent.lit {
 .en-footer-stamp {
   font-family: var(--en-disp);
   font-weight: 400;
-  font-size: clamp(28px, 7vw, 64px);
+  font-size: clamp(20px, 4vw, 38px);
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: transparent;
-  -webkit-text-stroke: 2px var(--en-ink);
+  -webkit-text-stroke: 1.5px var(--en-ink);
 }
 
 .en-footer-meta {
-  margin: 24px 0 0;
+  margin: 18px 0 0;
   font-family: var(--en-ui);
   font-size: var(--en-f-mono-10);
   letter-spacing: var(--en-tr-mono);

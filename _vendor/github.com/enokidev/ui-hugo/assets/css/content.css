@@ -86,6 +86,16 @@
    the crumbs to their own compositor layer keeps the compositor in charge
    of that region instead of the main-frame paint. */
 en-article nav.en-crumbs { transform: translateZ(0); }
+/* Name hero: Anton stays (andryo 2026-09-17: old font ok) but calmer -
+   smaller scale, thinner hollow stroke. Scoped to en-hero so the article
+   keeps Oswald. */
+en-hero {
+  --en-disp: "Anton", "Oswald", sans-serif;
+  --en-f-hero: clamp(30px, 6.5vw, 80px);
+}
+en-hero .en-hollow {
+  -webkit-text-stroke-width: 1.5px;
+}
 /* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
 .en-content en-bar,
 .en-content en-line {
