@@ -91,7 +91,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
    keeps Oswald. */
 en-hero {
   --en-disp: "Anton", "Oswald", sans-serif;
-  --en-f-hero: clamp(40px, 8vw, 80px);
+  --en-f-hero: clamp(44px, 9vw, 90px); /* 2026-09-17: slightly larger (andryo) */
 }
 en-hero .en-hero-h1 {
   font-weight: 400; /* same synthetic-bold fix as the stamp (2026-09-17) */
