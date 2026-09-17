@@ -635,7 +635,7 @@ samp {
   color: transparent;
   /* em-based: the outline scales with the rendered text at every
      viewport (fixed px reads thin on phone, heavy on desktop) */
-  -webkit-text-stroke: 0.008em var(--en-ink); /* OG banner ratio: 2.5px @150px */
+  -webkit-text-stroke: 0.012em var(--en-ink); /* OG banner ratio: 2.5px @150px */
 }
 
 .en-mark-quiet {
@@ -6262,7 +6262,7 @@ figure.en-diagram .fg-esc-node--accent.lit {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: transparent;
-  -webkit-text-stroke: 0.008em var(--en-ink);
+  -webkit-text-stroke: 0.012em var(--en-ink);
 }
 
 .en-footer-meta {
