@@ -93,9 +93,15 @@ en-hero {
   --en-disp: "Anton", "Oswald", sans-serif;
   --en-f-hero: clamp(40px, 8vw, 80px);
 }
+en-hero .en-hero-h1 {
+  font-weight: 400; /* same synthetic-bold fix as the stamp (2026-09-17) */
+}
 /* GO BUILD footer stamp: Anton with the name hero (andryo 2026-09-17). */
 en-footer .en-footer-stamp {
   --en-disp: "Anton", sans-serif;
+  font-weight: 400; /* Anton is 400-only: 800 triggers Chrome synthetic bold,
+                       which draws the hollow stroke once per sub-sampled
+                       copy and unions it to ~3.5x the set width (2026-09-17) */
 }
 /* figure plates (en-bar / en-line render a figure.en-diagram in light DOM) */
 .en-content en-bar,
