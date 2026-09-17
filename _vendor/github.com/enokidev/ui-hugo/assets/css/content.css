@@ -113,7 +113,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-article-title {
   margin: 16px 0 12px;
   font-family: var(--en-disp);
-  font-size: clamp(38px, 6vw, 62px);
+  font-size: clamp(28px, 4.2vw, 44px);
   line-height: 0.98;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -146,7 +146,7 @@ en-article nav.en-crumbs { transform: translateZ(0); }
 .en-content h2 {
   margin: 54px 0 14px;
   font-family: var(--en-disp);
-  font-size: 30px;
+  font-size: 26px;
   line-height: 1.05;
   letter-spacing: 0.5px;
   text-transform: uppercase;

@@ -382,11 +382,11 @@
 
   --en-sh-1: 1px 1px 0 var(--en-sh);
   --en-sh-2: 2px 2px 0 var(--en-sh);
-  --en-sh-3: 3px 3px 0 var(--en-sh);
-  --en-sh-4: 4px 4px 0 var(--en-sh);
+  --en-sh-3: 2px 2px 0 var(--en-sh);
+  --en-sh-4: 3px 3px 0 var(--en-sh);
   --en-sh-5: 5px 5px 0 var(--en-sh);
-  --en-sh-6: 6px 6px 0 var(--en-sh);
-  --en-sh-8: 8px 8px 0 var(--en-sh);
+  --en-sh-6: 4px 4px 0 var(--en-sh);
+  --en-sh-8: 5px 5px 0 var(--en-sh);
   color-scheme: light;
 }
 
@@ -414,11 +414,11 @@
 
   --en-sh-1: 1px 1px 0 var(--en-sh);
   --en-sh-2: 2px 2px 0 var(--en-sh);
-  --en-sh-3: 3px 3px 0 var(--en-sh);
-  --en-sh-4: 4px 4px 0 var(--en-sh);
+  --en-sh-3: 2px 2px 0 var(--en-sh);
+  --en-sh-4: 3px 3px 0 var(--en-sh);
   --en-sh-5: 5px 5px 0 var(--en-sh);
-  --en-sh-6: 6px 6px 0 var(--en-sh);
-  --en-sh-8: 8px 8px 0 var(--en-sh);
+  --en-sh-6: 4px 4px 0 var(--en-sh);
+  --en-sh-8: 5px 5px 0 var(--en-sh);
   color-scheme: dark;
 }
 
@@ -430,12 +430,12 @@
   --en-mono:
     ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 
-  --en-f-hero: clamp(64px, 15vw, 190px);
-  --en-f-h2: clamp(34px, 7vw, 64px);
-  --en-f-stat: clamp(34px, 6vw, 54px);
-  --en-f-stepnum: 30px;
-  --en-f-brand: 26px;
-  --en-f-sub: clamp(16px, 2.4vw, 21px);
+  --en-f-hero: clamp(40px, 7vw, 100px);
+  --en-f-h2: clamp(24px, 3.4vw, 36px);
+  --en-f-stat: clamp(22px, 3vw, 34px);
+  --en-f-stepnum: 24px;
+  --en-f-brand: 22px;
+  --en-f-sub: clamp(15px, 1.6vw, 17px);
   --en-f-lede: 16px;
   --en-f-step-body: 14px;
   --en-f-mono-14: 14px;
@@ -3716,7 +3716,7 @@ textarea.en-input {
   margin: 0;
   border: 2px solid var(--en-line);
   background: var(--en-paper2);
-  box-shadow: var(--en-sh-8);
+  box-shadow: var(--en-sh-4);
   position: relative;
 }
 
@@ -4193,8 +4193,8 @@ textarea.en-input {
 
 /* font floor: nothing in a figure reads below 12px (2026-09-09) */
 figure.en-diagram {
-  --en-f-mono-10: 12px;
-  --en-f-mono-11: 12px;
+  --en-f-mono-10: 14px;
+  --en-f-mono-11: 14px;
 }
 
 /* ---- plot chrome -------------------------------------------------------- */
@@ -6382,7 +6382,7 @@ figure.en-diagram {
 .en-footer-stamp {
   font-family: var(--en-disp);
   font-weight: 400;
-  font-size: clamp(40px, 10vw, 96px);
+  font-size: clamp(28px, 7vw, 64px);
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
