@@ -6241,7 +6241,7 @@ figure.en-diagram .fg-esc-node--accent.lit {
 
 @media (max-width: 720px) {
   .en-hero {
-    padding: 96px 0 var(--en-sp-5);
+    padding: 52px 0 var(--en-sp-5); /* 2026-09-17: 96px read as dead space (andryo, via frank) */
   }
 }
 
