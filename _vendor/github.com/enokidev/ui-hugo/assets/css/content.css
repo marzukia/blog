@@ -13,28 +13,18 @@
   grid-template-columns: 108px 1fr 24px;
   gap: 22px;
   align-items: baseline;
-  padding: 22px 4px;
+  /* andryo 2026-09-17: the inner content needs left/right padding, not the
+     highlight. The row background stays full width; the text is inset. */
+  padding: 22px 16px;
   color: inherit;
   text-decoration: none;
-  position: relative;
-}
-/* Hover highlight is inset 16px from the wrap edges (andryo 2026-09-17: a
-   full-width background with 4px padding read as scuffed). The row text
-   stays flush with the section header; the border rules stay full width. */
-.en-feed-item::before {
-  content: "";
-  position: absolute;
-  inset: 0 16px;
-  background: var(--en-paper2);
-  opacity: 0;
-  transition: opacity 0.12s ease;
-  z-index: -1;
+  transition: background 0.12s ease;
 }
 /* first row: the section header rule is the top edge; no double line */
 .en-feed-item:first-child { border-top: none; }
 .en-feed-item:not(:first-child) { border-top: 1px solid var(--en-line); }
 .en-feed-item:last-child { border-bottom: 1px solid var(--en-line); }
-.en-feed-item:hover::before { opacity: 1; }
+.en-feed-item:hover { background: var(--en-paper2); }
 .en-feed-item:hover .en-feed-title { color: var(--en-accent); }
 
 .en-feed-when {
