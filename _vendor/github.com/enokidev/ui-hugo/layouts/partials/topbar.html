@@ -3,7 +3,13 @@
 {{ range .Site.Menus.main }}
 {{- $m := . -}}
 {{- if in $socialIcons $m.Params.icon }}
-{{-   $socials = $socials | append (dict "icon" $m.Params.icon "label" $m.Name "href" $m.URL) -}}
+{{-   $d := dict "icon" $m.Params.icon "label" $m.Name "href" $m.URL -}}
+{{-   if eq $m.Params.icon "linkedin" }}
+{{/* tile-shaped mark: fill the 22px box (26 - 2x 2px border) instead of
+          floating at 14 like the round github mark / rss arc */}}
+{{-     $d = merge $d (dict "size" 22) -}}
+{{-   end -}}
+{{-   $socials = $socials | append $d -}}
 {{- end }}
 {{ end }}
 <en-topbar>
