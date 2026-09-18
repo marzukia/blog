@@ -4372,13 +4372,6 @@ figure.en-diagram {
   pointer-events: none;
 }
 
-.fg-sweep {
-  stroke: var(--en-accent);
-  stroke-width: 2;
-  opacity: 0;
-  pointer-events: none;
-}
-
 /* ---- line ------------------------------------------------------------------ */
 
 .fg-series {
