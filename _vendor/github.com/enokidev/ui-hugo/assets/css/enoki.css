@@ -3633,9 +3633,21 @@ figure .en-dg-dot {
 }
 
 .en-dg-body {
+  /* andryo 2026-09-17: plot area 50% brighter than the tan slab; the
+     title bar and hint stay paper2. */
   padding: 6px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+.en-diagram:not(.frameless) .en-dg-body {
+  /* frameless figures sit in a paper2 card - keep the card tone there. */
+  background: color-mix(in srgb, var(--en-paper2) 50%, white);
+}
+/* Carbon: 50%-toward-white is a mid-grey slab there and kills the axis
+   label contrast - the dark theme keeps the original plot tone. */
+:root[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body,
+[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body {
+  background: var(--en-paper2);
 }
 
 .en-dg-body svg {
