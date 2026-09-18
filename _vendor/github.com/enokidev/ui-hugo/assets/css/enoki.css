@@ -166,7 +166,10 @@
   --en-red: #a31221;
   --en-blue: #1546ff;
   --en-green: #0f8a46;
-  --en-amber: #e08e05;
+  /* Darkened for WCAG 1.4.11 (2026-09-17 a11y audit): #e08e05 measured
+     1.94:1 against --en-paper2; #a86603 measures 3.41:1. Carbon keeps
+     #f0b429 (9.45:1 against its paper, already passing). */
+  --en-amber: #a86603;
   --en-grid: rgba(22, 19, 14, 0.06);
   --en-sh: #16130e;
   --en-code-sky: #8fd1ff;
@@ -4770,19 +4773,26 @@ figure.en-diagram {
 
 /* ---- map -------------------------------------------------------------------- */
 /* Geo choropleth + network, rendered by MapLibre GL (canvas). Bins 0..5 run
-   best to worst. Hue rotation (blue -> green -> amber -> accent) mirrors the
-   originals' RdYlGn ramp; a two-hue lightness ramp reads "red sea" once
-   class 4+5 cover >40% of the map. -1 = no data. The --fg-mbin-* vars serve
-   the house legend swatches; the canvas layers resolve the same mix in JS
+   best to worst. WCAG 1.4.11 (2026-09-17 a11y audit): every bin >= 3:1
+   against the map background (theme.paper, zones painted at fill-opacity
+   0.9) and every adjacent bin pair >= 1.5:1, in both themes. Six monotonic
+   steps are impossible under both caps (the paper 3:1 ceiling leaves a 5.8:1
+   luminance span; a six-step 1.5:1 ramp needs 7.6:1), so the ramp is banded:
+   alternating light/dark steps, six distinct hues, worst bin red. Measured,
+   effective (0.9 opacity over the theme paper):
+     paper  3.11 / 5.11 / 3.20 / 12.06 / 3.07 / 5.65, adjacent 1.60-3.93
+     carbon 3.56 / 6.97 / 3.34 / 12.76 / 7.60 / 4.65, adjacent 1.63-3.82
+   -1 = no data (paper2, recedes by design). The --fg-mbin-* vars serve the
+   house legend swatches; the canvas layers resolve the same mix in JS
    (MapLibre paint values cannot use color-mix). */
 
 :root {
-  --fg-mbin-0: color-mix(in srgb, var(--en-blue) 60%, var(--en-paper));
-  --fg-mbin-1: color-mix(in srgb, var(--en-green) 55%, var(--en-paper));
-  --fg-mbin-2: color-mix(in srgb, var(--en-amber) 30%, var(--en-paper));
-  --fg-mbin-3: color-mix(in srgb, var(--en-amber) 50%, var(--en-paper));
-  --fg-mbin-4: color-mix(in srgb, var(--en-amber) 85%, var(--en-paper));
-  --fg-mbin-5: color-mix(in srgb, var(--en-accent) 80%, var(--en-paper));
+  --fg-mbin-0: color-mix(in srgb, var(--en-blue) 75%, var(--en-paper));
+  --fg-mbin-1: var(--en-ink2);
+  --fg-mbin-2: color-mix(in srgb, var(--en-accent) 75%, var(--en-paper));
+  --fg-mbin-3: var(--en-ink);
+  --fg-mbin-4: color-mix(in srgb, var(--en-amber) 95%, var(--en-paper));
+  --fg-mbin-5: var(--en-red);
   --fg-mbin-na: var(--en-paper2);
 }
 
@@ -6257,7 +6267,11 @@ figure.en-diagram .fg-esc-node--accent.lit {
 .en-footer-stamp {
   font-family: var(--en-disp);
   font-weight: 800;
-  font-size: clamp(28px, 5vw, 56px); /* 2026-09-18: bigger, matches name hero bump (andryo) */
+  font-size: clamp(
+    28px,
+    5vw,
+    56px
+  ); /* 2026-09-18: bigger, matches name hero bump (andryo) */
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
