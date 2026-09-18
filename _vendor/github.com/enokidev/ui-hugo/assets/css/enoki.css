@@ -6101,6 +6101,12 @@ figure.en-diagram .fg-dot-orbit,
 figure.en-diagram .en-dot-amb {
   display: none;
 }
+/* Value labels still faded in (opacity 0 -> 1, staggered) - a calm-mode
+   survivor caught mid-fade in screenshots. Rest instant, hover fill kept. */
+figure.en-diagram .fg-bar-val {
+  opacity: 1;
+  transition: fill 0.15s ease;
+}
 
 /* ---- reduced motion: everything rests in its drawn state ---------------------- */
 
