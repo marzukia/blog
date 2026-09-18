@@ -3633,21 +3633,22 @@ figure .en-dg-dot {
 }
 
 .en-dg-body {
-  /* andryo 2026-09-17: plot area 50% brighter than the tan slab; the
-     title bar and hint stay paper2. */
   padding: 6px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-.en-diagram:not(.frameless) .en-dg-body {
-  /* frameless figures sit in a paper2 card - keep the card tone there. */
+/* andryo 2026-09-17: plot area 50% brighter than the tan slab; the title
+   bar and hint stay paper2. The fill goes on the plot surface, not the
+   body, so the body's 6px padding stays a tan frame (first version
+   painted the body and the beige ran into the figure border). */
+.en-diagram:not(.frameless) .en-dg-body > svg {
   background: color-mix(in srgb, var(--en-paper2) 50%, white);
 }
 /* Carbon: 50%-toward-white is a mid-grey slab there and kills the axis
    label contrast - the dark theme keeps the original plot tone. */
-:root[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body,
-[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body {
-  background: var(--en-paper2);
+:root[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body > svg,
+[data-theme="carbon"] .en-diagram:not(.frameless) .en-dg-body > svg {
+  background: none;
 }
 
 .en-dg-body svg {
