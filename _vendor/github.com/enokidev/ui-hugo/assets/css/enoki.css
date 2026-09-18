@@ -3674,6 +3674,17 @@ figure .en-dg-dot {
   background: var(--en-paper2);
 }
 
+/* On article pages the hint is a <figcaption> inside .en-content, and
+   content.css's `.en-content figcaption` rule (0,1,1) out-specifies
+   .en-dg-hint (0,1,0): it added an 8px margin-top - the tan band under the
+   plot andryo chased for 30 min (2026-09-17) - plus centered text and a
+   12px font. Re-assert the component's own metrics at (0,2,2). */
+figure.en-diagram figcaption.en-dg-hint {
+  margin: 0;
+  text-align: left;
+  font-size: var(--en-f-mono-11);
+}
+
 .en-dg-hint kbd {
   border: 1.5px solid var(--en-line);
   background: var(--en-paper3);
