@@ -168,8 +168,13 @@
   --en-green: #0f8a46;
   /* Darkened for WCAG 1.4.11 (2026-09-17 a11y audit): #e08e05 measured
      1.94:1 against --en-paper2; #a86603 measures 3.41:1. Carbon keeps
-     #f0b429 (9.45:1 against its paper, already passing). */
+     #f0b429 (9.45:1 against its paper, already passing). Figures no longer
+     use amber (ramp slot 4 moved to violet, 2026-09-18) - amber is the
+     warning semantic (gauge zone, toast, risk-table mid). */
   --en-amber: #a86603;
+  /* Figure ramp slot 4 (2026-09-18, andryo: replace the brown). #6d28d9
+     measures 5.47:1 against --en-paper2. */
+  --en-violet: #6d28d9;
   --en-grid: rgba(22, 19, 14, 0.06);
   --en-sh: #16130e;
   --en-code-sky: #8fd1ff;
@@ -202,6 +207,7 @@
   --en-blue: #6f92ff;
   --en-green: #37c579;
   --en-amber: #f0b429;
+  --en-violet: #a78bfa;
   --en-grid: rgba(241, 234, 217, 0.05);
   --en-sh: rgba(0, 0, 0, 0.55);
   --en-code-sky: #006cb8;
@@ -3605,6 +3611,13 @@ textarea.en-input {
   flex: none;
 }
 
+/* Calm mode (andryo 2026-09-18): the title-bar live dot blinks forever for
+   non-reduced-motion users. Static accent square instead. */
+figure.en-diagram .en-dg-dot,
+figure .en-dg-dot {
+  animation: none;
+}
+
 .en-dg-title {
   font-weight: 700;
 }
@@ -4080,6 +4093,9 @@ figure.en-diagram {
 .fg-c-green {
   fill: var(--en-green);
 }
+.fg-c-violet {
+  fill: var(--en-violet);
+}
 .fg-c-amber {
   fill: var(--en-amber);
 }
@@ -4107,6 +4123,9 @@ figure.en-diagram {
 }
 .fg-s-green {
   stroke: var(--en-green);
+}
+.fg-s-violet {
+  stroke: var(--en-violet);
 }
 .fg-s-amber {
   stroke: var(--en-amber);
@@ -4790,8 +4809,8 @@ figure.en-diagram {
   --fg-mbin-0: color-mix(in srgb, var(--en-blue) 75%, var(--en-paper));
   --fg-mbin-1: var(--en-ink2);
   --fg-mbin-2: color-mix(in srgb, var(--en-accent) 75%, var(--en-paper));
-  --fg-mbin-3: var(--en-ink);
-  --fg-mbin-4: color-mix(in srgb, var(--en-amber) 95%, var(--en-paper));
+  --fg-mbin-3: var(--en-violet);
+  --fg-mbin-4: var(--en-ink);
   --fg-mbin-5: var(--en-red);
   --fg-mbin-na: var(--en-paper2);
 }
@@ -6045,6 +6064,30 @@ figure.en-diagram {
   .fg-tw-bar {
     height: 40px;
   }
+}
+
+/* ---- calm mode: figures never animate (andryo 2026-09-17, follow-up 2026-09-18)
+   The calm pass left these alive for non-reduced-motion users: the marching
+   dashes (loop + circuit), the gauge-ring ping, the slice pop, the stroke
+   draw-in, and the ambient walking dots. Promote the kill to global. The
+   reduced-motion block below stays as a harmless duplicate. */
+figure.en-diagram .fg-g-ring,
+figure.en-diagram .fg-loop-flow-line,
+figure.en-diagram .fg-circ-ring,
+figure.en-diagram .fg-slice {
+  /* !important: the .in-scoped keyframes rules out-specify this selector
+     ((0,3,0) vs (0,2,1)) and would keep the march/ping/slice alive. */
+  animation: none !important;
+}
+figure.en-diagram .fg-draw,
+figure.en-diagram .fg-series.draw {
+  stroke-dashoffset: 0;
+  transition: none;
+}
+figure.en-diagram .fg-dot-walk,
+figure.en-diagram .fg-dot-orbit,
+figure.en-diagram .en-dot-amb {
+  display: none;
 }
 
 /* ---- reduced motion: everything rests in its drawn state ---------------------- */
