@@ -3634,13 +3634,11 @@ figure .en-dg-dot {
 
 .en-dg-body {
   /* andryo 2026-09-17: plot surface 50% brighter than the tan slab, flush
-     with the frame on three sides; the body keeps a 6px tan strip at the
-     bottom (the first version painted the body - beige ran into the border
-     on all sides; the second left a tan frame all around - too much).
-     box-sizing: content-box so the inline aspect-ratio (set on the body by
-     DiagramCanvas) matches the svg's own content-box ratio - padding-box
-     sizing left 4-8px of dead space at the bottom. */
-  padding: 0 0 6px 0;
+     with the frame on all four sides (no tan strip - v3's bottom strip was
+     still "the bottom!!!!!"). Padding 0 also kills the aspect-ratio slack:
+     with no padding the body's padding-box == content-box, so the inline
+     aspect matches the svg's own ratio exactly. */
+  padding: 0;
   box-sizing: content-box;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
