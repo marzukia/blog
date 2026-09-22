@@ -2515,7 +2515,10 @@ textarea.en-input {
 }
 
 /* ThemeSwitch: icon-only [sun][moon] segments. Same house rule as
-   ThemeToggle, no text. The active segment inverts to ink. */
+   ThemeToggle, no text. The active segment inverts to ink.
+   The container is exactly .en-socials-link-sized (26x26 total, 2px
+   border): each segment gets 24x22 inside, so the topbar action row
+   reads as one row of identical boxes. */
 
 .en-theme-switch {
   display: inline-flex;
@@ -2527,8 +2530,8 @@ textarea.en-input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 26px;
+  width: 24px;
+  height: 22px;
   padding: 0;
   border: 0;
   cursor: pointer;
@@ -2988,8 +2991,13 @@ textarea.en-input {
     height: 22px;
   }
   .en-topbar-actions .en-theme-switch button {
-    width: 24px;
-    height: 22px;
+    width: 20px;
+    height: 18px;
+  }
+  /* icons follow the box: keep 2px even padding inside the border */
+  .en-topbar-actions .en-icon {
+    width: 14px;
+    height: 14px;
   }
   .en-topbar-side {
     gap: 6px;
@@ -3028,8 +3036,13 @@ textarea.en-input {
     height: 18px;
   }
   .en-topbar-actions .en-theme-switch button {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 14px;
+  }
+  /* icons follow the box: keep 1-2px even padding inside the border */
+  .en-topbar-actions .en-icon {
+    width: 12px;
+    height: 12px;
   }
 }
 
