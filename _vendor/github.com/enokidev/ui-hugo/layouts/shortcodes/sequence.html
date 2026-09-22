@@ -16,7 +16,8 @@
   messages: [{"from","to","label","ret"?,"self"?}]
             ret = dimmed reply/status line. self = loop on one lane.
             max ~9 messages fit the canvas (STEP 52, floor 540).
-  auto-play: "false" disables the one-shot playback on first view.
+  auto-play: legacy no-op. The sequence renders all messages statically;
+  there is no playback and no play button.
 
   Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
   light-DOM children; React removes it on upgrade, no double render.

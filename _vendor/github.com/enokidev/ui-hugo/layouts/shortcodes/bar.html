@@ -22,6 +22,9 @@
   1.17M), or 'usd' ($0.82, $56.11K, $1.96M). Use 'usd' for per-unit costs so
   sub-dollar values do not round away.
 
+  unit: suffix for tooltip value lines ("42 SECONDS"). Legacy posts pass
+  axis-y= instead; it is the fallback (and the old title= arg maps to cap).
+
   Emits a no-JS fallback (title bar + hint, partials/fig-noscript.html) as
   light-DOM children; React removes it on upgrade, no double render.
 
@@ -59,10 +62,13 @@
 {{-   end -}}
 {{- end -}}
 <en-bar
-  cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
+  cap="{{ .Get "cap" | default (.Get "title") | default "" | safeHTMLAttr }}"
   tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
   hint="{{ .Get "hint" | default "" | safeHTMLAttr }}"
   fmt="{{ .Get "fmt" | default "compact" | safeHTMLAttr }}"
+  {{- with .Get "unit" | default (.Get "axis-y") }}
+  unit="{{ . | safeHTMLAttr }}"
+  {{- end }}
   values='{{ $data | safeHTMLAttr }}'
   ticks='{{ $ticks | safeHTMLAttr }}'
   series='{{ $series | safeHTMLAttr }}'>
