@@ -16,7 +16,11 @@ Have you ever been given tens of millions of rows of point data that you somehow
 
 I am a massive believer that visual storytelling is the key to being an effective data communicator; this is especially important when the data is dense or complex, as it often is with spatial data. I'm also a huge advocate of releasing the work that I do (where possible), as I think that the GIS ecosystem / community is generally too opaque and closed off. I touched on this a little in a [previous post](https://mrzk.io/posts/building-high-performance-spatial-apps/). I'm cognizant that the applicable audience for this post is pretty narrow; this post is about a very specific problem space that I often run into, and I freely admit it's probably one that not many people have.
 
-In my opinion, storytelling with spatial data is far more effective than charts, as it allows the reader to visually anchor the data to a _physical_ place somewhere in the world; the map then inherits the subconscious context and knowledge of that physical place without any additional effort on my end as the storyteller. Visualisation of large spatial datasets is a core part of my day-to-day job and the side ventures/projects that I do. This is because I love what presenting data on a map does for a data story; it takes it from an abstract concept to something that is visually compelling. 
+In my opinion, storytelling with spatial data is far more effective than charts, as it allows the reader to visually anchor the data to a _physical_ place somewhere in the world; the map then inherits the subconscious context and knowledge of that physical place without any additional effort on my end as the storyteller. Visualisation of large spatial datasets is a core part of my day-to-day job and the side ventures/projects that I do. This is because I love what presenting data on a map does for a data story; it takes it from an abstract concept to something that is visually compelling.
+
+---
+
+![intro](intro.jpg) 
 
 
 ## Problem Statement & Motivation
