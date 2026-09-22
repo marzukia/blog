@@ -43,7 +43,7 @@ An M4 MacBook Pro with 24GB was used to do these benchmarks with a synthetic poi
 
 {{< bar tag="FIG. 01" cap="TIME TO PROCESS 100K-POINT DATASET" axis-y="SECONDS" hint="gdal_grid at 100m takes ~17x longer than ppgrid at 100m, and ~3x longer than ppgrid at the far finer 10m. The traditional grid kernel is the slow path." data="fig-bar-benchmark.json" >}}
 
-`gdal_grid` takes 20x more time than <em>ppgrid</em> to process the synthetic dataset, whereas my old approach took approximately 4x the time. This is again because traditional IDW uses `O(M * N)`, which means at 100m, it must make a significant amount of extra effort to do the same job as <em>ppgrid</em>. My old approach isn't too unwieldy, but as you'll see shortly, the output is not super pleasing to look at. 
+`gdal_grid` takes 20x more time than `ppgrid` to process the synthetic dataset, whereas my old approach took approximately 4x the time. This is again because traditional IDW uses `O(M * N)`, which means at 100m, it must make a significant amount of extra effort to do the same job as `ppgrid`. My old approach isn't too unwieldy, but as you'll see shortly, the output is not super pleasing to look at. 
 
 ---
 
@@ -53,7 +53,7 @@ An M4 MacBook Pro with 24GB was used to do these benchmarks with a synthetic poi
 
 ![Side by side comparison of ppgrid, idw and rasterize](side-by-side.jpg)
 
-<em>ppgrid</em> creates the most visually attractive imagery, in my opinion, and avoids the nasty Voronoi-esque polygons that start to appear at the edge of IDW outputs. My old approach using a cumulative mean via binned grids is extremely patchy as soon as data becomes sparser.
+`ppgrid` creates the most visually attractive imagery, in my opinion, and avoids the nasty Voronoi-esque polygons that start to appear at the edge of IDW outputs. My old approach using a cumulative mean via binned grids is extremely patchy as soon as data becomes sparser.
 
 ---
 
@@ -63,11 +63,11 @@ I'm being a little cheeky here with this comparison as I'm comparing oranges wit
 
 ## How It Works
 
-<em>ppgrid</em> is a close cousin (or could even be a half-sibling) to a traditional implementation of inverse distance weighting (IDW) with one major difference: instead of calculating the full distance-weighting kernels directly, we use a pull-push approximation of what the value should be for any given cell.
+`ppgrid` is a close cousin (or could even be a half-sibling) to a traditional implementation of inverse distance weighting (IDW) with one major difference: instead of calculating the full distance-weighting kernels directly, we use a pull-push approximation of what the value should be for any given cell.
 
 Simplistically, IDW becomes so unwieldy as its execution requires you to calculate the total number of points multiplied by the total number of output cells in your output raster (`O(M * N)`). This means that as the resolution and/or the number of points increase, the computational effort required becomes more unreasonable. For example, one million points and one million output cells would require up to one trillion point-to-cell comparisons in a naive implementation.
 
-Pre-binning the points to individual cells (`O(N)`) means that we can create an upper limit on how much subsequent computational effort is required, irrespective of the number of points, in exchange for some loss in spatial precision. This means that even as the number of points and output cells increase, computational effort remains linear as opposed to growing multiplicatively. <em>ppgrid</em> also constructs a mipmap pyramid to provide coarser estimates where local data has less support; ultimately, this means that we are now doing `O(M) + O(M/4) + O(M/16) + O(M/64) + ...` instead of `O(M * N)`.
+Pre-binning the points to individual cells (`O(N)`) means that we can create an upper limit on how much subsequent computational effort is required, irrespective of the number of points, in exchange for some loss in spatial precision. This means that even as the number of points and output cells increase, computational effort remains linear as opposed to growing multiplicatively. `ppgrid` also constructs a mipmap pyramid to provide coarser estimates where local data has less support; ultimately, this means that we are now doing `O(M) + O(M/4) + O(M/16) + O(M/64) + ...` instead of `O(M * N)`.
 
 The mechanical execution breaks down to the following:
 
@@ -75,9 +75,9 @@ The mechanical execution breaks down to the following:
     - Assign each point into a cumulative sum grid called `S`
     - Assign each point into a grid called `C`, then count the number of points
 2. Conceptually, grid-based IDW spreads both grids outwards, with nearby cells having more influence than cells further away. Influence is defined by `K(r) = r^-p`, where `r` is the distance from a point and `p` is the factor which describes the level of influence decay being sought. A `p` of 2 would mean that a point twice as far as another would have only a 0.25 weighting.
-3. Dividing the distance-weighted value total by the total distance weight produces the interpolated average (`(S ⊛ K) / (C ⊛ K)`). <em>ppgrid</em> approximates this process through the pull-push pyramid rather than calculating the kernel directly.
+3. Dividing the distance-weighted value total by the total distance weight produces the interpolated average (`(S ⊛ K) / (C ⊛ K)`). `ppgrid` approximates this process through the pull-push pyramid rather than calculating the kernel directly.
 4. This process uses repeated `2 × 2` block sums to create increasingly coarse layers, which is done so a mipmap pyramid can be created providing a dynamic support scale. Where data density is high, estimates rely on the fine local grid, but as data sparsity kicks in, the coarser layers provide decreasingly confident estimations of what the value would be without ugly gaps in the raster.
-5. <em>ppgrid</em> then runs backwards, pushing the coarse estimate down through the pyramid and blending it with local information at every level. Each point is binned once and everything after that works on raster cells, which makes point loading `O(N)` and the pyramid roughly `O(M)` rather than repeatedly combining both costs; that change is where almost all of the performance gain comes from.
+5. `ppgrid` then runs backwards, pushing the coarse estimate down through the pyramid and blending it with local information at every level. Each point is binned once and everything after that works on raster cells, which makes point loading `O(N)` and the pyramid roughly `O(M)` rather than repeatedly combining both costs; that change is where almost all of the performance gain comes from.
 6. The pull phase reduces the fine grid into coarser levels, but the sum and count grids must remain separate because averaging at every level would give a cell containing one point the same weight as a cell containing one thousand points, which is obviously wrong. Carrying the sums and counts separately preserves the weighted mean throughout the pyramid.
 7. The push phase starts at the coarsest level and upsamples that estimate into the next finer level, with the local estimate and parent estimate being blended using a simple confidence value: `confidence = min(count / saturation, 1)`.
 
@@ -85,13 +85,13 @@ Saturation acts as a metric of how much a cell can trust the data it contains; w
 
 ## Quality of Life & Explicit Design Decisions
 
-As I've already mentioned, <em>ppgrid</em> is essentially IDW with some extra steps, so the fundamental issues with IDW remain relevant here. Since <em>ppgrid</em> is an operational part of my day-to-day toolkit as opposed to a pure experiment, I've made certain design decisions which are aimed at making it as easy as possible for me to get these rasters into a usable state for my various projects and applications. Because my primary objective is to create rasters for visual representation as opposed to spatial operations, some decisions may not be as spatially accurate as you would get with a traditional IDW or cumulative mean binned grid approach.
+As I've already mentioned, `ppgrid` is essentially IDW with some extra steps, so the fundamental issues with IDW remain relevant here. Since `ppgrid` is an operational part of my day-to-day toolkit as opposed to a pure experiment, I've made certain design decisions which are aimed at making it as easy as possible for me to get these rasters into a usable state for my various projects and applications. Because my primary objective is to create rasters for visual representation as opposed to spatial operations, some decisions may not be as spatially accurate as you would get with a traditional IDW or cumulative mean binned grid approach.
 
 **n.b.** I've omitted uninteresting decisions.
 
 ### Maximum Radius / Fill Distance Limiting
 
-Without an appropriate guard rail, the coarsest level would happily (and likely erroneously) invent a value to fill the entire raster. While this value may be deterministically derived, it is useless as an estimate because it could be using points from hundreds or thousands of kilometres away. So just like IDW we have a fill distance limit, however, unlike the pull-push estimate itself, where distance is represented indirectly through the pyramid, <em>ppgrid</em> applies an explicit fill radius using the count grid and a summed-area table to determine whether at least one valid data point exists nearby.
+Without an appropriate guard rail, the coarsest level would happily (and likely erroneously) invent a value to fill the entire raster. While this value may be deterministically derived, it is useless as an estimate because it could be using points from hundreds or thousands of kilometres away. So just like IDW we have a fill distance limit, however, unlike the pull-push estimate itself, where distance is represented indirectly through the pyramid, `ppgrid` applies an explicit fill radius using the count grid and a summed-area table to determine whether at least one valid data point exists nearby.
 
 ### Support Raster - Spatial Scaling
 
@@ -99,9 +99,9 @@ As with all interpolated rasters, the calculation used to derive a given pixel's
 
 ### Preflight Calibration & Percentile Raster Output
 
-Raw values can be terrible interpolation inputs, especially for skewed datasets such as house prices, insurance losses and environmental measures, where a few extreme values can dominate the entire surface. <em>ppgrid</em> tests identity, log10, square-root and percentile transforms, then uses intraclass correlation to select the transform where location best explains the variation.
+Raw values can be terrible interpolation inputs, especially for skewed datasets such as house prices, insurance losses and environmental measures, where a few extreme values can dominate the entire surface. `ppgrid` tests identity, log10, square-root and percentile transforms, then uses intraclass correlation to select the transform where location best explains the variation.
 
-<em>ppgrid</em> also calibrates the fill distance using spatially blocked cross-validation. Random cross-validation is rubbish for clustered data because a held-out point may still be metres from a training point, which gives an impressive score while proving almost nothing. Instead, <em>ppgrid</em> holds out whole areas and finds the furthest support distance that still beats a simple mean. The selected transform, fill cap and percentile lookup table are then saved to `calibration.json`.
+`ppgrid` also calibrates the fill distance using spatially blocked cross-validation. Random cross-validation is rubbish for clustered data because a held-out point may still be metres from a training point, which gives an impressive score while proving almost nothing. Instead, `ppgrid` holds out whole areas and finds the furthest support distance that still beats a simple mean. The selected transform, fill cap and percentile lookup table are then saved to `calibration.json`.
 
 The output itself is returned as a percentile rather than raw values (which can be restored via `calibration.json`). This means every dataset has the same 0-100 range, allowing the result to fit neatly into an int16 GeoTIFF; the default encoding is `percentile = DN / 100`, so a stored value of 5000 represents the 50th percentile. This is a pretty opinionated design decision, and I have two straightforward reasons for this: 
 
@@ -112,12 +112,12 @@ The output itself is returned as a percentile rather than raw values (which can 
 
 As always, the source code is on [GitHub](https://github.com/marzukia/ppgrid) and the package is on [PyPI](https://pypi.org/project/ppgrid/), so try it on something unreasonable and tell me where it breaks. I encourage you to give it a try if it's relevant to your use case and contribute if you think you can improve it. The repository includes 13,580 Melbourne property sales, with dense inner-city observations and much sparser outer areas that give the pyramid something interesting to do.
 
-My big focus with <em>ppgrid</em> to date has been on getting visually aesthetic and mostly correct rasters that can be generated quickly; this goal, I believe, I've largely achieved. In terms of future work, the key things I'll look to be doing will largely anchor around spatial correctness and statistical soundness. This is specifically if I need to use the rasters beyond visualisation, such as actually trying to interpolate points where the value is an estimate. As such, my key areas of focus will be:
+My big focus with `ppgrid` to date has been on getting visually aesthetic and mostly correct rasters that can be generated quickly; this goal, I believe, I've largely achieved. In terms of future work, the key things I'll look to be doing will largely anchor around spatial correctness and statistical soundness. This is specifically if I need to use the rasters beyond visualisation, such as actually trying to interpolate points where the value is an estimate. As such, my key areas of focus will be:
 
 1. A proper comparison and analysis between exact IDW and other interpolation methods across different spatial fields, covering both visual quality and actual predictive performance. The biggest blocker is that I am yet to find a computationally acceptable method of generating rasters with a lot of points; that means any analysis would be smaller in scale.
 2. I also want to look at how I can further tune performance, as some processing steps feel like they could have room for improvement. This is a gut feel as opposed to something I've assessed.
-3. Dogfooding <em>ppgrid</em> with global extents and awkward coordinate systems, as my focus has largely been at a country scale and the quirks of global-scale datasets haven't really been addressed.
+3. Dogfooding `ppgrid` with global extents and awkward coordinate systems, as my focus has largely been at a country scale and the quirks of global-scale datasets haven't really been addressed.
 
 As of right now, I would consider this to be an alpha release. 
 
-Lastly... if <em>ppgrid</em> has helped you out, please reach out and let me know - I would love to hear it. 
+Lastly... if `ppgrid` has helped you out, please reach out and let me know - I would love to hear it. 
