@@ -5,10 +5,7 @@ seotitle: "ppgrid: Fast Raster Interpolation for Huge Point Datasets"
 date: "2026-09-22"
 slug: "ppgrid-fast-continentscale-raster-interpolation"
 description: "ppgrid turns tens of millions of point rows into a smooth, adaptive-resolution raster in seconds. A push-pull mipmap approximation of inverse distance weighting that stays flat as your data grows."
-tags: ["Data", "GIS", "Python"]
-categories:
-    - Geospatial
-    - Engineering
+tags: ["Data"]
 projects: ["ppgrid"]
 ---
 
