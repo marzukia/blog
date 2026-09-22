@@ -212,8 +212,8 @@ en-footer .en-footer-stamp {
   background: var(--en-paper2);
 }
 .en-content th, .en-content td { border: 1px solid var(--en-line); padding: 10px 12px; }
-.en-content img { max-width: 100%; margin: 10px 0 4px; border: 1px solid var(--en-line); }
-.en-content img.about-avatar { display: block; margin: 0 auto 24px; border-radius: 50%; }
+.en-content img { max-width: 100%; margin: 10px 0 4px; border: 2px solid var(--en-line); background: var(--en-paper2); box-shadow: var(--en-sh-4); }
+.en-content img.about-avatar { display: block; margin: 0 auto 24px; border-radius: 50%; background: none; box-shadow: none; }
 .en-content figure { margin: 0 0 26px; }
 .en-content figcaption {
   margin-top: 8px;
