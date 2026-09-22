@@ -18,8 +18,6 @@ I am a strong believer that visual storytelling is the key to being an effective
 
 In my opinion, storytelling with spatial data is far more effective than charts, as it allows the reader to visually anchor the data to a _physical_ place somewhere in the world; the map then inherits the subconscious context and knowledge of that physical place without any additional effort on my end as the storyteller. Visualisation of large spatial datasets is a core part of my day-to-day job and the side ventures/projects that I do. This is because I love what presenting data on a map does for a data story; it takes it from an abstract concept to something that is visually compelling.
 
----
-
 ![intro](intro.jpg) 
 
 
@@ -48,7 +46,7 @@ An M4 MacBook Pro with 24GB was used to do these benchmarks with a synthetic poi
 
 {{< bar tag="FIG. 01" cap="TIME TO PROCESS 100K-POINT DATASET" axis-y="SECONDS" hint="gdal_grid at 100m takes ~17x longer than ppgrid at 100m, and ~3x longer than ppgrid at the far finer 10m. The traditional grid kernel is the slow path." data="fig-bar-benchmark.json" >}}
 
-`gdal_grid` takes 20x more time than `<em>ppgrid</em>` to process the synthetic dataset, whereas my old approach took approximately 4x the time. This is again because traditional IDW uses `O(M * N)`, which means at 100m, it must make a significant amount of extra effort to do the same job as `<em>ppgrid</em>`. My old approach isn't too unwieldy, but as you'll see shortly, the output is not super pleasing to look at. 
+`gdal_grid` takes 20x more time than <em>ppgrid</em> to process the synthetic dataset, whereas my old approach took approximately 4x the time. This is again because traditional IDW uses `O(M * N)`, which means at 100m, it must make a significant amount of extra effort to do the same job as <em>ppgrid</em>. My old approach isn't too unwieldy, but as you'll see shortly, the output is not super pleasing to look at. 
 
 ---
 
