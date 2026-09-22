@@ -20,6 +20,19 @@
 */}}
 {{- $series := .Get "series" -}}
 {{- $refs := .Get "refs" -}}
+{{/* series/refs accept a .json path (next to the post) OR inline JSON. A value with no { or [ is treated as a filename - the only way to get spaces (or any char) into labels, since the legacy shortcode parser splits args on whitespace. Mirrors scatter.html's points-file handling. */}}
+{{- if and $series (not (or (strings.Contains $series "{") (strings.Contains $series "["))) -}}
+{{-   $res := .Page.Resources.Get $series -}}
+{{-   if $res -}}
+{{-     $series = ($res.Content | strings.TrimSpace) -}}
+{{-   end -}}
+{{- end -}}
+{{- if and $refs (not (or (strings.Contains $refs "{") (strings.Contains $refs "["))) -}}
+{{-   $res := .Page.Resources.Get $refs -}}
+{{-   if $res -}}
+{{-     $refs = ($res.Content | strings.TrimSpace) -}}
+{{-   end -}}
+{{- end -}}
 <en-line
   cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
   tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"

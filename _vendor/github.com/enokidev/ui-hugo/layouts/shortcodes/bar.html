@@ -29,12 +29,35 @@
   fine: Go html/template escapes them to &#39; in the attribute value. Do NOT
   pre-escape them with replaceRE — the template escapes once more and the
   output shows a literal &amp;#39;.
+  FILE: data/ticks/series also accept a .json path next to the post (e.g.
+  data="fig-bars.json"). A value with no { or [ is read as a page resource.
+  Use this whenever labels contain spaces or other chars the shortcode arg
+  parser would split on (it tokenises on whitespace). Mirrors scatter.html.
   NOTE: the output HTML attr is `values`, not `data` — Go html/template treats
   a `data` attr value as a URL (percent-encodes it, colon breaks it).
 */}}
 {{- $data := .Get "data" -}}
 {{- $ticks := .Get "ticks" -}}
 {{- $series := .Get "series" -}}
+{{/* data/ticks/series accept a .json path (next to the post) OR inline JSON. A value with no { or [ is treated as a filename - this is the only way to get spaces (or any char) into labels, since the legacy shortcode parser splits args on whitespace. Mirrors scatter.html's points-file handling. */}}
+{{- if and $data (not (or (strings.Contains $data "{") (strings.Contains $data "["))) -}}
+{{-   $res := .Page.Resources.Get $data -}}
+{{-   if $res -}}
+{{-     $data = ($res.Content | strings.TrimSpace) -}}
+{{-   end -}}
+{{- end -}}
+{{- if and $ticks (not (or (strings.Contains $ticks "{") (strings.Contains $ticks "["))) -}}
+{{-   $res := .Page.Resources.Get $ticks -}}
+{{-   if $res -}}
+{{-     $ticks = ($res.Content | strings.TrimSpace) -}}
+{{-   end -}}
+{{- end -}}
+{{- if and $series (not (or (strings.Contains $series "{") (strings.Contains $series "["))) -}}
+{{-   $res := .Page.Resources.Get $series -}}
+{{-   if $res -}}
+{{-     $series = ($res.Content | strings.TrimSpace) -}}
+{{-   end -}}
+{{- end -}}
 <en-bar
   cap="{{ .Get "cap" | default "" | safeHTMLAttr }}"
   tag="{{ .Get "tag" | default "" | safeHTMLAttr }}"
