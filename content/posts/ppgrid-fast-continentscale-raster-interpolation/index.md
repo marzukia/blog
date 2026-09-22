@@ -25,7 +25,7 @@ In my opinion, storytelling with spatial data is far more effective than charts,
 
 ## Problem Statement & Motivation
 
-My core problem statement is that I often have to work with point data which may be tens of millions of rows in size, and existing tooling that is readily available is generally bad, slow, or all of the above. Without being too specific, I often have to visually demonstrate what this CSV containing 20M+ rows of various modelled risk data looks like on a map.
+My core problem statement is that I often have to work with point data which may be tens of millions of rows in size, and existing tooling that is readily available is generally bad, slow, or all of the above. Without being too specific, this usually means visually demonstrating what a CSV containing 20M+ rows of various modelled risk data looks like on a map.
 
 I basically want to be able to feed in a very large point dataset (containing coordinates and some kind of numerical value) and create a continuous raster that:
 1. looks aesthetically pleasing; and
@@ -53,8 +53,6 @@ An M4 MacBook Pro with 24GB was used to do these benchmarks with a synthetic poi
 ---
 
 {{< line tag="FIG. 02" cap="TIME TO PROCESS VS NUMBER OF POINTS" axis-x="POINTS" axis-y="SECONDS" hint="gdal_grid climbs 50x from 1k to 100k points as the O(M*N) kernel scales multiplicatively. ppgrid stays flat near ~1.6s because each point is binned once and the work is linear." series="fig-line-scaling.json" >}}
-
-To really reinforce my point, look at how the time taken to process the dataset changes as the number of points increases. With `gdal_grid`, there is a 50x increase in the time taken to process 100K vs 1K. `<em>ppgrid</em>` remains flat irrespective of the number of points as it does not multiplicatively scale.  
 
 ---
 
