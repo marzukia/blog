@@ -14,7 +14,7 @@ projects: ["ppgrid"]
 
 Have you ever been given tens of millions of rows of point data that you somehow need to visualise? Did you then leave ArcGIS/QGIS/GRASS running for a few days? If you answered yes to both of these, you are the perfect audience for this post and my new tool [marzukia/ppgrid](https://github.com/marzukia/ppgrid) - (there's literally dozens of us!)
 
-I am a massive believer that visual storytelling is the key to being an effective data communicator; this is especially important when the data is dense or complex, as it often is with spatial data. I'm also a huge advocate of releasing the work that I do (where possible), as I think that the GIS ecosystem / community is generally too opaque and closed off. I touched on this a little in a [previous post](https://mrzk.io/posts/building-high-performance-spatial-apps/). I'm cognizant that the applicable audience for this post is pretty narrow; this post is about a very specific problem space that I often run into, and I freely admit it's probably one that not many people have.
+I am a strong believer that visual storytelling is the key to being an effective data communicator; this is especially important when the data is dense or complex, as it often is with spatial data. I'm also a big advocate of releasing the work that I do (where possible), as I think that the GIS ecosystem / community is generally too opaque and closed off. I touched on this a little in a [previous post](https://mrzk.io/posts/building-high-performance-spatial-apps/).
 
 In my opinion, storytelling with spatial data is far more effective than charts, as it allows the reader to visually anchor the data to a _physical_ place somewhere in the world; the map then inherits the subconscious context and knowledge of that physical place without any additional effort on my end as the storyteller. Visualisation of large spatial datasets is a core part of my day-to-day job and the side ventures/projects that I do. This is because I love what presenting data on a map does for a data story; it takes it from an abstract concept to something that is visually compelling.
 
@@ -25,7 +25,7 @@ In my opinion, storytelling with spatial data is far more effective than charts,
 
 ## Problem Statement & Motivation
 
-My core problem statement is that I often have to work with point data which may be tens of millions of rows in size, and existing tooling that is readily available is generally bad, slow, unperformant or all of the above. Without being too specific, I often have to visually demonstrate what this CSV containing 20M+ rows of various modelled risk data looks like on a map.
+My core problem statement is that I often have to work with point data which may be tens of millions of rows in size, and existing tooling that is readily available is generally bad, slow, or all of the above. Without being too specific, I often have to visually demonstrate what this CSV containing 20M+ rows of various modelled risk data looks like on a map.
 
 I basically want to be able to feed in a very large point dataset (containing coordinates and some kind of numerical value) and create a continuous raster that:
 1. looks aesthetically pleasing; and
@@ -92,7 +92,7 @@ Saturation acts as a metric of how much a cell can trust the data it contains; w
 
 ## Quality of Life & Explicit Design Decisions
 
-As I've already mentioned, <em>ppgrid</em> is essentially IDW with some extra steps, so the fundamental issues with IDW remain relevant here. Since <em>ppgrid</em> is an operational part of my day-to-day toolkit as opposed to a pure experiment, I've made certain design decisions which are aimed at making it as easy as possible for me to get these rasters into a usable state for my various projects and applications. Because my primary objective is to create rasters for visual representation as opposed to spatial operations, some decisions may not be as spatially accurate as you would get with a traditional IDW or cumulative mean binned grid approach. 
+As I've already mentioned, <em>ppgrid</em> is essentially IDW with some extra steps, so the fundamental issues with IDW remain relevant here. Since <em>ppgrid</em> is an operational part of my day-to-day toolkit as opposed to a pure experiment, I've made certain design decisions which are aimed at making it as easy as possible for me to get these rasters into a usable state for my various projects and applications. Because my primary objective is to create rasters for visual representation as opposed to spatial operations, some decisions may not be as spatially accurate as you would get with a traditional IDW or cumulative mean binned grid approach.
 
 **n.b.** I've omitted uninteresting decisions.
 
@@ -121,7 +121,7 @@ As always, the source code is on [GitHub](https://github.com/marzukia/ppgrid) an
 
 My big focus with <em>ppgrid</em> to date has been on getting visually aesthetic and mostly correct rasters that can be generated quickly; this goal, I believe, I've largely achieved. In terms of future work, the key things I'll look to be doing will largely anchor around spatial correctness and statistical soundness. This is specifically if I need to use the rasters beyond visualisation, such as actually trying to interpolate points where the value is an estimate. As such, my key areas of focus will be:
 
-1. A proper comparison and analysis between exact IDW and other interpolation methods across different spatial fields, covering both visual quality and actual predictive performance. The biggest blocker is that I am yet to find a computationally acceptable method of generating rasters with a lot of points; that means that any analysis would be smaller in scale, which is obviously less desirable.
+1. A proper comparison and analysis between exact IDW and other interpolation methods across different spatial fields, covering both visual quality and actual predictive performance. The biggest blocker is that I am yet to find a computationally acceptable method of generating rasters with a lot of points; that means any analysis would be smaller in scale.
 2. I also want to look at how I can further tune performance, as some processing steps feel like they could have room for improvement. This is a gut feel as opposed to something I've assessed.
 3. Dogfooding <em>ppgrid</em> with global extents and awkward coordinate systems, as my focus has largely been at a country scale and the quirks of global-scale datasets haven't really been addressed.
 
