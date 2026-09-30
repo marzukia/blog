@@ -1,3 +1,4 @@
+enableGitInfo = true
 baseURL = "https://mrzk.io/"
 defaultContentLanguage = "en"
 
