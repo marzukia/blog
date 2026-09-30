@@ -7,6 +7,7 @@ showDate: false
 showReadingTime: false
 showAuthor: false
 showEdit: false
+schemaType: "WebPage"
 ---
 
 <img src="/img/andryo-circle.png" alt="Andryo Marzuki" class="about-avatar" width="180" height="180" />
