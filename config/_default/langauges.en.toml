@@ -1,7 +1,8 @@
 # config/_default/languages.en.toml
 
-locale = "en"
+locale = "en-AU"
 title = "Andryo Marzuki - Net Zero Productivity by 2050"
+description = "A candid blog by climate risk expert Andryo Marzuki: geospatial modelling, data, sustainability, finance, and the occasional breakdown in productivity."
 
 [params]
     description = "A candid blog by climate risk expert Andryo Marzuki: geospatial modelling, data, sustainability, finance, and the occasional breakdown in productivity."

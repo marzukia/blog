@@ -8,7 +8,8 @@
 {{ $authors = $authors | append (dict "@type" "Person" "name" .) }}
 {{ end }}
 {{ end }}
-{{ $scholarly := dict "@context" "https://schema.org" "@type" "ScholarlyArticle" "headline" (.Title | plainify) "description" (.Description | plainify | htmlUnescape) "datePublished" (.Date.Format "2006-01-02") "inLanguage" "en" "url" .Permalink "license" "https://creativecommons.org/licenses/by/4.0/" "sameAs" (printf "https://doi.org/%s" .Params.doi) "author" $authors }}
+{{ $scholarly := dict "@context" "https://schema.org" "@type" "ScholarlyArticle" "headline" (.Title | plainify) "description" (.Description | plainify | htmlUnescape) "datePublished" (.Date.Format "2006-01-02") "dateModified" (.Lastmod.Format "2006-01-02") "inLanguage" "en" "url" .Permalink "license" "https://creativecommons.org/licenses/by/4.0/" "sameAs" (printf "https://doi.org/%s" .Params.doi) "author" $authors }}
 {{ with .Resources.GetMatch "og.png" }}{{ $scholarly = merge $scholarly (dict "image" .Permalink) }}{{ end }}
+{{ with .Params.affiliation }}{{ $scholarly = merge $scholarly (dict "affiliation" .) }}{{ end }}
 <script type="application/ld+json">{{ $scholarly | jsonify | safeJS }}</script>
 {{ end }}
