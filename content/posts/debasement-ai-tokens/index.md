@@ -67,7 +67,7 @@ My go-to example is the "optimisations" OpenAI silently did to their ChatGPT-4 m
 4. Output length changed sharply.
 5. The GPT-4 they sold to users in March 2023 was markedly different than the one in June 2023.
 
-{{< radar tag="FIG. 01" cap="GPT-4 BENCHMARK SCORE: MARCH VS JUNE 2023" unit="SCORE" hint="Same named service, three months apart. OpinionQA drops 74 points, Math II 48, Code Gen 42; USMLE holds within 5 while SensitiveQA and HotpotQA rise. The cuts landed where nobody was measuring." labels="[\"OPINIONQA\",\"MATH II\",\"MATH I\",\"USMLE\",\"CODE GEN\",\"VISUAL\",\"HOTPOTQA\",\"SENSITIVEQA\"]" series="[{\"name\":\"MARCH 2023\",\"values\":[97.6,83.6,84.0,86.6,52.0,24.6,1.2,79.0]},{\"name\":\"JUNE 2023\",\"values\":[23.4,35.2,51.1,82.1,10.0,27.2,37.8,95.0]}]" >}}
+{{< radar tag="FIG. 01" cap="GPT-4 BENCHMARK SCORE: MARCH VS JUNE 2023" unit="SCORE" hint="Same named service, three months apart. OpinionQA drops 74 points, Math II 48, Code Gen 42; USMLE holds within 5 while SensitiveQA and HotpotQA rise. The cuts landed where nobody was measuring." labels="[\"OPINIONQA\",\"MATH II\",\"MATH I\",\"USMLE\",\"CODE GEN\",\"VISUAL\",\"HOTPOTQA\",\"SENSITIVEQA\"]" series="[{\"name\":\"JUNE 2023\",\"values\":[23.4,35.2,51.1,82.1,10.0,27.2,37.8,95.0]},{\"name\":\"MARCH 2023\",\"values\":[97.6,83.6,84.0,86.6,52.0,24.6,1.2,79.0]}]" >}}
 
 The only conclusion that can be logically made is that something *must* have changed in how they serve the product, and that is likely cost cutting measures in the invisible infrastructure.
 
