@@ -28,7 +28,7 @@ jobs:
           mkdir -p "$HOME/bin"
           tar -xzf /tmp/hugo.tar.gz -C "$HOME/bin"
           echo "$HOME/bin" >> "$GITHUB_PATH"
-          hugo version
+          "$HOME/bin/hugo" version
 
       - name: Checkout
         uses: actions/checkout@v4
