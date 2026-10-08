@@ -37,7 +37,7 @@ The specific mechanics of _how_ this figurative debasement is being perpetrated 
 
 I think the most impressive feat these AI giants have done is that they've been able to convince the market that the subsidised token prices of today, are here to stay (spoiler: they are not). Whether or not the participants in the market have truly bought the hype or whether they're just using it as a smoke screen for cost cutting is irrelevant as ultimately the consequences are the same.
 
-The technology sector across the world has seen major restructuring, layoffs and redundancies over the last 12 months. With mounting hysteria to be seen doing innovations utilising LLMs, the reorganisation wave that kicked off in 2025 eagerly chased the promise that LLMs would do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic and OpenAI.
+The technology sector across the world has seen major restructuring, layoffs and redundancies since 2025. With mounting pressure to be seen doing innovations utilising LLMs, the reorganisation wave that kicked off in 2025 eagerly chased the promise that LLMs would do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic and OpenAI.
 
 In FY25, OpenAI generated an impressive $13.07B in sales revenue, unfortunately its total spend came to $34.0B, meaning that for every $1 OpenAI earned, it had to spend $2.60. This means that OpenAI (via its many private investors) are topping up an additional $1.60 for every $1 you give OpenAI while using the likes of ChatGPT and Codex. [^3]. Anthropic, OpenAI's primary competitor, are much the same, earning $4.59B in sales revenue in FY25 whilst its total spend came to $7.33B. For every dollar that Anthropic earns, they're spending $1.60 meaning that investors are having to top up an additional $0.60 for every dollar you give Anthropic. [^4]
 
@@ -143,6 +143,8 @@ The general theme in all four of those items is that I was trying to optimise fo
 To anyone who's viewed my previous qMLX post(s) or starred my qMLX repository, I must apologise that I've since sold a part of my soul to Nvidia and have abandoned the hipster metal lifestyle for my local setup.
 
 **AI Disclosure**: This essay was written by a human, excuse my rambling. AI was used for proofreading and source research.
+
+**Opinionated Rant Disclaimer**: Views are my own and not those of my employer.
 
 ## References
 
