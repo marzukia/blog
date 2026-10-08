@@ -26,7 +26,7 @@ That’s where I hit the first hurdle: while the data existed, it was often frag
 
 The goal was to build a cohesive view that brought together key livability and accessibility factors.
 
-#### Notes
+### Notes
 
 - All transport and cycling times are calculated to the ANZ Centre in Docklands and include walking time. If you work elsewhere, your mileage may vary-and some adjustments may be necessary.
 - High-resolution images and source data are available in the appendix.
@@ -141,7 +141,7 @@ All metrics were normalised to a 0–1 scale, where lower is better. I then weig
 
 The result was a cumulative score that helped highlight suburbs with good fundamentals that still represented value.
 
-#### Notes
+### Notes
 
 - The weights reflect my priorities-they might differ from yours.
 - The lower the cumulative score, the better.

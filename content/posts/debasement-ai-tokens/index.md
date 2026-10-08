@@ -1,11 +1,9 @@
 ---
+author: "Andryo Marzuki"
 title: "The Debasement of the AI Token"
 date: 2026-10-06T00:00:00Z
-draft: false
 description: "By 268 AD the denarius was 5% silver, and the Empire's economy collapsed with it. The AI token is being debased the same way - subsidised, opaque, mutable at the whim of one party. My pitch for why you should've got your own LLM infrastructure yesterday."
 tags: ["AI"]
-categories: []
-summary: ""
 ---
 
 Debasement is the act or process of reducing the quality, value, or standard of something. It's purporting that something still contains the same intrinsic value whilst hollowing aforementioned value.

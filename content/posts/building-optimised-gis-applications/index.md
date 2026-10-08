@@ -1,6 +1,6 @@
 ---
 author: "Andryo Marzuki"
-title: "Performant Spatial Apps with PostGIS: 8 Years of Head‑Banging"
+title: "Performant Spatial Apps with PostGIS: 8 Years of Head-Banging"
 seotitle: "Performant Spatial Apps with PostGIS"
 date: "2025-09-28"
 slug: "building-high-performance-spatial-apps"
@@ -58,7 +58,7 @@ The spatial development community seems to have this unspoken agreement that eve
 
 The foundation of any high-performance spatial application lies in proper spatial indexing. Like any index, spatial indexes are way for your database to effectively filter our large volumes of irrelevant rows, it does this by creating a bounding box over a geometry.
 
-![Three-panel diagram of how a spatial index uses bounding boxes: a star geometry crossed by query lines, the same star inside a grid of index bounding boxes, and overlapping feature bounding boxes with query bands, showing that only geometries whose bounding boxes intersect the query need testing](https://postgis.net/workshops/postgis-intro/_images/bbox.png)
+![Three-panel diagram of how a spatial index uses bounding boxes: a star geometry crossed by query lines, the same star inside a grid of index bounding boxes, and overlapping feature bounding boxes with query bands, showing that only geometries whose bounding boxes intersect the query need testing](bbox.png)
 
 PostGIS provides several indexing options, each suited for different use cases:
 

@@ -3,7 +3,7 @@ author: "Andryo Marzuki"
 title: "Diving Deeper Into New Zealand's Official Recession"
 seotitle: "New Zealand's Official Recession"
 date: "2020-09-17"
-description: ""
+description: "New Zealand's 2020 recession, put in context: the $8.067B GDP contraction was almost exactly the international tourism lost when the borders closed. Why it was practically unavoidable, and why the shallow 'NZ IN RECESSION' headlines don't need to scare you."
 tags: ["Data", "World"]
 aliases:
   - "/post/diving-deeper-into-new-zealands-official-recession/"
