@@ -388,7 +388,7 @@ Games have run smoothly without a noticeable drop in performance.
 
 I didn't cover off audio in this post, for the reason that I was able to route it physically with an AUX cable straight to my speakers. The advantage of doing this was that I had less audio latency.
 
-If you aren't able to do a similar set up, I recommend you read [this article](https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF#Passing_VM_audio_to_host_via_PulseAudio) which describes the process of routing audio through pulseaudio.
+If you aren't able to do a similar set up, I recommend you read [this article](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Passing_audio_from_virtual_machine_to_host_via_PulseAudio) which describes the process of routing audio through pulseaudio.
 
 Alternatively, you can use [scream](https://github.com/duncanthrax/scream). I haven't messed around with this library but I've heard there are latency issues.
 

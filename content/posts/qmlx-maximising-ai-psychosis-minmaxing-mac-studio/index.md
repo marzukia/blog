@@ -5,7 +5,7 @@ seotitle: "qMLX: Minmaxing my Mac Studio"
 date: "2026-07-10"
 description: "DS4 Flash looked promising on paper. In practice it was too slow for long contexts and unreliable for agentic coding. Here is why I switched to Qwen 3.5 122B and the three bugs I had to kill to make it usable."
 tags: ["AI"]
-projects: ["qMLX"]
+projects: ["qmlx"]
 slug: "qmlx-maximising-ai-psychosis-minmaxing-mac-studio"
 lastmod: "2026-07-10"
 draft: false
