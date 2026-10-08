@@ -14,7 +14,7 @@ Today, the debasing emperors are no longer ancient Romans. Now, they're faceless
 
 The market's already gone all in, everyone's been building their processes and infrastructure with the idea that the intrinsic value of the AI token is stable and treat it as bedrock. What happens when that foundation is not bedrock, rather it's sand that's slowly shifting before your feet? What if that very slick process automation you built using GPT-4o suddenly ceases to function when OpenAI decides to decommission it with just two weeks' notice?
 
-This is a long form essay (rant) that nobody's asked for, but I nonetheless feel compelled to write. It will be my pitch to you, the reader, why you should've got your own LLM infrastructure yesterday, and why I am deeply sceptical of the closed weight giants such as Anthropic, OpenAI and Google.
+This is a long form essay (rant) that nobody's asked for, but I nonetheless feel compelled to write. It will be my pitch to you, the reader, why you should've got your own LLM infrastructure yesterday, and why I am deeply sceptical of the closed weight giants such as Anthropic and OpenAI.
 
 ## The AI Token Is a Lie
 
@@ -37,7 +37,7 @@ The specific mechanics of _how_ this figurative debasement is being perpetrated 
 
 I think the most impressive feat these AI giants have done is that they've been able to convince the market that the subsidised token prices of today, are here to stay (spoiler: they are not). Whether or not the participants in the market have truly bought the hype or whether they're just using it as a smoke screen for cost cutting is irrelevant as ultimately the consequences are the same.
 
-The technology sector across the world has seen major restructuring, layoffs and redundancies over the last 12 months. With mounting hysteria to be seen doing innovations utilising LLMs, many companies have short sightedly executed large organisational changes chasing the promise that LLMs will do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic, OpenAI and Google.
+The technology sector across the world has seen major restructuring, layoffs and redundancies over the last 12 months. With mounting hysteria to be seen doing innovations utilising LLMs, many companies have short sightedly executed large organisational changes chasing the promise that LLMs will do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic and OpenAI.
 
 In FY25, OpenAI generated an impressive $13.07B in sales revenue, unfortunately its total spend came to $34.0B, meaning that for every $1 OpenAI earned, it had to spend $2.60. This means that OpenAI (via its many private investors) are topping up an additional $1.60 for every $1 you give OpenAI while using the likes of ChatGPT and Codex. [^3]. Anthropic, OpenAI's primary competitor, are much the same, earning $4.59B in sales revenue in FY25 whilst its total spend came to $7.33B. For every dollar that Anthropic earns, they're spending $1.60 meaning that investors are having to top up an additional $0.60 for every dollar you give Anthropic. [^4]
 
@@ -47,7 +47,7 @@ From OpenAI/Anthropic's POV they've successfully got companies hooked on irresis
 
 ### Invisible Cuts, Visible Degradation
 
-The problem with closed weight systems like OpenAI's ChatGPT, Anthropic's Claude and Google's Gemini is that they are entirely opaque. To be clear, this opaqueness is a feature not a bug. It allows them to freely "optimise" for cost with infrastructure that is invisible and undisclosed to the user.
+The problem with closed weight systems like OpenAI's ChatGPT and Anthropic's Claude is that they are entirely opaque. To be clear, this opaqueness is a feature not a bug. It allows them to freely "optimise" for cost with infrastructure that is invisible and undisclosed to the user.
 
 I have zero doubt that this type of meddling definitely happens with open weight inference providers too, however, because those offerings are generally federated, it's harder to find high profile incidents. I witnessed first hand as I was working on qMLX how the output quality of a model can be materially impacted by simply changing how a model's KV is stored.
 
