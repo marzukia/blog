@@ -37,11 +37,11 @@ The specific mechanics of _how_ this figurative debasement is being perpetrated 
 
 I think the most impressive feat these AI giants have done is that they've been able to convince the market that the subsidised token prices of today, are here to stay (spoiler: they are not). Whether or not the participants in the market have truly bought the hype or whether they're just using it as a smoke screen for cost cutting is irrelevant as ultimately the consequences are the same.
 
-The technology sector across the world has seen major restructuring, layoffs and redundancies over the last 12 months. With mounting hysteria to be seen doing innovations utilising LLMs, many companies have short sightedly executed large organisational changes chasing the promise that LLMs will do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic and OpenAI.
+The technology sector across the world has seen major restructuring, layoffs and redundancies over the last 12 months. With mounting hysteria to be seen doing innovations utilising LLMs, the 2025-26 reorg wave eagerly chased the promise that LLMs would do the work of a person at a fraction of the cost of said person. These decisions have been made on the cost calculus arising from heavily subsidised pricing provided from frontier cloud providers such as Anthropic and OpenAI.
 
 In FY25, OpenAI generated an impressive $13.07B in sales revenue, unfortunately its total spend came to $34.0B, meaning that for every $1 OpenAI earned, it had to spend $2.60. This means that OpenAI (via its many private investors) are topping up an additional $1.60 for every $1 you give OpenAI while using the likes of ChatGPT and Codex. [^3]. Anthropic, OpenAI's primary competitor, are much the same, earning $4.59B in sales revenue in FY25 whilst its total spend came to $7.33B. For every dollar that Anthropic earns, they're spending $1.60 meaning that investors are having to top up an additional $0.60 for every dollar you give Anthropic. [^4]
 
-The logic and soundness of these aforementioned reorganisations hinge on the assumption that these prices would not meaningfully change; it would be an absolute disaster if these token prices increased in any significant manner (hint: they will / have). If you're not massively laying off your staff to make room for your new army of AI employees, are you even doing business in 2026?
+The logic and soundness of these aforementioned reorganisations hinge on the assumption that these prices would not meaningfully change; it would be an absolute disaster if these token prices increased in any significant manner (hint: they will / have).
 
 From OpenAI/Anthropic's POV they've successfully got companies hooked on irresistibly good deals on frontier models that are genuinely capable, these businesses become increasingly dependent as LLM-based automation occurs. At this point, the customer is now captive and tethered to a closed ecosystem which they have zero control over. These organisations have in essence traded long term sovereignty for short term gains.
 
@@ -122,9 +122,9 @@ Having my own infrastructure means that I can:
 
 At my current burn rate I'll have broken even within a year, and these GPUs have a 3 year warranty. Every single LLM call from that point is pure value on top of the innate value received from owning your own infrastructure. I am a single full stack developer who burns through ~$4K AUD worth of tokens every month.
 
-Now imagine all those large corporates who have hundreds or thousands of developers, all running their cloud AI agents as part of their day to day activities. I cannot even fathom the amount of money that is on the line and what would happen to these corporates if AI token prices began rising.
+If you've built on the assumption that today's token prices will hold, I'd make sure contingency plans are in place. I struggle to grasp the scale of the introduced financial risk for teams with hundreds or thousands of developers, all running their cloud AI agents as part of their day to day activities.
 
-If you're someone who's gone all in on AI without thinking about what happens when the subsidies stop, I'd say you might be in trouble in the near future. The best time to have gotten your own infrastructure was yesterday, the next best time is right now.
+Investing in your own infrastructure becomes more difficult the larger you get, but I still strongly believe that the best time to have gotten your own infrastructure was yesterday, the next best time is right now.
 
 ## Post-ramble Footnotes
 
