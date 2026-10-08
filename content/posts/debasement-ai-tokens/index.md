@@ -45,7 +45,7 @@ The logic and soundness of these aforementioned reorganisations hinge on the ass
 
 From OpenAI/Anthropic's POV they've successfully got companies hooked on irresistibly good deals on frontier models that are genuinely capable, these businesses become increasingly dependent as LLM-based automation occurs. At this point, the customer is now captive and tethered to a closed ecosystem which they have zero control over. These organisations have in essence traded long term sovereignty for short term gains.
 
-### Invisible Cuts, Visible Degradation
+## Invisible Cuts, Visible Degradation
 
 The problem with closed weight systems like OpenAI's ChatGPT and Anthropic's Claude is that they are entirely opaque. To be clear, this opaqueness is a feature not a bug. It allows them to freely "optimise" for cost with infrastructure that is invisible and undisclosed to the user.
 
@@ -63,7 +63,7 @@ My go-to example is the "optimisations" OpenAI silently did to their ChatGPT-4 m
 
 The only conclusion that can be logically made is that something *must* have changed in how they serve the product, and that is likely cost cutting measures in the invisible infrastructure.
 
-### Nobody's Gonna Notice...
+## Nobody's Gonna Notice...
 
 Have you heard of the new Claude model class? It's the class action lawsuit! On 14 June 2026, a class action was lodged against Anthropic citing a litany of damning and dodgy behaviour relating to their various subscription tiers [^2].
 
@@ -97,9 +97,9 @@ This means OpenAI essentially forced anyone who had made the mistake of building
 
 I have spent an exorbitant amount of my spare time, and sacrificed my entire tactical hobby fund, in the pursuit of local AI sovereignty. Over the last 2 months I've created my own personal home lab that is capable of hosting a large fleet of AI agents for my personal use. This necessitated acquiring two RTX 5000 Pros (which now retail at an irrational $14K AUD a piece, I did not pay this insane price tag) plus an assortment of old server parts I got from lowballing people on Facebook Marketplace and eBay.
 
-My ethos when it comes to AI is that it is not something to be feared or shunned, AI has taken a crowbar and wrenched open Pandora's box. Desperately coping that AI is not transformational or here to stay is equivalent to burying your head in the sand. Embracing AI does NOT mean you should be haphazardly replacing skilled humans; AI is a tool to be used by people not a substitute for people. AI usage is fundamentally limited to the skill of the operator using it, this means if you give a skilled developer 5 AI agents, you'd likely increase their producitvity several fold; it's an extension of the operator, a tool. However, AI agents in the hands of an unexperienced operator is more akin to blind trust; the operator must trust whatever the AI says, this is a recipe for disaster (LLMs are dirty little liars).
+My ethos when it comes to AI is that it is not something to be feared or shunned, AI has taken a crowbar and wrenched open Pandora's box. Desperately coping that AI is not transformational or here to stay is equivalent to burying your head in the sand. Embracing AI does NOT mean you should be haphazardly replacing skilled humans; AI is a tool to be used by people not a substitute for people. AI usage is fundamentally limited to the skill of the operator using it, this means if you give a skilled developer 5 AI agents, you'd likely increase their productivity several fold; it's an extension of the operator, a tool. However, AI agents in the hands of an inexperienced operator is more akin to blind trust; the operator must trust whatever the AI says, this is a recipe for disaster (LLMs are dirty little liars).
 
-Ultimately, the cost calculus in determining whether you _should_ invest in local infrastructure is dependent on whether you, your business, or employees have the pre-requsite skills to actually utilise the infrastructure effectively and efficiently. From an outsider's perspective I must certainly seem irrational or insane to spend this kind of money on server hardware. However, with hindsight and knowledge of how transformational agentic AI has been for me, I would do it again even if the prices were doubled - it's not even a hard choice for me.
+Ultimately, the cost calculus in determining whether you _should_ invest in local infrastructure is dependent on whether you, your business, or employees have the pre-requisite skills to actually utilise the infrastructure effectively and efficiently. From an outsider's perspective I must certainly seem irrational or insane to spend this kind of money on server hardware. However, with hindsight and knowledge of how transformational agentic AI has been for me, I would do it again even if the prices were doubled - it's not even a hard choice for me.
 
 I'm not saying that because I am a secret millionaire (I wish), rather, the value of having your own AI infrastructure is absolutely and unequivocally game changing. Not only is there massive ROI, you also entirely de-risk yourself from being at the mercy of cloud providers who seek to provide you increasingly degraded outputs. However, this conclusion is only true because I was lucky enough to have had the opportunities in my career to develop deep technical skills to allow me to effectively leverage AI. It would be absolutely arrogant of me to assume everyone has the same circumstances, so I won't.
 
