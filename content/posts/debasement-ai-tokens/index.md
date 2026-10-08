@@ -63,7 +63,7 @@ My go-to example is the "optimisations" OpenAI silently did to their ChatGPT-4 m
 
 The only conclusion that can be logically made is that something *must* have changed in how they serve the product, and that is likely cost cutting measures in the invisible infrastructure.
 
-### Nobody's Gonna Notice... (They Did)
+### Nobody's Gonna Notice...
 
 Have you heard of the new Claude model class? It's the class action lawsuit! On 14 June 2026, a class action was lodged against Anthropic citing a litany of damning and dodgy behaviour relating to their various subscription tiers [^2].
 
@@ -91,19 +91,23 @@ Here's a hypothetical, you're a business owner who has recently automated a manu
 
 This means OpenAI essentially forced anyone who had made the mistake of building their critical infrastructure or services on top of it to migrate to more expensive models. This can happen with any of these closed-weight providers, they don't care that it will disrupt your business or that you are reliant on their product.
 
-## AI Sovereignty
+## Should You Go Local?
 
-I have spent an exorbitant amount of my spare time, and sacrificed my entire tactical hobby fund, in the pursuit of local AI sovereignty. Over the last 2 months I've created my own personal home lab that is capable of hosting a large fleet of AI agents for my personal use. This necessitated acquiring two RTX 5000 Pros (which now retail at an irrational $14K AUD a piece, I did not pay this insane price tag) plus an assortment of old server parts I got from lowballing people on Facebook Marketplace and eBay. 
+I have spent an exorbitant amount of my spare time, and sacrificed my entire tactical hobby fund, in the pursuit of local AI sovereignty. Over the last 2 months I've created my own personal home lab that is capable of hosting a large fleet of AI agents for my personal use. This necessitated acquiring two RTX 5000 Pros (which now retail at an irrational $14K AUD a piece, I did not pay this insane price tag) plus an assortment of old server parts I got from lowballing people on Facebook Marketplace and eBay.
 
-From an outsider's perspective, I am completely cognisant that I must certainly seem irrational or insane to spend this kind of money on server hardware. However, with hindsight and knowledge of how transformational agentic AI has been for me, I would do it again even if the prices were doubled - it's not even a hard choice for me.
+My ethos when it comes to AI is that it is not something to be feared or shunned, AI has taken a crowbar and wrenched open Pandora's box. Desperately coping that AI is not transformational or here to stay is equivalent to burying your head in the sand. Embracing AI does NOT mean you should be haphazardly replacing skilled humans; AI is a tool to be used by people not a substitute for people. AI usage is fundamentally limited to the skill of the operator using it, this means if you give a skilled developer 5 AI agents, you'd likely increase their producitvity five fold; it's an extension of the operator, a tool. However, AI agents in the hands of an unexperienced operator is more akin to blind trust; the operator must trust whatever the AI says, this is a recipe for disaster (LLMs are dirty little liars).
 
-I'm not saying that because I am a secret millionaire (I wish), rather, the value of having your own AI infrastructure is absolutely and unequivocally game changing. Not only is there massive ROI, you also entirely de-risk yourself from being at the mercy of cloud providers who seek to provide you increasingly degraded outputs.
+Ultimately, the cost calculus in determining whether you _should_ invest in local infrastructure is dependent on whether you, your business, or employees have the pre-requsite skills to actually utilise the infrastructure effectively and efficiently. From an outsider's perspective I must certainly seem irrational or insane to spend this kind of money on server hardware. However, with hindsight and knowledge of how transformational agentic AI has been for me, I would do it again even if the prices were doubled - it's not even a hard choice for me.
 
-I am aware I am in a fortunate position to be able to take the financial hit of this investment, but for me I need to look no further than the data to prove my point. In September alone, I have spent the equivalent of nearly $4K AUD (based on OpenRouter prices):
+I'm not saying that because I am a secret millionaire (I wish), rather, the value of having your own AI infrastructure is absolutely and unequivocally game changing. Not only is there massive ROI, you also entirely de-risk yourself from being at the mercy of cloud providers who seek to provide you increasingly degraded outputs. However, this conclusion is only true because I was lucky enough to have had the opportunities in my career to develop deep technical skills to allow me to effectively leverage AI. It would be absolutely arrogant of me to assume everyone has the same circumstances, so I won't.
+
+I can however share the data that I use to justify the rationale of why it's worth it for me. For this we need to look no further than my usage data. In September alone, I have spent the equivalent of nearly $4K AUD (based on OpenRouter prices):
 
 {{< bar tag="FIG. 04" cap="WEEKLY INFERENCE COST: ALL AGENTS (AUD)" unit="AUD" fmt="usd" hint="SEP 8-14 takes $2,212 of the $3,926 September total: the cold-cache week. Cost then roughly halves every week as cache read absorbs the volume." data="[{\"label\":\"SEP 1-7\",\"value\":240.31},{\"label\":\"SEP 8-14\",\"value\":2211.53},{\"label\":\"SEP 15-21\",\"value\":929.19},{\"label\":\"SEP 22-28\",\"value\":463.24},{\"label\":\"SEP 29-30\",\"value\":82.07}]" >}}
 
 {{< bar tag="FIG. 05" cap="WEEKLY TOKEN VOLUME: FRESH READ VS CACHE READ VS WRITE" unit="TOKENS" fmt="num" hint="The SEP 8-14 week is the cold-cache week: 5.07B tokens, 59% of it fresh. From SEP 15 on, cache read carries 80-95% of volume and fresh read collapses from 59% to 4%." data="[{\"label\":\"SEP 1-7\",\"value\":932620000,\"parts\":[{\"name\":\"FRESH READ\",\"value\":184580000},{\"name\":\"CACHE READ\",\"value\":738390000},{\"name\":\"WRITE\",\"value\":9650000}]},{\"label\":\"SEP 8-14\",\"value\":5065400000,\"parts\":[{\"name\":\"FRESH READ\",\"value\":2978020000},{\"name\":\"CACHE READ\",\"value\":2043050000},{\"name\":\"WRITE\",\"value\":44330000}]},{\"label\":\"SEP 15-21\",\"value\":3816050000,\"parts\":[{\"name\":\"FRESH READ\",\"value\":729600000},{\"name\":\"CACHE READ\",\"value\":3057080000},{\"name\":\"WRITE\",\"value\":29370000}]},{\"label\":\"SEP 22-28\",\"value\":2587440000,\"parts\":[{\"name\":\"FRESH READ\",\"value\":122200000},{\"name\":\"CACHE READ\",\"value\":2442830000},{\"name\":\"WRITE\",\"value\":22410000}]},{\"label\":\"SEP 29-30\",\"value\":475820000,\"parts\":[{\"name\":\"FRESH READ\",\"value\":20280000},{\"name\":\"CACHE READ\",\"value\":451920000},{\"name\":\"WRITE\",\"value\":3620000}]}]" >}}
+
+## Why I Went Local
 
 Having my own infrastructure means that I can:
 
@@ -111,16 +115,14 @@ Having my own infrastructure means that I can:
 * Not worry about data exfiltration, everything is local and I have complete control over my data.
 * The value of my AI tokens actually act as a stable unit of value.
 * Nobody can dilute the efficacy of my agentic fleet without my knowledge or consent. The "invisible levers" are completely visible and within my controls.
-* I can actually automate my personal workflows, I am not at anyone's mercy. 
+* I can actually automate my personal workflows, I am not at anyone's mercy.
 * It is a baseline capability that I now have *forever*. Nobody can take it from me.
 
-At my current burn rate I'll have broken even within a year, and these GPUs have a 3 year warranty. Every single LLM call from that point is pure value on top of the innate value received from owning your own infrastructure. I am a single full stack developer who burns through ~$4K AUD worth of tokens every month. 
+At my current burn rate I'll have broken even within a year, and these GPUs have a 3 year warranty. Every single LLM call from that point is pure value on top of the innate value received from owning your own infrastructure. I am a single full stack developer who burns through ~$4K AUD worth of tokens every month.
 
-Now imagine all those large corporates who have hundreds or thousands of developers, all running their cloud AI agents as part of their day to day activities. I cannot even fathom the amount of money that is on the line and what would happen to these corporates if AI token prices began rising. 
+Now imagine all those large corporates who have hundreds or thousands of developers, all running their cloud AI agents as part of their day to day activities. I cannot even fathom the amount of money that is on the line and what would happen to these corporates if AI token prices began rising.
 
 If you're someone who's gone all in on AI without thinking about what happens when the subsidies stop, I'd say you might be in trouble in the near future. The best time to have gotten your own infrastructure was yesterday, the next best time is right now.
-
-Don't be a prisoner. Have your say. 
 
 ## Post-ramble Footnotes
 
@@ -134,11 +136,11 @@ Since May of this year, I have utterly gone off the deep end, dabbling and tinke
     * **Instructional Fingerprints** ([10.5281/zenodo.22006608](https://mrzk.io/papers/instructional-fingerprints-moe-routing/)) - can you strip weight-level fingerprinting from a finetune? Spurred by Claude starting to watermark its outputs and my paranoia that open weights may already be compromised. Debasement doesn't require closed coinage.
     * **REAP pruning damage** ([10.5281/zenodo.21869190](https://mrzk.io/papers/pruning-damage-evaluation-corpus/)) - an accidental find: post-REAP benchmarks overstate the model, because REAP hits memorisation harder than reasoning. The benchmarks selling you the token are themselves debased.
 
-The general theme in all four of those items is that I was trying to optimise for compute cost on my limited local hardware, and more often than not, these optimisations harmed output quality. 
+The general theme in all four of those items is that I was trying to optimise for compute cost on my limited local hardware, and more often than not, these optimisations harmed output quality.
 
 To anyone who's viewed my previous qMLX post(s) or starred my qMLX repository, I must apologise that I've since sold a part of my soul to Nvidia and have abandoned the hipster metal lifestyle for my local setup.
 
-**AI Disclosure**: This essay was written by a human, excuse my rambling. AI was used for proofreading and source research. 
+**AI Disclosure**: This essay was written by a human, excuse my rambling. AI was used for proofreading and source research.
 
 ## References
 
