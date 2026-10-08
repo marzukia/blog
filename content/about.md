@@ -27,7 +27,7 @@ Problems I'm good at:
 Some of what I've shipped:
 
 - CROP (Climate Risk & Opportunities Platform), for ANZ Group, geospatial climate scenario modelling and digital asset valuation.
-- ESGIS (Environmental Social Geospatial Information System), for ANZNZ, 2023 NZ INFINZ finalist.
+- ESGIS (Environmental Social Geospatial Information System), for ANZNZ, 2023 NZ [INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
 - [junkyard.sh](https://junkyard.sh), 48 client-side web tools salvaged from behind paywalls. No accounts, no uploads, open source.
 - charted, beautiful SVG charts with zero dependencies.
 - qMLX, a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
