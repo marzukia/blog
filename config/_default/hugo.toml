@@ -18,10 +18,6 @@ summaryLength = 2
 [params.article]
   showComments = true
 
-[services]
-  [services.x]
-    disableInlineCSS = true
-
 [params]
   [params.githubPages]
     enabled = true

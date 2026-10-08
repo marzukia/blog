@@ -15,7 +15,7 @@ This post will primarily serve two purposes. I'm writing about it just for my re
 
 My keyboard itself is what I'd call "semi-finished". I purchased a lot of stuff currently sitting at the office. As I'm not allowed to return to work until the pandemic dies down a bit, I had to reorder some parts to use the keyboard in the short term. The postal service (NZ Post) also managed to make my life a living hell during this lockdown by actually losing my GMMK pro and delaying every package by weeks at a time.
 
-![Ahh, there it is.](/1.jpg)
+![The GMMK Pro with Glorious Rainforest PBT keycaps installed](/1.jpg)
 
 At the time of writing, this is my setup:
 
@@ -71,7 +71,7 @@ To cut things short, as a newbie to the subject, here are some of the key phrase
 
 ## Lubricating & Filming Switches
 
-![Calm before the storm.](/2.jpg)
+![The workbench before the switch-lubing session](/2.jpg)
 
 Lubricating and filming a switch improves the smoothness and the sound of the switch. The entire process took me approximately four hours; it was an incredibly tedious process, and honestly, I hated it.
 
@@ -144,4 +144,4 @@ I hope for those who stumble across this post, I hope the information provided h
 
 Good luck!
 
-![Forbidden candy.](/6.jpg)
+![The C3 Tangerine switches up close](/6.jpg)
