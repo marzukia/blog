@@ -144,7 +144,7 @@ To anyone who's viewed my previous qMLX post(s) or starred my qMLX repository, I
 
 **AI Disclosure**: This essay was written by a human, excuse my rambling. AI was used for proofreading and source research.
 
-**Opinionated Rant Disclaimer**: Views are my own and not those of my employer.
+Views are my own, not my employer's. Written on my own time, on my own domain
 
 ## References
 
