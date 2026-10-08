@@ -22,7 +22,7 @@ Let's breakdown the issues we face:
 2. The API is undocumented
 3. The API constantly changes
 
-I've done different projects on this API in the past with has aimed to address some of these challenges such as [aionba](https://github.com/marzukia/aionba), which incorporated asynchronous calls with rotating proxies and caching to avoid the chances of being blocked. This project was ultimately unfinished as it ended up being more reliable just to call the API slowly.
+I've done different projects on this API in the past with has aimed to address some of these challenges such as [aionba](https://web.archive.org/web/20200914044120/https://github.com/marzukia/aionba), which incorporated asynchronous calls with rotating proxies and caching to avoid the chances of being blocked. This project was ultimately unfinished as it ended up being more reliable just to call the API slowly.
 
 This post will talk about the second challenge, the fact that the API is undocumented. Whilst you could rely on other people's lists that they have compiled, it's often nice to be able to this on your own. I'll breakdown the method I came up with this particular instance as it was a snap to do, and gave me a pretty comprehensive list to use for development purposes.
 

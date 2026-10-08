@@ -20,9 +20,9 @@ My keyboard itself is what I'd call "semi-finished". I purchased a lot of stuff 
 At the time of writing, this is my setup:
 
 - [GMMK Pro Hotswappable Keyboard](https://www.amazon.com/Glorious-Modular-Mechanical-Keyboard-Pro/dp/B09968ZYDK)
-- [C3 TKC Tangerines](https://lemonkeys.co.nz/collections/switches/products/c3-tangerines)
+- [C3 TKC Tangerines](https://web.archive.org/web/20220119070152/https://lemonkeys.co.nz/collections/switches/products/c3-tangerines)
 - [Glorious Rainforest PBT Keycaps](https://www.mightyape.co.nz/product/glorious-pc-gaming-pbt-keycaps-rain-forest-pc/34771040?rrec=true)
-- [Durock V2 Stabilisers](https://lemonkeys.co.nz/collections/stabs-lubes/products/durock-screw-in-stabilisers-v2)
+- [Durock V2 Stabilisers](https://web.archive.org/web/20220119070312/https://lemonkeys.co.nz/collections/stabs-lubes/products/durock-screw-in-stabilisers-v2)
 - [Durock Switch Films](https://www.switchkeys.com.au/products/durock-switch-films)
 
 I’m waiting on some MT3 keycaps and some other neat stuff to bolt on this keyboard, once I eventually receive those, I’ll likely make another post.
