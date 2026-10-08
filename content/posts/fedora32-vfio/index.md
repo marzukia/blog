@@ -22,7 +22,7 @@ I've written this post as I've recently gone through the process of setting up a
 
 In order to do GPU pass-through, you'll need to have two graphics cards. A single GPU pass-through is 'jank' requiring you to terminate your xorg session in order to switch between Windows and Fedora.
 
-For the purposes of doing GPU passthrough, I purchased the above [AMD Radeon RX550](https://www.pbtech.co.nz/product/VGASAP9552/Sapphire-Pulse-Radeon-RX550-2G-GDDR5-Graphics-Card) for about $100 NZD. Since I only use two monitors - a primary 32'' 1440p monitor and secondary vertical 22'' 1080p monitor, I didn't need anything particularly overpowered for my host card.
+For the purposes of doing GPU passthrough, I purchased the above [AMD Radeon RX550](https://web.archive.org/web/20190822121349/https://www.pbtech.co.nz/product/VGASAP9552/Sapphire-Pulse-Radeon-RX550-2G-GDDR5-Graphics-Card) for about $100 NZD. Since I only use two monitors - a primary 32'' 1440p monitor and secondary vertical 22'' 1080p monitor, I didn't need anything particularly overpowered for my host card.
 
 In some other threads I read that having identical GPUs causes issues with the VFIO process. Conversely, I've seen people successfully complete this such as the write up found [here](https://pastebin.com/5tuvWTMH).
 

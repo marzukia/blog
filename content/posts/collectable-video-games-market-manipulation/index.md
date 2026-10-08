@@ -16,7 +16,7 @@ I should be clear; this post has been written purely for educational purposes. W
 
 This article will be pretty long. If you can't read through everything, check the \"Key Findings\" section for a summary of the findings.
 
-As part of this mini-project, [I've made a tool that provides a quasi-population report for any collectable game sold at Heritage Auctions](https://mrzk.io/games/), you can find this tool here. The data I've collected from Heritage Auctions is also freely available for anyone to use for their purposes.
+As part of this mini-project, [I've made a tool that provides a quasi-population report for any collectable game sold at Heritage Auctions](https://mrzk.io/posts/junkyard-salvaging-useful-apps-from-paywalls/), you can find this tool here. The data I've collected from Heritage Auctions is also freely available for anyone to use for their purposes.
 
 [This data is now available for anyone to use and collected as of the 5th September 2021](https://github.com/marzukia/wata).
 

@@ -42,6 +42,6 @@ I'm guilty of buying into the novelty of cryptocurrency in its early heyday, but
 
 Cryptocurrency in its state is an anthesis to its original concept, rife with shady and dodgy market players and scams, fraud and corruption. It's long overdue to die. Additionally, it's been over a decade since the "financial revolution" was meant to occur, and the only things that can be reliably bought with cryptocurrency are drugs and fake hitmen.
 
-This post did not even touch on the cancer that is NFTs, but I highly recommend Dan Olson's documentary [Line Goes Up - The Problem with NFTs](https://www.youtube.com/watch?v=YQ_xWvX1n9g). There is also the fun fact that one of the largest NFT collections, Bored Ape Yacht Club, is [filled to the brim with white supremacist dog whistles](https://gordongoner.com/) (whoops).
+This post did not even touch on the cancer that is NFTs, but I highly recommend Dan Olson's documentary [Line Goes Up - The Problem with NFTs](https://www.youtube.com/watch?v=YQ_xWvX1n9g). There is also the fun fact that one of the largest NFT collections, Bored Ape Yacht Club, is [filled to the brim with white supremacist dog whistles](https://web.archive.org/web/20221212170601/https://gordongoner.com/) (whoops).
 
 Lastly, how great would it be to stop having to hear crypto lingo finally?

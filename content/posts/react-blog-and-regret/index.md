@@ -104,7 +104,7 @@ I've been fairly negative in this article, but I did allude to having reasons fo
 
 I absolutely love creating exciting data visualisations and tools. One significant benefit of building the project in Django/React meant that I had a much more sophisticated toolset to work with in terms of the content I could produce. The tool that I had packaged with the release of my React blog was a game-price finder that analysed scraped data from Wata Games/Heritage Auctions.
 
-> **Note**: This tool will be down at the time of writing, but I'll look at rebuilding it without the blog component. Also, you can find the aforementioned article [here](https://mrzk.io/collectable-video-games-market-manipulation/).
+> **Note**: This tool will be down at the time of writing, but I'll look at rebuilding it without the blog component. Also, you can find the aforementioned article [here](https://mrzk.io/posts/collectable-video-games-market-manipulation/).
 
 I will make standalone applications in the future rather than trying to have it all unified as a single experience.
 
