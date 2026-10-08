@@ -5,7 +5,7 @@ seotitle: "qMLX: Multiplexing & Cache Stability"
 date: "2026-07-15"
 description: "Ripping the hot cache out of qMLX, splitting DeltaNet checkpoints so they restore from SSD, and using multiplexing to run concurrent Qwen 122b sessions on a single 96GB Mac Studio."
 tags: ["AI"]
-projects: ["qMLX"]
+projects: ["qmlx"]
 slug: "qmlx-optimising-multiplexing-and-dogfood"
 draft: false
 ---

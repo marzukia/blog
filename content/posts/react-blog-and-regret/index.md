@@ -124,7 +124,7 @@ In conclusion, don't bother trying to make React blog, it sucks, and it's painfu
 
 I'll close this section off with a self explanatory picture as to why static page blogs kick ass.
 
-![The bottom line.](/images/react_blog/report.png)
+![PageSpeed Insights report for the React blog post, shown next to the post itself](/images/react_blog/report.png)
 
 ## Server-Side Rendering Code
 
