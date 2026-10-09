@@ -21,7 +21,7 @@ Problems I'm good at:
 - Geospatial modelling and analysis. PostGIS, unwieldy geometries, ETL that doesn't fall over at scale.
 - Turning climate and regulatory reporting requirements (APRA, NZ CS1, scope 3 and financed emissions) into software that actually runs.
 - Reverse-engineering undocumented APIs and gluing systems never meant to talk.
-- Data platforms and pipelines, end-to-end from deep source-system sourcing to finished product — and the unglamorous performance work that makes them usable.
+- Data platforms and pipelines, end-to-end from deep source-system sourcing to finished product, including the unglamorous performance work that makes them usable.
 - Local LLM inference that behaves on real hardware.
 
 Some of what I've shipped:
@@ -30,11 +30,11 @@ Some of what I've shipped:
 - ESGIS (Environmental Social Geospatial Information System), for ANZNZ, 2023 NZ [INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
 - A green loan engine validating initiatives against the four Green Loan Principles, at ANZ.
 - An on-the-fly benchmarking and financial-insights platform covering the entire commercial segment, at ANZ.
-- An experimental multi-layer peril composite engine: fixed-cardinality peril vectors composited via memmap-backed matmuls — many hazard inputs, one asset risk score.
+- An experimental multi-layer peril composite engine: fixed-cardinality peril vectors composited via memmap-backed matmuls, many hazard inputs in, one asset risk score out.
 - [junkyard.sh](https://junkyard.sh), 48 client-side web tools salvaged from behind paywalls. No accounts, no uploads, open source.
 - charted, beautiful SVG charts with zero dependencies.
 - qMLX, a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
-- ppgrid, fast continent-scale raster interpolation (a push-pull mipmap of inverse-distance-weighting) — 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
+- ppgrid, fast continent-scale raster interpolation (a push-pull mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
 
 Twelve years at ANZ across banking, agri and commercial data, and climate risk, the last several building the platforms above. BCom in Accounting and Commercial Law, University of Auckland. Based in Melbourne, by way of Auckland.
 
