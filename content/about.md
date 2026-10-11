@@ -12,11 +12,11 @@ schemaType: "WebPage"
 
 <img src="/img/andryo-circle.png" alt="Andryo Marzuki" class="about-avatar" width="180" height="180" />
 
-I work in climate risk and data. In my own time I build tools, usually because the one I wanted was paywalled, missing, or annoying enough that rebuilding it felt easier than paying for it. Some turned out useful to other people, which is roughly why this page exists.
+I work in climate risk and data, full-stack, from data model to UI. In my own time I build tools, because the one I wanted was paywalled, missing, or slow. Some turned out useful to other people, which is roughly why this page exists.
 
-By day I'm Principal Product Lead for ANZ's Climate Risk & Opportunity Platform, a deterministic, market-first geospatial system for climate scenario modelling and asset valuation, now scaling across the group to meet APRA's ASRS disclosure requirements. Before that: four years in commercial banking and lending, then years building data and insights platforms across the bank, moving into full-stack development and geospatial work.
+By day I'm Principal Product Lead for ANZ's Climate Risk & Opportunity Platform, a deterministic, market-first geospatial system for climate scenario modelling and asset valuation, which I am scaling across the group to meet APRA's ASRS disclosure requirements. Before that: four years in commercial banking and lending, then years building data and insights platforms across the bank, moving into full-stack development and geospatial work.
 
-Problems I'm good at:
+Problems I love to solve:
 
 - Geospatial modelling and analysis. PostGIS, unwieldy geometries, ETL that doesn't fall over at scale.
 - Turning climate and regulatory reporting requirements (APRA, NZ CS1, scope 3 and financed emissions) into software that actually runs.
@@ -32,10 +32,10 @@ Some of what I've shipped:
 - An on-the-fly benchmarking and financial-insights platform covering the entire commercial segment, at ANZ.
 - An experimental multi-layer peril composite engine: fixed-cardinality peril vectors composited via memmap-backed matmuls, many hazard inputs in, one asset risk score out.
 - [junkyard.sh](https://junkyard.sh), 48 client-side web tools salvaged from behind paywalls. No accounts, no uploads, open source.
-- charted, beautiful SVG charts with zero dependencies.
-- qMLX, a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
-- ppgrid, fast continent-scale raster interpolation (a push-pull mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
+- [charted](https://github.com/marzukia/charted), beautiful SVG charts with zero dependencies.
+- [qMLX](https://github.com/marzukia/qMLX), a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
+- [ppgrid](https://github.com/marzukia/ppgrid), fast continent-scale raster interpolation (a pull-push mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
 
 Twelve years at ANZ across banking, agri and commercial data, and climate risk, the last several building the platforms above, most of which shipped before the LLM era. BCom in Accounting and Commercial Law, University of Auckland. Based in Melbourne, by way of Auckland.
 
-If you've got a data, geospatial, or climate-tech problem that needs someone who ships rather than someone who reports, I'm open to selected consulting and contract work. Find me on [LinkedIn](https://www.linkedin.com/in/andryomarzuki/) or [GitHub](https://github.com/marzukia).
+If you've got a data, geospatial, or climate-tech problem that needs someone who ships rather than someone who reports, I take on selected consulting and contract work. Find me on [LinkedIn](https://www.linkedin.com/in/andryomarzuki/) or [GitHub](https://github.com/marzukia).
