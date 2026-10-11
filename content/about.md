@@ -34,7 +34,7 @@ Some of what I've shipped:
 - [junkyard.sh](https://junkyard.sh), 48 client-side web tools salvaged from behind paywalls. No accounts, no uploads, open source.
 - [charted](https://github.com/marzukia/charted), beautiful SVG charts with zero dependencies.
 - [qMLX](https://github.com/marzukia/qMLX), a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
-- [ppgrid](https://github.com/marzukia/ppgrid), fast continent-scale raster interpolation (a push-pull mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
+- [ppgrid](https://github.com/marzukia/ppgrid), fast continent-scale raster interpolation (a pull-push mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
 
 Twelve years at ANZ across banking, agri and commercial data, and climate risk, the last several building the platforms above, most of which shipped before the LLM era. BCom in Accounting and Commercial Law, University of Auckland. Based in Melbourne, by way of Auckland.
 
