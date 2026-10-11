@@ -126,10 +126,11 @@ When I say my ROI calculus, I am referring to more than pure monetary value. Ind
 
 * Run a fleet of 12 parallel AI agents 24/7 without having to worry that I've spent this month's mortgage payment on AI tokens (YMMV).
 * Not worry about data exfiltration, everything is local and I have complete control over my data.
-* The value of my AI tokens actually acts as a stable unit of value.
+* My local inference cost and access are more predictable.
 * Nobody can dilute the efficacy of my agentic fleet without my knowledge or consent. The "invisible levers" are completely visible and within my controls.
 * I can actually automate my personal workflows, and I know I'm not going to get the rug pulled out from under me.
 * It is a baseline capability that I now have for as long as I can maintain it. It will eventually become obsolete, but the fact that people are still using old GPUs that are nearly a decade old (e.g. modified RTX 2080s) gives me a lot of optimism that I will be able to squeeze significant personal value out of the CAPEX I have spent.
+* Maximise the utilisation of my solar system I had installed in my house, my inference is powered by the sun (when Melbourne weather decides to cooperate).
 
 An objection I can sense coming: why am I not including subs as part of my comparisons? It's a fair objection. I have a simple answer: the subsidised price is not sustainable, so why would I plan around it? The _prices_ will go up. Those subscriptions are already heavily subsidised, and it's just a matter of time. When it happens, I don't want to pay whatever the insane RAM prices will be in the future. Ultimately it's a gamble I'm making: to secure my medium- to long-term access to agentic tooling in a front-loaded way.
 
