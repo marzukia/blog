@@ -14,7 +14,7 @@ schemaType: "WebPage"
 
 I work in climate risk and data. In my own time I build tools, usually because the one I wanted was paywalled, missing, or annoying enough that rebuilding it felt easier than paying for it. Some turned out useful to other people, which is roughly why this page exists.
 
-By day I'm Principal Product Lead for ANZ's Climate Risk & Opportunity Platform, a market-first geospatial system for climate scenario modelling and asset valuation, now scaling across the group to meet APRA's ASRS disclosure requirements. Before that: four years in commercial banking and lending, then years building data and insights platforms across the bank, moving into full-stack development and geospatial work.
+By day I'm Principal Product Lead for ANZ's Climate Risk & Opportunity Platform, a deterministic, market-first geospatial system for climate scenario modelling and asset valuation, now scaling across the group to meet APRA's ASRS disclosure requirements. Before that: four years in commercial banking and lending, then years building data and insights platforms across the bank, moving into full-stack development and geospatial work.
 
 Problems I'm good at:
 
@@ -26,8 +26,8 @@ Problems I'm good at:
 
 Some of what I've shipped:
 
-- CROP (Climate Risk & Opportunities Platform), for ANZ Group, geospatial climate scenario modelling and digital asset valuation.
-- ESGIS (Environmental Social Geospatial Information System), for ANZNZ, 2023 NZ [INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
+- CROP (Climate Risk & Opportunities Platform), for ANZ Group (2021-2024), geospatial climate scenario modelling and digital asset valuation.
+- ESGIS (Environmental Social Geospatial Information System), for ANZNZ (2022-23), 2023 [NZ INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
 - A green loan engine validating initiatives against the four Green Loan Principles, at ANZ.
 - An on-the-fly benchmarking and financial-insights platform covering the entire commercial segment, at ANZ.
 - An experimental multi-layer peril composite engine: fixed-cardinality peril vectors composited via memmap-backed matmuls, many hazard inputs in, one asset risk score out.
@@ -36,6 +36,6 @@ Some of what I've shipped:
 - qMLX, a Qwen-specialised MLX fork with disk KV restore. A 130,000-token follow-up drops from a multi-minute cold prefill to a sub-second restore.
 - ppgrid, fast continent-scale raster interpolation (a push-pull mipmap of inverse-distance-weighting), 20M+ point rows to an adaptive-resolution raster in seconds, not days. Open source.
 
-Twelve years at ANZ across banking, agri and commercial data, and climate risk, the last several building the platforms above. BCom in Accounting and Commercial Law, University of Auckland. Based in Melbourne, by way of Auckland.
+Twelve years at ANZ across banking, agri and commercial data, and climate risk, the last several building the platforms above, most of which shipped before the LLM era. BCom in Accounting and Commercial Law, University of Auckland. Based in Melbourne, by way of Auckland.
 
 If you've got a data, geospatial, or climate-tech problem that needs someone who ships rather than someone who reports, I'm open to selected consulting and contract work. Find me on [LinkedIn](https://www.linkedin.com/in/andryomarzuki/) or [GitHub](https://github.com/marzukia).
