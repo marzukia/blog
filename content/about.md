@@ -26,8 +26,8 @@ Problems I'm good at:
 
 Some of what I've shipped:
 
-- CROP (Climate Risk & Opportunities Platform), for ANZ Group (2021-2024), geospatial climate scenario modelling and digital asset valuation.
-- ESGIS (Environmental Social Geospatial Information System), for ANZNZ (2022-23), 2023 [NZ INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
+- CROP (Climate Risk & Opportunities Platform), for ANZ Group (2024-present), geospatial climate scenario modelling and digital asset valuation.
+- ESGIS (Environmental Social Geospatial Information System), for ANZNZ (2018-2024), 2023 [NZ INFINZ finalist](https://www.linkedin.com/posts/anznewzealand_its-great-to-see-anzs-insights-and-esg-activity-7059339312248606720-tIyU).
 - A green loan engine validating initiatives against the four Green Loan Principles, at ANZ.
 - An on-the-fly benchmarking and financial-insights platform covering the entire commercial segment, at ANZ.
 - An experimental multi-layer peril composite engine: fixed-cardinality peril vectors composited via memmap-backed matmuls, many hazard inputs in, one asset risk score out.
