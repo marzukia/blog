@@ -21,6 +21,9 @@ robots = "index, follow, max-image-preview:large"
 mapboxToken = "pk.eyJ1IjoiYW5kcnlvbWFyenVraSIsImEiOiJjbXQ4eWJnaTYwMjVyMnpwcDk5a2ZsbXR0In0.Wm4Zsj-4zdBn0kmkmyLtTg"
 mapboxStyle = "light-v11"
 
+# Reading time: words-per-minute for the MIN READ label.
+# Hugo default is 200; set higher for faster/technical readers.
+readingTimeWPM = 250
 [seo]
   ogBanner = "img/ogbanner.png"
 
@@ -29,3 +32,4 @@ mapboxStyle = "light-v11"
 [umamiAnalytics]
   script = "https://umami.junkyard.sh/script.js"
   site = "bb6395f2-323e-4762-b242-62c1ca258e6c"
+
